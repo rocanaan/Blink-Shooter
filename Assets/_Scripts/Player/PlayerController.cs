@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
 
+	private PlayerAudioController pac;
+
 	// Controls the speed of the character
 	public float speed;
 
@@ -37,7 +39,7 @@ public class PlayerController : MonoBehaviour {
 	// Script for starting and updating the healthTracker
 	private HealthTracker healthTracker;
 
-	private bool isDead;
+	public bool isDead;
 	private bool isStunned;
 	private bool respawnAllowed;
 	private float nextRespawnTime;
@@ -76,6 +78,9 @@ public class PlayerController : MonoBehaviour {
 		timeRecoverStun = 0.0f;
 
 		timeLastDamage = -10;
+
+		pac = GetComponentInParent<PlayerAudioController> ();
+
 		
 	}
 	
@@ -106,6 +111,7 @@ public class PlayerController : MonoBehaviour {
 			if (isStunned) {
 				if (timeRecoverStun < Time.time) {
 					isStunned = false;
+					rb.velocity = Vector3.zero;
 				}
 			}
 			if (!isDead) {
@@ -225,10 +231,13 @@ public class PlayerController : MonoBehaviour {
 			if (shot.getTeamID() != teamID ) {
 				if (!onGracePeriod ()) {
 					takeDamage (shot.damage);
-					timeLastDamage = Time.time;
+					if (!isDead) {
+						timeLastDamage = Time.time;
+					}
 				}
 				Destroy (col.gameObject);
 			}
+
 		}
 
 		if (col.tag == "Pickup") {
@@ -243,14 +252,18 @@ public class PlayerController : MonoBehaviour {
 
 		if (col.tag == "Boss"  && !onGracePeriod()) {
 			takeDamage (1);
-			isStunned = true;
-			timeRecoverStun = Time.time + timeStunned;
+			if (!isDead) {
+				isStunned = true;
+				timeRecoverStun = Time.time + timeStunned;
 
-			Vector3 offset = transform.position - col.transform.position;
-			Vector3 direction = offset.normalized;
-			rb.velocity = direction * speedStunned;
+				Vector3 offset = transform.position - col.transform.position;
+				Vector3 direction = offset.normalized;
+				rb.velocity = direction * speedStunned;
 
-			timeLastDamage = Time.time;
+				timeLastDamage = Time.time;
+			}
+
+
 
 
 		}
@@ -264,6 +277,8 @@ public class PlayerController : MonoBehaviour {
 
 		if (currentHealth <= 0) {
 			playerDeath ();
+		} else {
+			pac.PlaySound ("Hit");
 		}
 	}
 
@@ -272,10 +287,13 @@ public class PlayerController : MonoBehaviour {
 		//Destroy (transform.parent.gameObject);
 		//transform.parent.gameObject.SetActive(false);
 		transform.position = new Vector3(30,30,0);
+//		GetComponent<CircleCollider2D> ().enabled = false;
+//		GetComponent<MeshRenderer> ().enabled = false;
 		ghost.resetPosition ();
 		rb.velocity = Vector3.zero;
 		isDead = true;
 		setRespawn();
+		pac.PlaySound ("Death");
 	}
 
 	void setRespawn(){

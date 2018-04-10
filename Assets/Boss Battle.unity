@@ -1606,7 +1606,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba72e0a4052ff4d0096efce25f37cd2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 150
+  maxHealth: 8
   teamID: 2
   healthBar: {fileID: 118594159}
   startingDifficultyMaterial: {fileID: 2100000, guid: 57d3875c8dbde4422b703b879aa9d94f,
@@ -1631,6 +1631,7 @@ MonoBehaviour:
   - {fileID: 1753330531}
   - {fileID: 1026872051}
   speed: 5
+  tolerance: 0.5
 --- !u!114 &1994543606
 MonoBehaviour:
   m_ObjectHideFlags: 0

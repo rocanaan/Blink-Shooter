@@ -6,6 +6,7 @@ public class FollowBehavior : MonoBehaviour {
 
 	public GameObject[] players;
 	public float speed;
+	public float tolerance;
 
 	private bool statusActive;
 	private Vector3 target;
@@ -20,8 +21,12 @@ public class FollowBehavior : MonoBehaviour {
 		if (statusActive) {
 			target = acquireTarget ();
 			Vector3 offset = (target - transform.position);
-			Vector3 direction = offset.normalized;
-			GetComponent<Rigidbody2D> ().velocity = direction * speed;
+			if (offset.magnitude > tolerance) {
+				Vector3 direction = offset.normalized;
+				GetComponent<Rigidbody2D> ().velocity = direction * speed;
+			} else {
+				GetComponent<Rigidbody2D> ().velocity = Vector3.zero;
+			}
 		}
 		
 	}
@@ -33,11 +38,13 @@ public class FollowBehavior : MonoBehaviour {
 	private Vector3 acquireTarget(){
 		float minDistance= 99999.0f;
 		Vector3 target = new Vector3 (0, 0, 0);
-		for (int i = 0; i < players.Length; i++){
-			float distance = Vector3.Distance (transform.position, players [i].transform.position);
-			if (distance < minDistance) {
-				minDistance = distance;
-				target = players [i].transform.position;
+		foreach (GameObject playerObj in players){
+			if (!playerObj.GetComponent<PlayerController> ().isDead) {
+				float distance = Vector3.Distance (transform.position, playerObj.transform.position);
+				if (distance < minDistance) {
+					minDistance = distance;
+					target = playerObj.transform.position;
+				}
 			}
 		}
 

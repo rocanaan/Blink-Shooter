@@ -9,7 +9,7 @@
     <ProductVersion>10.0.20506</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <RootNamespace></RootNamespace>
-    <ProjectGuid>{EDE85DDA-D4E4-F655-B9CD-975D90134BE7}</ProjectGuid>
+    <ProjectGuid>{3ACB85B1-356E-6B3F-1A15-FCB1CCF32487}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <AssemblyName>Assembly-CSharp</AssemblyName>
@@ -78,6 +78,7 @@
      <Compile Include="Assets\FireShot.cs" />
      <Compile Include="Assets\FireShotPeriodically.cs" />
      <Compile Include="Assets\GunSpawner.cs" />
+     <Compile Include="Assets\PlayerAudioController.cs" />
      <Compile Include="Assets\PlayerTrapController.cs" />
      <Compile Include="Assets\TargettedFireBehavior.cs" />
      <Compile Include="Assets\TrapSpawner.cs" />
