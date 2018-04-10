@@ -108,11 +108,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e6346155aefbe4702b0d239c751a4f31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shot: {fileID: 1661393559475544, guid: 903ae08709ead4b9e943ee056d4e8730, type: 2}
+  shot: {fileID: 1956842653187736, guid: 8111d1a5b8384ce4fa5ce843274ceca7, type: 2}
   teamID: 2
   playerID: 2
   offset: 0
   shotSpeed: 10
+  mat: {fileID: 2100000, guid: dfbbc74190dcc40a0a5072f3ebf29f4b, type: 2}
 --- !u!114 &114583911829032168
 MonoBehaviour:
   m_ObjectHideFlags: 1
