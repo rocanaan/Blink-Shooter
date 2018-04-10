@@ -26,8 +26,8 @@ public class PlayerTrapController : MonoBehaviour {
 			float angle = 2*Mathf.PI * i / numberSpheres;
 			Vector3 direction = new Vector3 (Mathf.Cos (angle), Mathf.Sin (angle), 0);
 			print (direction);
-			Vector3 shieldPosition = transform.TransformPoint (direction * offset );
-			GameObject sphere = Instantiate<GameObject> (sphereObject, shieldPosition, Quaternion.Euler(0,0, Mathf.Rad2Deg*angle));
+			Vector3 bulletPosition = transform.TransformPoint (direction * offset );
+			GameObject sphere = Instantiate<GameObject> (sphereObject, bulletPosition, Quaternion.Euler(0,0, Mathf.Rad2Deg*angle));
 //			sphere.transform.localScale *= transform.lossyScale.x;
 			sphere.transform.parent = transform;
 			sphereList.Add (sphere);

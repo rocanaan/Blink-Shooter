@@ -475,6 +475,7 @@ MonoBehaviour:
   maxHealth: 6
   timeStunned: 0.1
   speedStunned: 20
+  isDead: 0
   gracePeriod: 0.5
   respawn: {x: -6, y: 3, z: 0}
 --- !u!114 &114843121671840472
@@ -506,3 +507,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hitSound: {fileID: 8300000, guid: 8935620a5a86b46c88dfccffc5fd796a, type: 3}
   deathSound: {fileID: 8300000, guid: 1f1fb72a1d64c47e48d1faae5f05f02e, type: 3}
+  fireSound: {fileID: 8300000, guid: fe045aa24dd1049a0b45e4ce9631e26f, type: 3}

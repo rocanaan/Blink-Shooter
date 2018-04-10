@@ -6,6 +6,7 @@ public class PlayerAudioController : MonoBehaviour {
 
 	public AudioClip hitSound;
 	public AudioClip deathSound;
+	public AudioClip fireSound;
 
 	private AudioSource audioSource;
 
@@ -28,5 +29,9 @@ public class PlayerAudioController : MonoBehaviour {
 			audioSource.clip = deathSound;
 			audioSource.Play();
 		}
+		if (s == "Fire") {
+			audioSource.clip = fireSound;
+			audioSource.Play ();
+		} 
 	}
 }

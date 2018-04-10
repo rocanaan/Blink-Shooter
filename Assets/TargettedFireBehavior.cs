@@ -16,9 +16,11 @@ public class TargettedFireBehavior : MonoBehaviour {
 	public float shotSpeed;
 	private int targetPlayerIndex;
 
+	public bool activateOnStartup;
 
 	// Use this for initialization
 	void Start () {
+		setStatus (activateOnStartup); //activates the behavior on startup if that flag is set to true
 		
 	}
 	

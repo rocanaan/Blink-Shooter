@@ -141,6 +141,7 @@ public class PlayerController : MonoBehaviour {
 		shotAtt.setPlayerID (playerID);
 		Rigidbody2D shotRigidbody2D = newShot.GetComponent<Rigidbody2D> ();
 		shotRigidbody2D.velocity = direction * shotSpeed;
+		pac.PlaySound ("Fire");
 	}
 
 	public void getControllerName (){
@@ -272,13 +273,13 @@ public class PlayerController : MonoBehaviour {
 	void takeDamage (int damage){
 		currentHealth -= damage;
 		print (" Player " + playerID + " current Health is " + currentHealth);
-		blinkDamageAnimation.startAnimation ();
 		healthTracker.setHealth (currentHealth);
 
 		if (currentHealth <= 0) {
 			playerDeath ();
 		} else {
 			pac.PlaySound ("Hit");
+			blinkDamageAnimation.startAnimation ();
 		}
 	}
 
