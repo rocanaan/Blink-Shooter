@@ -12,7 +12,7 @@ public class PlayerAudioController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		audioSource = GetComponent<AudioSource> ();
+		audioSource = GetComponentInParent<AudioSource> ();
 	}
 	
 	// Update is called once per frame
@@ -22,16 +22,19 @@ public class PlayerAudioController : MonoBehaviour {
 
 	public void PlaySound(string s){
 		if (s == "Hit"){
-			audioSource.clip = hitSound;
-			audioSource.Play();
+//			audioSource.clip = hitSound;
+//			audioSource.Play();
+			audioSource.PlayOneShot(hitSound);
 		}
 		if (s == "Death") {
-			audioSource.clip = deathSound;
-			audioSource.Play();
+//			audioSource.clip = deathSound;
+//			audioSource.Play();
+			audioSource.PlayOneShot(deathSound);
 		}
 		if (s == "Fire") {
-			audioSource.clip = fireSound;
-			audioSource.Play ();
+//			audioSource.clip = fireSound;
+//			audioSource.Play ();
+			audioSource.PlayOneShot(fireSound);
 		} 
 	}
 }

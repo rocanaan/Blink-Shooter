@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
 
-	private PlayerAudioController pac;
+	private SoundEffectsController sfxController;
 
 	// Controls the speed of the character
 	public float speed;
@@ -85,7 +85,7 @@ public class PlayerController : MonoBehaviour {
 
 		timeLastDamage = -10;
 
-		pac = GetComponentInParent<PlayerAudioController> ();
+		sfxController = GetComponentInParent<SoundEffectsController> ();
 
 
 	}
@@ -216,7 +216,7 @@ public class PlayerController : MonoBehaviour {
 				//print (" Firing shot for player " + playerID + " using controller " + controllerName);
 				//fireShot ();
 				fs.fireShot();
-				pac.PlaySound ("Fire");
+				sfxController.PlayClip ("Fire");
 				nextShot = Time.time + shotInterval;
 			}
 
@@ -278,7 +278,7 @@ public class PlayerController : MonoBehaviour {
 		if (currentHealth <= 0) {
 			playerDeath ();
 		} else {
-			pac.PlaySound ("Hit");
+			sfxController.PlayClip ("Hit");
 			blinkAnimation.startAnimation ();
 		}
 	}
@@ -292,7 +292,7 @@ public class PlayerController : MonoBehaviour {
 		rb.velocity = Vector3.zero;
 		isDead = true;
 		setRespawn();
-		pac.PlaySound ("Death");
+		sfxController.PlayClip ("Death");
 	}
 
 	void setRespawn(){

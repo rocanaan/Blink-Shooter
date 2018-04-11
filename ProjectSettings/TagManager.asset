@@ -9,7 +9,7 @@ TagManager:
   - Pickup
   - Hill
   - Boss
-  - AudioSource
+  - GlobalAudioSource
   layers:
   - Default
   - TransparentFX

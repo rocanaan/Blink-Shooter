@@ -20,7 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4512988242923548}
   - component: {fileID: 82197909669521350}
-  - component: {fileID: 114955510900617880}
+  - component: {fileID: 114969875008694050}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -349,7 +349,7 @@ MonoBehaviour:
   teamID: 1
   playerID: 2
   offset: 1.2
-  mat: {fileID: 0}
+  mat: {fileID: 2100000, guid: 3750ee820efbf4bfb8d7d218ac766855, type: 2}
   shotSpeed: 15
 --- !u!114 &114383956769575772
 MonoBehaviour:
@@ -441,7 +441,7 @@ MonoBehaviour:
   material: {fileID: 2100000, guid: 3750ee820efbf4bfb8d7d218ac766855, type: 2}
   startingPosition: {x: -9.9, y: 5}
   offset: {x: 0, y: -0.9}
---- !u!114 &114955510900617880
+--- !u!114 &114969875008694050
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -449,12 +449,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 1104367229404244}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f681b90d518594b1f965fa69be675413, type: 3}
+  m_Script: {fileID: 11500000, guid: 4c52fd39669464b898de58bb149b08bb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitSound: {fileID: 8300000, guid: 8935620a5a86b46c88dfccffc5fd796a, type: 3}
-  deathSound: {fileID: 8300000, guid: 1f1fb72a1d64c47e48d1faae5f05f02e, type: 3}
-  fireSound: {fileID: 8300000, guid: fe045aa24dd1049a0b45e4ce9631e26f, type: 3}
+  clips:
+  - clip: {fileID: 8300000, guid: 8935620a5a86b46c88dfccffc5fd796a, type: 3}
+    label: Hit
+  - clip: {fileID: 8300000, guid: 1f1fb72a1d64c47e48d1faae5f05f02e, type: 3}
+    label: Death
+  - clip: {fileID: 8300000, guid: fe045aa24dd1049a0b45e4ce9631e26f, type: 3}
+    label: Fire
 --- !u!212 &212520896594238314
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class BossController : MonoBehaviour {
 
+	private SoundEffectsController sfxController;
+
 	public int maxHealth;
 	private int currentHealth;
 
@@ -38,7 +40,6 @@ public class BossController : MonoBehaviour {
 	private GameController gameController;
 
 	private GameObject audioSource;
-	private AudioController audioController;
 
 	// Use this for initialization
 	void Start () {
@@ -64,8 +65,8 @@ public class BossController : MonoBehaviour {
 
 		gameController = GameObject.FindGameObjectWithTag ("GameController").GetComponent<GameController> ();
 
-		audioSource = GameObject.FindGameObjectWithTag ("AudioSource");
-		audioController = audioSource.GetComponent<AudioController> ();
+		audioSource = GameObject.FindGameObjectWithTag ("GlobalAudioSource");
+		sfxController = audioSource.GetComponent<SoundEffectsController> ();
 	}
 	
 	// Update is called once per frame
@@ -110,7 +111,6 @@ public class BossController : MonoBehaviour {
 //			shieldSpawner.setStatus (true);
 //			wallGunSpawner.setStatus (false);
 
-			audioController.switchByDifficulty (difficulty);
 		}
 
 		if (difficulty == 1 && healthRatio < 0.2) {
@@ -133,8 +133,7 @@ public class BossController : MonoBehaviour {
 //			gunSpawner.setStatus (true);
 //			wallGunSpawner.gunsPerWall = 2;
 //			wallGunSpawner.setStatus (true);
-			audioController.switchByDifficulty (difficulty);
-
+		
 		}
 			
 		if (currentHealth <= 0) {
