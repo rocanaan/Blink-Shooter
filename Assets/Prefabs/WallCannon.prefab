@@ -23,12 +23,13 @@ GameObject:
   - component: {fileID: 114111914477057010}
   - component: {fileID: 114207538295757624}
   - component: {fileID: 114296145281321846}
-  - component: {fileID: 114645213058746418}
-  - component: {fileID: 114816495113568022}
   - component: {fileID: 199887411578559900}
   - component: {fileID: 198372729745501618}
   - component: {fileID: 50464945198966180}
   - component: {fileID: 61981134377527222}
+  - component: {fileID: 114090152624144426}
+  - component: {fileID: 114880991858429738}
+  - component: {fileID: 114256804630356960}
   m_Layer: 0
   m_Name: WallCannon
   m_TagString: Untagged
@@ -94,6 +95,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &114090152624144426
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1808568471600776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 184e6bce32ddf4857916e549ca1c46c3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ghostTrespassable: 0
+  teamID: 2
 --- !u!114 &114111914477057010
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -124,6 +138,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireInterval: 1.5
   firstShotDelay: 1
+--- !u!114 &114256804630356960
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1808568471600776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 520ce158215894ce6ab4b8bc1b40f376, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blinkTime: 0.1
 --- !u!114 &114296145281321846
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -140,7 +166,7 @@ MonoBehaviour:
   speed: 3
   dim: 2
   offsetTolerance: 0.1
---- !u!114 &114645213058746418
+--- !u!114 &114880991858429738
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -148,22 +174,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1808568471600776}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 070c6e22d8616dd46b5500dbc7a72436, type: 3}
+  m_Script: {fileID: 11500000, guid: 5193e55858eb04296968af50ef4e1427, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   health: 3
---- !u!114 &114816495113568022
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1808568471600776}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 12cba8aaada4261479fd07c7560e2568, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  blinkTime: 0.1
 --- !u!198 &198372729745501618
 ParticleSystem:
   m_ObjectHideFlags: 1

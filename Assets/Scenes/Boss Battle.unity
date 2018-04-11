@@ -172,6 +172,7 @@ GameObject:
   - component: {fileID: 89535274}
   - component: {fileID: 89535273}
   - component: {fileID: 89535272}
+  - component: {fileID: 89535276}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -242,6 +243,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &89535276
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 89535271}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd072631cc175428d820a5801acda04d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &118594159
 GameObject:
   m_ObjectHideFlags: 0
@@ -1138,6 +1150,11 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 114157564536003220, guid: d8b3f2dd3869544dc9a84cfb3bb2baee,
+        type: 2}
+      propertyPath: mat
+      value: 
+      objectReference: {fileID: 2100000, guid: 3750ee820efbf4bfb8d7d218ac766855, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d8b3f2dd3869544dc9a84cfb3bb2baee, type: 2}
   m_IsPrefabParent: 0
@@ -1216,7 +1233,7 @@ Prefab:
         type: 2}
       propertyPath: material
       value: 
-      objectReference: {fileID: 2100000, guid: a5045b7ccf08042dc8a9eb45a4a187fd, type: 2}
+      objectReference: {fileID: 2100000, guid: 7612151bd335a4723bfd3dace598d192, type: 2}
     - target: {fileID: 114775767916185120, guid: d8b3f2dd3869544dc9a84cfb3bb2baee,
         type: 2}
       propertyPath: shot
@@ -1246,7 +1263,12 @@ Prefab:
         type: 2}
       propertyPath: mat
       value: 
-      objectReference: {fileID: 2100000, guid: 3750ee820efbf4bfb8d7d218ac766855, type: 2}
+      objectReference: {fileID: 2100000, guid: 7612151bd335a4723bfd3dace598d192, type: 2}
+    - target: {fileID: 212603010508479114, guid: d8b3f2dd3869544dc9a84cfb3bb2baee,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 7612151bd335a4723bfd3dace598d192, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d8b3f2dd3869544dc9a84cfb3bb2baee, type: 2}
   m_IsPrefabParent: 0
