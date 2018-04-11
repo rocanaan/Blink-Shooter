@@ -402,7 +402,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 6
   ghostObject: {fileID: 1795845927082592}
-  shot: {fileID: 1869922709552740, guid: 579faeaeddf0e442786514404f943ffa, type: 2}
   shotSpeed: 15
   shotInterval: 0.25
   playerID: 1

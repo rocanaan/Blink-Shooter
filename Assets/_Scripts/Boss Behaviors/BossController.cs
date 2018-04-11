@@ -140,7 +140,7 @@ public class BossController : MonoBehaviour {
 			//playerDeath ();
 			print("Boss died!");
 			gameController.bossDied();
-			Destroy (transform.parent.gameObject);
+			Destroy (gameObject);
 		}
 	}
 
