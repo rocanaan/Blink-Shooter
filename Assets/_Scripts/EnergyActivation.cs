@@ -15,6 +15,8 @@ public class EnergyActivation : MonoBehaviour {
 	private bool prepared;
 	private bool fired;
 
+	private TrapSpawnerAudioController sfx;
+
 	void Start(){
 		prepared = false;
 		fired = false;
@@ -27,6 +29,8 @@ public class EnergyActivation : MonoBehaviour {
 		if (fired && Time.time > destroyTime) {
 			Destroy (this);
 		}
+
+		sfx = GameObject.FindGameObjectWithTag("GlobalAudioSource").GetComponent<TrapSpawnerAudioController> ();
 	}
 
 	// Use this for initialization
@@ -46,6 +50,7 @@ public class EnergyActivation : MonoBehaviour {
 		direction.Normalize();
 		Vector3 velocity = direction*speed;
 		GetComponent<Rigidbody2D>().velocity = velocity;
+		sfx.playRelease ();
 	}
 		
 }

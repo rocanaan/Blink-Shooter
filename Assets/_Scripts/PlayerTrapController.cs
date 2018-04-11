@@ -16,6 +16,8 @@ public class PlayerTrapController : MonoBehaviour {
 	public float sphereSpeed;
 	private List<GameObject> sphereList;
 
+	private TrapSpawnerAudioController sfx;
+
 	// Use this for initialization
 	void Start () {
 		activationTime = Time.time + preparationTime;
@@ -35,6 +37,9 @@ public class PlayerTrapController : MonoBehaviour {
 			sphere.GetComponent<ShotAttributes> ().setTeamID(2);
 
 		}
+
+		sfx = GameObject.FindGameObjectWithTag("GlobalAudioSource").GetComponent<TrapSpawnerAudioController> ();
+		sfx.playPreparation ();
 	}
 	
 	// Update is called once per frame
@@ -46,6 +51,7 @@ public class PlayerTrapController : MonoBehaviour {
 			foreach (GameObject sphere in sphereList){
 				sphere.GetComponent<EnergyActivation> ().Prepare (player.transform.position);
 			}
+			sfx.stopPreparation ();
 			Destroy (this);
 		}
 	}

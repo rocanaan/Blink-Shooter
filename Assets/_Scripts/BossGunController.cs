@@ -8,18 +8,23 @@ public class BossGunController : MonoBehaviour {
 	public float firstShotDelay;
 	private float nextFire;
 
+	private SoundEffectsController globalSFXController;
+
 	private FireShot fs;
 
 	// Use this for initialization
 	void Start () {
 		nextFire = Time.time + firstShotDelay;
 		fs = GetComponent<FireShot> ();
+
+		globalSFXController = GameObject.FindGameObjectWithTag ("GlobalAudioSource").GetComponent<SoundEffectsController> ();
 	}
 
 	// Update is called once per frame
 	void Update () {
 		if (Time.time >= nextFire) {
 			fs.fireShot ();
+			globalSFXController.PlayClip ("WallGunFire");
 			nextFire += fireInterval;
 		}
 	}

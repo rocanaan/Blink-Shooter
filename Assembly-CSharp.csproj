@@ -88,6 +88,7 @@
      <Compile Include="Assets\_Scripts\TargettedFireBehavior.cs" />
      <Compile Include="Assets\_Scripts\TrapSpawner.cs" />
      <Compile Include="Assets\_Scripts\WallGunSpawner.cs" />
+     <Compile Include="Assets\TrapSpawnerAudioController.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

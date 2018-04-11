@@ -10,12 +10,16 @@ public class DestructibleGunBehaviour : MonoBehaviour {
     private BlinkAnimation blinkAnimation;
     private GameObject cam;
 
+	private SoundEffectsController globalSFXController;
+
     // Use this for initialization
     void Start () {
         fs = GetComponent<FireShot>();
         blinkAnimation = GetComponent<BlinkAnimation>();
 
         cam = GameObject.FindWithTag("MainCamera");
+
+		globalSFXController = GameObject.FindGameObjectWithTag ("GlobalAudioSource").GetComponent<SoundEffectsController> ();
     }
 
     void OnTriggerEnter2D(Collider2D col)
@@ -39,6 +43,7 @@ public class DestructibleGunBehaviour : MonoBehaviour {
                 col.GetComponent<SpriteRenderer>().enabled = false;
                 Instantiate(gunParticle, transform.position, transform.rotation);
                 Destroy(gameObject);
+				globalSFXController.PlayClip ("WallGunExplosion");
             }
         }
     }
