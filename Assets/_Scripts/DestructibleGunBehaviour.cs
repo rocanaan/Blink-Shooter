@@ -3,18 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class DestructibleGunBehaviour : MonoBehaviour {
-
+    public GameObject gunParticle;
     public int health = 3;
 
     private FireShot fs;
-    private ParticleSystem ps;
     private BlinkAnimation blinkAnimation;
     private GameObject cam;
 
     // Use this for initialization
     void Start () {
         fs = GetComponent<FireShot>();
-        ps = GetComponent<ParticleSystem>();
         blinkAnimation = GetComponent<BlinkAnimation>();
 
         cam = GameObject.FindWithTag("MainCamera");
@@ -39,9 +37,8 @@ public class DestructibleGunBehaviour : MonoBehaviour {
             {
                 cam.GetComponent<CameraController>().CamShake(0.2f, 0.15f);
                 col.GetComponent<SpriteRenderer>().enabled = false;
-                ps.Play();
-                Destroy(gameObject, ps.main.duration);
-                
+                Instantiate(gunParticle, transform.position, transform.rotation);
+                Destroy(gameObject);
             }
         }
     }
