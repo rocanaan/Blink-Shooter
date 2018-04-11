@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour {
 	public GameObject ghostObject;
 	private GhostController ghost;
 
-	public GameObject shot;
+
 	public float shotSpeed;
 	public float shotInterval;
 	private float nextShot;
