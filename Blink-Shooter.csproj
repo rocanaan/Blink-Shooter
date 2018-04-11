@@ -285,7 +285,6 @@
     <Compile Include="Assets\AudioController.cs" />
     <Compile Include="Assets\BlinkAnimation.cs" />
     <Compile Include="Assets\BossGunController.cs" />
-    <Compile Include="Assets\BulletBehaviour.cs" />
     <Compile Include="Assets\CameraController.cs" />
     <Compile Include="Assets\EnergyActivation.cs" />
     <Compile Include="Assets\FireShot.cs" />
