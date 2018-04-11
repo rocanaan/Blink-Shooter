@@ -19,7 +19,7 @@ public class BossController : MonoBehaviour {
 	public Material difficulty1Material;
 	public Material difficulty2Material;
 
-	BlinkDamageAnimation coreBlinkAnimation;
+	BlinkAnimation coreBlinkAnimation;
 
 	public float behaviorDuration;
 	public float behaviorDelay;
@@ -43,7 +43,7 @@ public class BossController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		coreBlinkAnimation = GetComponentInChildren<BlinkDamageAnimation> ();
+		coreBlinkAnimation = GetComponentInChildren<BlinkAnimation> ();
 		currentHealth = maxHealth;
 		difficulty = 0;
 
