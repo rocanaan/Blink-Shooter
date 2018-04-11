@@ -470,6 +470,15 @@ Prefab:
       propertyPath: players.Array.data[1]
       value: 
       objectReference: {fileID: 1160499965}
+    - target: {fileID: 1662274420989548, guid: 7e641c9dfd20c41a4a5ad73725e7de64, type: 2}
+      propertyPath: m_TagString
+      value: Boss
+      objectReference: {fileID: 0}
+    - target: {fileID: 58649926260508402, guid: 7e641c9dfd20c41a4a5ad73725e7de64,
+        type: 2}
+      propertyPath: m_Radius
+      value: 0.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7e641c9dfd20c41a4a5ad73725e7de64, type: 2}
   m_IsPrefabParent: 0
