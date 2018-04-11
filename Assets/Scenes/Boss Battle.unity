@@ -1194,8 +1194,7 @@ Prefab:
       propertyPath: teamID
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 23744608677887238, guid: d8b3f2dd3869544dc9a84cfb3bb2baee,
-        type: 2}
+    - target: {fileID: 0}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: a5045b7ccf08042dc8a9eb45a4a187fd, type: 2}

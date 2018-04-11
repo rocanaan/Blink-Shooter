@@ -34,7 +34,7 @@ public class PlayerController : MonoBehaviour {
 	private GameController gameController;
 
 	// Script for doing the on damage blinking animation
-	private BlinkDamageAnimation blinkDamageAnimation;
+	private BlinkAnimation blinkAnimation;
 
 	// Script for starting and updating the healthTracker
 	private HealthTracker healthTracker;
@@ -49,13 +49,19 @@ public class PlayerController : MonoBehaviour {
 	private float timeLastDamage;
 
 	public Vector3 respawn;
+	private FireShot fs;
+
+	private Material bodyMaterial;
 
 
 	// Use this for initialization
 	void Start () {
 		rb = GetComponent<Rigidbody2D> ();
+		fs = transform.GetComponent<FireShot> ();
 		GameObject cameraObject = GameObject.FindGameObjectWithTag ("MainCamera");
 		myCamera = cameraObject.GetComponent<Camera> ();
+
+		bodyMaterial = transform.GetComponent<Renderer> ().material;
 
 		ghost = ghostObject.GetComponent<GhostController> ();
 
@@ -66,7 +72,7 @@ public class PlayerController : MonoBehaviour {
 
 		currentHealth = maxHealth;
 
-		blinkDamageAnimation = GetComponent<BlinkDamageAnimation> ();
+		blinkAnimation = GetComponent<BlinkAnimation> ();
 
 		healthTracker = GetComponent<HealthTracker> ();
 		healthTracker.startHealth (maxHealth);
@@ -81,9 +87,9 @@ public class PlayerController : MonoBehaviour {
 
 		pac = GetComponentInParent<PlayerAudioController> ();
 
-		
+
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
 		if (!GameController.isGameOver ()) {
@@ -122,7 +128,7 @@ public class PlayerController : MonoBehaviour {
 		}
 
 
-			
+
 	}
 
 	public Vector3 getFireDirection(){
@@ -132,20 +138,21 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	// TODO: refactor this method into a new script so that boss can also shoot
-	private void fireShot (){
-		Vector3 direction = getFireDirection ();
-		float angle = transform.rotation.eulerAngles.z;
-		GameObject newShot = Instantiate(shot, transform.Find("Weapon").transform.position, Quaternion.Euler( new Vector3(0.0f, 0.0f, angle)));
-		ShotAttributes shotAtt = newShot.GetComponent<ShotAttributes> ();
-		shotAtt.setTeamID (teamID);
-		shotAtt.setPlayerID (playerID);
-		Rigidbody2D shotRigidbody2D = newShot.GetComponent<Rigidbody2D> ();
-		shotRigidbody2D.velocity = direction * shotSpeed;
-		pac.PlaySound ("Fire");
-	}
+	//	private void fireShot (){
+	//		Vector3 direction = getFireDirection ();
+	//		float angle = transform.rotation.eulerAngles.z;
+	//		GameObject newShot = Instantiate(shot, transform.Find("Weapon").transform.position, Quaternion.Euler( new Vector3(0.0f, 0.0f, angle)));
+	//		ShotAttributes shotAtt = newShot.GetComponent<ShotAttributes> ();
+	//		shotAtt.setTeamID (teamID);
+	//		shotAtt.setPlayerID (playerID);
+	//		newShot.GetComponent<TrailRenderer>().material = bodyMaterial; // better approach then having 4 different prefabs for same object with different colours
+	//		Rigidbody2D shotRigidbody2D = newShot.GetComponent<Rigidbody2D> ();
+	//		shotRigidbody2D.velocity = direction * shotSpeed;
+	//		pac.PlaySound ("Fire");
+	//	}
 
 	public void getControllerName (){
-		int numControllers = Input.GetJoystickNames ().Length;
+		int numControllers = Input.GetJoystickNames().Length;
 		print ("Checking controllers for player " + playerID + ". Number of controllers is " + numControllers);
 
 		foreach (string name in Input.GetJoystickNames()) {
@@ -162,7 +169,7 @@ public class PlayerController : MonoBehaviour {
 		}
 
 		print ("Controller name for player " + playerID + " is " + controllerName);
-	
+
 	}
 
 	public void getInputs(){
@@ -174,18 +181,11 @@ public class PlayerController : MonoBehaviour {
 				// Get movement inputs. Prone to moving faster in diagonal direction
 				float horizontalMovement = Input.GetAxis ("Horizontal" + controllerName);
 				float verticallMovement = Input.GetAxis ("Vertical" + controllerName);
-
-
-				//This was previously done because for some reason the Y axis is inverted on the Dualshock. Fixed it by reversing the input on the editor
-//			if (controllerName != "Keyboard") {
-//				verticallMovement = (-1) * verticallMovement;
-//			}
-
 				rb.velocity = new Vector2 (speed * horizontalMovement, speed * verticallMovement);
 
 			}
 
-//			// Get rotation input
+			//			// Get rotation input
 			float angle;
 			if (controllerName == "Keyboard") {
 				// For keyboard, rotate to face mouse position
@@ -194,10 +194,7 @@ public class PlayerController : MonoBehaviour {
 				transform.rotation = Quaternion.Euler (0.0f, 0.0f, angle);
 			} else {
 				// Controls for aiming with the right directional wheel in the PS4 Controller. 
-				// For some reason, it reports the Y axis as inverted, hence the -1 factor
 				float aimHorizontal = Input.GetAxis ("AimHorizontal" + controllerName);
-
-				//This was previously done because for some reason the Y axis is inverted on the Dualshock. Fixed it by reversing the input on the editor
 				float aimVertical = Input.GetAxis ("AimVertical" + controllerName); // * -1 
 
 				angle = Mathf.Atan2 (aimVertical, aimHorizontal) * Mathf.Rad2Deg;
@@ -217,10 +214,12 @@ public class PlayerController : MonoBehaviour {
 			// Get fire action
 			if(Input.GetButton("Fire" + controllerName) && Time.time >= nextShot){
 				//print (" Firing shot for player " + playerID + " using controller " + controllerName);
-				fireShot ();
+				//fireShot ();
+				fs.fireShot();
+				pac.PlaySound ("Fire");
 				nextShot = Time.time + shotInterval;
 			}
-		
+
 
 		}
 	}
@@ -273,13 +272,14 @@ public class PlayerController : MonoBehaviour {
 	void takeDamage (int damage){
 		currentHealth -= damage;
 		print (" Player " + playerID + " current Health is " + currentHealth);
+		blinkAnimation.startAnimation ();
 		healthTracker.setHealth (currentHealth);
 
 		if (currentHealth <= 0) {
 			playerDeath ();
 		} else {
 			pac.PlaySound ("Hit");
-			blinkDamageAnimation.startAnimation ();
+			blinkAnimation.startAnimation ();
 		}
 	}
 
@@ -288,8 +288,6 @@ public class PlayerController : MonoBehaviour {
 		//Destroy (transform.parent.gameObject);
 		//transform.parent.gameObject.SetActive(false);
 		transform.position = new Vector3(30,30,0);
-//		GetComponent<CircleCollider2D> ().enabled = false;
-//		GetComponent<MeshRenderer> ().enabled = false;
 		ghost.resetPosition ();
 		rb.velocity = Vector3.zero;
 		isDead = true;

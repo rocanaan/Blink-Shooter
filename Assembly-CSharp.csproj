@@ -52,15 +52,18 @@
   </ItemGroup>
   <ItemGroup>
      <Compile Include="Assets\_Scripts\AudioController.cs" />
+     <Compile Include="Assets\_Scripts\BlinkAnimation.cs" />
      <Compile Include="Assets\_Scripts\Boss Behaviors\BossBehavior.cs" />
      <Compile Include="Assets\_Scripts\Boss Behaviors\BossController.cs" />
      <Compile Include="Assets\_Scripts\Boss Behaviors\FollowBehavior.cs" />
      <Compile Include="Assets\_Scripts\Boss Behaviors\ShieldSpawner.cs" />
      <Compile Include="Assets\_Scripts\Boss Behaviors\WanderBehavior.cs" />
      <Compile Include="Assets\_Scripts\BossGunController.cs" />
-     <Compile Include="Assets\_Scripts\CollisionWithBoundary.cs" />
+     <Compile Include="Assets\_Scripts\BulletBehaviour.cs" />
+     <Compile Include="Assets\_Scripts\CameraController.cs" />
      <Compile Include="Assets\_Scripts\CollisionWithWall.cs" />
      <Compile Include="Assets\_Scripts\DestroyByShot.cs" />
+     <Compile Include="Assets\_Scripts\DestructibleGunBehaviour.cs" />
      <Compile Include="Assets\_Scripts\EnergyActivation.cs" />
      <Compile Include="Assets\_Scripts\FireShot.cs" />
      <Compile Include="Assets\_Scripts\FireShotPeriodically.cs" />
