@@ -16,7 +16,7 @@ public class GhostController : MonoBehaviour {
 
 	private PlayerController pc;
 	private CircleCollider2D col;
-	private MeshRenderer meshRenderer;
+	private SpriteRenderer spriteRenderer;
 
 
 
@@ -30,11 +30,11 @@ public class GhostController : MonoBehaviour {
 		rb = GetComponent<Rigidbody2D> ();
 		//rb.angularVelocity = angularSpeed;
 		col = GetComponent<CircleCollider2D>();
-		meshRenderer = GetComponent<MeshRenderer> ();
+		spriteRenderer = GetComponent<SpriteRenderer> ();
 
 		pc = body.GetComponent<PlayerController> ();
 
-	
+
 		state = 0;
 		col.enabled = false;
 
@@ -71,7 +71,7 @@ public class GhostController : MonoBehaviour {
 			rb.velocity = Vector3.zero;
 			stateTransition (2);
 		}
-			
+
 
 	}
 
@@ -79,18 +79,18 @@ public class GhostController : MonoBehaviour {
 		if (nextState == 0) {
 			state = 0;
 			col.enabled = false;
-			meshRenderer.enabled = true;
+			spriteRenderer.enabled = true;
 		}
 		if (nextState == 1) {
 			state = 1;
 			col.enabled = true;
-			meshRenderer.enabled = true;
+			spriteRenderer.enabled = true;
 		}
 		if (nextState == 2) {
 			if (cooldown > 0.0f) {
 				state = 2;
 				col.enabled = false;
-				meshRenderer.enabled = false;
+				spriteRenderer.enabled = false;
 				nextActivation = Time.time + cooldown;
 			} else {
 				stateTransition (0);
