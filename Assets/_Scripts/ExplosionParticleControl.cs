@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GunParticleControl : MonoBehaviour {
+public class ExplosionParticleControl : MonoBehaviour {
 
     // Use this for initialization
     void Start()

@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 58816798584872032}
   - component: {fileID: 50467341838225060}
   - component: {fileID: 114123303272252744}
+  - component: {fileID: 114069928497946094}
   m_Layer: 0
   m_Name: Targeted Shot
   m_TagString: Shot
@@ -53,7 +54,6 @@ MeshRenderer:
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
-  m_DynamicOccludee: 1
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
@@ -69,7 +69,6 @@ MeshRenderer:
   m_PreserveUVs: 1
   m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_StitchLightmapSeams: 0
   m_SelectedEditorRenderState: 3
   m_MinimumChartSize: 4
   m_AutoUVMaxDistance: 0.5
@@ -120,6 +119,22 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.5
+--- !u!114 &114069928497946094
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1305768670323016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4241590048c67d4385372d51f4c4b2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explosion: {fileID: 1729472084353830, guid: bfb0996311d3ecb4f9927ba4b1927422, type: 2}
+  explosionSize: 0.2
+  explosionDuration: 0.5
+  explosionRadius: 0.5
+  explosionColor: {r: 0.84214634, g: 0, b: 0.9338235, a: 1}
 --- !u!114 &114123303272252744
 MonoBehaviour:
   m_ObjectHideFlags: 1
