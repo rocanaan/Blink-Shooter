@@ -269,7 +269,7 @@ public class PlayerController : MonoBehaviour {
 		}
 	}
 
-	void takeDamage (int damage){
+	public void takeDamage (int damage){
 		currentHealth -= damage;
 		print (" Player " + playerID + " current Health is " + currentHealth);
 		blinkAnimation.startAnimation ();

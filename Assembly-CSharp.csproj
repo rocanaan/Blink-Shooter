@@ -65,10 +65,10 @@
      <Compile Include="Assets\_Scripts\DestroyByShot.cs" />
      <Compile Include="Assets\_Scripts\DestructibleGunBehaviour.cs" />
      <Compile Include="Assets\_Scripts\EnergyActivation.cs" />
+     <Compile Include="Assets\_Scripts\ExplosionParticleControl.cs" />
      <Compile Include="Assets\_Scripts\FireShot.cs" />
      <Compile Include="Assets\_Scripts\FireShotPeriodically.cs" />
      <Compile Include="Assets\_Scripts\GameController.cs" />
-     <Compile Include="Assets\_Scripts\GunParticleControl.cs" />
      <Compile Include="Assets\_Scripts\GunSpawner.cs" />
      <Compile Include="Assets\_Scripts\King of the Hill Moide\HillController.cs" />
      <Compile Include="Assets\_Scripts\King of the Hill Moide\PlayerCollidesWithHill.cs" />
@@ -78,6 +78,10 @@
      <Compile Include="Assets\_Scripts\Player\BlinkDamageAnimation.cs" />
      <Compile Include="Assets\_Scripts\Player\GhostController.cs" />
      <Compile Include="Assets\_Scripts\Player\HealthTracker.cs" />
+     <Compile Include="Assets\_Scripts\Player\Player and Character Controllers\CharacterBehavior.cs" />
+     <Compile Include="Assets\_Scripts\Player\Player and Character Controllers\GeneralPlayerController.cs" />
+     <Compile Include="Assets\_Scripts\Player\Player and Character Controllers\PhaseCharacterBehavior.cs" />
+     <Compile Include="Assets\_Scripts\Player\Player and Character Controllers\ShieldCharacterBehavior.cs" />
      <Compile Include="Assets\_Scripts\Player\PlayerController.cs" />
      <Compile Include="Assets\_Scripts\Player\ShotAttributes.cs" />
      <Compile Include="Assets\_Scripts\PlayerAudioController.cs" />
@@ -88,6 +92,9 @@
      <Compile Include="Assets\_Scripts\TargettedFireBehavior.cs" />
      <Compile Include="Assets\_Scripts\TrapSpawner.cs" />
      <Compile Include="Assets\_Scripts\WallGunSpawner.cs" />
+     <Compile Include="Assets\DestructibleWallBehaviour.cs" />
+     <Compile Include="Assets\ExplosionSpawner.cs" />
+     <Compile Include="Assets\LaserSpawnerController.cs" />
      <Compile Include="Assets\TrapSpawnerAudioController.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
