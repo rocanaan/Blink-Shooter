@@ -20,7 +20,7 @@ public class FireShot : MonoBehaviour {
 		ShotAttributes shotAtt = newShot.GetComponent<ShotAttributes> ();
 		shotAtt.setTeamID (teamID);
 		shotAtt.setPlayerID (playerID);
-		newShot.GetComponent<TrailRenderer>().material = mat; // better approach then having 4 different prefabs for same object with different colours
+		newShot.GetComponent<TrailRenderer>().material = mat; // better approach than having 4 different prefabs for same object with different colours
 		Rigidbody2D shotRigidbody2D = newShot.GetComponent<Rigidbody2D> ();
 		shotRigidbody2D.velocity = direction * shotSpeed;
 	}
