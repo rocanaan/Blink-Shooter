@@ -57,6 +57,7 @@
      <Compile Include="Assets\_Scripts\Boss Behaviors\BossController.cs" />
      <Compile Include="Assets\_Scripts\Boss Behaviors\FollowBehavior.cs" />
      <Compile Include="Assets\_Scripts\Boss Behaviors\ShieldSpawner.cs" />
+     <Compile Include="Assets\_Scripts\Boss Behaviors\TrapSpawnerAudioController.cs" />
      <Compile Include="Assets\_Scripts\Boss Behaviors\WanderBehavior.cs" />
      <Compile Include="Assets\_Scripts\BossGunController.cs" />
      <Compile Include="Assets\_Scripts\BulletBehaviour.cs" />
@@ -79,6 +80,7 @@
      <Compile Include="Assets\_Scripts\Pickups\HealthPickup.cs" />
      <Compile Include="Assets\_Scripts\Pickups\PickupSpawner.cs" />
      <Compile Include="Assets\_Scripts\Player\BlinkDamageAnimation.cs" />
+     <Compile Include="Assets\_Scripts\Player\CanvasController.cs" />
      <Compile Include="Assets\_Scripts\Player\GhostController.cs" />
      <Compile Include="Assets\_Scripts\Player\HealthTracker.cs" />
      <Compile Include="Assets\_Scripts\Player\Player and Character Controllers\CharacterBehavior.cs" />
@@ -86,15 +88,16 @@
      <Compile Include="Assets\_Scripts\Player\Player and Character Controllers\PhaseCharacterBehavior.cs" />
      <Compile Include="Assets\_Scripts\Player\Player and Character Controllers\ShieldCharacterBehavior.cs" />
      <Compile Include="Assets\_Scripts\Player\PlayerController.cs" />
+     <Compile Include="Assets\_Scripts\Player\PlayerHealth.cs" />
      <Compile Include="Assets\_Scripts\Player\ShotAttributes.cs" />
      <Compile Include="Assets\_Scripts\PlayerAudioController.cs" />
      <Compile Include="Assets\_Scripts\playerEntersTarget.cs" />
      <Compile Include="Assets\_Scripts\PlayerTrapController.cs" />
+     <Compile Include="Assets\_Scripts\SimpleMinionController.cs" />
      <Compile Include="Assets\_Scripts\SoundEffectsController.cs" />
      <Compile Include="Assets\_Scripts\StartingPosition.cs" />
      <Compile Include="Assets\_Scripts\TargettedFireBehavior.cs" />
      <Compile Include="Assets\_Scripts\TrapSpawner.cs" />
-     <Compile Include="Assets\_Scripts\TrapSpawnerAudioController.cs" />
      <Compile Include="Assets\_Scripts\WallGunSpawner.cs" />
      <Compile Include="Assets\SFX\LaserSpawnerController.cs" />
  <Reference Include="UnityEngine.UI">
