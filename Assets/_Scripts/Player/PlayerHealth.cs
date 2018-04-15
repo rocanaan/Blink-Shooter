@@ -56,6 +56,11 @@ public class PlayerHealth : MonoBehaviour {
         return isAlive;
     }
 
+    public void Heal(int healthRecovered)
+    {
+        healthBar.value = healthBar.value + healthRecovered;
+    }
+
     private IEnumerator Regenerate()
     {
         while (regenerate)

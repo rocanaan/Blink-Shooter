@@ -4,54 +4,33 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour {
 
-	private SoundEffectsController sfxController;
+    public GameObject ghostObject;
+    public int playerID;
+    public int teamID;
+    public float speed;// Controls the speed of the character
+    public float shotInterval;    
+    public float timeStunned;
+    public float speedStunned;
+    public float gracePeriod;
+    public Vector3 respawn;
+    public bool isDead;
 
-	// Controls the speed of the character
-	public float speed;
-
-	public GameObject ghostObject;
-	private GhostController ghost;
-
-
-	public float shotSpeed;
-	public float shotInterval;
-	private float nextShot;
-
+    private SoundEffectsController sfxController;
+    private GameController gameController;
+    private GhostController ghost;
+	private float nextShot; // time when the next shot can be fired
 	private Rigidbody2D rb;
 	private Camera myCamera;
-
-	public int playerID;
-	public int teamID;
 	private string controllerName;
-
-	public int maxHealth;
-	private int currentHealth;
-
-	public float timeStunned;
-	private float timeRecoverStun;
-	public float speedStunned;
-
-	private GameController gameController;
-
-	// Script for doing the on damage blinking animation
-	private BlinkAnimation blinkAnimation;
-
-	// Script for starting and updating the healthTracker
-	private HealthTracker healthTracker;
-    private PlayerHealth playerHealth;
-
-	public bool isDead;
+	private float timeRecoverStun;	
+	private BlinkAnimation blinkAnimation;// Script for doing the on damage blinking animation
+    private PlayerHealth playerHealth;// Script for starting and updating the healthTracker
 	private bool isStunned;
 	private bool respawnAllowed;
 	private float nextRespawnTime;
 	//private Vector3 nextRespawnLocation;
-
-	public float gracePeriod;
-	private float timeLastDamage;
-
-	public Vector3 respawn;
-	private FireShot fs;
-
+	private float timeLastDamage; // time when last damage was taken
+	private FireShot fs; // script for shooting
 	private Material bodyMaterial;
 
 
@@ -59,38 +38,25 @@ public class PlayerController : MonoBehaviour {
 	void Start () {
 		rb = GetComponent<Rigidbody2D> ();
 		fs = transform.GetComponent<FireShot> ();
-		GameObject cameraObject = GameObject.FindGameObjectWithTag ("MainCamera");
-		myCamera = cameraObject.GetComponent<Camera> ();
-
-		bodyMaterial = transform.GetComponent<Renderer> ().material;
-
-		ghost = ghostObject.GetComponent<GhostController> ();
+        blinkAnimation = GetComponent<BlinkAnimation>();
+        playerHealth = GetComponent<PlayerHealth>();
+        bodyMaterial = transform.GetComponent<Renderer>().material;
+        ghost = ghostObject.GetComponent<GhostController>();
+        GameObject cameraObject = GameObject.FindGameObjectWithTag ("MainCamera");
+		myCamera = cameraObject.GetComponent<Camera> ();        
 
 		controllerName = "";
 		getControllerName ();
-
 		nextShot = 0.0f;
-
-		currentHealth = maxHealth;
-
-		blinkAnimation = GetComponent<BlinkAnimation> ();
-
-		healthTracker = GetComponent<HealthTracker> ();
-        playerHealth = GetComponent<PlayerHealth>();
-		healthTracker.startHealth (maxHealth);
-
-		gameController = GameObject.FindGameObjectWithTag ("GameController").GetComponent<GameController> ();
-
 		isDead = false;
 		isStunned = false;
 		timeRecoverStun = 0.0f;
-
 		timeLastDamage = -10;
 
 		sfxController = GetComponentInParent<SoundEffectsController> ();
+        gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
 
-
-	}
+    }
 
 	// Update is called once per frame
 	void Update () {
@@ -108,13 +74,6 @@ public class PlayerController : MonoBehaviour {
 					transform.parent.transform.position = new Vector3 (randomVector.x, randomVector.y, transform.parent.transform.position.z);
 					transform.position = transform.parent.transform.position;
 				}
-
-				//currentHealth = maxHealth;
-				//healthTracker.setHealth (currentHealth);
-				//isDead = false;
-				// problem: this never gets called because the script is innactive
-				// right way to do it would probably be to leave the game controller responsible for that, passing the player's game object
-				// probably a good idea to go ahead and refactor the player scripts
 			}
 
 			if (isStunned) {
@@ -139,20 +98,6 @@ public class PlayerController : MonoBehaviour {
 		Vector3 direction = new Vector3 (Mathf.Cos (angle), Mathf.Sin (angle), 0.0f);
 		return direction;
 	}
-
-	// TODO: refactor this method into a new script so that boss can also shoot
-	//	private void fireShot (){
-	//		Vector3 direction = getFireDirection ();
-	//		float angle = transform.rotation.eulerAngles.z;
-	//		GameObject newShot = Instantiate(shot, transform.Find("Weapon").transform.position, Quaternion.Euler( new Vector3(0.0f, 0.0f, angle)));
-	//		ShotAttributes shotAtt = newShot.GetComponent<ShotAttributes> ();
-	//		shotAtt.setTeamID (teamID);
-	//		shotAtt.setPlayerID (playerID);
-	//		newShot.GetComponent<TrailRenderer>().material = bodyMaterial; // better approach then having 4 different prefabs for same object with different colours
-	//		Rigidbody2D shotRigidbody2D = newShot.GetComponent<Rigidbody2D> ();
-	//		shotRigidbody2D.velocity = direction * shotSpeed;
-	//		pac.PlaySound ("Fire");
-	//	}
 
 	public void getControllerName (){
 		int numControllers = Input.GetJoystickNames().Length;
@@ -188,7 +133,7 @@ public class PlayerController : MonoBehaviour {
 
 			}
 
-			//			// Get rotation input
+			// Get rotation input
 			float angle;
 			if (controllerName == "Keyboard") {
 				// For keyboard, rotate to face mouse position
@@ -217,7 +162,6 @@ public class PlayerController : MonoBehaviour {
 			// Get fire action
 			if(Input.GetButton("Fire" + controllerName) && Time.time >= nextShot){
 				//print (" Firing shot for player " + playerID + " using controller " + controllerName);
-				//fireShot ();
 				fs.fireShot();
 				sfxController.PlayClip ("Fire");
 				nextShot = Time.time + shotInterval;
@@ -232,13 +176,7 @@ public class PlayerController : MonoBehaviour {
 		if (col.tag == "Shot") {
 			ShotAttributes shot = col.GetComponent<ShotAttributes> ();
 			if (shot.getTeamID() != teamID ) {
-                //if (!onGracePeriod ()) {
-                //	takeDamage (shot.damage);
-                //	if (!isDead) {
-                //		timeLastDamage = Time.time;
-                //	}
-                //}
-                takeDamage(shot.damage); // takeDamage handles whether player is on grace period now
+                TakeDamage(shot.damage); // takeDamage handles whether player is on grace period now
 				Destroy (col.gameObject);
 			}
 
@@ -246,16 +184,12 @@ public class PlayerController : MonoBehaviour {
 
 		if (col.tag == "Pickup") {
 			HealthPickup healthPickup = col.GetComponent<HealthPickup> ();
-			currentHealth += healthPickup.healthRecovered;
-			if (currentHealth > maxHealth) {
-				currentHealth = maxHealth;
-			}
-			healthTracker.setHealth (currentHealth);
-			Destroy (col.gameObject);
+            playerHealth.Heal(healthPickup.healthRecovered); // increases health by the given amount, doesn't go over max health
+            Destroy(col.gameObject);
 		}
 
-		if (col.tag == "Boss"  && !onGracePeriod()) {
-			takeDamage (1);
+		if (col.tag == "Boss"  && !OnGracePeriod()) {
+			TakeDamage (1);
 			if (!isDead) {
 				isStunned = true;
 				timeRecoverStun = Time.time + timeStunned;
@@ -266,27 +200,12 @@ public class PlayerController : MonoBehaviour {
 
 				timeLastDamage = Time.time;
 			}
-
-
-
-
 		}
 	}
 
-	public void takeDamage (int damage){
-        //currentHealth -= damage;
-        //print (" Player " + playerID + " current Health is " + currentHealth);
-        //blinkAnimation.startAnimation ();
-        //healthTracker.setHealth (currentHealth);
-
-        //if (currentHealth <= 0) {
-        //	playerDeath ();
-        //} else {
-        //	sfxController.PlayClip ("Hit");
-        //	blinkAnimation.startAnimation ();
-        //}
-
-        if (!onGracePeriod())
+	public void TakeDamage (int damage)
+    {
+        if (!OnGracePeriod())
         {
             bool isAlive = playerHealth.TakeDamage(damage); // returns true if alive (health > 0)
 
@@ -299,13 +218,13 @@ public class PlayerController : MonoBehaviour {
             }
             else
             {
-                playerDeath();
+                PlayerDeath();
             }
         }
 
 	}
 
-	void playerDeath (){
+	void PlayerDeath (){
 		gameController.notifyDeath (playerID, teamID);
 		//Destroy (transform.parent.gameObject);
 		//transform.parent.gameObject.SetActive(false);
@@ -313,11 +232,11 @@ public class PlayerController : MonoBehaviour {
 		ghost.resetPosition ();
 		rb.velocity = Vector3.zero;
 		isDead = true;
-		setRespawn();
+		SetRespawn();
 		sfxController.PlayClip ("Death");
 	}
 
-	void setRespawn(){
+	void SetRespawn(){
 		int respawnDelay = gameController.getRespawnTime ();
 		if (respawnDelay >= 0) {
 			nextRespawnTime = Time.time + 3.0f;
@@ -329,7 +248,7 @@ public class PlayerController : MonoBehaviour {
 		//transform.parent.transform.position = new Vector3 (Random.Range (-9, 9), Random.Range (-5, 5), transform.position.z);
 	}
 
-	bool onGracePeriod(){
+	bool OnGracePeriod(){
 		return (Time.time <= (timeLastDamage + gracePeriod));
 	}
 
