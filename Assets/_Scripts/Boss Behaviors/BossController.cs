@@ -32,6 +32,7 @@ public class BossController : MonoBehaviour {
 	private WanderBehavior wanderBehavior;
 	private FollowBehavior followBehavior;
 	private ShieldSpawner shieldSpawner;
+	private DirectionalShieldSpawner directionalShieldSpawner;
 	private GunSpawner gunSpawner;
 	private WallGunSpawner wallGunSpawner;
 	private TargettedFireBehavior targetFire;
@@ -53,6 +54,7 @@ public class BossController : MonoBehaviour {
 		followBehavior.setStatus (false);
 
 		shieldSpawner = GetComponentInChildren<ShieldSpawner> ();
+		directionalShieldSpawner = GetComponentInChildren<DirectionalShieldSpawner> ();
 		gunSpawner = GetComponentInChildren<GunSpawner> ();
 		wallGunSpawner = GetComponentInChildren<WallGunSpawner> ();
 		targetFire = GetComponent<TargettedFireBehavior> ();
@@ -76,6 +78,7 @@ public class BossController : MonoBehaviour {
 		}
 		else if (Time.time >= nextBehaviorEndTime) {
 			deactivateBehaviors ();
+			print ("deactivating behaviors");
 		}
 	}
 
@@ -182,9 +185,10 @@ public class BossController : MonoBehaviour {
 			}
 		}
 		int firstBehavior = Random.Range (0, 4);
+		//int firstBehavior =0;
 		switch (firstBehavior) {
 		case 0:
-			shieldSpawner.setStatus (true);
+			directionalShieldSpawner.setStatus (true);
 			followBehavior.setStatus (true);
 			wanderBehavior.setActive (false);
 			break;
@@ -206,7 +210,7 @@ public class BossController : MonoBehaviour {
 			}
 			switch (secondBehavior) {
 			case 0:
-				shieldSpawner.setStatus (true);
+				directionalShieldSpawner.setStatus (true);
 				followBehavior.setStatus (true);
 				wanderBehavior.setActive (false);
 				break;
@@ -233,6 +237,7 @@ public class BossController : MonoBehaviour {
 		gunSpawner.setStatus (false);
 		wallGunSpawner.setStatus (false);
 		targetFire.setStatus (false);
+		directionalShieldSpawner.setStatus (false);
 
 		if (difficulty != 2) {
 			followBehavior.setStatus (false);
