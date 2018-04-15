@@ -46,7 +46,6 @@ public class GunSpawner : MonoBehaviour {
 			}
 		}
 		if (!statusActive) {
-			print ("deactivating shields");
 			foreach (GameObject gun in gunList){
 				Destroy (gun);
 			}

@@ -64,8 +64,11 @@
      <Compile Include="Assets\_Scripts\CollisionWithWall.cs" />
      <Compile Include="Assets\_Scripts\DestroyByShot.cs" />
      <Compile Include="Assets\_Scripts\DestructibleGunBehaviour.cs" />
+     <Compile Include="Assets\_Scripts\DestructibleWallBehaviour.cs" />
+     <Compile Include="Assets\_Scripts\DirectionalShieldSpawner.cs" />
      <Compile Include="Assets\_Scripts\EnergyActivation.cs" />
      <Compile Include="Assets\_Scripts\ExplosionParticleControl.cs" />
+     <Compile Include="Assets\_Scripts\ExplosionSpawner.cs" />
      <Compile Include="Assets\_Scripts\FireShot.cs" />
      <Compile Include="Assets\_Scripts\FireShotPeriodically.cs" />
      <Compile Include="Assets\_Scripts\GameController.cs" />
@@ -91,11 +94,9 @@
      <Compile Include="Assets\_Scripts\StartingPosition.cs" />
      <Compile Include="Assets\_Scripts\TargettedFireBehavior.cs" />
      <Compile Include="Assets\_Scripts\TrapSpawner.cs" />
+     <Compile Include="Assets\_Scripts\TrapSpawnerAudioController.cs" />
      <Compile Include="Assets\_Scripts\WallGunSpawner.cs" />
-     <Compile Include="Assets\DestructibleWallBehaviour.cs" />
-     <Compile Include="Assets\ExplosionSpawner.cs" />
-     <Compile Include="Assets\LaserSpawnerController.cs" />
-     <Compile Include="Assets\TrapSpawnerAudioController.cs" />
+     <Compile Include="Assets\SFX\LaserSpawnerController.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>
