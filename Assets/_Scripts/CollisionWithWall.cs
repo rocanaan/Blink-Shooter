@@ -8,7 +8,7 @@ public class CollisionWithWall : MonoBehaviour {
 	public int teamID;
 	
 	void OnTriggerEnter2D(Collider2D col){
-		if (col.tag == "Shot") {
+		if (col.tag == "Shot" && col.GetComponent<ShotAttributes>().getTeamID() != teamID) {
             // TO DO: really figure out what is the best way to structure the rigidbody and collider of the shot, wither in the parent shot or in the child bullet,
             // especially if I decide to work with reflections
             //ShotAttributes shot = col.GetComponent<ShotAttributes> ();

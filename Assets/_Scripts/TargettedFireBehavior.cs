@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class TargettedFireBehavior : MonoBehaviour {
 
-	public GameObject[] players;
 	public GameObject shot;
 
 	public float fireInterval;
@@ -18,10 +17,17 @@ public class TargettedFireBehavior : MonoBehaviour {
 
 	public bool activateOnStartup;
 
+	private GameObject[] players;
+	private GameController gameController;
+
+
 	// Use this for initialization
 	void Start () {
 		setStatus (activateOnStartup); //activates the behavior on startup if that flag is set to true
-		
+
+		gameController = GameObject.FindGameObjectWithTag ("GameController").GetComponent<GameController> ();
+		players = gameController.getAllPlayers ();
+
 	}
 	
 	// Update is called once per frame

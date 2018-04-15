@@ -38,8 +38,8 @@ public class PlayerTrapController : MonoBehaviour {
 
 		}
 
-		sfx = GameObject.FindGameObjectWithTag("GlobalAudioSource").GetComponent<TrapSpawnerAudioController> ();
-		sfx.playPreparation ();
+//		sfx = GameObject.FindGameObjectWithTag("GlobalAudioSource").GetComponent<TrapSpawnerAudioController> ();
+//		sfx.playPreparation ();
 	}
 	
 	// Update is called once per frame
@@ -51,7 +51,7 @@ public class PlayerTrapController : MonoBehaviour {
 			foreach (GameObject sphere in sphereList){
 				sphere.GetComponent<EnergyActivation> ().Prepare (player.transform.position);
 			}
-			sfx.stopPreparation ();
+			//sfx.stopPreparation ();
 			Destroy (this);
 		}
 	}

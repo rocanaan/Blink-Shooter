@@ -37,6 +37,7 @@ GameObject:
   - component: {fileID: 4324673450894540}
   - component: {fileID: 114595483170580624}
   - component: {fileID: 82048468065160468}
+  - component: {fileID: 82414982174168998}
   m_Layer: 0
   m_Name: TrapSpawner
   m_TagString: Untagged
@@ -234,7 +235,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1662274420989548}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.83, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children:
   - {fileID: 4058465772138912}
@@ -455,6 +456,86 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!82 &82414982174168998
+AudioSource:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1078137843964690}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!114 &114022537812436982
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -478,9 +559,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09439327e9643452f8b6b265e140f49f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  players:
-  - {fileID: 0}
-  - {fileID: 0}
   shot: {fileID: 1305768670323016, guid: ab7bce6d9365249d4a87cb2505d89571, type: 2}
   fireInterval: 0.5
   firstShotDelay: 0
@@ -515,7 +593,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   offsetAsRadiusRatio: 0.9
   angularSpeed: 5
-  gunObject: {fileID: 1708104574828254, guid: 64234744c530947a59ffc27f7ad1939c, type: 2}
+  gunObject: {fileID: 1708104574828254, guid: cdb4e1932e8e24125b08ab94357e8fc0, type: 2}
   fireInterval: 1
   numberGuns: 4
 --- !u!114 &114442881963066064
@@ -553,9 +631,6 @@ MonoBehaviour:
   angularSpeed: 5
   shieldPrefab: {fileID: 1802127854316094, guid: bf60af1b5a67b4cadad26fdd91f7da1f,
     type: 2}
-  players:
-  - {fileID: 0}
-  - {fileID: 0}
   shieldSize: 5
 --- !u!114 &114505264330356616
 MonoBehaviour:
@@ -614,9 +689,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trapObject: {fileID: 1843328813639804, guid: f061926e19686431c9c60a677b731648, type: 2}
-  players:
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!114 &114761093859606624
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -628,9 +700,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a96e3cc7dc88f4879a87dfee8435db5f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  players:
-  - {fileID: 0}
-  - {fileID: 0}
   speed: 3
   tolerance: 0.5
 --- !u!212 &212270173654956230

@@ -62,7 +62,7 @@ GameObject:
   - component: {fileID: 114525977906963100}
   - component: {fileID: 114543365324120594}
   m_Layer: 0
-  m_Name: Player Body
+  m_Name: Player 1 Body
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -92,7 +92,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1526158534482712}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.01, y: -4.92, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4557971433821782}
@@ -119,7 +119,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1583287384560190}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 6.5, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4452481025988506}
@@ -134,7 +134,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1460897997482614}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.01, y: -4.92, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1.1999999, y: 1.1999999, z: 1}
   m_Children: []
   m_Father: {fileID: 4650139693432302}
@@ -301,18 +301,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c4b691b34b964feaa40035b96e58681, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 6
   ghostObject: {fileID: 1460897997482614}
-  shotSpeed: 15
-  shotInterval: 0.25
   playerID: 1
   teamID: 1
-  maxHealth: 6
+  speed: 6
+  shotInterval: 0.25
   timeStunned: 0.1
   speedStunned: 20
-  isDead: 0
   gracePeriod: 0.5
   respawn: {x: -6, y: 3, z: 0}
+  isDead: 0
 --- !u!114 &114044015732749434
 MonoBehaviour:
   m_ObjectHideFlags: 1

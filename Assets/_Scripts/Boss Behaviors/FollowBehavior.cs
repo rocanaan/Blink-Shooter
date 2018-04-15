@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class FollowBehavior : MonoBehaviour {
 
-	public GameObject[] players;
+	private GameObject[] players;
+	private GameController gameController;
 	public float speed;
 	public float tolerance;
 
@@ -14,6 +15,9 @@ public class FollowBehavior : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		statusActive = false;
+
+		gameController = GameObject.FindGameObjectWithTag ("GameController").GetComponent<GameController> ();
+		players = gameController.getAllPlayers ();
 	}
 	
 	// Update is called once per frame

@@ -6,7 +6,10 @@ public class TrapSpawner : MonoBehaviour {
 
 
 	public GameObject trapObject;
-	public GameObject[] players;
+
+	private GameObject[] players;
+	private GameController gameController;
+
 
 	private int nextTarget;
 
@@ -14,6 +17,9 @@ public class TrapSpawner : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+		gameController = GameObject.FindGameObjectWithTag ("GameController").GetComponent<GameController> ();
+		players = gameController.getAllPlayers ();
+
 		nextTarget = Random.Range (0, players.Length);
 	}
 	

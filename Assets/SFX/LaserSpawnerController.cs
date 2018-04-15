@@ -47,7 +47,7 @@ public class LaserSpawnerController : MonoBehaviour {
 			if (col.tag == "Player" && hit.distance < distanceFirstWall) {
 				print ("player should be taking damage");
 				PlayerController pc = col.GetComponent<PlayerController> ();
-				pc.takeDamage (1);
+				pc.TakeDamage (1);
 			}
 		}
 		lr.enabled = true;

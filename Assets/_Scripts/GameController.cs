@@ -200,4 +200,8 @@ public class GameController : MonoBehaviour {
 			}
 		}
 	}
+
+	public GameObject[] getAllPlayers(){
+		return players;
+	}
 }

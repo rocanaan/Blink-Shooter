@@ -4,18 +4,18 @@ using UnityEngine;
 
 public class DirectionalShieldSpawner : MonoBehaviour {
 
+	private GameController gameController;
+
 	public float offsetAsRadiusRatio;
 	public float angularSpeed;
 
 	public GameObject shieldPrefab;
 	private GameObject shield;
 
-
-	public GameObject[] players;
-	private GameObject targetPlayer;
-
 	public float shieldSize;
 
+	private GameObject[] players;
+	private GameObject targetPlayer;
 
 
 	private bool statusActive;
@@ -23,6 +23,10 @@ public class DirectionalShieldSpawner : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		statusActive = false;
+
+
+		gameController = GameObject.FindGameObjectWithTag ("GameController").GetComponent<GameController> ();
+		players = gameController.getAllPlayers ();
 	
 	}
 
