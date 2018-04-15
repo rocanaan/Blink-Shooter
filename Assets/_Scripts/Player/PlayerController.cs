@@ -38,6 +38,7 @@ public class PlayerController : MonoBehaviour {
 
 	// Script for starting and updating the healthTracker
 	private HealthTracker healthTracker;
+    private PlayerHealth playerHealth;
 
 	public bool isDead;
 	private bool isStunned;
@@ -75,6 +76,7 @@ public class PlayerController : MonoBehaviour {
 		blinkAnimation = GetComponent<BlinkAnimation> ();
 
 		healthTracker = GetComponent<HealthTracker> ();
+        playerHealth = GetComponent<PlayerHealth>();
 		healthTracker.startHealth (maxHealth);
 
 		gameController = GameObject.FindGameObjectWithTag ("GameController").GetComponent<GameController> ();
@@ -106,9 +108,10 @@ public class PlayerController : MonoBehaviour {
 					transform.parent.transform.position = new Vector3 (randomVector.x, randomVector.y, transform.parent.transform.position.z);
 					transform.position = transform.parent.transform.position;
 				}
-				currentHealth = maxHealth;
-				healthTracker.setHealth (currentHealth);
-				isDead = false;
+
+				//currentHealth = maxHealth;
+				//healthTracker.setHealth (currentHealth);
+				//isDead = false;
 				// problem: this never gets called because the script is innactive
 				// right way to do it would probably be to leave the game controller responsible for that, passing the player's game object
 				// probably a good idea to go ahead and refactor the player scripts
@@ -229,12 +232,13 @@ public class PlayerController : MonoBehaviour {
 		if (col.tag == "Shot") {
 			ShotAttributes shot = col.GetComponent<ShotAttributes> ();
 			if (shot.getTeamID() != teamID ) {
-				if (!onGracePeriod ()) {
-					takeDamage (shot.damage);
-					if (!isDead) {
-						timeLastDamage = Time.time;
-					}
-				}
+                //if (!onGracePeriod ()) {
+                //	takeDamage (shot.damage);
+                //	if (!isDead) {
+                //		timeLastDamage = Time.time;
+                //	}
+                //}
+                takeDamage(shot.damage); // takeDamage handles whether player is on grace period now
 				Destroy (col.gameObject);
 			}
 
@@ -270,17 +274,35 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	void takeDamage (int damage){
-		currentHealth -= damage;
-		print (" Player " + playerID + " current Health is " + currentHealth);
-		blinkAnimation.startAnimation ();
-		healthTracker.setHealth (currentHealth);
+        //currentHealth -= damage;
+        //print (" Player " + playerID + " current Health is " + currentHealth);
+        //blinkAnimation.startAnimation ();
+        //healthTracker.setHealth (currentHealth);
 
-		if (currentHealth <= 0) {
-			playerDeath ();
-		} else {
-			sfxController.PlayClip ("Hit");
-			blinkAnimation.startAnimation ();
-		}
+        //if (currentHealth <= 0) {
+        //	playerDeath ();
+        //} else {
+        //	sfxController.PlayClip ("Hit");
+        //	blinkAnimation.startAnimation ();
+        //}
+
+        if (!onGracePeriod())
+        {
+            bool isAlive = playerHealth.TakeDamage(damage); // returns true if alive (health > 0)
+
+            if (isAlive)
+            {
+                sfxController.PlayClip("Hit");
+                blinkAnimation.startAnimation();
+                timeLastDamage = Time.time;
+                
+            }
+            else
+            {
+                playerDeath();
+            }
+        }
+
 	}
 
 	void playerDeath (){
