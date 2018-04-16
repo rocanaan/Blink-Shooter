@@ -7,14 +7,19 @@ public class PlayerController : MonoBehaviour {
     public GameObject ghostObject;
     public int playerID;
     public int teamID;
-    public float speed;// Controls the speed of the character
     public float shotInterval;    
     public float timeStunned;
     public float speedStunned;
     public float gracePeriod;
     public Vector3 respawn;
     public bool isDead;
+    //controls private variable, speed
+    [Range(1.0f, 10.0f)]
+    public float normalSpeed;
+    [Range(1.0f, 10.0f)]
+    public float slowedSpeed;
 
+    private float speed;// Controls the speed of the character
     private SoundEffectsController sfxController;
     private GameController gameController;
     private GhostController ghost;
@@ -32,10 +37,11 @@ public class PlayerController : MonoBehaviour {
 	private float timeLastDamage; // time when last damage was taken
 	private FireShot fs; // script for shooting
 	private Material bodyMaterial;
+    private float lastFireTime; 
 
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
 		rb = GetComponent<Rigidbody2D> ();
 		fs = transform.GetComponent<FireShot> ();
         blinkAnimation = GetComponent<BlinkAnimation>();
@@ -82,23 +88,33 @@ public class PlayerController : MonoBehaviour {
 
             }
 
-			if (isStunned) {
-				if (timeRecoverStun < Time.time) {
-					isStunned = false;
-					rb.velocity = Vector3.zero;
-				}
-			}
 			if (!isDead) {
 				if (controllerName != "Keyboard" || gameController.getCurrentKeyboardInput () == playerID) {
 					getInputs ();
 				}
-			}
+                statUpdates();
+            }
 		}
-
-
-
 	}
+    void statUpdates()
+    {
+        //slow when firing
+        bool isSlowed = (Time.time - lastFireTime) < shotInterval;
+        if (isSlowed)
+        { speed = slowedSpeed;}
+        else
+        { speed = normalSpeed; }
 
+        //account for stunned
+        if (isStunned)
+        {
+            if (timeRecoverStun < Time.time)
+            {
+                isStunned = false;
+                rb.velocity = Vector3.zero;
+            }
+        }
+    }
 	public Vector3 getFireDirection(){
 		float angle = Mathf.Deg2Rad * transform.rotation.eulerAngles.z;
 		Vector3 direction = new Vector3 (Mathf.Cos (angle), Mathf.Sin (angle), 0.0f);
@@ -171,6 +187,7 @@ public class PlayerController : MonoBehaviour {
 				fs.fireShot();
 				sfxController.PlayClip ("Fire");
 				nextShot = Time.time + shotInterval;
+                lastFireTime = Time.time;
 			}
 
 
