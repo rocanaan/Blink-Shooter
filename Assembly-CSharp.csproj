@@ -53,8 +53,8 @@
   <ItemGroup>
      <Compile Include="Assets\_Scripts\AudioController.cs" />
      <Compile Include="Assets\_Scripts\BlinkAnimation.cs" />
-     <Compile Include="Assets\_Scripts\Boss Behaviors\BossBehavior.cs" />
      <Compile Include="Assets\_Scripts\Boss Behaviors\BossController.cs" />
+     <Compile Include="Assets\_Scripts\Boss Behaviors\BossGenericBehavior.cs" />
      <Compile Include="Assets\_Scripts\Boss Behaviors\FollowBehavior.cs" />
      <Compile Include="Assets\_Scripts\Boss Behaviors\ShieldSpawner.cs" />
      <Compile Include="Assets\_Scripts\Boss Behaviors\TrapSpawnerAudioController.cs" />
@@ -77,6 +77,7 @@
      <Compile Include="Assets\_Scripts\King of the Hill Moide\HillController.cs" />
      <Compile Include="Assets\_Scripts\King of the Hill Moide\PlayerCollidesWithHill.cs" />
      <Compile Include="Assets\_Scripts\King of the Hill Moide\Rotator.cs" />
+     <Compile Include="Assets\_Scripts\LaserSpawnerController.cs" />
      <Compile Include="Assets\_Scripts\Pickups\HealthPickup.cs" />
      <Compile Include="Assets\_Scripts\Pickups\PickupSpawner.cs" />
      <Compile Include="Assets\_Scripts\Player\BlinkDamageAnimation.cs" />
@@ -99,7 +100,7 @@
      <Compile Include="Assets\_Scripts\TargettedFireBehavior.cs" />
      <Compile Include="Assets\_Scripts\TrapSpawner.cs" />
      <Compile Include="Assets\_Scripts\WallGunSpawner.cs" />
-     <Compile Include="Assets\SFX\LaserSpawnerController.cs" />
+     <Compile Include="Assets\LaserSplittingAttack.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

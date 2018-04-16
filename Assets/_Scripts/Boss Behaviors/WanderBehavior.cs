@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class WanderBehavior : BossBehavior {
+public class WanderBehavior : BossGenericBehavior {
 
 	private Vector3 target;
 	private Rigidbody2D rb;

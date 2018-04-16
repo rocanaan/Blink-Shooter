@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BossBehavior : MonoBehaviour {
+public class BossGenericBehavior : MonoBehaviour {
 
 	protected bool statusActive;
 

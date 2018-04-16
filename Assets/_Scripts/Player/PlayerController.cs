@@ -188,8 +188,11 @@ public class PlayerController : MonoBehaviour {
             Destroy(col.gameObject);
 		}
 
-		if (col.tag == "Boss"  && !OnGracePeriod()) {
-			TakeDamage (1);
+		if (col.tag == "Boss") {
+			if (!OnGracePeriod ()) {
+				TakeDamage (1);
+				timeLastDamage = Time.time;
+			}
 			if (!isDead) {
 				isStunned = true;
 				timeRecoverStun = Time.time + timeStunned;
@@ -198,7 +201,7 @@ public class PlayerController : MonoBehaviour {
 				Vector3 direction = offset.normalized;
 				rb.velocity = direction * speedStunned;
 
-				timeLastDamage = Time.time;
+
 			}
 		}
 	}
