@@ -84,6 +84,15 @@ public class PlayerHealth : MonoBehaviour {
         
     }
 
+    public void Respawn()
+    {
+        if (!isAlive)
+        {
+            isAlive = true;
+            healthBar.value = maxHealth;
+        }
+    }
+
 
 
 

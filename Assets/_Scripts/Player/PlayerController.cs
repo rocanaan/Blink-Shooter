@@ -74,7 +74,13 @@ public class PlayerController : MonoBehaviour {
 					transform.parent.transform.position = new Vector3 (randomVector.x, randomVector.y, transform.parent.transform.position.z);
 					transform.position = transform.parent.transform.position;
 				}
-			}
+
+                // player has now respawned
+                isDead = false;
+                playerHealth.Respawn();
+
+
+            }
 
 			if (isStunned) {
 				if (timeRecoverStun < Time.time) {
