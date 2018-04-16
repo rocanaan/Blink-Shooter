@@ -3,46 +3,53 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class SimpleMinionController : MonoBehaviour {
-
+    
     public float speed;
     public float timeLimit = 1.5f;
     public bool cooperate;
+    public int maxHealth = 5;
+    public int teamID = 2;
     //public enum Dimension { both, x, y };
     //public Dimension wanderDimension;
     //public float x_range;
     //public float y_range;
 
+    private GameObject cam;
     private Rigidbody2D rb;
     private RaycastHit2D hit;
+    private BlinkAnimation blinkAnimation;
     private float timer;
+    private int currentHealth;
     private bool pursuePlayer;
-    private Vector3 playerPosition;
+    private Transform playerTransform;
     //private Vector3 targetPosition;
 
 
     // Use this for initialization
     void Start () {
-
+        cam = GameObject.FindWithTag("MainCamera");
         rb = transform.GetComponent<Rigidbody2D>();
+        blinkAnimation = transform.GetComponent<BlinkAnimation>();
         rb.velocity = transform.right * speed;
         timer = timeLimit;
         pursuePlayer = false;
         //SetRandomTarget();
+        currentHealth = maxHealth;
 	}
 
     private void Update()
     {
     }
 
-    public Vector3 GetPlayerPosition()
+    public Transform GetPlayerTransform()
     {
         if (pursuePlayer)
         {
-            return playerPosition;
+            return playerTransform;
         }
         else
         {
-            return Vector3.positiveInfinity;
+            return null;
         }
     }
 
@@ -62,17 +69,17 @@ public class SimpleMinionController : MonoBehaviour {
         if (hit.transform.CompareTag("Player"))
         {
             pursuePlayer = true;
-            playerPosition = hit.transform.position;
+            playerTransform = hit.transform;
         }
         else if (hit.transform.CompareTag("Minion"))
         {
             if (cooperate)
             {
-                Vector3 pursuePos = hit.transform.GetComponent<SimpleMinionController>().GetPlayerPosition();
-                if (!pursuePos.Equals(Vector3.positiveInfinity))
+                Transform pursueTransform = hit.transform.GetComponent<SimpleMinionController>().GetPlayerTransform();
+                if (pursueTransform != null)
                 {
                     pursuePlayer = true;
-                    playerPosition = pursuePos;
+                    playerTransform = pursueTransform;
                 }
             }
             
@@ -80,6 +87,7 @@ public class SimpleMinionController : MonoBehaviour {
         else
         {
             pursuePlayer = false;
+            playerTransform = null;
         }
 
         if (!pursuePlayer)
@@ -115,7 +123,8 @@ public class SimpleMinionController : MonoBehaviour {
         }
         else
         {
-            Quaternion newDir = GetDirectionToTarget(playerPosition);
+            //Quaternion newDir = GetDirectionToTarget(playerPosition);
+            Quaternion newDir = GetDirectionToTarget(playerTransform.position);
             SetDirection(newDir);
         }
         
@@ -157,18 +166,18 @@ public class SimpleMinionController : MonoBehaviour {
         if (collision.transform.CompareTag("Player"))
         {
             pursuePlayer = true;
-            playerPosition = collision.transform.position;
-            Quaternion newDir = GetDirectionToTarget(playerPosition);
+            playerTransform = collision.transform;
+            Quaternion newDir = GetDirectionToTarget(playerTransform.position);
             SetDirection(newDir);
         }
         else if (collision.transform.CompareTag("Minion"))
         {
-            Vector3 pursuePos = collision.transform.GetComponent<SimpleMinionController>().GetPlayerPosition();
-            if (!pursuePos.Equals(Vector3.positiveInfinity))
+            Transform pursueTransform = collision.transform.GetComponent<SimpleMinionController>().GetPlayerTransform();
+            if (pursueTransform != null)
             {
                 pursuePlayer = true;
-                playerPosition = pursuePos;
-                Quaternion newDir = GetDirectionToTarget(playerPosition);
+                playerTransform = pursueTransform;
+                Quaternion newDir = GetDirectionToTarget(playerTransform.position);
                 SetDirection(newDir);
             }
         }
@@ -179,6 +188,30 @@ public class SimpleMinionController : MonoBehaviour {
             //SetRandomTarget();
             //Quaternion newDir = GetDirectionToTarget(targetPosition);
             SetDirection(newDir);
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D col)
+    {
+        if (col.CompareTag("Shot"))
+        {
+            ShotAttributes shot = col.GetComponent<ShotAttributes>();
+            if (shot.getTeamID() != teamID)
+            {
+                TakeDamage(shot.damage);
+                Destroy(col.gameObject);
+            }
+        }
+    }
+
+    private void TakeDamage(int damage)
+    {
+        currentHealth = currentHealth - damage;
+        blinkAnimation.startAnimation();
+        if(currentHealth <= 0)
+        {
+            cam.GetComponent<CameraController>().CamShake(0.2f, 0.15f);
+            Destroy(gameObject);
         }
     }
 }

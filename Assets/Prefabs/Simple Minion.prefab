@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 114316672119309558}
   - component: {fileID: 114561598570175200}
   - component: {fileID: 114649199350302218}
+  - component: {fileID: 114356819754271912}
   m_Layer: 0
   m_Name: Simple Minion
   m_TagString: Minion
@@ -121,9 +122,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03145fe1ad862fc4a8e8a46bb5a43629, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  explosion: {fileID: 0}
   speed: 4
   timeLimit: 1.5
-  cooperate: 0
+  cooperate: 1
+  maxHealth: 5
+  teamID: 2
+--- !u!114 &114356819754271912
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1201294461112566}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4241590048c67d4385372d51f4c4b2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explosion: {fileID: 1729472084353830, guid: bfb0996311d3ecb4f9927ba4b1927422, type: 2}
+  explosionSize: 0.5
+  explosionDuration: 0.5
+  explosionRadius: 0.4
+  explosionColor: {r: 1, g: 0.6413794, b: 0, a: 1}
 --- !u!114 &114561598570175200
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -148,7 +168,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shot: {fileID: 1956842653187736, guid: 33ec49f4366ea4d68bb4709359615409, type: 2}
-  teamID: 0
+  teamID: 2
   playerID: 0
   offset: 1.2
   mat: {fileID: 0}
@@ -187,7 +207,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 4f6dbafe506d3cf4ba6650092a8f7458, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 2ef6b5d5d52510a41bea41325a88f211, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
