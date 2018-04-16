@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PlayerHealth : MonoBehaviour {
+public class HealthController : MonoBehaviour {
 
     public Slider healthBar;
+    public Image fill;
     public int maxHealth;
     public float singleRegenTime;
 
@@ -91,6 +92,11 @@ public class PlayerHealth : MonoBehaviour {
             isAlive = true;
             healthBar.value = maxHealth;
         }
+    }
+
+    public void SetMaterial(Material mat)
+    {
+        fill.material = mat;
     }
 
 
