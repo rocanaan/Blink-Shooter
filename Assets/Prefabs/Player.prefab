@@ -119,7 +119,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1583287384560190}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -6.6, y: 3, z: 0}
+  m_LocalPosition: {x: -6.5, y: 3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4452481025988506}
@@ -354,7 +354,7 @@ MonoBehaviour:
     label: Hit
   - clip: {fileID: 8300000, guid: 1f1fb72a1d64c47e48d1faae5f05f02e, type: 3}
     label: Death
-  - clip: {fileID: 8300000, guid: fe045aa24dd1049a0b45e4ce9631e26f, type: 3}
+  - clip: {fileID: 8300000, guid: 02c3e234196284c338196cec9ce5dd68, type: 3}
     label: Fire
 --- !u!114 &114525977906963100
 MonoBehaviour:
@@ -369,7 +369,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shot: {fileID: 1956842653187736, guid: 33ec49f4366ea4d68bb4709359615409, type: 2}
   teamID: 1
-  playerID: 2
+  playerID: 1
   offset: 1.2
   mat: {fileID: 2100000, guid: 3750ee820efbf4bfb8d7d218ac766855, type: 2}
   shotSpeed: 15

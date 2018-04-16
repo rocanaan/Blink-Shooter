@@ -56,6 +56,8 @@
      <Compile Include="Assets\_Scripts\Boss Behaviors\BossController.cs" />
      <Compile Include="Assets\_Scripts\Boss Behaviors\BossGenericBehavior.cs" />
      <Compile Include="Assets\_Scripts\Boss Behaviors\FollowBehavior.cs" />
+     <Compile Include="Assets\_Scripts\Boss Behaviors\MinionSpawner.cs" />
+     <Compile Include="Assets\_Scripts\Boss Behaviors\SecondBossController.cs" />
      <Compile Include="Assets\_Scripts\Boss Behaviors\ShieldSpawner.cs" />
      <Compile Include="Assets\_Scripts\Boss Behaviors\TrapSpawnerAudioController.cs" />
      <Compile Include="Assets\_Scripts\Boss Behaviors\WanderBehavior.cs" />
