@@ -122,12 +122,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03145fe1ad862fc4a8e8a46bb5a43629, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosion: {fileID: 0}
   speed: 4
   timeLimit: 1.5
   cooperate: 1
-  maxHealth: 5
+  maxHealth: 2
   teamID: 2
+  shotInterval: 0.5
 --- !u!114 &114356819754271912
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -207,7 +207,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 2ef6b5d5d52510a41bea41325a88f211, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4f6dbafe506d3cf4ba6650092a8f7458, type: 3}
   m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0

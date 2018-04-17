@@ -16,7 +16,7 @@ public class SecondBossController : MonoBehaviour {
 
     private BlinkAnimation blinkAnimation;
     private int maxHealth;
-    private PlayerHealth bossHealth;    
+    private HealthController bossHealth;    
     private enum Difficulty { Phase_1, Transition_1, Phase_2, Transition_2, Phase_3, Transition_3, Phase_4};
     private Difficulty currentDifficulty;
 
@@ -24,7 +24,7 @@ public class SecondBossController : MonoBehaviour {
     void Start()
     {
         blinkAnimation = transform.GetComponent<BlinkAnimation>();
-        bossHealth = transform.GetComponent<PlayerHealth>();
+        bossHealth = transform.GetComponent<HealthController>();
         maxHealth = bossHealth.maxHealth;
 
         currentDifficulty = Difficulty.Phase_1;

@@ -9,6 +9,7 @@ public class SimpleMinionController : MonoBehaviour {
     public bool cooperate;
     public int maxHealth = 5;
     public int teamID = 2;
+    public float shotInterval;
     //public enum Dimension { both, x, y };
     //public Dimension wanderDimension;
     //public float x_range;
@@ -18,10 +19,12 @@ public class SimpleMinionController : MonoBehaviour {
     private Rigidbody2D rb;
     private RaycastHit2D hit;
     private BlinkAnimation blinkAnimation;
+    private FireShot fs;
     private float timer;
     private int currentHealth;
     private bool pursuePlayer;
     private Transform playerTransform;
+    private float nextShot;
     //private Vector3 targetPosition;
 
 
@@ -30,15 +33,23 @@ public class SimpleMinionController : MonoBehaviour {
         cam = GameObject.FindWithTag("MainCamera");
         rb = transform.GetComponent<Rigidbody2D>();
         blinkAnimation = transform.GetComponent<BlinkAnimation>();
+        fs = transform.GetComponent<FireShot>();
         rb.velocity = transform.right * speed;
         timer = timeLimit;
         pursuePlayer = false;
         //SetRandomTarget();
         currentHealth = maxHealth;
+        nextShot = 0f;
 	}
 
     private void Update()
     {
+        if (pursuePlayer && Time.time >= nextShot)
+        {
+            fs.fireShot();
+            //sfxController.PlayClip("Fire");
+            nextShot = Time.time + shotInterval;
+        }
     }
 
     public Transform GetPlayerTransform()
@@ -84,7 +95,7 @@ public class SimpleMinionController : MonoBehaviour {
             }
             
         }
-        else
+        else if(!hit.transform.CompareTag("Shot"))
         {
             pursuePlayer = false;
             playerTransform = null;

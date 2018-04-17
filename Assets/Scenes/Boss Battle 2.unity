@@ -324,7 +324,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   minions: {fileID: 170264428}
   minion: {fileID: 1201294461112566, guid: 91f7e7f42ea6e5e40b0d3f0707a60dbd, type: 2}
-  numOfMinions: 10
   xRange: 15
   yRange: 10
   minDistance: 3
@@ -407,7 +406,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 2ef6b5d5d52510a41bea41325a88f211, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 4f6dbafe506d3cf4ba6650092a8f7458, type: 3}
   m_Color: {r: 0.42647058, g: 0, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -415,7 +414,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
 --- !u!4 &132107162
 Transform:
@@ -2268,7 +2267,7 @@ Prefab:
         type: 2}
       propertyPath: players.Array.data[0]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 794854281}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f094f0a6a43ef944ca17db825c47cf4d, type: 2}
   m_IsPrefabParent: 0

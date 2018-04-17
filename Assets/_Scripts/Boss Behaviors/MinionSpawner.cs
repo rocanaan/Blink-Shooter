@@ -6,17 +6,17 @@ public class MinionSpawner : MonoBehaviour {
 
     public GameObject minions;
     public GameObject minion;
-    public int numOfMinions;
+    //public int numOfMinions;
     public float xRange;
     public float yRange;
-    public float minDistance;
+    //public float minDistance;
 
     private List<GameObject> minionList;
 
     // Use this for initialization
     void Start () {
         minionList = new List<GameObject>();
-        SpawnMinions();
+        //SpawnMinions();
 	}
 	
 	// Update is called once per frame
@@ -24,7 +24,7 @@ public class MinionSpawner : MonoBehaviour {
 		
 	}
 
-    public void SpawnMinions()
+    public void SpawnMinions(int numOfMinions, float minimumDistance)
     {
         for(int i=0; i < numOfMinions; i++)
         {
@@ -36,7 +36,7 @@ public class MinionSpawner : MonoBehaviour {
                 xCoord = Mathf.RoundToInt(Random.Range(-xRange, xRange));
                 yCoord = Mathf.RoundToInt(Random.Range(-yRange, yRange));
                 pos = new Vector2(xCoord, yCoord);
-            } while (!IsCoordUnoccupied(pos) || !FarEnough(pos));
+            } while (!IsCoordUnoccupied(pos) || !FarEnough(pos, minimumDistance));
 
             Quaternion randomQua = Quaternion.Euler(0.0f, 0.0f, Random.Range(0, 360));
             GameObject newMinion = Instantiate(minion, new Vector3(pos.x, pos.y, 0f), Quaternion.identity, minions.transform);
@@ -44,7 +44,7 @@ public class MinionSpawner : MonoBehaviour {
         }
     }
 
-    private bool FarEnough(Vector2 pos)
+    private bool FarEnough(Vector2 pos, float minDistance)
     {
         foreach (GameObject obs in minionList)
         {

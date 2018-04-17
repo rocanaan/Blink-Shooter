@@ -29,7 +29,7 @@ public class PlayerController : MonoBehaviour {
 	private string controllerName;
 	private float timeRecoverStun;	
 	private BlinkAnimation blinkAnimation;// Script for doing the on damage blinking animation
-    private PlayerHealth playerHealth;// Script for starting and updating the healthTracker
+    private HealthController playerHealth;// Script for starting and updating the healthTracker
 	private bool isStunned;
 	private bool respawnAllowed;
 	private float nextRespawnTime;
@@ -45,7 +45,7 @@ public class PlayerController : MonoBehaviour {
 		rb = GetComponent<Rigidbody2D> ();
 		fs = transform.GetComponent<FireShot> ();
         blinkAnimation = GetComponent<BlinkAnimation>();
-        playerHealth = GetComponent<PlayerHealth>();
+        playerHealth = GetComponent<HealthController>();
         bodyMaterial = transform.GetComponent<Renderer>().material;
         ghost = ghostObject.GetComponent<GhostController>();
         GameObject cameraObject = GameObject.FindGameObjectWithTag ("MainCamera");
