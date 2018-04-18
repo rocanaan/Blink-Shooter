@@ -74,7 +74,7 @@ public class GhostController : MonoBehaviour {
             bool collidesWithObjects = false;
             foreach (Collider2D col in colliders)
             {
-                if (!col.gameObject.CompareTag("Shot") && !col.gameObject.CompareTag("Ghost"))
+                if (!col.gameObject.CompareTag("Shot") && !col.gameObject.CompareTag("Ghost") && !col.gameObject.CompareTag("Laser"))
                 {
                     collidesWithObjects = true;
                     Debug.Log("Hit " + col.gameObject.tag);

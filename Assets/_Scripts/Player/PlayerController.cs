@@ -251,7 +251,6 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	void PlayerDeath (){
-		gameController.notifyDeath (playerID, teamID);
 		//Destroy (transform.parent.gameObject);
 		//transform.parent.gameObject.SetActive(false);
 		transform.position = new Vector3(30,30,0);
@@ -260,7 +259,8 @@ public class PlayerController : MonoBehaviour {
 		isDead = true;
 		SetRespawn();
 		sfxController.PlayClip ("Death");
-	}
+        gameController.notifyDeath(playerID, teamID);
+    }
 
 	void SetRespawn(){
 		int respawnDelay = gameController.getRespawnTime ();
