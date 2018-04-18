@@ -97,14 +97,14 @@ public class GameController : MonoBehaviour {
 		// If 1, 2, 3 or 4 is pressed, set currentKeyboardInput to that player ID
 		setCurrentKeyboardInput ();
 
-        checkPlayerRegen();
+        CheckPlayerRegen();
 //		if (respawns.Count != 0) {
 //			RespawnEvent nextRespawn = respawns.Peek ();
 //			if (Time.time >= nextRespawn.time) {
 //			}
 //		}
 	}
-    void checkPlayerRegen()
+    void CheckPlayerRegen()
     {
         if (players.Length == 2)
         {
@@ -113,12 +113,19 @@ public class GameController : MonoBehaviour {
             if (playerDistance <= healthRegenRange)
             {
                 players[0].GetComponent<HealthController>().StartRegeneration();
+                players[0].GetComponent<ParticleSystem>().Play();
                 players[1].GetComponent<HealthController>().StartRegeneration();
+                players[1].GetComponent<ParticleSystem>().Play();
+
                 return;
             }
         }
         players[0].GetComponent<HealthController>().StopRegeneration();
+        players[0].GetComponent<ParticleSystem>().Pause();
+        players[0].GetComponent<ParticleSystem>().Clear();
         players[1].GetComponent<HealthController>().StopRegeneration();
+        players[1].GetComponent<ParticleSystem>().Pause();
+        players[1].GetComponent<ParticleSystem>().Clear();
     }
 	public void notifyDeath(int playerID, int teamID){
 		numPlayersAliveByTeam [teamID] -= 1;

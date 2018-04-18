@@ -37,7 +37,7 @@ public class GunSpawner : MonoBehaviour {
 			for (int i = 0; i < numberGuns; i++) {
 				float angle = 2*Mathf.PI * i / numberGuns;
 				Vector3 direction = new Vector3 (Mathf.Cos (angle), Mathf.Sin (angle), 0);
-				print (direction);
+				//print (direction);
 				Vector3 shieldPosition = transform.TransformPoint (direction * offsetAsRadiusRatio / 2.0f);
 				GameObject gun = Instantiate<GameObject> (gunObject, shieldPosition, Quaternion.Euler(0,0, Mathf.Rad2Deg*angle));
 				gun.transform.localScale *= transform.lossyScale.x;

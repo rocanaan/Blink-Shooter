@@ -77,7 +77,6 @@ public class GhostController : MonoBehaviour {
                 if (!col.gameObject.CompareTag("Shot") && !col.gameObject.CompareTag("Ghost") && !col.gameObject.CompareTag("Laser"))
                 {
                     collidesWithObjects = true;
-                    Debug.Log("Hit " + col.gameObject.tag);
                 }
             }
 

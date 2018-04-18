@@ -43,12 +43,12 @@ public class LaserSpawnerController : MonoBehaviour {
 
 			// This part is executed regardless of preparation time or no
 			// Do a raycast from position to current target (transform.right)
-			print (transform.forward);
+			//print (transform.forward);
 			RaycastHit2D[] allHits = Physics2D.RaycastAll (transform.position, transform.right, 60.0f);
 			RaycastHit2D firstWall = new RaycastHit2D ();
 			float distanceFirstWall = 9999;
 
-			print ("Number of objects hit is" + allHits.Length);
+			//print ("Number of objects hit is" + allHits.Length);
 			// Locate first wall
 			foreach (RaycastHit2D hit in allHits) {
 				Collider2D col = hit.collider;

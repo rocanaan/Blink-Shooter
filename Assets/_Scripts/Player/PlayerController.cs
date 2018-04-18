@@ -231,7 +231,7 @@ public class PlayerController : MonoBehaviour {
 
 	public void TakeDamage (int damage)
     {
-        if (!OnGracePeriod())
+        if (!isDead && !OnGracePeriod())
         {
             bool isAlive = playerHealth.TakeDamage(damage); // returns true if alive (health > 0)
 
@@ -251,6 +251,9 @@ public class PlayerController : MonoBehaviour {
 	}
 
 	void PlayerDeath (){
+
+        Debug.Log("PlayerDeath() called for player " + playerID);
+
 		//Destroy (transform.parent.gameObject);
 		//transform.parent.gameObject.SetActive(false);
 		transform.position = new Vector3(30,30,0);
