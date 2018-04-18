@@ -17,7 +17,7 @@ public class LaserSplittingAttack : BossGenericBehavior {
 	void Start () {
 		gameController = GameObject.FindGameObjectWithTag ("GameController").GetComponent<GameController> ();
 		players = gameController.getAllPlayers ();
-		setActive (true);
+//	setActive (true);
 	}
 	
 	// Update is called once per frame
@@ -25,7 +25,7 @@ public class LaserSplittingAttack : BossGenericBehavior {
 		
 	}
 
-	void setActive(bool active){
+	public void setStatus(bool active){
 		if (active) {
 			Vector3 playersMidpoint = getPlayersMidpoint();
 			if (playersMidpoint == transform.position) {
@@ -33,19 +33,23 @@ public class LaserSplittingAttack : BossGenericBehavior {
 			}
 			GameObject laserObj1 = Instantiate (laserSpawnerPrefab, transform.position, Quaternion.identity);
 			LaserSpawnerController laser1 = laserObj1.GetComponent<LaserSpawnerController> ();
+			laser1.target = playersMidpoint;
 			laser1.angularSpeed = angularSpeed;
 			laser1.preparationTime = preparationTime;
 			laser1.angleRotated = maxArcTraveled;
-			laser1.target = playersMidpoint;
 			laser1.transform.parent = transform;
+
 
 			GameObject laserObj2 = Instantiate (laserSpawnerPrefab, transform.position, Quaternion.identity);
 			LaserSpawnerController laser2 = laserObj2.GetComponent<LaserSpawnerController> ();
+			laser2.target = playersMidpoint;
 			laser2.angularSpeed = -angularSpeed;
 			laser2.preparationTime = preparationTime;
 			laser2.angleRotated = maxArcTraveled;
-			laser2.target = playersMidpoint;
 			laser2.transform.parent = transform;
+
+			laser1.Initialize ();
+			laser2.Initialize ();
 		}
 	}
 

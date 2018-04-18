@@ -24,6 +24,8 @@ public class BossController : MonoBehaviour {
 	private float nextBehaviorStartTime;
 	private float nextBehaviorEndTime;
 
+	private BehaviorController behaviorController;
+
 
 	// Boss behaviors
 	private WanderBehavior wanderBehavior;
@@ -35,10 +37,14 @@ public class BossController : MonoBehaviour {
 	private TargettedFireBehavior targetFire;
 	private TrapSpawner trapSpawner;
     private HealthController bossHealth;
-
+	private MinionSpawner minionSpawner;
+	private ExpandingCircleSpawner expandingCircleSpawner;
+	private LaserSplittingAttack laserSplittingAttack; // Note: have to fix nomeclature. For circle, the prefab that just instantiates the attack is attack, and the controller is spawner. Here, attack is the controller and controller is attack
+	private PlayerCircleTrapSpawner playerCircleTrapSpawner;
     private GameController gameController;
 
 	private GameObject audioSource;
+
 
 	// Use this for initialization
 	void Start () {
@@ -48,16 +54,23 @@ public class BossController : MonoBehaviour {
 		difficulty = 0;
 
 		wanderBehavior = GetComponent<WanderBehavior> ();
-		wanderBehavior.setActive (true);
 		followBehavior = GetComponent<FollowBehavior> ();
-		followBehavior.setStatus (false);
-
+		ToggleMovement ("Wander");
+//
 		shieldSpawner = GetComponentInChildren<ShieldSpawner> ();
 		directionalShieldSpawner = GetComponentInChildren<DirectionalShieldSpawner> ();
 		gunSpawner = GetComponentInChildren<GunSpawner> ();
 		wallGunSpawner = GetComponentInChildren<WallGunSpawner> ();
 		targetFire = GetComponent<TargettedFireBehavior> ();
 		trapSpawner = GetComponentInChildren<TrapSpawner> ();
+		minionSpawner = GetComponentInChildren<MinionSpawner> ();
+		expandingCircleSpawner = GetComponentInChildren<ExpandingCircleSpawner>();
+		laserSplittingAttack = GetComponentInChildren<LaserSplittingAttack> ();
+		playerCircleTrapSpawner = GetComponentInChildren<PlayerCircleTrapSpawner> ();
+
+
+
+		wallGunSpawner.setStatus (true);
 
 		nextBehaviorStartTime = Time.time + behaviorDelay;
 		nextBehaviorEndTime = nextBehaviorStartTime + behaviorDuration;
@@ -68,6 +81,8 @@ public class BossController : MonoBehaviour {
 
 		audioSource = GameObject.FindGameObjectWithTag ("GlobalAudioSource");
 		sfxController = audioSource.GetComponent<SoundEffectsController> ();
+
+		behaviorController = GetComponent<BehaviorController> ();
 	}
 	
 	// Update is called once per frame
@@ -94,11 +109,14 @@ public class BossController : MonoBehaviour {
 	void TakeDamage (int damage){
 
         bool isAlive = bossHealth.TakeDamage(damage);
+		currentHealth = bossHealth.GetHealth ();
 		print ("Boss Health is" + currentHealth);
 		coreBlinkAnimation.startAnimation ();
 
 
 		float healthRatio = (float)currentHealth / (float)bossHealth.maxHealth;
+
+		print ("Health Ratio is " + healthRatio);
 
 		if (difficulty == 0 && healthRatio < 0.6) {
 			difficulty = 1;
@@ -106,6 +124,9 @@ public class BossController : MonoBehaviour {
 			GetComponentsInChildren<Renderer> () [1].material = difficulty1Material;
 
 			deactivateBehaviors ();
+			minionSpawner.SpawnMinions (6,3);
+
+
 
 //			shieldSpawner.setStatus (true);
 //			wallGunSpawner.setStatus (false);
@@ -122,16 +143,22 @@ public class BossController : MonoBehaviour {
 			wallGunSpawner.gunsPerWall *= 2;
 			targetFire.fireInterval /= 2;
 
-			followBehavior.setStatus(true);
-			wanderBehavior.setActive (false);
+			ToggleMovement ("Follow");
 
-			trapSpawner.FireTrap ();
+			//trapSpawner.FireTrap ();
 			deactivateBehaviors ();
 
 //			shieldSpawner.setStatus (false);
 //			gunSpawner.setStatus (true);
-//			wallGunSpawner.gunsPerWall = 2;
+			wallGunSpawner.gunsPerWall = 2;
 //			wallGunSpawner.setStatus (true);
+
+
+
+
+			// Right now, seems too difficult if the boss respawns minions and guns again
+//				minionSpawner.SpawnMinions (10,3);
+//				wallGunSpawner.setStatus (true);
 		
 		}
 			
@@ -159,58 +186,60 @@ public class BossController : MonoBehaviour {
 
 	//TODO this should be refactored to place the potential behaviors in a list and select from them.
 	void selectBehaviors(){
-		if (difficulty == 2) {
-			int trapChance = Random.Range (0, 10);
-			if (trapChance == 0) {
-				trapSpawner.FireTrap ();
-				nextBehaviorEndTime = Time.time + behaviorDuration;
-				nextBehaviorStartTime = nextBehaviorEndTime + behaviorDelay;
-				return;
-			}
+		directionalShieldSpawner.setStatus (true);
+
+		int firstBehavior = 1;
+		if (difficulty == 0) {
+			firstBehavior = Random.Range (0, 3);
 		}
-		int firstBehavior = Random.Range (0, 4);
-		//int firstBehavior =0;
+		else {
+			firstBehavior = Random.Range (0, 5);
+		}
+		print ("Selected behavior is " + firstBehavior);
 		switch (firstBehavior) {
 		case 0:
-			directionalShieldSpawner.setStatus (true);
-			followBehavior.setStatus (true);
-			wanderBehavior.setActive (false);
-			break;
-		case 1:
-			gunSpawner.setStatus (true);
-			break;
-		case 2:
-			wallGunSpawner.setStatus (true);
-
-			break;
-		case 3:
 			targetFire.setStatus (true);
 			break;
+		case 1:
+			expandingCircleSpawner.setStatus (true);
+			break;
+		case 2:
+			laserSplittingAttack.setStatus (true);
+			break;
+		case 3:
+			playerCircleTrapSpawner.setStatus (true);
+			break;
+		case 4: 
+			gunSpawner.setStatus (true);
+			break;
+
 		}
 		if (difficulty > 0) {
-			int secondBehavior = Random.Range (0, 4);
+			int secondBehavior = Random.Range (0, 5);
 			while (secondBehavior == firstBehavior){
-				secondBehavior = Random.Range (0, 4);
+				secondBehavior = Random.Range (0, 5);
 			}
 			switch (secondBehavior) {
 			case 0:
-				directionalShieldSpawner.setStatus (true);
-				followBehavior.setStatus (true);
-				wanderBehavior.setActive (false);
+				targetFire.setStatus (true);
 				break;
 			case 1:
-				gunSpawner.setStatus (true);
+				expandingCircleSpawner.setStatus (true);
 				break;
 			case 2:
-				wallGunSpawner.setStatus (true);
-
+				laserSplittingAttack.setStatus (true);
 				break;
 			case 3:
-				targetFire.setStatus (true);
+				playerCircleTrapSpawner.setStatus (true);
+				break;
+			case 4: 
+				gunSpawner.setStatus (true);
 				break;
 			}
 
 		}
+
+		//behaviorController.selectBehaviors (difficulty);
 
 		nextBehaviorEndTime = Time.time + behaviorDuration;
 		nextBehaviorStartTime = nextBehaviorEndTime + behaviorDelay;
@@ -219,21 +248,35 @@ public class BossController : MonoBehaviour {
 	void deactivateBehaviors(){
 		shieldSpawner.setStatus (false);
 		gunSpawner.setStatus (false);
-		wallGunSpawner.setStatus (false);
+		//wallGunSpawner.setStatus (false);
 		targetFire.setStatus (false);
 		directionalShieldSpawner.setStatus (false);
+		expandingCircleSpawner.setStatus (false);
+		playerCircleTrapSpawner.setStatus (false);
 
-		if (difficulty != 2) {
-			followBehavior.setStatus (false);
-			wanderBehavior.setActive (true);
-		} else {
-			followBehavior.setStatus (true);
-			wanderBehavior.setActive (false);
-		}
+		//behaviorController.inactivateBehaviors ();
+
+		ToggleMovement ("Wander");
 		nextBehaviorStartTime = Time.time + behaviorDelay;
 		nextBehaviorEndTime = nextBehaviorStartTime + behaviorDuration;
 	}
 
 	void spawnTrap(){
+	}
+
+	public void ToggleMovement(string s){
+		if (difficulty != 2) {
+			if (s == "Wander") {
+				followBehavior.setStatus (false);
+				wanderBehavior.setStatus (true);
+			}
+			if (s == "Follow") {
+				followBehavior.setStatus (true);
+				wanderBehavior.setStatus (false);
+			}
+		} else {
+			followBehavior.setStatus (true);
+			wanderBehavior.setStatus (false);
+		}
 	}
 }

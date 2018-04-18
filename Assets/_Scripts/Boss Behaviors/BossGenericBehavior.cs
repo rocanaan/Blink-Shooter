@@ -11,11 +11,11 @@ public class BossGenericBehavior : MonoBehaviour {
 		statusActive = false;
 	}
 
-	public void setActive(bool x){
+	public virtual void setStatus(bool x){
 		statusActive = x;
 	}
 
-	public bool isActive(){
+	public virtual bool isActive(){
 		return statusActive;
 	}
 

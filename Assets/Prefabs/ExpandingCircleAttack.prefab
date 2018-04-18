@@ -53,15 +53,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   numberOfVertices: 40
-  startingRadius: 4
-  finalRadius: 2
-  radiusStep: -0.01
+  startingRadius: 1
+  finalRadius: 40
+  radiusStep: 0.1
   collisionWidth: 0.5
-  preparationDuration: 3
-  followDuringPreparation: 0
+  preparationDuration: 0
+  followDuringPreparation: 1
   followDuringExpansion: 0
-  damageDuringPreparation: 0
+  damageDuringPreparation: 1
   damage: 1
+  activationMaterial: {fileID: 2100000, guid: 8e6d510bf27a842b8b6eac3f631751f9, type: 2}
 --- !u!120 &120299807503393804
 LineRenderer:
   m_ObjectHideFlags: 1
@@ -76,7 +77,7 @@ LineRenderer:
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
   m_Materials:
-  - {fileID: 0}
+  - {fileID: 2100000, guid: 57d3875c8dbde4422b703b879aa9d94f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

@@ -9,6 +9,8 @@ public class LaserSpawnerController : MonoBehaviour {
 	public float preparationTime;
 	private float activationTime;
 
+	public Material activationMaterial;
+
 	public Vector3 target;
 
 
@@ -24,11 +26,9 @@ public class LaserSpawnerController : MonoBehaviour {
 	void Start () {
 		arcTraveled = 0.0f;
 		lr = GetComponent<LineRenderer> ();
-		Initialize(transform.position, target);
-		activationTime = Time.time + preparationTime;
 
 	}
-
+		
 	
 	// Update is called once per frame
 	void Update () {
@@ -44,7 +44,7 @@ public class LaserSpawnerController : MonoBehaviour {
 			// This part is executed regardless of preparation time or no
 			// Do a raycast from position to current target (transform.right)
 			print (transform.forward);
-			RaycastHit2D[] allHits = Physics2D.RaycastAll (transform.position, transform.right, 20.0f);
+			RaycastHit2D[] allHits = Physics2D.RaycastAll (transform.position, transform.right, 60.0f);
 			RaycastHit2D firstWall = new RaycastHit2D ();
 			float distanceFirstWall = 9999;
 
@@ -64,6 +64,7 @@ public class LaserSpawnerController : MonoBehaviour {
 
 			// If preparation time is over, damage players and rotate;
 			if (Time.time > activationTime) {
+				lr.material = activationMaterial;
 				foreach (RaycastHit2D hit in allHits) {
 					Collider2D col = hit.collider;
 					if (col.tag == "Player" && hit.distance < distanceFirstWall) {
@@ -81,10 +82,11 @@ public class LaserSpawnerController : MonoBehaviour {
 		}
 	}
 
-	public void Initialize(Vector3 origin, Vector3 target){
+	public void Initialize(){
 		//currentOrigin = origin;
+		activationTime = Time.time + preparationTime;
 		currentTarget = target;
-		transform.right = target - origin;
+		transform.right = target - transform.position;
 	}
 
 

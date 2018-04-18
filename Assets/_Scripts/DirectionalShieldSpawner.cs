@@ -58,12 +58,14 @@ public class DirectionalShieldSpawner : MonoBehaviour {
 			transform.right = targetPlayer.transform.position - transform.position;
 //				shieldList.Add (shield);
 			shield.GetComponent<Renderer> ().material = GetComponentInParent<BossController> ().getCurrentMaterial();
+			//GetComponentInParent<BossController>().ToggleMovement ("Follow");
 
 		}
 		if (!statusActive) {
 			print ("Attempting to destroy directional shield");
 			Destroy (shield);
 			transform.rotation = Quaternion.identity;
+			//GetComponentInParent<BossController>().ToggleMovement ("Wander");
 		}
 	}
 

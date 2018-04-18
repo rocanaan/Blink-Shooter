@@ -112,12 +112,14 @@ public class GameController : MonoBehaviour {
 			} else if (teamID == 2) {
 				setGameOver (1);
 			}
-
+		}
+		if (numPlayersAliveByTeam [teamID] <= 0 && gameMode == GameMode.Boss) {
+			setGameOver (2);
 		}
 	}
 
 	public int getRespawnTime (){
-		if (gameMode == GameMode.Survival) {
+		if (gameMode == GameMode.Survival || gameMode == GameMode.Boss) {
 			return -1;
 		} else {
 			return respawnTime;
@@ -151,7 +153,12 @@ public class GameController : MonoBehaviour {
 			gameOverText.text = "End of tutorial. Press SQUARE or ENTER to battle!!!";
 		}
 		else if (gameMode == GameMode.Boss){
-			gameOverText.text = "Congratulations!!! Your team defeated the boss losing a total of " + totalDeaths + " lives!! Press SQUARE or ENTER to restart.";
+			if (winner == 1) {
+				gameOverText.text = "Congratulations!!! Your team defeated the boss!!!  Press SQUARE or ENTER to restart.";
+			}
+			else if (winner == 2){
+				gameOverText.text = "Too bad!!! You were defeated by the boss!!!  Press SQUARE or ENTER to restart.";
+			}
 		}
 		else {
 			if (winner == 1) {
@@ -160,6 +167,7 @@ public class GameController : MonoBehaviour {
 			if (winner == 2) {
 				gameOverText.text = "Red team wins!! Press SQUARE or ENTER to restart.";
 			}
+
 		}
 	}
 

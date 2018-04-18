@@ -76,6 +76,7 @@
      <Compile Include="Assets\_Scripts\FireShotPeriodically.cs" />
      <Compile Include="Assets\_Scripts\GameController.cs" />
      <Compile Include="Assets\_Scripts\GunSpawner.cs" />
+     <Compile Include="Assets\_Scripts\HealthController.cs" />
      <Compile Include="Assets\_Scripts\King of the Hill Moide\HillController.cs" />
      <Compile Include="Assets\_Scripts\King of the Hill Moide\PlayerCollidesWithHill.cs" />
      <Compile Include="Assets\_Scripts\King of the Hill Moide\Rotator.cs" />
@@ -91,7 +92,6 @@
      <Compile Include="Assets\_Scripts\Player\Player and Character Controllers\PhaseCharacterBehavior.cs" />
      <Compile Include="Assets\_Scripts\Player\Player and Character Controllers\ShieldCharacterBehavior.cs" />
      <Compile Include="Assets\_Scripts\Player\PlayerController.cs" />
-     <Compile Include="Assets\_Scripts\Player\PlayerHealth.cs" />
      <Compile Include="Assets\_Scripts\Player\ShotAttributes.cs" />
      <Compile Include="Assets\_Scripts\PlayerAudioController.cs" />
      <Compile Include="Assets\_Scripts\playerEntersTarget.cs" />
@@ -102,9 +102,13 @@
      <Compile Include="Assets\_Scripts\TargettedFireBehavior.cs" />
      <Compile Include="Assets\_Scripts\TrapSpawner.cs" />
      <Compile Include="Assets\_Scripts\WallGunSpawner.cs" />
+     <Compile Include="Assets\BehaviorController.cs" />
+     <Compile Include="Assets\ChangesColor.cs" />
      <Compile Include="Assets\DrawCircle.cs" />
      <Compile Include="Assets\ExpandingCircleAttack.cs" />
+     <Compile Include="Assets\ExpandingCircleSpawner.cs" />
      <Compile Include="Assets\LaserSplittingAttack.cs" />
+     <Compile Include="Assets\PlayerCircleTrapSpawner.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

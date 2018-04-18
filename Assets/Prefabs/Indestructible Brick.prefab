@@ -25,7 +25,7 @@ GameObject:
   - component: {fileID: 114723069561118714}
   m_Layer: 0
   m_Name: Indestructible Brick
-  m_TagString: Untagged
+  m_TagString: Wall
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 184e6bce32ddf4857916e549ca1c46c3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ghostTrespassable: 0
+  ghostTrespassable: 1
   teamID: 0
 --- !u!212 &212891707034748312
 SpriteRenderer:

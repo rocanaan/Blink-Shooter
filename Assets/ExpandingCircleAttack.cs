@@ -28,6 +28,8 @@ public class ExpandingCircleAttack : MonoBehaviour {
 	private GameObject[] players;
 	private GameController gameController;
 
+	public Material activationMaterial;
+
 
 
 	void Start()
@@ -98,6 +100,7 @@ public class ExpandingCircleAttack : MonoBehaviour {
 
 		// Expand or contract the circle after preparation
 		if (Time.time >= startOfExpansionTime) {
+			l_Renderer.material = activationMaterial;
 			currentRadius += radiusStep;
 		}
 
