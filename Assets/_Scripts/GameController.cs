@@ -49,10 +49,12 @@ public class GameController : MonoBehaviour {
 	public int numTargets;
 	private int targetsDestroyed;
 
-	//private Queue<RespawnEvent> respawns;
+    [Range(1.0f, 10.0f)]
+    public float healthRegenRange;
+    //private Queue<RespawnEvent> respawns;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
 		gameOver = false;
 
 		numPlayersAliveByTeam = new int[players.Length+1];
@@ -95,14 +97,29 @@ public class GameController : MonoBehaviour {
 		// If 1, 2, 3 or 4 is pressed, set currentKeyboardInput to that player ID
 		setCurrentKeyboardInput ();
 
-
+        checkPlayerRegen();
 //		if (respawns.Count != 0) {
 //			RespawnEvent nextRespawn = respawns.Peek ();
 //			if (Time.time >= nextRespawn.time) {
 //			}
 //		}
 	}
-
+    void checkPlayerRegen()
+    {
+        if (players.Length == 2)
+        {
+            float playerDistance = Vector3.Distance(
+                players[0].transform.position, players[1].transform.position);
+            if (playerDistance <= healthRegenRange)
+            {
+                players[0].GetComponent<HealthController>().StartRegeneration();
+                players[1].GetComponent<HealthController>().StartRegeneration();
+                return;
+            }
+        }
+        players[0].GetComponent<HealthController>().StopRegeneration();
+        players[1].GetComponent<HealthController>().StopRegeneration();
+    }
 	public void notifyDeath(int playerID, int teamID){
 		numPlayersAliveByTeam [teamID] -= 1;
 		totalDeaths++;

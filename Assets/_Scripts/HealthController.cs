@@ -9,7 +9,7 @@ public class HealthController : MonoBehaviour {
     public Image fill;
     public int maxHealth;
     public float singleRegenTime;
-
+    public float regenAmount;
     private bool regenerate;
     private float timer;
     private bool isAlive;
@@ -78,7 +78,7 @@ public class HealthController : MonoBehaviour {
             }
             if(healthBar.value < maxHealth)
             {
-                healthBar.value = healthBar.value + 1;
+                healthBar.value = healthBar.value + regenAmount;
             }            
             timer = 0f;
         }
