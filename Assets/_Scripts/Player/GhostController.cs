@@ -59,12 +59,42 @@ public class GhostController : MonoBehaviour {
 			stateTransition (1);
 		}
 		else if (state == 1) {
-			rb.velocity = Vector3.zero;
-			body.transform.position = new Vector3 (transform.position.x, transform.position.y, body.transform.position.z);
-			stateTransition (2);
-
-		}
+            StartCoroutine(TryPhasing());
+        }
 	}
+
+    private IEnumerator TryPhasing()
+    {
+        while(state == 1)
+        {
+            Vector3 velo = rb.velocity;
+            rb.velocity = Vector3.zero;
+            Vector2 pos = new Vector2(transform.position.x, transform.position.y);
+            Collider2D[] colliders = Physics2D.OverlapCircleAll(pos, 0.5f);
+            bool collidesWithObjects = false;
+            foreach (Collider2D col in colliders)
+            {
+                if (!col.gameObject.CompareTag("Shot") && !col.gameObject.CompareTag("Ghost"))
+                {
+                    collidesWithObjects = true;
+                    Debug.Log("Hit " + col.gameObject.tag);
+                }
+            }
+
+            if (!collidesWithObjects)
+            {
+                rb.velocity = Vector3.zero;
+                body.transform.position = new Vector3(transform.position.x, transform.position.y, body.transform.position.z);
+                stateTransition(2);
+                yield return null;
+            }
+            else
+            {
+                rb.velocity = velo;
+                yield return null;
+            }
+        }
+    }
 
 	public void collidesWithBoundary(){
 		if (state == 1) {

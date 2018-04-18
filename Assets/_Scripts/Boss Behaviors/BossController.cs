@@ -52,8 +52,9 @@ public class BossController : MonoBehaviour {
         bossHealth = transform.GetComponent<HealthController>();
 		currentHealth = bossHealth.GetHealth();
 		difficulty = 0;
+        bossHealth.SetMaterial(startingDifficultyMaterial);
 
-		wanderBehavior = GetComponent<WanderBehavior> ();
+        wanderBehavior = GetComponent<WanderBehavior> ();
 		followBehavior = GetComponent<FollowBehavior> ();
 		ToggleMovement ("Wander");
 //
