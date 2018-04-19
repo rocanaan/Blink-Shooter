@@ -18,6 +18,8 @@ public class PlayerController : MonoBehaviour {
     public float normalSpeed;
     [Range(1.0f, 10.0f)]
     public float slowedSpeed;
+    public Material healthMaterial;
+    public Material lowHealthMaterial;
 
     private float speed;// Controls the speed of the character
     private SoundEffectsController sfxController;
@@ -46,6 +48,7 @@ public class PlayerController : MonoBehaviour {
 		fs = transform.GetComponent<FireShot> ();
         blinkAnimation = GetComponent<BlinkAnimation>();
         playerHealth = GetComponent<HealthController>();
+        playerHealth.SetMaterial(healthMaterial);
         bodyMaterial = transform.GetComponent<Renderer>().material;
         ghost = ghostObject.GetComponent<GhostController>();
         GameObject cameraObject = GameObject.FindGameObjectWithTag ("MainCamera");
@@ -234,6 +237,11 @@ public class PlayerController : MonoBehaviour {
         if (!isDead && !OnGracePeriod())
         {
             bool isAlive = playerHealth.TakeDamage(damage); // returns true if alive (health > 0)
+
+            if(playerHealth.GetHealth() <= Mathf.RoundToInt(playerHealth.maxHealth / 3)) // if low on health, change the colour of the healtbar
+            {
+                playerHealth.SetMaterial(lowHealthMaterial);
+            }
 
             if (isAlive)
             {

@@ -96,7 +96,8 @@ public class HealthController : MonoBehaviour {
 
     public void SetMaterial(Material mat)
     {
-        fill.material = mat;
+        //fill.material = mat;
+        fill.color = mat.color;
     }
 
 
