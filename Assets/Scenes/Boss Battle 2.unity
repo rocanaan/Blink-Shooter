@@ -224,12 +224,12 @@ Prefab:
     - target: {fileID: 224788979789411358, guid: 9158f12da4bead54284ad68ac4c93bfc,
         type: 2}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224788979789411358, guid: 9158f12da4bead54284ad68ac4c93bfc,
         type: 2}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 212373779294185246, guid: 9158f12da4bead54284ad68ac4c93bfc,
         type: 2}
@@ -255,6 +255,16 @@ Prefab:
         type: 2}
       propertyPath: singleRegenTime
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114683988685659134, guid: 9158f12da4bead54284ad68ac4c93bfc,
+        type: 2}
+      propertyPath: highHealthMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: c678ea8d15fcdfb4e967169c77bcbbfc, type: 2}
+    - target: {fileID: 114050677188457966, guid: 9158f12da4bead54284ad68ac4c93bfc,
+        type: 2}
+      propertyPath: timeIgnoreRelease
+      value: 0.2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9158f12da4bead54284ad68ac4c93bfc, type: 2}
@@ -2443,9 +2453,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthBar: {fileID: 573494803}
   fill: {fileID: 1171458830}
-  maxHealth: 20
+  maxHealth: 100
   singleRegenTime: 2
   regenAmount: 0
+  highHealthMaterial: {fileID: 0}
 --- !u!4 &1260808700 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4704913194255762, guid: 7e641c9dfd20c41a4a5ad73725e7de64,
@@ -2585,30 +2596,21 @@ Prefab:
     - target: {fileID: 224788979789411358, guid: 9158f12da4bead54284ad68ac4c93bfc,
         type: 2}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224788979789411358, guid: 9158f12da4bead54284ad68ac4c93bfc,
         type: 2}
       propertyPath: m_AnchorMax.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1760317567391870, guid: 9158f12da4bead54284ad68ac4c93bfc, type: 2}
-      propertyPath: m_Name
-      value: Player 1 Body
-      objectReference: {fileID: 0}
-    - target: {fileID: 114683988685659134, guid: 9158f12da4bead54284ad68ac4c93bfc,
-        type: 2}
-      propertyPath: singleRegenTime
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 114905211261058006, guid: 9158f12da4bead54284ad68ac4c93bfc,
-        type: 2}
-      propertyPath: m_Material
-      value: 
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114050677188457966, guid: 9158f12da4bead54284ad68ac4c93bfc,
         type: 2}
-      propertyPath: timeIgnoreRelease
+      propertyPath: shortDashOnEarlyRelease
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114050677188457966, guid: 9158f12da4bead54284ad68ac4c93bfc,
+        type: 2}
+      propertyPath: earlyReleaseInterval
       value: 0.2
       objectReference: {fileID: 0}
     m_RemovedComponents: []

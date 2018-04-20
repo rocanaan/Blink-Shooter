@@ -115,7 +115,7 @@ GameObject:
   - component: {fileID: 198330783226079906}
   - component: {fileID: 199813728071149786}
   m_Layer: 0
-  m_Name: Player Body
+  m_Name: Player 1 Body
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -440,6 +440,9 @@ MonoBehaviour:
   moveSpeed: 20
   body: {fileID: 1760317567391870}
   cooldown: 1
+  teleportOnRepeatPress: 0
+  shortDashOnEarlyRelease: 1
+  earlyReleaseInterval: 0.2
 --- !u!114 &114119906362428064
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -525,7 +528,7 @@ MonoBehaviour:
   respawn: {x: -6, y: 3, z: 0}
   isDead: 0
   normalSpeed: 8
-  slowedSpeed: 4
+  slowedSpeed: 8
   healthMaterial: {fileID: 2100000, guid: c678ea8d15fcdfb4e967169c77bcbbfc, type: 2}
   lowHealthMaterial: {fileID: 2100000, guid: 513d9d1d83604a8488bd5e89557db6cb, type: 2}
 --- !u!114 &114683988685659134
@@ -544,6 +547,7 @@ MonoBehaviour:
   maxHealth: 10
   singleRegenTime: 5
   regenAmount: 1
+  highHealthMaterial: {fileID: 2100000, guid: c678ea8d15fcdfb4e967169c77bcbbfc, type: 2}
 --- !u!114 &114784416694420922
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -690,7 +694,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 1639443110
+  randomSeed: 1579671579
   InitialModule:
     serializedVersion: 3
     enabled: 1

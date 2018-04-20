@@ -18,7 +18,10 @@ public class GhostController : MonoBehaviour {
 	private CircleCollider2D col;
 	private SpriteRenderer spriteRenderer;
 
-	public float timeIgnoreRelease;
+	public bool teleportOnRepeatPress;
+	public bool shortDashOnEarlyRelease;
+
+	public float earlyReleaseInterval;
 	private float lastLaunchTime;
 
 
@@ -60,48 +63,56 @@ public class GhostController : MonoBehaviour {
 	// b) A release ("Up" command) of the button after timeIgnoreRelease has passed (to avoid accidentally teleporting on first release of the button)
 	public void ghostAction (string command)
 	{
-		if (state == 0 && command == "Down"){
-			Vector3 direction = pc.getFireDirection ();
-			rb.velocity = direction * moveSpeed;
-			stateTransition (1);
-			lastLaunchTime = Time.time;
+		if (command == "Down") {
+			if (state == 0) {
+				Vector3 direction = pc.getFireDirection ();
+				rb.velocity = direction * moveSpeed;
+				stateTransition (1);
+				lastLaunchTime = Time.time;
+			} else if (state == 1 && teleportOnRepeatPress) {
+				StartCoroutine (TryPhasing (Time.time));
+			}
 		}
-		else if (state == 1) {
-			if (command == "Down" || Time.time > lastLaunchTime + timeIgnoreRelease) {
-				StartCoroutine (TryPhasing ());
+
+		else if (command == "Up") {
+			if (state == 1) {
+				if (Time.time > lastLaunchTime + earlyReleaseInterval) {
+					StartCoroutine (TryPhasing (Time.time));
+				} else if (shortDashOnEarlyRelease) {
+					StartCoroutine (TryPhasing (lastLaunchTime + earlyReleaseInterval));
+				}
 			}
         }
 	}
 
-    private IEnumerator TryPhasing()
+	private IEnumerator TryPhasing(float timeStartPhase)
     {
         while(state == 1)
         {
-            Vector3 velo = rb.velocity;
-            rb.velocity = Vector3.zero;
-            Vector2 pos = new Vector2(transform.position.x, transform.position.y);
-            Collider2D[] colliders = Physics2D.OverlapCircleAll(pos, 0.5f);
-            bool collidesWithObjects = false;
-            foreach (Collider2D col in colliders)
-            {
-                if (!col.gameObject.CompareTag("Shot") && !col.gameObject.CompareTag("Ghost") && !col.gameObject.CompareTag("Laser"))
-                {
-                    collidesWithObjects = true;
-                }
-            }
+			if (Time.time > timeStartPhase) {
+				Vector3 velo = rb.velocity;
+				rb.velocity = Vector3.zero;
+				Vector2 pos = new Vector2 (transform.position.x, transform.position.y);
+				Collider2D[] colliders = Physics2D.OverlapCircleAll (pos, 0.3f);
+				bool collidesWithObjects = false;
+				foreach (Collider2D col in colliders) {
+					if (!col.gameObject.CompareTag ("Shot") && !col.gameObject.CompareTag ("Ghost") && !col.gameObject.CompareTag ("Laser")) {
+						collidesWithObjects = true;
+					}
+				}
 
-            if (!collidesWithObjects)
-            {
-                rb.velocity = Vector3.zero;
-                body.transform.position = new Vector3(transform.position.x, transform.position.y, body.transform.position.z);
-                stateTransition(2);
-                yield return null;
-            }
-            else
-            {
-                rb.velocity = velo;
-                yield return null;
-            }
+				if (!collidesWithObjects) {
+					rb.velocity = Vector3.zero;
+					body.transform.position = new Vector3 (transform.position.x, transform.position.y, body.transform.position.z);
+					stateTransition (2);
+					yield return null;
+				} else {
+					rb.velocity = velo;
+					yield return null;
+				}
+			} else {
+				yield return null;
+			}
         }
     }
 

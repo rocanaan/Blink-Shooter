@@ -14,6 +14,9 @@ public class HealthController : MonoBehaviour {
     private float timer;
     private bool isAlive;
 
+
+	public Material highHealthMaterial; 
+
 	// Use this for initialization
 	void Start () {
         healthBar.maxValue = maxHealth;
@@ -79,7 +82,11 @@ public class HealthController : MonoBehaviour {
             if(healthBar.value < maxHealth)
             {
                 healthBar.value = healthBar.value + regenAmount;
-            }            
+            }   
+			if(healthBar.value > Mathf.RoundToInt(healthBar.maxValue/ 3)) // if regenerating above the "danger" threshhold, health bar goes green
+			{
+				SetMaterial(highHealthMaterial);
+			}
             timer = 0f;
         }
         
