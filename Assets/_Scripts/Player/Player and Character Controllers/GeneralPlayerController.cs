@@ -201,6 +201,11 @@ public class GeneralPlayerController : MonoBehaviour {
 
 				if (aimHorizontal != 0 || aimVertical != 0) {
 					transform.rotation = Quaternion.Euler (0.0f, 0.0f, angle);
+					if (Time.time >= nextShot) { // This should be refactored to avoid repeating the same commands as on the actual input action "Fire"
+						fs.fireShot();
+						sfxController.PlayClip ("Fire");
+						nextShot = Time.time + shotInterval;
+					}
 				}
 			}
 
@@ -208,7 +213,7 @@ public class GeneralPlayerController : MonoBehaviour {
 			// Get ghost action
 			if(Input.GetButtonDown("Ghost" + controllerName)){
 				//print (" Firing ghost for player " + playerID + " using controller " + controllerName);
-				ghost.ghostAction ();
+				ghost.ghostAction ("Down");
 			}
 
 			// Get fire action

@@ -2606,6 +2606,11 @@ Prefab:
       propertyPath: m_Material
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 114050677188457966, guid: 9158f12da4bead54284ad68ac4c93bfc,
+        type: 2}
+      propertyPath: timeIgnoreRelease
+      value: 0.2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9158f12da4bead54284ad68ac4c93bfc, type: 2}
   m_IsPrefabParent: 0

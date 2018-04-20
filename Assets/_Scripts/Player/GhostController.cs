@@ -18,6 +18,9 @@ public class GhostController : MonoBehaviour {
 	private CircleCollider2D col;
 	private SpriteRenderer spriteRenderer;
 
+	public float timeIgnoreRelease;
+	private float lastLaunchTime;
+
 
 
 	// TO DO: See if a better implementation is to use an enum or #define
@@ -51,15 +54,22 @@ public class GhostController : MonoBehaviour {
 		}
 	}
 
-	public void ghostAction ()
+
+	// This function will launch the ghost on a button press down and attempt to teleport on one of two conditions"
+	// a) A second  "down" input
+	// b) A release ("Up" command) of the button after timeIgnoreRelease has passed (to avoid accidentally teleporting on first release of the button)
+	public void ghostAction (string command)
 	{
-		if (state == 0){
+		if (state == 0 && command == "Down"){
 			Vector3 direction = pc.getFireDirection ();
 			rb.velocity = direction * moveSpeed;
 			stateTransition (1);
+			lastLaunchTime = Time.time;
 		}
 		else if (state == 1) {
-            StartCoroutine(TryPhasing());
+			if (command == "Down" || Time.time > lastLaunchTime + timeIgnoreRelease) {
+				StartCoroutine (TryPhasing ());
+			}
         }
 	}
 

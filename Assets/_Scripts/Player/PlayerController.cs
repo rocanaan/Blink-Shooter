@@ -172,7 +172,13 @@ public class PlayerController : MonoBehaviour {
 
 				angle = Mathf.Atan2 (aimVertical, aimHorizontal) * Mathf.Rad2Deg;
 
-				if (aimHorizontal != 0 || aimVertical != 0) {
+				if (aimHorizontal != 0 || aimVertical != 0) { // TODO: refactor so that the code does not repeat here and on the button "Fire"
+					if (Time.time >= nextShot) {
+						fs.fireShot();
+						sfxController.PlayClip ("Fire");
+						nextShot = Time.time + shotInterval;
+						lastFireTime = Time.time;
+					}
 					transform.rotation = Quaternion.Euler (0.0f, 0.0f, angle);
 				}
 			}
@@ -181,7 +187,10 @@ public class PlayerController : MonoBehaviour {
 			// Get ghost action
 			if(Input.GetButtonDown("Ghost" + controllerName)){
 				//print (" Firing ghost for player " + playerID + " using controller " + controllerName);
-				ghost.ghostAction ();
+				ghost.ghostAction ("Down");
+			}
+			if (Input.GetButtonUp ("Ghost" + controllerName)) {
+				ghost.ghostAction ("Up");
 			}
 
 			// Get fire action
