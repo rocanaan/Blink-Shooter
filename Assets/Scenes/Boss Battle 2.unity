@@ -244,7 +244,7 @@ Prefab:
     - target: {fileID: 114450220686667060, guid: 9158f12da4bead54284ad68ac4c93bfc,
         type: 2}
       propertyPath: slowedSpeed
-      value: 4
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 114840703434038736, guid: 9158f12da4bead54284ad68ac4c93bfc,
         type: 2}
@@ -1721,12 +1721,12 @@ Prefab:
     - target: {fileID: 114619540120212340, guid: 868cdacd42d374dc7be1e42198d9d630,
         type: 2}
       propertyPath: angularSpeed
-      value: 0.7
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114619540120212340, guid: 868cdacd42d374dc7be1e42198d9d630,
         type: 2}
       propertyPath: preparationTime
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 868cdacd42d374dc7be1e42198d9d630, type: 2}
@@ -2605,13 +2605,8 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 114050677188457966, guid: 9158f12da4bead54284ad68ac4c93bfc,
         type: 2}
-      propertyPath: shortDashOnEarlyRelease
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114050677188457966, guid: 9158f12da4bead54284ad68ac4c93bfc,
-        type: 2}
-      propertyPath: earlyReleaseInterval
-      value: 0.2
+      propertyPath: cooldown
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9158f12da4bead54284ad68ac4c93bfc, type: 2}

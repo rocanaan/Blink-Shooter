@@ -54,7 +54,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   angularSpeed: 1
   angleRotated: 180
-  preparationTime: 5
+  preparationTime: 1
   activationMaterial: {fileID: 2100000, guid: 8e6d510bf27a842b8b6eac3f631751f9, type: 2}
   target: {x: 0, y: 0, z: 0}
 --- !u!120 &120839669529949822
@@ -71,7 +71,7 @@ LineRenderer:
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
   m_Materials:
-  - {fileID: 2100000, guid: 57d3875c8dbde4422b703b879aa9d94f, type: 2}
+  - {fileID: 2100000, guid: c678ea8d15fcdfb4e967169c77bcbbfc, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

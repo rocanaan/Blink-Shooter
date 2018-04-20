@@ -439,7 +439,7 @@ MonoBehaviour:
   angularSpeed: 90
   moveSpeed: 20
   body: {fileID: 1760317567391870}
-  cooldown: 1
+  cooldown: 0.5
   teleportOnRepeatPress: 0
   shortDashOnEarlyRelease: 1
   earlyReleaseInterval: 0.2
