@@ -212,7 +212,7 @@ public class PlayerController : MonoBehaviour {
 			ShotAttributes shot = col.GetComponent<ShotAttributes> ();
 			if (shot.getTeamID() != teamID ) {
                 TakeDamage(shot.damage); // takeDamage handles whether player is on grace period now
-				Destroy (col.gameObject);
+                Destroy (col.gameObject);
 			}
 
 		}
@@ -246,8 +246,9 @@ public class PlayerController : MonoBehaviour {
         if (!isDead && !OnGracePeriod())
         {
             bool isAlive = playerHealth.TakeDamage(damage); // returns true if alive (health > 0)
+            myCamera.GetComponent<CameraController>().CamShake(0.2f * damage, 0.15f);
 
-            if(playerHealth.GetHealth() <= Mathf.RoundToInt(playerHealth.maxHealth / 3)) // if low on health, change the colour of the healtbar
+            if (playerHealth.GetHealth() <= Mathf.RoundToInt(playerHealth.maxHealth / 3)) // if low on health, change the colour of the healtbar
             {
                 playerHealth.SetMaterial(lowHealthMaterial);
             }

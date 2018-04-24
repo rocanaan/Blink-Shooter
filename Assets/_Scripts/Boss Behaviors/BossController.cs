@@ -39,7 +39,7 @@ public class BossController : MonoBehaviour {
     private HealthController bossHealth;
 	private MinionSpawner minionSpawner;
 	private ExpandingCircleSpawner expandingCircleSpawner;
-	private LaserSplittingAttack laserSplittingAttack; // Note: have to fix nomeclature. For circle, the prefab that just instantiates the attack is attack, and the controller is spawner. Here, attack is the controller and controller is attack
+	private LaserSplit laserSplittingAttack; // Note: have to fix nomeclature. For circle, the prefab that just instantiates the attack is attack, and the controller is spawner. Here, attack is the controller and controller is attack
 	private PlayerCircleTrapSpawner playerCircleTrapSpawner;
     private GameController gameController;
 
@@ -66,7 +66,7 @@ public class BossController : MonoBehaviour {
 		trapSpawner = GetComponentInChildren<TrapSpawner> ();
 		minionSpawner = GetComponentInChildren<MinionSpawner> ();
 		expandingCircleSpawner = GetComponentInChildren<ExpandingCircleSpawner>();
-		laserSplittingAttack = GetComponentInChildren<LaserSplittingAttack> ();
+		laserSplittingAttack = GetComponentInChildren<LaserSplit> ();
 		playerCircleTrapSpawner = GetComponentInChildren<PlayerCircleTrapSpawner> ();
 
 
@@ -205,7 +205,7 @@ public class BossController : MonoBehaviour {
 			expandingCircleSpawner.setStatus (true);
 			break;
 		case 2:
-			laserSplittingAttack.setStatus (true);
+			laserSplittingAttack.SetStatus (true);
 			break;
 		case 3:
 			playerCircleTrapSpawner.setStatus (true);
@@ -228,7 +228,7 @@ public class BossController : MonoBehaviour {
 				expandingCircleSpawner.setStatus (true);
 				break;
 			case 2:
-				laserSplittingAttack.setStatus (true);
+				laserSplittingAttack.SetStatus (true);
 				break;
 			case 3:
 				playerCircleTrapSpawner.setStatus (true);
