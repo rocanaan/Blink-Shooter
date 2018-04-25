@@ -2751,6 +2751,16 @@ Prefab:
       propertyPath: numberGuns
       value: 8
       objectReference: {fileID: 0}
+    - target: {fileID: 114505264330356616, guid: 7e641c9dfd20c41a4a5ad73725e7de64,
+        type: 2}
+      propertyPath: speed
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 114761093859606624, guid: 7e641c9dfd20c41a4a5ad73725e7de64,
+        type: 2}
+      propertyPath: speed
+      value: 8
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7e641c9dfd20c41a4a5ad73725e7de64, type: 2}
   m_IsPrefabParent: 0
