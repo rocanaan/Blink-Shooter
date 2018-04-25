@@ -9,10 +9,10 @@ public class ExplosionSpawner : MonoBehaviour {
     public float explosionDuration;
     public float explosionRadius;
     public Color explosionColor;
+    public Material explosionMaterial;
     // Use this for initialization
     void Start()
     {
-
     }
 
     // Update is called once per frame
@@ -27,7 +27,9 @@ public class ExplosionSpawner : MonoBehaviour {
         var main = newExplosion.main;
         main.startSize = explosionSize;
         main.duration = explosionDuration;
-        main.startColor = explosionColor;
+        main.startLifetime = explosionDuration;
+        newExplosion.GetComponent<Renderer>().material = explosionMaterial;
+        //main.startColor = explosionColor;
         var shape = newExplosion.shape;
         shape.radius = explosionRadius;
     }

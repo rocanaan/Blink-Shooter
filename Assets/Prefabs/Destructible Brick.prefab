@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 50501229668939570}
   - component: {fileID: 114586065470178276}
   - component: {fileID: 114695813036105072}
+  - component: {fileID: 114140598088730326}
   m_Layer: 0
   m_Name: Destructible Brick
   m_TagString: Wall
@@ -89,6 +90,23 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &114140598088730326
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1154606732077658}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4241590048c67d4385372d51f4c4b2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explosion: {fileID: 1729472084353830, guid: bfb0996311d3ecb4f9927ba4b1927422, type: 2}
+  explosionSize: 1
+  explosionDuration: 0.7
+  explosionRadius: 0.7
+  explosionColor: {r: 0, g: 0, b: 0, a: 0}
+  explosionMaterial: {fileID: 2100000, guid: 24a87224804124fdfae81e8c3aef8e87, type: 2}
 --- !u!114 &114586065470178276
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -100,7 +118,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77e71bda2e2887d409b21b2b8681762d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  explosion: {fileID: 1729472084353830, guid: bfb0996311d3ecb4f9927ba4b1927422, type: 2}
   health: 3
 --- !u!114 &114695813036105072
 MonoBehaviour:

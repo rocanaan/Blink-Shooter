@@ -40,7 +40,8 @@ public class TargettedFireBehavior : MonoBehaviour {
 				GameObject newShot = Instantiate (shot, new Vector3 (transform.position.x, transform.position.y, transform.position.z - 1), Quaternion.identity);
 				newShot.GetComponent<Rigidbody2D> ().velocity = direction * shotSpeed;
 				newShot.GetComponent<Renderer> ().material = GetComponentInParent<BossController> ().getCurrentMaterial ();
-				newShot.GetComponent<ShotAttributes> ().setTeamID (2);
+                newShot.GetComponent<ExplosionSpawner>().explosionMaterial = GetComponentInParent<BossController>().getCurrentMaterial();
+                newShot.GetComponent<ShotAttributes> ().setTeamID (2);
 
 				nextFire = Time.time + fireInterval;
 			}
