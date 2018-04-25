@@ -46,6 +46,8 @@ public class BossController : MonoBehaviour {
 	private GameObject audioSource;
     private int targetedDamage;
 
+    private AudioController soundtrackController;
+
 
 	// Use this for initialization
 	void Start () {
@@ -83,11 +85,13 @@ public class BossController : MonoBehaviour {
 
 		audioSource = GameObject.FindGameObjectWithTag ("GlobalAudioSource");
 		sfxController = audioSource.GetComponent<SoundEffectsController> ();
+        soundtrackController = audioSource.GetComponent<AudioController>();
 
-		behaviorController = GetComponent<BehaviorController> ();
+        behaviorController = GetComponent<BehaviorController> ();
 
         targetedDamage = 1;
-	}
+
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -122,8 +126,9 @@ public class BossController : MonoBehaviour {
 
 		print ("Health Ratio is " + healthRatio);
 
-		if (difficulty == 0 && healthRatio < 0.6) {
+		if (difficulty == 0 && healthRatio < 0.7) {
 			difficulty = 1;
+            soundtrackController.switchByDifficulty(difficulty);
             bossHealth.SetMaterial(difficulty1Material);
 			GetComponentsInChildren<Renderer> () [1].material = difficulty1Material;
 
@@ -137,9 +142,11 @@ public class BossController : MonoBehaviour {
 
 		}
 
-		if (difficulty == 1 && healthRatio < 0.2) {
+		if (difficulty == 1 && healthRatio < 0.4) {
 			difficulty = 2;
             targetedDamage = 2;
+            followBehavior.speed = followBehavior.speed + 1.0f;
+            soundtrackController.switchByDifficulty(difficulty);
             bossHealth.SetMaterial(difficulty2Material);
             GetComponentsInChildren<Renderer> () [1].material = difficulty2Material;
 
