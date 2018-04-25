@@ -246,6 +246,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireInterval: 1.5
   firstShotDelay: 1
+  randomFirstDelay: 1
 --- !u!114 &114300624033992156
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -261,6 +262,7 @@ MonoBehaviour:
   teamID: 2
   playerID: 2
   offset: 1
+  mat: {fileID: 0}
   shotSpeed: 10
 --- !u!114 &114854866068846764
 MonoBehaviour:

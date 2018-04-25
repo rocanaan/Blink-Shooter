@@ -107,8 +107,11 @@
      <Compile Include="Assets\DrawCircle.cs" />
      <Compile Include="Assets\ExpandingCircleAttack.cs" />
      <Compile Include="Assets\ExpandingCircleSpawner.cs" />
+     <Compile Include="Assets\LaserShooter.cs" />
+     <Compile Include="Assets\LaserSplit.cs" />
      <Compile Include="Assets\LaserSplittingAttack.cs" />
      <Compile Include="Assets\PlayerCircleTrapSpawner.cs" />
+     <Compile Include="Assets\TestBossController.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

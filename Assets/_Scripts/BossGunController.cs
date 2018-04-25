@@ -7,6 +7,7 @@ public class BossGunController : MonoBehaviour {
 	public float fireInterval;
 	public float firstShotDelay;
 	private float nextFire;
+	public bool randomFirstDelay;
 
 	private SoundEffectsController globalSFXController;
 
@@ -14,7 +15,11 @@ public class BossGunController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		nextFire = Time.time + firstShotDelay;
+		if (randomFirstDelay) {
+			nextFire = Time.time + Random.Range (0, firstShotDelay);
+		} else {
+			nextFire = Time.time + firstShotDelay;
+		}
 		fs = GetComponent<FireShot> ();
 
 		globalSFXController = GameObject.FindGameObjectWithTag ("GlobalAudioSource").GetComponent<SoundEffectsController> ();

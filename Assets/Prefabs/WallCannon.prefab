@@ -124,6 +124,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   fireInterval: 1
   firstShotDelay: 0.75
+  randomFirstDelay: 1
 --- !u!114 &114256804630356960
 MonoBehaviour:
   m_ObjectHideFlags: 1
