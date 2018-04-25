@@ -501,7 +501,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4833804944259394, guid: e5d5f33a44804d940bd6b542ae7d7b89, type: 2}
       propertyPath: m_RootOrder
-      value: 6
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1154606732077658, guid: e5d5f33a44804d940bd6b542ae7d7b89, type: 2}
       propertyPath: m_Name
@@ -603,7 +603,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4833804944259394, guid: e5d5f33a44804d940bd6b542ae7d7b89, type: 2}
       propertyPath: m_RootOrder
-      value: 3
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1154606732077658, guid: e5d5f33a44804d940bd6b542ae7d7b89, type: 2}
       propertyPath: m_Name
@@ -787,6 +787,16 @@ Prefab:
     - target: {fileID: 4829113794357744, guid: 62ceb9f62a8dc4a9297006834f475f6d, type: 2}
       propertyPath: m_RootOrder
       value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 114621535576538376, guid: 62ceb9f62a8dc4a9297006834f475f6d,
+        type: 2}
+      propertyPath: numRepetitions
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114621535576538376, guid: 62ceb9f62a8dc4a9297006834f475f6d,
+        type: 2}
+      propertyPath: delay
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 62ceb9f62a8dc4a9297006834f475f6d, type: 2}
@@ -1876,7 +1886,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4833804944259394, guid: e5d5f33a44804d940bd6b542ae7d7b89, type: 2}
       propertyPath: m_RootOrder
-      value: 7
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1154606732077658, guid: e5d5f33a44804d940bd6b542ae7d7b89, type: 2}
       propertyPath: m_Name
@@ -2360,7 +2370,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4833804944259394, guid: e5d5f33a44804d940bd6b542ae7d7b89, type: 2}
       propertyPath: m_RootOrder
-      value: 4
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 1154606732077658, guid: e5d5f33a44804d940bd6b542ae7d7b89, type: 2}
       propertyPath: m_Name
@@ -2628,7 +2638,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4833804944259394, guid: e5d5f33a44804d940bd6b542ae7d7b89, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e5d5f33a44804d940bd6b542ae7d7b89, type: 2}
@@ -2759,7 +2769,12 @@ Prefab:
     - target: {fileID: 114761093859606624, guid: 7e641c9dfd20c41a4a5ad73725e7de64,
         type: 2}
       propertyPath: speed
-      value: 8
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 114471483840209860, guid: 7e641c9dfd20c41a4a5ad73725e7de64,
+        type: 2}
+      propertyPath: angularSpeed
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7e641c9dfd20c41a4a5ad73725e7de64, type: 2}
@@ -2782,7 +2797,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthBar: {fileID: 573494803}
   fill: {fileID: 1171458830}
-  maxHealth: 100
+  maxHealth: 15
   singleRegenTime: 2
   regenAmount: 0
   highHealthMaterial: {fileID: 0}
@@ -3469,7 +3484,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4833804944259394, guid: e5d5f33a44804d940bd6b542ae7d7b89, type: 2}
       propertyPath: m_RootOrder
-      value: 5
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 1154606732077658, guid: e5d5f33a44804d940bd6b542ae7d7b89, type: 2}
       propertyPath: m_Name

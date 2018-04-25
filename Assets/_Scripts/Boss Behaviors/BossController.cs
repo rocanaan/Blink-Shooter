@@ -144,6 +144,8 @@ public class BossController : MonoBehaviour {
 			wallGunSpawner.gunsPerWall *= 2;
 			targetFire.fireInterval /= 2;
 
+			expandingCircleSpawner.numRepetitions *= 5;
+
 			ToggleMovement ("Follow");
 
 			//trapSpawner.FireTrap ();
