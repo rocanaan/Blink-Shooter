@@ -38,7 +38,7 @@ public class GameController : MonoBehaviour {
 
 	public Text gameOverText;
 
-	private static bool gameOver;
+	public static bool gameOver;
 
 	private int currentKeyboardInput;
 
