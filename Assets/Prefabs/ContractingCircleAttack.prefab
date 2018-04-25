@@ -61,7 +61,7 @@ MonoBehaviour:
   followDuringPreparation: 1
   followDuringExpansion: 0
   damageDuringPreparation: 0
-  damage: 1
+  damage: 2
   activationMaterial: {fileID: 2100000, guid: 8e6d510bf27a842b8b6eac3f631751f9, type: 2}
 --- !u!120 &120801467903585534
 LineRenderer:

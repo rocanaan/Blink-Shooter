@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class LaserSpawnerController : MonoBehaviour {
 
+    public int laserDamage;
 	public float angularSpeed;
 	public float angleRotated;
 	public float preparationTime;
@@ -70,7 +71,7 @@ public class LaserSpawnerController : MonoBehaviour {
 					if (col.tag == "Player" && hit.distance < distanceFirstWall) {
 						print ("player should be taking damage");
 						PlayerController pc = col.GetComponent<PlayerController> ();
-						pc.TakeDamage (1);
+						pc.TakeDamage (laserDamage);
 					}
 				}
 

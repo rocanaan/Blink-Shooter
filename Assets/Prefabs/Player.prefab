@@ -606,7 +606,7 @@ MonoBehaviour:
   playerID: 1
   offset: 1.2
   mat: {fileID: 2100000, guid: 3750ee820efbf4bfb8d7d218ac766855, type: 2}
-  shotSpeed: 25
+  shotSpeed: 40
 --- !u!114 &114905211261058006
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -694,7 +694,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 1579671579
+  randomSeed: 1445219797
   InitialModule:
     serializedVersion: 3
     enabled: 1

@@ -19,11 +19,13 @@ public class TargettedFireBehavior : MonoBehaviour {
 
 	private GameObject[] players;
 	private GameController gameController;
+    private int damage;
 
 
 	// Use this for initialization
 	void Start () {
-		setStatus (activateOnStartup); //activates the behavior on startup if that flag is set to true
+        damage = 1;
+        setStatus(activateOnStartup, damage); //activates the behavior on startup if that flag is set to true
 
 		gameController = GameObject.FindGameObjectWithTag ("GameController").GetComponent<GameController> ();
 		players = gameController.getAllPlayers ();
@@ -49,11 +51,12 @@ public class TargettedFireBehavior : MonoBehaviour {
 		}
 	}
 
-	public void setStatus(bool status){
+	public void setStatus(bool status, int shotDamage){
 		statusActive = status;
 		if (status) {
 			nextFire = Time.time + firstShotDelay;
 			targetPlayerIndex = 0;
+            damage = shotDamage;
 		}
 	}
 }

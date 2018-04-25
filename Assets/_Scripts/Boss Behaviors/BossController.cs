@@ -44,6 +44,7 @@ public class BossController : MonoBehaviour {
     private GameController gameController;
 
 	private GameObject audioSource;
+    private int targetedDamage;
 
 
 	// Use this for initialization
@@ -84,6 +85,8 @@ public class BossController : MonoBehaviour {
 		sfxController = audioSource.GetComponent<SoundEffectsController> ();
 
 		behaviorController = GetComponent<BehaviorController> ();
+
+        targetedDamage = 1;
 	}
 	
 	// Update is called once per frame
@@ -136,6 +139,7 @@ public class BossController : MonoBehaviour {
 
 		if (difficulty == 1 && healthRatio < 0.2) {
 			difficulty = 2;
+            targetedDamage = 2;
             bossHealth.SetMaterial(difficulty2Material);
             GetComponentsInChildren<Renderer> () [1].material = difficulty2Material;
 
@@ -201,7 +205,7 @@ public class BossController : MonoBehaviour {
 		print ("Selected behavior is " + firstBehavior);
 		switch (firstBehavior) {
 		case 0:
-			targetFire.setStatus (true);
+			targetFire.setStatus (true, targetedDamage);
 			break;
 		case 1:
 			expandingCircleSpawner.setStatus (true);
@@ -224,7 +228,7 @@ public class BossController : MonoBehaviour {
 			}
 			switch (secondBehavior) {
 			case 0:
-				targetFire.setStatus (true);
+				targetFire.setStatus (true, targetedDamage);
 				break;
 			case 1:
 				expandingCircleSpawner.setStatus (true);
@@ -252,7 +256,7 @@ public class BossController : MonoBehaviour {
 		shieldSpawner.setStatus (false);
 		gunSpawner.setStatus (false);
 		//wallGunSpawner.setStatus (false);
-		targetFire.setStatus (false);
+		targetFire.setStatus (false, targetedDamage);
 		directionalShieldSpawner.setStatus (false);
 		expandingCircleSpawner.setStatus (false);
 		playerCircleTrapSpawner.setStatus (false);

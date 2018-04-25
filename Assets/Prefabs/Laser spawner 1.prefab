@@ -52,6 +52,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ce569945ac5854ff08c021f6b48cebd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  laserDamage: 2
   angularSpeed: 1
   angleRotated: 180
   preparationTime: 1
