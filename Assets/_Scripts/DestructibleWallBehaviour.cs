@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class DestructibleWallBehaviour : MonoBehaviour {
-
-    public GameObject explosion;
+    
     public int health = 3;
 
     private GameObject cam;
@@ -32,7 +31,6 @@ public class DestructibleWallBehaviour : MonoBehaviour {
             if (health == 0)
             {
                 cam.GetComponent<CameraController>().CamShake(0.2f, 0.15f);
-                Instantiate(explosion, transform.position, transform.rotation);
                 Destroy(gameObject);
                 //globalSFXController.PlayClip("WallGunExplosion");
             }

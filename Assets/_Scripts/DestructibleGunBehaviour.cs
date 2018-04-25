@@ -3,13 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class DestructibleGunBehaviour : MonoBehaviour {
-    public GameObject explosionParticle;
     public int health = 3;
 
     private FireShot fs;
     private BlinkAnimation blinkAnimation;
     private GameObject cam;
-
 	private SoundEffectsController globalSFXController;
 
     // Use this for initialization
@@ -41,7 +39,6 @@ public class DestructibleGunBehaviour : MonoBehaviour {
             {
                 cam.GetComponent<CameraController>().CamShake(0.2f, 0.15f);
                 col.GetComponent<SpriteRenderer>().enabled = false;
-                Instantiate(explosionParticle, transform.position, transform.rotation);
                 Destroy(gameObject);
 				globalSFXController.PlayClip ("WallGunExplosion");
             }

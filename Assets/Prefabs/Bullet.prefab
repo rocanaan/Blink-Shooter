@@ -179,10 +179,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   explosion: {fileID: 1729472084353830, guid: bfb0996311d3ecb4f9927ba4b1927422, type: 2}
-  explosionSize: 0.1
+  explosionSize: 0.6
   explosionDuration: 0.4
-  explosionRadius: 0.4
+  explosionRadius: 0.5
   explosionColor: {r: 0.9632353, g: 0.070826136, b: 0.070826136, a: 1}
+  explosionMaterial: {fileID: 0}
 --- !u!114 &114484592285498572
 MonoBehaviour:
   m_ObjectHideFlags: 1
