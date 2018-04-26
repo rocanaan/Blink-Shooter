@@ -56,7 +56,7 @@ MonoBehaviour:
   startingRadius: 1
   finalRadius: 40
   radiusStep: 0.1
-  collisionWidth: 0.5
+  collisionWidth: 0.3
   preparationDuration: 0
   followDuringPreparation: 1
   followDuringExpansion: 0

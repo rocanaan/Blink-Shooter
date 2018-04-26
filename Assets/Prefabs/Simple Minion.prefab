@@ -110,7 +110,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.6
 --- !u!114 &114316672119309558
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -144,6 +144,7 @@ MonoBehaviour:
   explosionDuration: 0.5
   explosionRadius: 0.4
   explosionColor: {r: 1, g: 0.6413794, b: 0, a: 1}
+  explosionMaterial: {fileID: 0}
 --- !u!114 &114561598570175200
 MonoBehaviour:
   m_ObjectHideFlags: 1
