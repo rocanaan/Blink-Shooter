@@ -93,7 +93,7 @@ public class GhostController : MonoBehaviour {
 				Vector3 velo = rb.velocity;
 				rb.velocity = Vector3.zero;
 				Vector2 pos = new Vector2 (transform.position.x, transform.position.y);
-				Collider2D[] colliders = Physics2D.OverlapCircleAll (pos, 0.3f);
+				Collider2D[] colliders = Physics2D.OverlapCircleAll (pos, 0.25f);
 				bool collidesWithObjects = false;
 				foreach (Collider2D col in colliders) {
 					if (!col.gameObject.CompareTag ("Shot") && !col.gameObject.CompareTag ("Ghost") && !col.gameObject.CompareTag ("Laser")) {

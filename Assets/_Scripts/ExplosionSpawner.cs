@@ -8,7 +8,7 @@ public class ExplosionSpawner : MonoBehaviour {
     public float explosionSize;
     public float explosionDuration;
     public float explosionRadius;
-    public Color explosionColor;
+    //public Color explosionColor;
     public Material explosionMaterial;
     // Use this for initialization
     void Start()
@@ -21,7 +21,7 @@ public class ExplosionSpawner : MonoBehaviour {
 
     }
 
-    private void OnDestroy()
+    public void SpawnExplosion()
     {
         if (GameController.gameOver == false)
         {
@@ -30,10 +30,14 @@ public class ExplosionSpawner : MonoBehaviour {
             main.startSize = explosionSize;
             main.duration = explosionDuration;
             main.startLifetime = explosionDuration;
-            newExplosion.GetComponent<Renderer>().material = explosionMaterial;
-            //main.startColor = explosionColor;
+            main.startColor = explosionMaterial.color;
             var shape = newExplosion.shape;
             shape.radius = explosionRadius;
         }
+    }
+
+    private void OnDestroy()
+    {
+        SpawnExplosion();
     }
 }

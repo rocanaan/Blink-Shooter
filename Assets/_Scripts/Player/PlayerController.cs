@@ -25,6 +25,7 @@ public class PlayerController : MonoBehaviour {
     private SoundEffectsController sfxController;
     private GameController gameController;
     private GhostController ghost;
+    private ExplosionSpawner explosionSpawner;
 	private float nextShot; // time when the next shot can be fired
 	private Rigidbody2D rb;
 	private Camera myCamera;
@@ -47,6 +48,7 @@ public class PlayerController : MonoBehaviour {
 		rb = GetComponent<Rigidbody2D> ();
 		fs = transform.GetComponent<FireShot> ();
         blinkAnimation = GetComponent<BlinkAnimation>();
+        explosionSpawner = GetComponent<ExplosionSpawner>();
         playerHealth = GetComponent<HealthController>();
         playerHealth.SetMaterial(healthMaterial);
         bodyMaterial = transform.GetComponent<Renderer>().material;
@@ -241,12 +243,13 @@ public class PlayerController : MonoBehaviour {
 		}
 	}
 
-	public void TakeDamage (int damage)
+    public void TakeDamage (int damage)
     {
         if (!isDead && !OnGracePeriod())
         {
             bool isAlive = playerHealth.TakeDamage(damage); // returns true if alive (health > 0)
-            myCamera.GetComponent<CameraController>().CamShake(0.2f * damage, 0.15f);
+            myCamera.GetComponent<CameraController>().CamShake(0.2f * damage, 0.15f * damage);
+            explosionSpawner.SpawnExplosion();
 
             if (playerHealth.GetHealth() <= Mathf.RoundToInt(playerHealth.maxHealth / 3)) // if low on health, change the colour of the healtbar
             {
@@ -291,8 +294,7 @@ public class PlayerController : MonoBehaviour {
 		} else {
 			respawnAllowed = false;
 		}
-
-		//transform.parent.transform.position = new Vector3 (Random.Range (-9, 9), Random.Range (-5, 5), transform.position.z);
+        
 	}
 
 	bool OnGracePeriod(){
