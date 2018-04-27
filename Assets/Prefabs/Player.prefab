@@ -296,7 +296,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.35
+  m_Radius: 0.21
 --- !u!82 &82904485846162324
 AudioSource:
   m_ObjectHideFlags: 1
@@ -417,9 +417,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 0}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 8
+  m_MaxValue: 12
   m_WholeNumbers: 1
-  m_Value: 8
+  m_Value: 12
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -545,7 +545,7 @@ MonoBehaviour:
   healthBar: {fileID: 114035592649764454}
   fill: {fileID: 114905211261058006}
   maxHealth: 10
-  singleRegenTime: 5
+  singleRegenTime: 3
   regenAmount: 1
   highHealthMaterial: {fileID: 2100000, guid: c678ea8d15fcdfb4e967169c77bcbbfc, type: 2}
 --- !u!114 &114784416694420922
@@ -694,7 +694,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 632250786
+  randomSeed: -1787662429
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -846,7 +846,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.2
+      scalar: 0.4
       minScalar: 1
       maxCurve:
         serializedVersion: 2

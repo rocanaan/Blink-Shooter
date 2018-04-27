@@ -74,7 +74,7 @@ public class BossController : MonoBehaviour {
 
 
 
-		wallGunSpawner.setStatus (true);
+		//wallGunSpawner.setStatus (true);
 
 		nextBehaviorStartTime = Time.time + behaviorDelay;
 		nextBehaviorEndTime = nextBehaviorStartTime + behaviorDuration;
@@ -133,12 +133,15 @@ public class BossController : MonoBehaviour {
 			GetComponentsInChildren<Renderer> () [1].material = difficulty1Material;
 
 			deactivateBehaviors ();
-			minionSpawner.SpawnMinions (6,3);
+			//minionSpawner.SpawnMinions (6,3);
 
 
 
 //			shieldSpawner.setStatus (true);
 //			wallGunSpawner.setStatus (false);
+
+			wallGunSpawner.setStatus (true);
+
 
 		}
 
@@ -166,6 +169,8 @@ public class BossController : MonoBehaviour {
 //			gunSpawner.setStatus (true);
 			wallGunSpawner.gunsPerWall = 2;
 //			wallGunSpawner.setStatus (true);
+
+			minionSpawner.SpawnMinions (6,3);
 
 
 

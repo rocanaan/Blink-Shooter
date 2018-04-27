@@ -54,5 +54,5 @@ MonoBehaviour:
   laserSpawnerPrefab: {fileID: 1249636950947064, guid: b234e802d4d444b4ca9611d7105c06b7,
     type: 2}
   angularSpeed: 2
-  preparationTime: 1
+  preparationTime: 2
   maxArcTraveled: 180

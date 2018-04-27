@@ -2482,7 +2482,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthBar: {fileID: 573494803}
   fill: {fileID: 1171458830}
-  maxHealth: 100
+  maxHealth: 80
   singleRegenTime: 2
   regenAmount: 0
   highHealthMaterial: {fileID: 0}
@@ -2632,15 +2632,10 @@ Prefab:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 198330783226079906, guid: 9158f12da4bead54284ad68ac4c93bfc,
+    - target: {fileID: 114683988685659134, guid: 9158f12da4bead54284ad68ac4c93bfc,
         type: 2}
-      propertyPath: InitialModule.startSize.scalar
-      value: 0.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 198330783226079906, guid: 9158f12da4bead54284ad68ac4c93bfc,
-        type: 2}
-      propertyPath: randomSeed
-      value: 632250786
+      propertyPath: singleRegenTime
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9158f12da4bead54284ad68ac4c93bfc, type: 2}
