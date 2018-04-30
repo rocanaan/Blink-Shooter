@@ -5,9 +5,11 @@ using UnityEngine;
 public class BlinkAnimation : MonoBehaviour {
 
     public float blinkTime;
+	public float waitTime;
 
     private bool isBlinking;
     private float timeStopBlinking;
+	private float timeAbleToBlink;
     private SpriteRenderer body;
 
     // Use this for initialization
@@ -25,14 +27,20 @@ public class BlinkAnimation : MonoBehaviour {
         if (isBlinking && Time.time > timeStopBlinking)
         {
             body.enabled = true;
-            isBlinking = false;
         }
+		if (isBlinking && Time.time > timeAbleToBlink)
+		{
+			isBlinking = false;
+		}
     }
 
     public void startAnimation()
     {
-        isBlinking = true;
-        body.enabled = false;
-        timeStopBlinking = Time.time + blinkTime;
+		if (!isBlinking) {
+			isBlinking = true;
+			body.enabled = false;
+			timeStopBlinking = Time.time + blinkTime;
+			timeAbleToBlink = timeStopBlinking + waitTime;
+		}
     }
 }

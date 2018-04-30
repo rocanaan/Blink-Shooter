@@ -114,6 +114,7 @@ GameObject:
   - component: {fileID: 114683988685659134}
   - component: {fileID: 198330783226079906}
   - component: {fileID: 199813728071149786}
+  - component: {fileID: 114131069671731500}
   m_Layer: 0
   m_Name: Player 1 Body
   m_TagString: Player
@@ -464,6 +465,22 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
+--- !u!114 &114131069671731500
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1760317567391870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4241590048c67d4385372d51f4c4b2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explosion: {fileID: 1729472084353830, guid: bfb0996311d3ecb4f9927ba4b1927422, type: 2}
+  explosionSize: 0.8
+  explosionDuration: 0.5
+  explosionRadius: 1
+  explosionMaterial: {fileID: 2100000, guid: 513d9d1d83604a8488bd5e89557db6cb, type: 2}
 --- !u!114 &114226616776288576
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -521,7 +538,7 @@ MonoBehaviour:
   ghostObject: {fileID: 1442923138287106}
   playerID: 1
   teamID: 1
-  shotInterval: 0.25
+  shotInterval: 0.1
   timeStunned: 0.1
   speedStunned: 35
   gracePeriod: 0.5
@@ -545,7 +562,7 @@ MonoBehaviour:
   healthBar: {fileID: 114035592649764454}
   fill: {fileID: 114905211261058006}
   maxHealth: 10
-  singleRegenTime: 3
+  singleRegenTime: 5
   regenAmount: 1
   highHealthMaterial: {fileID: 2100000, guid: c678ea8d15fcdfb4e967169c77bcbbfc, type: 2}
 --- !u!114 &114784416694420922

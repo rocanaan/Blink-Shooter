@@ -1611,22 +1611,6 @@ GameObject:
   m_PrefabParentObject: {fileID: 1760317567391870, guid: 9158f12da4bead54284ad68ac4c93bfc,
     type: 2}
   m_PrefabInternal: {fileID: 1349107630}
---- !u!114 &794854292
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 794854281}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b4241590048c67d4385372d51f4c4b2a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  explosion: {fileID: 1729472084353830, guid: bfb0996311d3ecb4f9927ba4b1927422, type: 2}
-  explosionSize: 0.8
-  explosionDuration: 0.5
-  explosionRadius: 1
-  explosionMaterial: {fileID: 2100000, guid: 513d9d1d83604a8488bd5e89557db6cb, type: 2}
 --- !u!1 &795496568
 GameObject:
   m_ObjectHideFlags: 0
@@ -2090,12 +2074,12 @@ Prefab:
     - target: {fileID: 224788979789411358, guid: 9158f12da4bead54284ad68ac4c93bfc,
         type: 2}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 224788979789411358, guid: 9158f12da4bead54284ad68ac4c93bfc,
         type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114683988685659134, guid: 9158f12da4bead54284ad68ac4c93bfc,
         type: 2}
@@ -2727,6 +2711,16 @@ Prefab:
       propertyPath: m_SortingOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114022537812436982, guid: 7e641c9dfd20c41a4a5ad73725e7de64,
+        type: 2}
+      propertyPath: blinkTime
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114022537812436982, guid: 7e641c9dfd20c41a4a5ad73725e7de64,
+        type: 2}
+      propertyPath: waitTime
+      value: 0.2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7e641c9dfd20c41a4a5ad73725e7de64, type: 2}
   m_IsPrefabParent: 0
@@ -2748,7 +2742,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthBar: {fileID: 1296711202}
   fill: {fileID: 213260056}
-  maxHealth: 80
+  maxHealth: 240
   singleRegenTime: 2
   regenAmount: 0
   highHealthMaterial: {fileID: 0}
@@ -3076,11 +3070,6 @@ Prefab:
       propertyPath: m_AnchorMax.y
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 114683988685659134, guid: 9158f12da4bead54284ad68ac4c93bfc,
-        type: 2}
-      propertyPath: singleRegenTime
-      value: 5
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9158f12da4bead54284ad68ac4c93bfc, type: 2}
   m_IsPrefabParent: 0
@@ -3193,6 +3182,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blinkTime: 0.1
+  waitTime: 0
 --- !u!212 &1384918562
 SpriteRenderer:
   m_ObjectHideFlags: 0
