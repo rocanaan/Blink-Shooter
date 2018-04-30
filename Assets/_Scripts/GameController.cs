@@ -119,13 +119,22 @@ public class GameController : MonoBehaviour {
 
                 return;
             }
+            else
+            {
+                players[0].GetComponent<HealthController>().StopRegeneration();
+                players[0].GetComponent<ParticleSystem>().Pause();
+                players[0].GetComponent<ParticleSystem>().Clear();
+                players[1].GetComponent<HealthController>().StopRegeneration();
+                players[1].GetComponent<ParticleSystem>().Pause();
+                players[1].GetComponent<ParticleSystem>().Clear();
+            }
         }
-        players[0].GetComponent<HealthController>().StopRegeneration();
-        players[0].GetComponent<ParticleSystem>().Pause();
-        players[0].GetComponent<ParticleSystem>().Clear();
-        players[1].GetComponent<HealthController>().StopRegeneration();
-        players[1].GetComponent<ParticleSystem>().Pause();
-        players[1].GetComponent<ParticleSystem>().Clear();
+        //players[0].GetComponent<HealthController>().StopRegeneration();
+        //players[0].GetComponent<ParticleSystem>().Pause();
+        //players[0].GetComponent<ParticleSystem>().Clear();
+        //players[1].GetComponent<HealthController>().StopRegeneration();
+        //players[1].GetComponent<ParticleSystem>().Pause();
+        //players[1].GetComponent<ParticleSystem>().Clear();
     }
 	public void notifyDeath(int playerID, int teamID){
 		numPlayersAliveByTeam [teamID] -= 1;

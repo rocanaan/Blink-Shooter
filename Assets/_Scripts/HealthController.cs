@@ -36,12 +36,11 @@ public class HealthController : MonoBehaviour {
 
     public void StopRegeneration()
     {
-        //if (regenerate)
-        //{
-        //    regenerate = false;
-        //    StopCoroutine(Regenerate());
-        //}
-        regenerate = false;
+        if (regenerate)
+        {
+            regenerate = false;
+            StopCoroutine(Regenerate());
+        }
     }
 
     public bool TakeDamage(int damage)
@@ -74,22 +73,25 @@ public class HealthController : MonoBehaviour {
     {
         while (regenerate)
         {
-            while (timer < singleRegenTime)
+            while (regenerate && timer < singleRegenTime)
             {
                 timer += Time.deltaTime;
                 yield return null;
             }
-            if(healthBar.value < maxHealth)
+            if(timer >= singleRegenTime) // means regeneration was not interrupted
             {
-                healthBar.value = healthBar.value + regenAmount;
-            }   
-			if(healthBar.value > Mathf.RoundToInt(healthBar.maxValue/ 3)) // if regenerating above the "danger" threshhold, health bar goes green
-			{
-				SetMaterial(highHealthMaterial);
-			}
+                if (healthBar.value < maxHealth)
+                {
+                    healthBar.value = healthBar.value + regenAmount;
+                }
+                if (healthBar.value > Mathf.RoundToInt(healthBar.maxValue / 3)) // if regenerating above the "danger" threshhold, health bar goes green
+                {
+                    SetMaterial(highHealthMaterial);
+                }                
+            }
+
             timer = 0f;
-        }
-        
+        }        
     }
 
     public void Respawn()
