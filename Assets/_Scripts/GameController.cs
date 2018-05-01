@@ -33,8 +33,9 @@ public class GameController : MonoBehaviour {
 	public int respawnTime;
 
 	public GameObject[] players;
+    public GameObject[] playerIndicators;
 
-	private int[] numPlayersAliveByTeam;
+    private int[] numPlayersAliveByTeam;
 
 	public Text gameOverText;
 
@@ -112,21 +113,24 @@ public class GameController : MonoBehaviour {
                 players[0].transform.position, players[1].transform.position);
             if (playerDistance <= healthRegenRange)
             {
-                players[0].GetComponent<HealthController>().StartRegeneration();
-                players[0].GetComponent<ParticleSystem>().Play();
-                players[1].GetComponent<HealthController>().StartRegeneration();
-                players[1].GetComponent<ParticleSystem>().Play();
-
+                for (int i = 0; i < 2; i++)
+                {
+                    players[i].GetComponent<HealthController>().StartRegeneration();
+                    players[i].GetComponent<ParticleSystem>().Play();
+                    playerIndicators[i].GetComponent<ParticleSystem>().Play();
+                }
                 return;
             }
             else
             {
-                players[0].GetComponent<HealthController>().StopRegeneration();
-                players[0].GetComponent<ParticleSystem>().Pause();
-                players[0].GetComponent<ParticleSystem>().Clear();
-                players[1].GetComponent<HealthController>().StopRegeneration();
-                players[1].GetComponent<ParticleSystem>().Pause();
-                players[1].GetComponent<ParticleSystem>().Clear();
+                for(int i=0; i<2; i++)
+                {
+                    players[i].GetComponent<HealthController>().StopRegeneration();
+                    players[i].GetComponent<ParticleSystem>().Pause();
+                    players[i].GetComponent<ParticleSystem>().Clear();
+                    playerIndicators[i].GetComponent<ParticleSystem>().Pause();
+                    playerIndicators[i].GetComponent<ParticleSystem>().Clear();
+                }
             }
         }
         //players[0].GetComponent<HealthController>().StopRegeneration();
