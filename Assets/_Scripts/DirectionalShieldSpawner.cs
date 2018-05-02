@@ -63,6 +63,7 @@ public class DirectionalShieldSpawner : MonoBehaviour {
 			transform.right = targetPlayer.transform.position - transform.position;
 //				shieldList.Add (shield);
 			shield.GetComponent<Renderer> ().material = GetComponentInParent<BossController> ().getCurrentMaterial();
+			shield.GetComponent<ExplosionSpawner>().explosionMaterial = GetComponentInParent<BossController> ().getCurrentMaterial();
 			//GetComponentInParent<BossController>().ToggleMovement ("Follow");
 
 		}
