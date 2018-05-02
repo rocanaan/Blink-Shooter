@@ -100,6 +100,7 @@ public class HealthController : MonoBehaviour {
         {
             isAlive = true;
             healthBar.value = maxHealth;
+            SetMaterial(highHealthMaterial);
         }
     }
 

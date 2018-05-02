@@ -32,12 +32,14 @@ public class GameController : MonoBehaviour {
 
 	public int respawnTime;
 
+    public int respawnLives;
 	public GameObject[] players;
     public GameObject[] playerIndicators;
     
     private int[] numPlayersAliveByTeam;
 
 	public Text gameOverText;
+    public TextMesh respawnText;
 
 	public static bool gameOver;
 
@@ -77,7 +79,8 @@ public class GameController : MonoBehaviour {
 
 		totalDeaths = 0;
 
-		//respawns = new Queue<RespawnEvent> ();
+        //respawns = new Queue<RespawnEvent> ();
+        SetRespawnText();
 
 	}
 	
@@ -157,17 +160,34 @@ public class GameController : MonoBehaviour {
 				setGameOver (1);
 			}
 		}
-		if (numPlayersAliveByTeam [teamID] <= 0 && gameMode == GameMode.Boss) {
+		if (respawnLives < 0 && numPlayersAliveByTeam [teamID] <= 0 && gameMode == GameMode.Boss) {
 			setGameOver (2);
 		}
 	}
 
 	public int getRespawnTime (){
-		if (gameMode == GameMode.Survival || gameMode == GameMode.Boss) {
-			return -1;
-		} else {
-			return respawnTime;
-		}
+        if (gameMode == GameMode.Survival /*|| gameMode == GameMode.Boss*/)
+        {
+            return -1;
+        }
+        else if (gameMode == GameMode.Boss)
+        {
+            if (respawnLives > 0)
+            {
+                respawnLives = respawnLives - 1;
+                SetRespawnText();
+                return respawnTime;
+            }
+            else
+            {
+                respawnLives = respawnLives - 1;
+                return -1;
+            }
+        }
+        else
+        {
+            return -1;
+        }
 	}
 
 //	public void notifyTutorial(){
@@ -256,4 +276,9 @@ public class GameController : MonoBehaviour {
 	public GameObject[] getAllPlayers(){
 		return players;
 	}
+
+    private void SetRespawnText()
+    {
+        respawnText.text = "Lives: " + respawnLives;
+    }
 }
