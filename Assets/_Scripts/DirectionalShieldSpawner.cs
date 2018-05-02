@@ -17,6 +17,9 @@ public class DirectionalShieldSpawner : MonoBehaviour {
 	private GameObject[] players;
 	private GameObject targetPlayer;
 
+	public int health;
+	public float resummonDelay;
+	public float blinkOnDamageTime;
 
 	private bool statusActive;
 
