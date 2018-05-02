@@ -388,7 +388,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -1763844682
+  randomSeed: -1209681467
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -4368,7 +4368,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 12.7
+  orthographic size: 13.2
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -4589,7 +4589,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -1763844682
+  randomSeed: 130529195
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -8190,12 +8190,12 @@ Prefab:
     - target: {fileID: 224788979789411358, guid: 9158f12da4bead54284ad68ac4c93bfc,
         type: 2}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224788979789411358, guid: 9158f12da4bead54284ad68ac4c93bfc,
         type: 2}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114683988685659134, guid: 9158f12da4bead54284ad68ac4c93bfc,
         type: 2}
@@ -8331,6 +8331,21 @@ Prefab:
     - target: {fileID: 4701307350701608, guid: 9158f12da4bead54284ad68ac4c93bfc, type: 2}
       propertyPath: m_LocalPosition.x
       value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114905211261058006, guid: 9158f12da4bead54284ad68ac4c93bfc,
+        type: 2}
+      propertyPath: m_Color.r
+      value: 0.4862745
+      objectReference: {fileID: 0}
+    - target: {fileID: 114905211261058006, guid: 9158f12da4bead54284ad68ac4c93bfc,
+        type: 2}
+      propertyPath: m_Color.g
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114905211261058006, guid: 9158f12da4bead54284ad68ac4c93bfc,
+        type: 2}
+      propertyPath: m_Color.b
+      value: 0.7490196
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 50198888114822708, guid: 9158f12da4bead54284ad68ac4c93bfc, type: 2}
