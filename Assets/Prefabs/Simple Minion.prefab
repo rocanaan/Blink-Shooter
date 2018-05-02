@@ -122,6 +122,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03145fe1ad862fc4a8e8a46bb5a43629, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gun: {fileID: 1957870187902530}
   speed: 4
   timeLimit: 1.5
   cooperate: 1

@@ -3,7 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class SimpleMinionController : MonoBehaviour {
-    
+
+    public GameObject gun;
     public float speed;
     public float timeLimit = 1.5f;
     public bool cooperate;
@@ -25,6 +26,8 @@ public class SimpleMinionController : MonoBehaviour {
     private bool pursuePlayer;
     private Transform playerTransform;
     private float nextShot;
+    private Material bodyMat;
+    private Material gunMat;
     //private Vector3 targetPosition;
 
 
@@ -34,12 +37,21 @@ public class SimpleMinionController : MonoBehaviour {
         rb = transform.GetComponent<Rigidbody2D>();
         blinkAnimation = transform.GetComponent<BlinkAnimation>();
         fs = transform.GetComponent<FireShot>();
+        transform.GetComponent<Collider2D>().enabled = false;
+
         rb.velocity = transform.right * speed;
         timer = timeLimit;
         pursuePlayer = false;
         //SetRandomTarget();
         currentHealth = maxHealth;
         nextShot = 0f;
+
+        bodyMat = transform.GetComponent<SpriteRenderer>().material;
+        gunMat = gun.GetComponent<SpriteRenderer>().material;
+
+        rb.bodyType = RigidbodyType2D.Static;
+        rb.sleepMode = RigidbodySleepMode2D.StartAsleep;
+        StartCoroutine(FadeAlpha());
 	}
 
     private void Update()
@@ -77,29 +89,33 @@ public class SimpleMinionController : MonoBehaviour {
         Vector2 orig = new Vector2(transform.position.x, transform.position.y) + (dir * 0.5f);       
 
         hit = Physics2D.Raycast(orig, dir, Mathf.Infinity);
-        if (hit.transform.CompareTag("Player"))
+        if(hit.transform != null)
         {
-            pursuePlayer = true;
-            playerTransform = hit.transform;
-        }
-        else if (hit.transform.CompareTag("Minion"))
-        {
-            if (cooperate)
+            if (hit.transform.CompareTag("Player"))
             {
-                Transform pursueTransform = hit.transform.GetComponent<SimpleMinionController>().GetPlayerTransform();
-                if (pursueTransform != null)
-                {
-                    pursuePlayer = true;
-                    playerTransform = pursueTransform;
-                }
+                pursuePlayer = true;
+                playerTransform = hit.transform;
             }
-            
+            else if (hit.transform.CompareTag("Minion"))
+            {
+                if (cooperate)
+                {
+                    Transform pursueTransform = hit.transform.GetComponent<SimpleMinionController>().GetPlayerTransform();
+                    if (pursueTransform != null)
+                    {
+                        pursuePlayer = true;
+                        playerTransform = pursueTransform;
+                    }
+                }
+
+            }
+            else if (!hit.transform.CompareTag("Shot"))
+            {
+                pursuePlayer = false;
+                playerTransform = null;
+            }
         }
-        else if(!hit.transform.CompareTag("Shot"))
-        {
-            pursuePlayer = false;
-            playerTransform = null;
-        }
+        
 
         if (!pursuePlayer)
         {
@@ -224,5 +240,31 @@ public class SimpleMinionController : MonoBehaviour {
             cam.GetComponent<CameraController>().CamShake(0.2f, 0.15f);
             Destroy(gameObject);
         }
+    }
+
+    private IEnumerator FadeAlpha()
+    {
+        Color bodyColor = bodyMat.color;
+        Color newBodyColor = bodyMat.color;
+        newBodyColor.a = 0f;
+        Color gunColor = gunMat.color;
+        Color newGunColor = gunMat.color;
+        newGunColor.a = 0f;
+        float fadeTimer = 0f;
+
+        while(fadeTimer < 1.5f)
+        {
+            fadeTimer = fadeTimer + Time.deltaTime;
+            bodyMat.color = Color.Lerp(bodyColor, newBodyColor, Mathf.PingPong(Time.time, 1));
+            gunMat.color = Color.Lerp(gunColor, newGunColor, Mathf.PingPong(Time.time, 1));
+            yield return null;
+        }
+
+        bodyMat.color = bodyColor;
+        gunMat.color = gunColor;
+        transform.GetComponent<Collider2D>().enabled = false;
+        rb.WakeUp();
+        rb.bodyType = RigidbodyType2D.Dynamic;
+
     }
 }
