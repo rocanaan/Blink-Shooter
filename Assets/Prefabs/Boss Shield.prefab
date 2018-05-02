@@ -117,7 +117,7 @@ MonoBehaviour:
   explosionSize: 1
   explosionDuration: 0.7
   explosionRadius: 0.7
-  explosionMaterial: {fileID: 0}
+  explosionMaterial: {fileID: 2100000, guid: 57d3875c8dbde4422b703b879aa9d94f, type: 2}
 --- !u!114 &114587772185994288
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -143,6 +143,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   health: 20
+  teamID: 2
 --- !u!212 &212190548247334092
 SpriteRenderer:
   m_ObjectHideFlags: 1

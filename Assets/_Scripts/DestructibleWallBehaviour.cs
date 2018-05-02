@@ -9,6 +9,7 @@ public class DestructibleWallBehaviour : MonoBehaviour {
     private GameObject cam;
     private BlinkAnimation blinkAnimation;
     private SoundEffectsController globalSFXController;
+	public int teamID;
 
     // Use this for initialization
     void Start () {
@@ -21,19 +22,19 @@ public class DestructibleWallBehaviour : MonoBehaviour {
     {
         if (collision.CompareTag("Shot"))
         {
-            health = health - 1;
-            Destroy(collision.gameObject);
-            if (health != 0)
-            {
-                //blinkAnimation.startAnimation();
-            }
+			if (collision.GetComponent<ShotAttributes>().getTeamID() != teamID) {
+				health = health - 1;
+				Destroy (collision.gameObject);
+				if (health != 0) {
+					//blinkAnimation.startAnimation();
+				}
 
-            if (health == 0)
-            {
-                cam.GetComponent<CameraController>().CamShake(0.2f, 0.15f);
-                Destroy(gameObject);
-                //globalSFXController.PlayClip("WallGunExplosion");
-            }
+				if (health == 0) {
+					cam.GetComponent<CameraController> ().CamShake (0.2f, 0.15f);
+					Destroy (gameObject);
+					//globalSFXController.PlayClip("WallGunExplosion");
+				}
+			}
         }
     }
 }
