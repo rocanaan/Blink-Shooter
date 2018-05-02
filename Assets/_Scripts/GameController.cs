@@ -34,7 +34,7 @@ public class GameController : MonoBehaviour {
 
 	public GameObject[] players;
     public GameObject[] playerIndicators;
-
+    
     private int[] numPlayersAliveByTeam;
 
 	public Text gameOverText;
@@ -111,7 +111,14 @@ public class GameController : MonoBehaviour {
         {
             float playerDistance = Vector3.Distance(
                 players[0].transform.position, players[1].transform.position);
-            if (playerDistance <= healthRegenRange)
+
+            bool bothAlive = false;
+            if(players[0].GetComponent<HealthController>().IsAlive() && players[1].GetComponent<HealthController>().IsAlive())
+            {
+                bothAlive = true;
+            }
+
+            if (bothAlive && playerDistance <= healthRegenRange)
             {
                 for (int i = 0; i < 2; i++)
                 {

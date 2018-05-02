@@ -262,7 +262,7 @@ public class SimpleMinionController : MonoBehaviour {
 
         bodyMat.color = bodyColor;
         gunMat.color = gunColor;
-        transform.GetComponent<Collider2D>().enabled = false;
+        transform.GetComponent<Collider2D>().enabled = true;
         rb.WakeUp();
         rb.bodyType = RigidbodyType2D.Dynamic;
 

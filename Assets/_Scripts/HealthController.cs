@@ -27,7 +27,7 @@ public class HealthController : MonoBehaviour {
 
     public void StartRegeneration()
     {
-        if (!regenerate)
+        if (!regenerate && isAlive)
         {
             regenerate = true;
             StartCoroutine(Regenerate());
@@ -71,7 +71,7 @@ public class HealthController : MonoBehaviour {
 
     private IEnumerator Regenerate()
     {
-        while (regenerate)
+        while (regenerate && isAlive)
         {
             while (regenerate && timer < singleRegenTime)
             {
@@ -109,7 +109,9 @@ public class HealthController : MonoBehaviour {
         fill.color = mat.color;
     }
 
-
-
+    public bool IsAlive()
+    {
+        return isAlive;
+    }
 
 }
