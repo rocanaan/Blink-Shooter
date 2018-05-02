@@ -289,7 +289,7 @@ ParticleSystemRenderer:
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
   m_Materials:
-  - {fileID: 2100000, guid: c678ea8d15fcdfb4e967169c77bcbbfc, type: 2}
+  - {fileID: 2100000, guid: 3750ee820efbf4bfb8d7d218ac766855, type: 2}
   - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -388,7 +388,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -1209681467
+  randomSeed: -1269284924
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -4524,6 +4524,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerBody: {fileID: 794854281}
   fill: {fileID: 1457479921}
+  highHealthMaterial: {fileID: 2100000, guid: 3750ee820efbf4bfb8d7d218ac766855, type: 2}
+  lowHealthMaterial: {fileID: 2100000, guid: 513d9d1d83604a8488bd5e89557db6cb, type: 2}
 --- !u!1 &500004908 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1962082226303496, guid: 9158f12da4bead54284ad68ac4c93bfc,
@@ -4589,7 +4591,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 130529195
+  randomSeed: -943254936
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -7905,7 +7907,7 @@ ParticleSystemRenderer:
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
   m_Materials:
-  - {fileID: 2100000, guid: c678ea8d15fcdfb4e967169c77bcbbfc, type: 2}
+  - {fileID: 2100000, guid: 7612151bd335a4723bfd3dace598d192, type: 2}
   - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -8190,12 +8192,12 @@ Prefab:
     - target: {fileID: 224788979789411358, guid: 9158f12da4bead54284ad68ac4c93bfc,
         type: 2}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 224788979789411358, guid: 9158f12da4bead54284ad68ac4c93bfc,
         type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114683988685659134, guid: 9158f12da4bead54284ad68ac4c93bfc,
         type: 2}
@@ -8361,6 +8363,7 @@ Prefab:
     - {fileID: 114050677188457966, guid: 9158f12da4bead54284ad68ac4c93bfc, type: 2}
     - {fileID: 82904485846162324, guid: 9158f12da4bead54284ad68ac4c93bfc, type: 2}
     - {fileID: 114792758509208520, guid: 9158f12da4bead54284ad68ac4c93bfc, type: 2}
+    - {fileID: 114131069671731500, guid: 9158f12da4bead54284ad68ac4c93bfc, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 9158f12da4bead54284ad68ac4c93bfc, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &764888215
@@ -9144,6 +9147,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerBody: {fileID: 1275504034}
   fill: {fileID: 1014767596}
+  highHealthMaterial: {fileID: 2100000, guid: 7612151bd335a4723bfd3dace598d192, type: 2}
+  lowHealthMaterial: {fileID: 2100000, guid: 513d9d1d83604a8488bd5e89557db6cb, type: 2}
 --- !u!1001 &1134063717
 Prefab:
   m_ObjectHideFlags: 0
