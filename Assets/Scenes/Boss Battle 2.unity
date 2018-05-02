@@ -289,7 +289,7 @@ ParticleSystemRenderer:
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
   m_Materials:
-  - {fileID: 2100000, guid: c678ea8d15fcdfb4e967169c77bcbbfc, type: 2}
+  - {fileID: 2100000, guid: 3750ee820efbf4bfb8d7d218ac766855, type: 2}
   - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -388,7 +388,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 1946899667
+  randomSeed: -1269284924
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -4237,12 +4237,12 @@ Prefab:
     - target: {fileID: 114621535576538376, guid: 62ceb9f62a8dc4a9297006834f475f6d,
         type: 2}
       propertyPath: numRepetitions
-      value: 4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114621535576538376, guid: 62ceb9f62a8dc4a9297006834f475f6d,
         type: 2}
       propertyPath: delay
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 62ceb9f62a8dc4a9297006834f475f6d, type: 2}
@@ -4312,7 +4312,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   laserSpawnerPrefab: {fileID: 1226654161382898, guid: d693e663eba95fe458505a5825e5e926,
     type: 2}
-  angularSpeed: 0.5
+  angularSpeed: 1
   preparationTime: 1
   maxArcTraveled: 180
 --- !u!1 &412397613
@@ -4524,6 +4524,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerBody: {fileID: 794854281}
   fill: {fileID: 1457479921}
+  highHealthMaterial: {fileID: 2100000, guid: 3750ee820efbf4bfb8d7d218ac766855, type: 2}
+  lowHealthMaterial: {fileID: 2100000, guid: 513d9d1d83604a8488bd5e89557db6cb, type: 2}
 --- !u!1 &500004908 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1962082226303496, guid: 9158f12da4bead54284ad68ac4c93bfc,
@@ -4589,7 +4591,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 130529195
+  randomSeed: -943254936
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -7905,7 +7907,7 @@ ParticleSystemRenderer:
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
   m_Materials:
-  - {fileID: 2100000, guid: c678ea8d15fcdfb4e967169c77bcbbfc, type: 2}
+  - {fileID: 2100000, guid: 7612151bd335a4723bfd3dace598d192, type: 2}
   - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -8361,6 +8363,7 @@ Prefab:
     - {fileID: 114050677188457966, guid: 9158f12da4bead54284ad68ac4c93bfc, type: 2}
     - {fileID: 82904485846162324, guid: 9158f12da4bead54284ad68ac4c93bfc, type: 2}
     - {fileID: 114792758509208520, guid: 9158f12da4bead54284ad68ac4c93bfc, type: 2}
+    - {fileID: 114131069671731500, guid: 9158f12da4bead54284ad68ac4c93bfc, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 9158f12da4bead54284ad68ac4c93bfc, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &764888215
@@ -8703,7 +8706,7 @@ Prefab:
     - target: {fileID: 114619540120212340, guid: 868cdacd42d374dc7be1e42198d9d630,
         type: 2}
       propertyPath: angularSpeed
-      value: 0.5
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114619540120212340, guid: 868cdacd42d374dc7be1e42198d9d630,
         type: 2}
@@ -9144,6 +9147,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerBody: {fileID: 1275504034}
   fill: {fileID: 1014767596}
+  highHealthMaterial: {fileID: 2100000, guid: 7612151bd335a4723bfd3dace598d192, type: 2}
+  lowHealthMaterial: {fileID: 2100000, guid: 513d9d1d83604a8488bd5e89557db6cb, type: 2}
 --- !u!1001 &1134063717
 Prefab:
   m_ObjectHideFlags: 0
@@ -9611,11 +9616,6 @@ Prefab:
       propertyPath: waitTime
       value: 0.2
       objectReference: {fileID: 0}
-    - target: {fileID: 114442881963066064, guid: 7e641c9dfd20c41a4a5ad73725e7de64,
-        type: 2}
-      propertyPath: defaultBehaviorDuration
-      value: 6
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7e641c9dfd20c41a4a5ad73725e7de64, type: 2}
   m_IsPrefabParent: 0
@@ -9637,7 +9637,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthBar: {fileID: 1296711202}
   fill: {fileID: 213260056}
-  maxHealth: 30
+  maxHealth: 240
   singleRegenTime: 2
   regenAmount: 0
   highHealthMaterial: {fileID: 0}
@@ -11522,10 +11522,6 @@ MonoBehaviour:
     label: WallGunFire
   - clip: {fileID: 8300000, guid: 28cfd855e572bb94391114c7c7ad1d85, type: 3}
     label: WallGunExplosion
-  - clip: {fileID: 8300000, guid: f9268eb1a980248a3baf7b4b761aabf9, type: 3}
-    label: ExpandingCircle
-  - clip: {fileID: 8300000, guid: 9a62cb0201b334c0db3c6a3656779e24, type: 3}
-    label: TargettedFire
 --- !u!4 &2097850404
 Transform:
   m_ObjectHideFlags: 0

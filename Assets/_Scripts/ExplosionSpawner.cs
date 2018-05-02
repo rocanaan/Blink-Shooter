@@ -21,18 +21,18 @@ public class ExplosionSpawner : MonoBehaviour {
 
     }
 
-    public void SpawnExplosion()
+    public void SpawnExplosion(int multiplier = 1)
     {
         if (GameController.gameOver == false)
         {
             ParticleSystem newExplosion = Instantiate(explosion, transform.position, transform.rotation).GetComponent<ParticleSystem>();
             var main = newExplosion.main;
-            main.startSize = explosionSize;
+            main.startSize = explosionSize * multiplier;
             main.duration = explosionDuration;
             main.startLifetime = explosionDuration;
             main.startColor = explosionMaterial.color;
             var shape = newExplosion.shape;
-            shape.radius = explosionRadius;
+            shape.radius = explosionRadius * multiplier;
         }
     }
 

@@ -249,7 +249,7 @@ public class PlayerController : MonoBehaviour {
         {
             bool isAlive = playerHealth.TakeDamage(damage); // returns true if alive (health > 0)
             myCamera.GetComponent<CameraController>().CamShake(0.2f * damage, 0.15f * damage);
-            explosionSpawner.SpawnExplosion();
+            explosionSpawner.SpawnExplosion(damage);
 
             if (playerHealth.GetHealth() <= Mathf.RoundToInt(playerHealth.maxHealth / 3)) // if low on health, change the colour of the healtbar
             {
