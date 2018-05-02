@@ -4237,7 +4237,7 @@ Prefab:
     - target: {fileID: 114621535576538376, guid: 62ceb9f62a8dc4a9297006834f475f6d,
         type: 2}
       propertyPath: numRepetitions
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 114621535576538376, guid: 62ceb9f62a8dc4a9297006834f475f6d,
         type: 2}
@@ -4312,7 +4312,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   laserSpawnerPrefab: {fileID: 1226654161382898, guid: d693e663eba95fe458505a5825e5e926,
     type: 2}
-  angularSpeed: 1
+  angularSpeed: 0.5
   preparationTime: 1
   maxArcTraveled: 180
 --- !u!1 &412397613
@@ -9616,6 +9616,11 @@ Prefab:
       propertyPath: waitTime
       value: 0.2
       objectReference: {fileID: 0}
+    - target: {fileID: 114442881963066064, guid: 7e641c9dfd20c41a4a5ad73725e7de64,
+        type: 2}
+      propertyPath: defaultBehaviorDuration
+      value: 6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7e641c9dfd20c41a4a5ad73725e7de64, type: 2}
   m_IsPrefabParent: 0
@@ -11522,6 +11527,10 @@ MonoBehaviour:
     label: WallGunFire
   - clip: {fileID: 8300000, guid: 28cfd855e572bb94391114c7c7ad1d85, type: 3}
     label: WallGunExplosion
+  - clip: {fileID: 8300000, guid: f9268eb1a980248a3baf7b4b761aabf9, type: 3}
+    label: ExpandingCircle
+  - clip: {fileID: 8300000, guid: 9a62cb0201b334c0db3c6a3656779e24, type: 3}
+    label: TargettedFire
 --- !u!4 &2097850404
 Transform:
   m_ObjectHideFlags: 0
