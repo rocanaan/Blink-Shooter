@@ -167,9 +167,10 @@ public class BossController : MonoBehaviour {
 			shieldSpawner.numberShields *= 2;
 			gunSpawner.numberGuns *= 2;
 			wallGunSpawner.gunsPerWall *= 2;
-			targetFire.fireInterval /= 2;
+			targetFire.fireInterval /= 4;
 
-			expandingCircleSpawner.numRepetitions *= 5;
+			expandingCircleSpawner.numRepetitions *= 2;
+			expandingCircleSpawner.delay /= 2;
 
 			ToggleMovement ("Follow");
 
@@ -182,6 +183,7 @@ public class BossController : MonoBehaviour {
 //			wallGunSpawner.setStatus (true);
 
 			minionSpawner.SpawnMinions (6,3);
+			playerCircleTrapSpawner.repetitions *= 2;
 
 
 
@@ -286,27 +288,27 @@ public class BossController : MonoBehaviour {
 
 		}
 		if (difficulty == 2) {
-			int secondBehavior = Random.Range (0, 5);
-			while (secondBehavior == firstBehavior){
-				secondBehavior = Random.Range (0, 5);
-			}
-			switch (secondBehavior) {
-			case 0:
-				targetFire.setStatus (true, targetedDamage);
-				break;
-			case 1:
-				expandingCircleSpawner.setStatus (true);
-				break;
-			case 2:
-				laserSplittingAttack.SetStatus (true);
-				break;
-			case 3:
-				playerCircleTrapSpawner.setStatus (true);
-				break;
-			case 4: 
-				gunSpawner.setStatus (true);
-				break;
-			}
+//			int secondBehavior = Random.Range (0, 5);
+//			while (secondBehavior == firstBehavior){
+//				secondBehavior = Random.Range (0, 5);
+//			}
+//			switch (secondBehavior) {
+//			case 0:
+//				targetFire.setStatus (true, targetedDamage);
+//				break;
+//			case 1:
+//				expandingCircleSpawner.setStatus (true);
+//				break;
+//			case 2:
+//				laserSplittingAttack.SetStatus (true);
+//				break;
+//			case 3:
+//				playerCircleTrapSpawner.setStatus (true);
+//				break;
+//			case 4: 
+//				gunSpawner.setStatus (true);
+//				break;
+//			}
 
 		}
 

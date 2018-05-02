@@ -13,6 +13,7 @@ public class PlayerUIHealthBarController : MonoBehaviour {
     private HealthController playerHealthController;
     private Slider healthBar;
     private bool healthLow;
+	public float interval;
 
 	// Use this for initialization
 	void Start () {
@@ -51,7 +52,7 @@ public class PlayerUIHealthBarController : MonoBehaviour {
             fill.color = lowHealthMaterial.color;
             yield return null;
 
-            while(timer < 0.2f)
+			while(timer < interval)
             {
                 timer = timer + Time.deltaTime;
                 yield return null;
@@ -61,7 +62,7 @@ public class PlayerUIHealthBarController : MonoBehaviour {
             fill.color = highHealthMaterial.color;
             yield return null;
 
-            while (timer < 0.2f)
+            while (timer < interval)
             {
                 timer = timer + Time.deltaTime;
                 yield return null;

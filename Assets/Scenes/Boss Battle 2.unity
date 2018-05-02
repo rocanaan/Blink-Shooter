@@ -388,7 +388,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -1269284924
+  randomSeed: -1529934205
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -4526,6 +4526,7 @@ MonoBehaviour:
   fill: {fileID: 1457479921}
   highHealthMaterial: {fileID: 2100000, guid: 3750ee820efbf4bfb8d7d218ac766855, type: 2}
   lowHealthMaterial: {fileID: 2100000, guid: 513d9d1d83604a8488bd5e89557db6cb, type: 2}
+  interval: 0.2
 --- !u!1 &500004908 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1962082226303496, guid: 9158f12da4bead54284ad68ac4c93bfc,
@@ -8417,6 +8418,10 @@ Prefab:
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
+    - target: {fileID: 4720407353887792, guid: 4aaf10be4cc0745b782367b72f8d4bc2, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4aaf10be4cc0745b782367b72f8d4bc2, type: 2}
   m_IsPrefabParent: 0
@@ -8771,6 +8776,10 @@ Prefab:
     - target: {fileID: 1937550954141664, guid: 4aaf10be4cc0745b782367b72f8d4bc2, type: 2}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
+      objectReference: {fileID: 0}
+    - target: {fileID: 4720407353887792, guid: 4aaf10be4cc0745b782367b72f8d4bc2, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4aaf10be4cc0745b782367b72f8d4bc2, type: 2}
@@ -9149,6 +9158,7 @@ MonoBehaviour:
   fill: {fileID: 1014767596}
   highHealthMaterial: {fileID: 2100000, guid: 7612151bd335a4723bfd3dace598d192, type: 2}
   lowHealthMaterial: {fileID: 2100000, guid: 513d9d1d83604a8488bd5e89557db6cb, type: 2}
+  interval: 0
 --- !u!1001 &1134063717
 Prefab:
   m_ObjectHideFlags: 0
@@ -9190,7 +9200,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4720407353887792, guid: 4aaf10be4cc0745b782367b72f8d4bc2, type: 2}
       propertyPath: m_LocalScale.y
-      value: 36.500015
+      value: 37
       objectReference: {fileID: 0}
     - target: {fileID: 1937550954141664, guid: 4aaf10be4cc0745b782367b72f8d4bc2, type: 2}
       propertyPath: m_Name
@@ -9202,7 +9212,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4720407353887792, guid: 4aaf10be4cc0745b782367b72f8d4bc2, type: 2}
       propertyPath: m_LocalScale.x
-      value: 0.50000024
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1937550954141664, guid: 4aaf10be4cc0745b782367b72f8d4bc2, type: 2}
       propertyPath: m_StaticEditorFlags
@@ -9515,12 +9525,12 @@ Prefab:
     - target: {fileID: 114570467239602122, guid: 7e641c9dfd20c41a4a5ad73725e7de64,
         type: 2}
       propertyPath: x_boundary
-      value: 17.3
+      value: 17.05
       objectReference: {fileID: 0}
     - target: {fileID: 114570467239602122, guid: 7e641c9dfd20c41a4a5ad73725e7de64,
         type: 2}
       propertyPath: y_boundary
-      value: 11.8
+      value: 11.55
       objectReference: {fileID: 0}
     - target: {fileID: 114570467239602122, guid: 7e641c9dfd20c41a4a5ad73725e7de64,
         type: 2}
@@ -11254,7 +11264,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4720407353887792, guid: 4aaf10be4cc0745b782367b72f8d4bc2, type: 2}
       propertyPath: m_LocalScale.y
-      value: 36.500015
+      value: 37
       objectReference: {fileID: 0}
     - target: {fileID: 1937550954141664, guid: 4aaf10be4cc0745b782367b72f8d4bc2, type: 2}
       propertyPath: m_Name
@@ -11266,7 +11276,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4720407353887792, guid: 4aaf10be4cc0745b782367b72f8d4bc2, type: 2}
       propertyPath: m_LocalScale.x
-      value: 0.50000024
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1937550954141664, guid: 4aaf10be4cc0745b782367b72f8d4bc2, type: 2}
       propertyPath: m_StaticEditorFlags
@@ -11353,6 +11363,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CircleTrapPrefab: {fileID: 1087914628001360, guid: bb04aca606be240ae82804760dfe49e0,
     type: 2}
+  repetitions: 2
+  interval: 1
 --- !u!1001 &2075656608
 Prefab:
   m_ObjectHideFlags: 0
