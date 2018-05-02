@@ -46,28 +46,32 @@ public class PlayerUIHealthBarController : MonoBehaviour {
 
     private IEnumerator Blink()
     {
-        float timer = 0f;
-        while (healthLow)
-        {
-            fill.color = lowHealthMaterial.color;
-            yield return null;
+//        float timer = 0f;
+//        while (healthLow)
+//        {
+//            fill.color = lowHealthMaterial.color;
+//            yield return null;
+//
+//			while(timer < interval)
+//            {
+//                timer = timer + Time.deltaTime;
+//                yield return null;
+//            }
+//            timer = 0f;
+//
+//            fill.color = highHealthMaterial.color;
+//            yield return null;
+//
+//            while (timer < interval)
+//            {
+//                timer = timer + Time.deltaTime;
+//                yield return null;
+//            }
+//            timer = 0f;
+//        }
 
-			while(timer < interval)
-            {
-                timer = timer + Time.deltaTime;
-                yield return null;
-            }
-            timer = 0f;
+		fill.color = Color.Lerp(highHealthMaterial.color, lowHealthMaterial.color, Mathf.PingPong(Time.time, 1));
+		yield return null;
 
-            fill.color = highHealthMaterial.color;
-            yield return null;
-
-            while (timer < interval)
-            {
-                timer = timer + Time.deltaTime;
-                yield return null;
-            }
-            timer = 0f;
-        }
     }
 }

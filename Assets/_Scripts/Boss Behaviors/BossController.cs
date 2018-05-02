@@ -181,9 +181,13 @@ public class BossController : MonoBehaviour {
 //			gunSpawner.setStatus (true);
 			wallGunSpawner.gunsPerWall = 2;
 //			wallGunSpawner.setStatus (true);
+			playerCircleTrapSpawner.repetitions *= 2;
+
 
 			minionSpawner.SpawnMinions (6,3);
-			playerCircleTrapSpawner.repetitions *= 2;
+			wallGunSpawner.setStatus (true);
+
+			nextBehaviorStartTime = Time.time + mediumStageDelay;
 
 
 
@@ -272,9 +276,7 @@ public class BossController : MonoBehaviour {
 			break;
 		case 1:
 			expandingCircleSpawner.setStatus (true);
-			if (difficulty < 2) {
-				currentBehaviorDuration = expandingCircleSpawner.getDuration ();
-			}
+			currentBehaviorDuration = expandingCircleSpawner.getDuration ();
 			break;
 		case 2:
 			laserSplittingAttack.SetStatus (true);

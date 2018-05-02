@@ -438,7 +438,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   angularSpeed: 90
-  moveSpeed: 20
+  moveSpeed: 25
   body: {fileID: 1760317567391870}
   cooldown: 0.5
   teleportOnRepeatPress: 0
@@ -562,7 +562,7 @@ MonoBehaviour:
   healthBar: {fileID: 114035592649764454}
   fill: {fileID: 114905211261058006}
   maxHealth: 10
-  singleRegenTime: 5
+  singleRegenTime: 3
   regenAmount: 1
   highHealthMaterial: {fileID: 2100000, guid: c678ea8d15fcdfb4e967169c77bcbbfc, type: 2}
 --- !u!114 &114784416694420922
@@ -577,6 +577,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blinkTime: 0.1
+  waitTime: 0
 --- !u!114 &114792758509208520
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -711,7 +712,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -1787662429
+  randomSeed: 2105833829
   InitialModule:
     serializedVersion: 3
     enabled: 1
