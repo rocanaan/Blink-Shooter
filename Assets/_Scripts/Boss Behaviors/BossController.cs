@@ -50,6 +50,11 @@ public class BossController : MonoBehaviour {
     private AudioController soundtrackController;
 
 
+	public float mediumStageDelay;
+	private string mediumStatus;
+	private int lastMediumBehavior;
+
+
 	// Use this for initialization
 	void Start () {
 		coreBlinkAnimation = GetComponentInChildren<BlinkAnimation> ();
@@ -94,6 +99,8 @@ public class BossController : MonoBehaviour {
 
 		currentBehaviorDuration = defaultBehaviorDuration;
 
+		mediumStatus = "initial";
+		lastMediumBehavior = -1;
     }
 	
 	// Update is called once per frame
@@ -144,6 +151,7 @@ public class BossController : MonoBehaviour {
 //			wallGunSpawner.setStatus (false);
 
 			wallGunSpawner.setStatus (true);
+			nextBehaviorStartTime = Time.time + mediumStageDelay;
 
 
 		}
@@ -216,6 +224,41 @@ public class BossController : MonoBehaviour {
 		int firstBehavior = 1;
 		if (difficulty == 0) {
 			firstBehavior = Random.Range (0, 3);
+			switch (firstBehavior) {
+			case 0:
+				targetFire.setStatus (true, targetedDamage);
+				break;
+			case 1:
+				expandingCircleSpawner.setStatus (true);
+				currentBehaviorDuration = expandingCircleSpawner.getDuration ();
+				break;
+			case 2:
+				laserSplittingAttack.SetStatus (true);
+				break;
+			}
+		} 
+
+		else if (difficulty == 1 && mediumStatus != "final") {
+			if (mediumStatus == "initial") {
+				firstBehavior = Random.Range (3, 5);
+				mediumStatus = "playedOnce";
+				lastMediumBehavior = firstBehavior;
+			} else if (mediumStatus == "playedOnce") {
+				if (lastMediumBehavior == 3) {
+					firstBehavior = 4;
+				}
+				else{
+					firstBehavior = 3;
+				}
+				mediumStatus = "playedTwice";
+			} else if (mediumStatus == "playedTwice") {
+				minionSpawner.SpawnMinions (6, 3);
+				mediumStatus = "final";
+				nextBehaviorEndTime = Time.time + currentBehaviorDuration;
+				nextBehaviorStartTime = nextBehaviorEndTime + behaviorDelay;
+				return;
+			} 
+
 		}
 		else {
 			firstBehavior = Random.Range (0, 5);
@@ -227,7 +270,9 @@ public class BossController : MonoBehaviour {
 			break;
 		case 1:
 			expandingCircleSpawner.setStatus (true);
-			currentBehaviorDuration = expandingCircleSpawner.getDuration ();
+			if (difficulty < 2) {
+				currentBehaviorDuration = expandingCircleSpawner.getDuration ();
+			}
 			break;
 		case 2:
 			laserSplittingAttack.SetStatus (true);
@@ -240,7 +285,7 @@ public class BossController : MonoBehaviour {
 			break;
 
 		}
-		if (difficulty > 0) {
+		if (difficulty == 2) {
 			int secondBehavior = Random.Range (0, 5);
 			while (secondBehavior == firstBehavior){
 				secondBehavior = Random.Range (0, 5);
