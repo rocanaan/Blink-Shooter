@@ -12,6 +12,8 @@ public class ExpandingCircleSpawner : MonoBehaviour {
 	private float nextFireTime;
 
 
+	private SoundEffectsController sfx;
+
 	public void Update(){
 		if (Time.time > nextFireTime && currentInstance < numRepetitions) {
 			FireCircle ();
@@ -21,6 +23,9 @@ public class ExpandingCircleSpawner : MonoBehaviour {
 	public void Start(){
 		currentInstance = 999;
 		nextFireTime = Time.time + delay;
+
+
+		sfx = GameObject.FindGameObjectWithTag ("GlobalAudioSource").GetComponent<SoundEffectsController> ();
 	}
 
 	public void setStatus(bool active){
@@ -36,6 +41,11 @@ public class ExpandingCircleSpawner : MonoBehaviour {
 		if (currentInstance < numRepetitions) {
 			nextFireTime = Time.time + delay;
 		}
+		sfx.PlayClip ("ExpandingCircle");
+	}
+
+	public float getDuration(){
+		return (numRepetitions - 1) * delay;
 	}
 		
 }

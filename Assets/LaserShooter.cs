@@ -20,6 +20,8 @@ public class LaserShooter : MonoBehaviour {
     private Vector3 currentTarget;    
     private LineRenderer lr;
 
+	public int damage;
+
     // Use this for initialization
     void Start()
     {
@@ -83,7 +85,7 @@ public class LaserShooter : MonoBehaviour {
                     {
                         print("player should be taking damage");
                         PlayerController pc = col.GetComponent<PlayerController>();
-                        pc.TakeDamage(1);
+                        pc.TakeDamage(damage);
                     }
                 }
 

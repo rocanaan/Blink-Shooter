@@ -21,6 +21,8 @@ public class TargettedFireBehavior : MonoBehaviour {
 	private GameController gameController;
     private int damage;
 
+	private SoundEffectsController sfx;
+
 
 	// Use this for initialization
 	void Start () {
@@ -29,6 +31,8 @@ public class TargettedFireBehavior : MonoBehaviour {
 
 		gameController = GameObject.FindGameObjectWithTag ("GameController").GetComponent<GameController> ();
 		players = gameController.getAllPlayers ();
+
+		sfx = GameObject.FindGameObjectWithTag ("GlobalAudioSource").GetComponent<SoundEffectsController> ();
 
 	}
 	
@@ -44,6 +48,8 @@ public class TargettedFireBehavior : MonoBehaviour {
 				newShot.GetComponent<Renderer> ().material = GetComponentInParent<BossController> ().getCurrentMaterial ();
                 newShot.GetComponent<ExplosionSpawner>().explosionMaterial = GetComponentInParent<BossController>().getCurrentMaterial();
                 newShot.GetComponent<ShotAttributes> ().setTeamID (2);
+
+				sfx.PlayClip ("TargettedFire");
 
 				nextFire = Time.time + fireInterval;
 			}

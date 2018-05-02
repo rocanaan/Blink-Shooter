@@ -150,6 +150,7 @@ MonoBehaviour:
   angleRotated: 180
   preparationTime: 1
   target: {x: 0, y: 0, z: 0}
+  damage: 2
 --- !u!120 &120811146053191494
 LineRenderer:
   m_ObjectHideFlags: 1

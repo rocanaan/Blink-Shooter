@@ -18,7 +18,8 @@ public class BossController : MonoBehaviour {
 
 	BlinkAnimation coreBlinkAnimation;
 
-	public float behaviorDuration;
+	public float defaultBehaviorDuration;
+	private float currentBehaviorDuration;
 	public float behaviorDelay;
 
 	private float nextBehaviorStartTime;
@@ -77,7 +78,7 @@ public class BossController : MonoBehaviour {
 		//wallGunSpawner.setStatus (true);
 
 		nextBehaviorStartTime = Time.time + behaviorDelay;
-		nextBehaviorEndTime = nextBehaviorStartTime + behaviorDuration;
+		nextBehaviorEndTime = nextBehaviorStartTime + defaultBehaviorDuration;
 //		targetFire.setStatus (true);
 //		wallGunSpawner.setStatus (true);
 
@@ -90,6 +91,8 @@ public class BossController : MonoBehaviour {
         behaviorController = GetComponent<BehaviorController> ();
 
         targetedDamage = 1;
+
+		currentBehaviorDuration = defaultBehaviorDuration;
 
     }
 	
@@ -206,6 +209,9 @@ public class BossController : MonoBehaviour {
 	//TODO this should be refactored to place the potential behaviors in a list and select from them.
 	void selectBehaviors(){
 		directionalShieldSpawner.setStatus (true);
+		currentBehaviorDuration = defaultBehaviorDuration;
+
+
 
 		int firstBehavior = 1;
 		if (difficulty == 0) {
@@ -221,6 +227,7 @@ public class BossController : MonoBehaviour {
 			break;
 		case 1:
 			expandingCircleSpawner.setStatus (true);
+			currentBehaviorDuration = expandingCircleSpawner.getDuration ();
 			break;
 		case 2:
 			laserSplittingAttack.SetStatus (true);
@@ -260,7 +267,7 @@ public class BossController : MonoBehaviour {
 
 		//behaviorController.selectBehaviors (difficulty);
 
-		nextBehaviorEndTime = Time.time + behaviorDuration;
+		nextBehaviorEndTime = Time.time + currentBehaviorDuration;
 		nextBehaviorStartTime = nextBehaviorEndTime + behaviorDelay;
 	}
 
@@ -277,7 +284,7 @@ public class BossController : MonoBehaviour {
 
 		ToggleMovement ("Wander");
 		nextBehaviorStartTime = Time.time + behaviorDelay;
-		nextBehaviorEndTime = nextBehaviorStartTime + behaviorDuration;
+		nextBehaviorEndTime = nextBehaviorStartTime + defaultBehaviorDuration;
 	}
 
 	void spawnTrap(){
