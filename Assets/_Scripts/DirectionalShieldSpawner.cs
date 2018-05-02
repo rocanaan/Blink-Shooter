@@ -23,6 +23,8 @@ public class DirectionalShieldSpawner : MonoBehaviour {
 
 	private bool statusActive;
 
+	private bool isShieldActive;
+
 	// Use this for initialization
 	void Start () {
 		statusActive = false;
