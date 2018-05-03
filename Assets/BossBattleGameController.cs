@@ -141,11 +141,13 @@ public class BossBattleGameController : MonoBehaviour {
         gameOver = true;
         if (winner == 1)
         {
-            gameOverText.text = "Congratulations!!! Your team defeated the boss!!!  Press SQUARE or ENTER to restart.";
+			gameOverText.text = "Congratulations!!! Your team defeated the boss!!!\r\n" +
+            	"Press SQUARE or ENTER to restart.";
         }
         else if (winner == 2)
         {
-            gameOverText.text = "Too bad!!! You were defeated by the boss!!!  Press SQUARE or ENTER to restart.";
+            gameOverText.text = "Too bad!!! You were defeated by the boss!!!\r\n" +
+            	"Press SQUARE or ENTER to restart.";
         }
     }
 

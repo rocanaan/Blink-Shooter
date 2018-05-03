@@ -5,7 +5,7 @@ using UnityEngine;
 public class LaserSplit : MonoBehaviour {
 
     private GameObject[] players;
-    private BattleBattleGameController gameController;
+    private BossBattleGameController gameController;
 
     public GameObject laserSpawnerPrefab;
 

@@ -10028,12 +10028,12 @@ Prefab:
     - target: {fileID: 224788979789411358, guid: 9158f12da4bead54284ad68ac4c93bfc,
         type: 2}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224788979789411358, guid: 9158f12da4bead54284ad68ac4c93bfc,
         type: 2}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114683988685659134, guid: 9158f12da4bead54284ad68ac4c93bfc,
         type: 2}
@@ -10045,6 +10045,12 @@ Prefab:
       propertyPath: stopWhenPhasing
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 212373779294185246, guid: 9158f12da4bead54284ad68ac4c93bfc,
+        type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 2bc6c7cd51aae224f9f1baf45d818037,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9158f12da4bead54284ad68ac4c93bfc, type: 2}
   m_IsPrefabParent: 0
@@ -10885,7 +10891,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 30, y: 0}
+  m_AnchoredPosition: {x: 30, y: 90}
   m_SizeDelta: {x: 750, y: 90}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1726739266
@@ -10914,7 +10920,7 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 2
     m_MaxSize: 40
-    m_Alignment: 0
+    m_Alignment: 1
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
@@ -11006,13 +11012,13 @@ TextMesh:
 
 '
   m_OffsetZ: 0
-  m_CharacterSize: 1
+  m_CharacterSize: 0.02
   m_LineSpacing: 1
   m_Anchor: 4
   m_Alignment: 1
   m_TabSize: 4
-  m_FontSize: 0
-  m_FontStyle: 0
+  m_FontSize: 500
+  m_FontStyle: 1
   m_RichText: 1
   m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
   m_Color:
