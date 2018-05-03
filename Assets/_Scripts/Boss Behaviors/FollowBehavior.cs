@@ -17,7 +17,7 @@ public class FollowBehavior : MonoBehaviour {
 		statusActive = false;
 
 		gameController = GameObject.FindGameObjectWithTag ("GameController").GetComponent<GameController> ();
-		players = gameController.getAllPlayers ();
+		players = gameController.GetAllPlayers ();
 	}
 	
 	// Update is called once per frame

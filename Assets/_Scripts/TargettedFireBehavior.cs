@@ -30,7 +30,7 @@ public class TargettedFireBehavior : MonoBehaviour {
         setStatus(activateOnStartup, damage); //activates the behavior on startup if that flag is set to true
 
 		gameController = GameObject.FindGameObjectWithTag ("GameController").GetComponent<GameController> ();
-		players = gameController.getAllPlayers ();
+		players = gameController.GetAllPlayers ();
 
 		sfx = GameObject.FindGameObjectWithTag ("GlobalAudioSource").GetComponent<SoundEffectsController> ();
 

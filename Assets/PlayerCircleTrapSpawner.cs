@@ -17,7 +17,7 @@ public class PlayerCircleTrapSpawner : MonoBehaviour {
 
 	void Start(){
 		gameController = GameObject.FindGameObjectWithTag ("GameController").GetComponent<GameController> ();
-		players = gameController.getAllPlayers ();
+		players = gameController.GetAllPlayers ();
 		lastPlayerID = -1;
 		isActive = false;
 		currentTrapCount = 0;

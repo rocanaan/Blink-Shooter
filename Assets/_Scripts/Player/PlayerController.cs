@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour {
 
     private float speed;// Controls the speed of the character
     private SoundEffectsController sfxController;
-    private GameController gameController;
+    private BossBattleGameController gameController;
     private GhostController ghost;
     private ExplosionSpawner explosionSpawner;
 	private float nextShot; // time when the next shot can be fired
@@ -65,23 +65,23 @@ public class PlayerController : MonoBehaviour {
 		timeLastDamage = -10;
 
 		sfxController = GetComponentInParent<SoundEffectsController> ();
-        gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
+        gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<BossBattleGameController>();
 
     }
 
 	// Update is called once per frame
 	void Update () {
-		if (!GameController.isGameOver ()) {
+		if (!GameController.IsGameOver ()) {
 			if (isDead && Time.time >= nextRespawnTime && respawnAllowed) {
 				//transform.parent.gameObject.SetActive (true);
-				if (gameController.gameMode == GameController.GameMode.Boss) {
+				if (gameController.GetGameMode() == BossBattleGameController.GameMode.Boss) {
 					print ("attempting to respawn");
 					transform.position = respawn;
 					rb.velocity = Vector3.zero;
 					ghost.resetPosition ();
 				} else {
 					//TODO: Respawn code for other game modes is buggy
-					Vector2 randomVector = gameController.getRespawnPosition ();
+					Vector2 randomVector = gameController.GetRespawnPosition();
 					transform.parent.transform.position = new Vector3 (randomVector.x, randomVector.y, transform.parent.transform.position.z);
 					transform.position = transform.parent.transform.position;
 				}
@@ -94,7 +94,7 @@ public class PlayerController : MonoBehaviour {
             }
 
 			if (!isDead) {
-				if (controllerName != "Keyboard" || gameController.getCurrentKeyboardInput () == playerID) {
+				if (controllerName != "Keyboard" || gameController.GetCurrentKeyboardInput () == playerID) {
 					getInputs ();
 				}
                 statUpdates();
@@ -274,20 +274,17 @@ public class PlayerController : MonoBehaviour {
 	void PlayerDeath (){
 
         Debug.Log("PlayerDeath() called for player " + playerID);
-
-		//Destroy (transform.parent.gameObject);
-		//transform.parent.gameObject.SetActive(false);
 		transform.position = new Vector3(30,30,0);
 		ghost.resetPosition ();
 		rb.velocity = Vector3.zero;
 		isDead = true;
 		SetRespawn();
 		sfxController.PlayClip ("Death");
-        gameController.notifyDeath(playerID, teamID);
+        gameController.NotifyDeath(playerID, teamID);
     }
 
 	void SetRespawn(){
-		int respawnDelay = gameController.getRespawnTime ();
+		int respawnDelay = gameController.GetRespawnTime ();
 		if (respawnDelay >= 0) {
 			nextRespawnTime = Time.time + 3.0f;
 			respawnAllowed = true;

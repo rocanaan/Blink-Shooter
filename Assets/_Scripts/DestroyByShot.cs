@@ -15,7 +15,7 @@ public class DestroyByShot : MonoBehaviour {
 	
 	void OnTriggerEnter2D (Collider2D col){
 		if (col.tag == "Shot") {
-			gc.notifyTargetDestroyed ();
+			gc.NotifyTargetDestroyed ();
 			Destroy (gameObject);
 		}
 	}

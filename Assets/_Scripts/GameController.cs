@@ -68,7 +68,7 @@ public class GameController : MonoBehaviour {
 
 		foreach (GameObject player in players){
 			PlayerController pc = player.GetComponent<PlayerController> ();
-			numPlayersAliveByTeam [pc.teamID] += 1;
+			numPlayersAliveByTeam [pc.teamID] += 2;
 		}
 
 		for (int i=0; i< numPlayersAliveByTeam.Length; i++) {
@@ -99,7 +99,7 @@ public class GameController : MonoBehaviour {
 		}
 
 		// If 1, 2, 3 or 4 is pressed, set currentKeyboardInput to that player ID
-		setCurrentKeyboardInput ();
+		SetCurrentKeyboardInput ();
 
         CheckPlayerRegen();
 //		if (respawns.Count != 0) {
@@ -150,22 +150,22 @@ public class GameController : MonoBehaviour {
         //players[1].GetComponent<ParticleSystem>().Pause();
         //players[1].GetComponent<ParticleSystem>().Clear();
     }
-	public void notifyDeath(int playerID, int teamID){
+	public void NotifyDeath(int playerID, int teamID){
 		numPlayersAliveByTeam [teamID] -= 1;
 		totalDeaths++;
 		if (numPlayersAliveByTeam [teamID] <= 0 && gameMode == GameMode.Survival) {
 			if (teamID == 1) {
-				setGameOver (2);
+				SetGameOver (2);
 			} else if (teamID == 2) {
-				setGameOver (1);
+				SetGameOver (1);
 			}
 		}
 		if (respawnLives < 0 && numPlayersAliveByTeam [teamID] <= 0 && gameMode == GameMode.Boss) {
-			setGameOver (2);
+			SetGameOver (2);
 		}
 	}
 
-	public int getRespawnTime (){
+	public int GetRespawnTime (){
         if (gameMode == GameMode.Survival /*|| gameMode == GameMode.Boss*/)
         {
             return -1;
@@ -201,17 +201,17 @@ public class GameController : MonoBehaviour {
 //		}
 //	}
 
-	public static bool isGameOver(){
+	public static bool IsGameOver(){
 		return gameOver;
 	}
 
-	public void hillCaptured(int teamID){
+	public void HillCaptured(int teamID){
 		if (gameMode == GameMode.KOTH){
-			setGameOver (teamID);
+			SetGameOver (teamID);
 		}
 	}
 
-	void setGameOver(int winner){
+	void SetGameOver(int winner){
 		gameOver = true;
 		if (gameMode == GameMode.Tutorial) {
 			gameOverText.text = "End of tutorial. Press SQUARE or ENTER to battle!!!";
@@ -235,7 +235,7 @@ public class GameController : MonoBehaviour {
 		}
 	}
 
-	void setCurrentKeyboardInput (){
+	void SetCurrentKeyboardInput (){
 		for (int i = 1; i < players.Length +1; i++) {
 			if (Input.GetButton ("Toggle" + i)) {
 				currentKeyboardInput = i;
@@ -243,12 +243,12 @@ public class GameController : MonoBehaviour {
 		}
 	}
 
-	public int getCurrentKeyboardInput(){
+	public int GetCurrentKeyboardInput(){
 		return currentKeyboardInput;
 	}
 
 	// Returns a valid respawn position. Right now is implemented as simply the x or y position being distant from the center
-	public Vector2 getRespawnPosition(){
+	public Vector2 GetRespawnPosition(){
 		while (true) {
 			Vector2 randomVector = new Vector3 (Random.Range (-max_x, max_x), Random.Range (-max_y, max_y));
 			if (Mathf.Abs(randomVector.x) >= respawnDistanceFromCenter || Mathf.Abs(randomVector.y) >= respawnDistanceFromCenter) {
@@ -257,28 +257,33 @@ public class GameController : MonoBehaviour {
 		}
 	}
 
-	public void bossDied()
+	public void BossDied()
 	{
 		if (gameMode == GameMode.Boss) {
-			setGameOver (1);
+			SetGameOver (1);
 		}
 	}
 
-	public void notifyTargetDestroyed (){
+	public void NotifyTargetDestroyed (){
 		if (gameMode == GameMode.Tutorial) {
 			targetsDestroyed++;
 			if (targetsDestroyed >= numTargets) {
-				setGameOver (0);
+				SetGameOver (0);
 			}
 		}
 	}
 
-	public GameObject[] getAllPlayers(){
+	public GameObject[] GetAllPlayers(){
 		return players;
 	}
 
     private void SetRespawnText()
     {
         respawnText.text = "Lives: " + respawnLives;
+    }
+
+    public GameMode GetGameMode()
+    {
+        return gameMode;
     }
 }

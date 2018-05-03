@@ -31,7 +31,7 @@ public class HillController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (!GameController.isGameOver ()) {
+		if (!GameController.IsGameOver ()) {
 			if (countTeam1 > 0 && countTeam2 == 0) {
 				team1Score++;
 				GetComponent<Renderer> ().material = team1Material;
@@ -52,10 +52,10 @@ public class HillController : MonoBehaviour {
 			team2Text.text = "Red Score: " + ((100 * team2Score) / captureScore) +"%";
 
 			if (team1Score >= captureScore) {
-				gameController.hillCaptured (1);
+				gameController.HillCaptured (1);
 			}
 			if (team2Score >= captureScore) {
-				gameController.hillCaptured (2);
+				gameController.HillCaptured (2);
 			}
 		}
 		

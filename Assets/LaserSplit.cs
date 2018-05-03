@@ -17,7 +17,7 @@ public class LaserSplit : MonoBehaviour {
     void Start()
     {
         gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
-        players = gameController.getAllPlayers();
+        players = gameController.GetAllPlayers();
         //	setActive (true);
     }
 

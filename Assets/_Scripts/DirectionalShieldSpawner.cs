@@ -31,7 +31,7 @@ public class DirectionalShieldSpawner : MonoBehaviour {
 
 
 		gameController = GameObject.FindGameObjectWithTag ("GameController").GetComponent<GameController> ();
-		players = gameController.getAllPlayers ();
+		players = gameController.GetAllPlayers ();
 	
 	}
 

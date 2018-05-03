@@ -39,7 +39,7 @@ public class ExpandingCircleAttack : MonoBehaviour {
 		currentRadius = startingRadius;
 
 		gameController = GameObject.FindGameObjectWithTag ("GameController").GetComponent<GameController> ();
-		players = gameController.getAllPlayers ();
+		players = gameController.GetAllPlayers ();
 
 		center = transform.position;
 		startOfExpansionTime = Time.time + preparationDuration;

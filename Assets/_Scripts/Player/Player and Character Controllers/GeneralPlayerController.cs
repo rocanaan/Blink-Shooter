@@ -92,7 +92,7 @@ public class GeneralPlayerController : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-		if (!GameController.isGameOver ()) {
+		if (!GameController.IsGameOver ()) {
 			if (isDead && Time.time >= nextRespawnTime && respawnAllowed) {
 				//transform.parent.gameObject.SetActive (true);
 				if (gameController.gameMode == GameController.GameMode.Boss) {
@@ -102,7 +102,7 @@ public class GeneralPlayerController : MonoBehaviour {
 					ghost.resetPosition ();
 				} else {
 					//TODO: Respawn code for other game modes is buggy
-					Vector2 randomVector = gameController.getRespawnPosition ();
+					Vector2 randomVector = gameController.GetRespawnPosition ();
 					transform.parent.transform.position = new Vector3 (randomVector.x, randomVector.y, transform.parent.transform.position.z);
 					transform.position = transform.parent.transform.position;
 				}
@@ -121,7 +121,7 @@ public class GeneralPlayerController : MonoBehaviour {
 				}
 			}
 			if (!isDead) {
-				if (controllerName != "Keyboard" || gameController.getCurrentKeyboardInput () == playerID) {
+				if (controllerName != "Keyboard" || gameController.GetCurrentKeyboardInput () == playerID) {
 					getInputs ();
 				}
 			}
@@ -289,7 +289,7 @@ public class GeneralPlayerController : MonoBehaviour {
 	}
 
 	void playerDeath (){
-		gameController.notifyDeath (playerID, teamID);
+		gameController.NotifyDeath (playerID, teamID);
 		//Destroy (transform.parent.gameObject);
 		//transform.parent.gameObject.SetActive(false);
 		transform.position = new Vector3(30,30,0);
@@ -301,7 +301,7 @@ public class GeneralPlayerController : MonoBehaviour {
 	}
 
 	void setRespawn(){
-		int respawnDelay = gameController.getRespawnTime ();
+		int respawnDelay = gameController.GetRespawnTime ();
 		if (respawnDelay >= 0) {
 			nextRespawnTime = Time.time + 3.0f;
 			respawnAllowed = true;

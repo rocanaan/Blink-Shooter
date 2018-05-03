@@ -266,6 +266,11 @@ Prefab:
       propertyPath: timeIgnoreRelease
       value: 0.2
       objectReference: {fileID: 0}
+    - target: {fileID: 114857019878392638, guid: 9158f12da4bead54284ad68ac4c93bfc,
+        type: 2}
+      propertyPath: playerID
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9158f12da4bead54284ad68ac4c93bfc, type: 2}
   m_IsPrefabParent: 0
@@ -388,7 +393,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -1529934205
+  randomSeed: 1522179534
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -3952,6 +3957,36 @@ Transform:
   m_PrefabParentObject: {fileID: 4833804944259394, guid: e5d5f33a44804d940bd6b542ae7d7b89,
     type: 2}
   m_PrefabInternal: {fileID: 253775153}
+--- !u!1 &255208386 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1540541261082830, guid: f094f0a6a43ef944ca17db825c47cf4d,
+    type: 2}
+  m_PrefabInternal: {fileID: 964342615}
+--- !u!114 &255208387
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 255208386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83720a7e81bfbe54aa54756a8a0ccd22, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  players:
+  - {fileID: 794854281}
+  - {fileID: 1275504034}
+  playerIndicators:
+  - {fileID: 136850512}
+  - {fileID: 500004908}
+  respawnTime: 3
+  respawnLives: 2
+  gameOverText: {fileID: 1726739266}
+  respawnText: {fileID: 1760807120}
+  healthRegenRange: 7
+  max_x: 0
+  max_y: 0
+  respawnDistanceFromCenter: 0
 --- !u!1001 &283807225
 Prefab:
   m_ObjectHideFlags: 0
@@ -4592,7 +4627,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -943254936
+  randomSeed: 638938068
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -8156,7 +8191,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4527239602009784, guid: 9158f12da4bead54284ad68ac4c93bfc, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 19.35
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 4527239602009784, guid: 9158f12da4bead54284ad68ac4c93bfc, type: 2}
       propertyPath: m_LocalPosition.y
@@ -8878,7 +8913,13 @@ Prefab:
       propertyPath: respawnText
       value: 
       objectReference: {fileID: 1760807120}
-    m_RemovedComponents: []
+    - target: {fileID: 114757993454065074, guid: f094f0a6a43ef944ca17db825c47cf4d,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 114757993454065074, guid: f094f0a6a43ef944ca17db825c47cf4d, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: f094f0a6a43ef944ca17db825c47cf4d, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &982071860
@@ -8941,7 +8982,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4527239602009784, guid: 9158f12da4bead54284ad68ac4c93bfc, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 21.5
+      value: 22
       objectReference: {fileID: 0}
     - target: {fileID: 4527239602009784, guid: 9158f12da4bead54284ad68ac4c93bfc, type: 2}
       propertyPath: m_LocalPosition.y
@@ -9761,7 +9802,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1271709989}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -20.39, y: -10.16, z: 0}
+  m_LocalPosition: {x: -21, y: -10.16, z: 0}
   m_LocalScale: {x: 3, y: 3, z: 1}
   m_Children:
   - {fileID: 1384918559}
@@ -9774,22 +9815,6 @@ GameObject:
   m_PrefabParentObject: {fileID: 1760317567391870, guid: 9158f12da4bead54284ad68ac4c93bfc,
     type: 2}
   m_PrefabInternal: {fileID: 28487082}
---- !u!114 &1275504045
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1275504034}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b4241590048c67d4385372d51f4c4b2a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  explosion: {fileID: 1729472084353830, guid: bfb0996311d3ecb4f9927ba4b1927422, type: 2}
-  explosionSize: 1
-  explosionDuration: 0.7
-  explosionRadius: 1
-  explosionMaterial: {fileID: 2100000, guid: 513d9d1d83604a8488bd5e89557db6cb, type: 2}
 --- !u!1 &1276385396
 GameObject:
   m_ObjectHideFlags: 0

@@ -24,9 +24,9 @@ public class PickupSpawner : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (Time.timeSinceLevelLoad > nextSpawn && !GameController.isGameOver()) {
+		if (Time.timeSinceLevelLoad > nextSpawn && !GameController.IsGameOver()) {
 			GameObject nextPickup = getNextPickup ();
-			Vector2 randomVector = gc.getRespawnPosition ();
+			Vector2 randomVector = gc.GetRespawnPosition ();
 			Vector3 spawnPosition =  new Vector3 (randomVector.x, randomVector.y, nextPickup.transform.position.z);
 			Instantiate (nextPickup, spawnPosition, Quaternion.identity);
 

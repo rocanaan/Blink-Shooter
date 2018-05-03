@@ -42,7 +42,7 @@ public class BossController : MonoBehaviour {
 	private ExpandingCircleSpawner expandingCircleSpawner;
 	private LaserSplit laserSplittingAttack; // Note: have to fix nomeclature. For circle, the prefab that just instantiates the attack is attack, and the controller is spawner. Here, attack is the controller and controller is attack
 	private PlayerCircleTrapSpawner playerCircleTrapSpawner;
-    private GameController gameController;
+    private BossBattleGameController gameController;
 
 	private GameObject audioSource;
     private int targetedDamage;
@@ -87,7 +87,7 @@ public class BossController : MonoBehaviour {
 //		targetFire.setStatus (true);
 //		wallGunSpawner.setStatus (true);
 
-		gameController = GameObject.FindGameObjectWithTag ("GameController").GetComponent<GameController> ();
+		gameController = GameObject.FindGameObjectWithTag ("GameController").GetComponent<BossBattleGameController> ();
 
 		audioSource = GameObject.FindGameObjectWithTag ("GlobalAudioSource");
 		sfxController = audioSource.GetComponent<SoundEffectsController> ();
@@ -201,7 +201,7 @@ public class BossController : MonoBehaviour {
 		if (!isAlive) {
 			//playerDeath ();
 			print("Boss died!");
-			gameController.bossDied();
+			gameController.BossDied();
 			Destroy (gameObject);
 		}
 	}

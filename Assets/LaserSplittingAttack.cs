@@ -16,7 +16,7 @@ public class LaserSplittingAttack : BossGenericBehavior {
 	// Use this for initialization
 	void Start () {
 		gameController = GameObject.FindGameObjectWithTag ("GameController").GetComponent<GameController> ();
-		players = gameController.getAllPlayers ();
+		players = gameController.GetAllPlayers ();
 //	setActive (true);
 	}
 	
