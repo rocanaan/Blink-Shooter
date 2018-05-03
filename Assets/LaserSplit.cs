@@ -56,6 +56,8 @@ public class LaserSplit : MonoBehaviour {
             laser1.Initialize();
             laser2.Initialize();
         }
+		if (!active) {
+		}
     }
 
     private Vector3 getPlayersMidpoint()

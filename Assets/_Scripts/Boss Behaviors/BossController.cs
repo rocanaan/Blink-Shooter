@@ -8,7 +8,7 @@ public class BossController : MonoBehaviour {
 
 	private int currentHealth;
 
-	private static int difficulty;
+	//private static int difficulty;
 
 	public int teamID;
 
@@ -54,13 +54,22 @@ public class BossController : MonoBehaviour {
 	private string mediumStatus;
 	private int lastMediumBehavior;
 
+	public float transitionDelay;
+	private float transitionEndTime;
+
+	public enum Stage {Easy, MediumTransition, Medium, HardTransition, Hard};
+	public Stage currentStage;
+
+	public float easyToMediumHealthThreshold;
+	public float mediumToHardHealthThreshold;
 
 	// Use this for initialization
 	void Start () {
 		coreBlinkAnimation = GetComponentInChildren<BlinkAnimation> ();
         bossHealth = transform.GetComponent<HealthController>();
 		currentHealth = bossHealth.GetHealth();
-		difficulty = 0;
+		//difficulty = 0;
+		currentStage = Stage.Easy;
         bossHealth.SetMaterial(startingDifficultyMaterial);
 
         wanderBehavior = GetComponent<WanderBehavior> ();
@@ -106,11 +115,33 @@ public class BossController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (Time.time >= nextBehaviorStartTime) {
-			selectBehaviors ();
+			if (currentStage != Stage.MediumTransition && currentStage != Stage.HardTransition) {
+				selectBehaviors ();
+			}
 		}
 		else if (Time.time >= nextBehaviorEndTime) {
 			deactivateBehaviors ();
 			print ("deactivating behaviors");
+		}
+
+		if (currentStage == Stage.MediumTransition && Time.time > transitionEndTime) {
+			currentStage = Stage.Medium;
+			ToggleMovement ("Wander");
+			deactivateBehaviors ();
+			//minionSpawner.SpawnMinions (6,3);
+
+
+
+			//			shieldSpawner.setStatus (true);
+			//			wallGunSpawner.setStatus (false);
+
+			wallGunSpawner.setStatus (true);
+			nextBehaviorStartTime = Time.time + mediumStageDelay;
+		}
+		if (currentStage == Stage.HardTransition && Time.time > transitionEndTime) {
+			currentStage = Stage.Hard;
+			ToggleMovement ("Follow");
+			nextBehaviorStartTime = Time.time + behaviorDelay;
 		}
 	}
 
@@ -136,9 +167,11 @@ public class BossController : MonoBehaviour {
 
 		print ("Health Ratio is " + healthRatio);
 
-		if (difficulty == 0 && healthRatio < 0.7) {
-			difficulty = 1;
-            soundtrackController.switchByDifficulty(difficulty);
+		if (currentStage == Stage.Easy && healthRatio < easyToMediumHealthThreshold) {
+			currentStage = Stage.MediumTransition;
+			ToggleMovement ("Stop");
+			transitionEndTime = Time.time + transitionDelay;
+            soundtrackController.switchByDifficulty(1);
             bossHealth.SetMaterial(difficulty1Material);
 			GetComponentsInChildren<Renderer> () [1].material = difficulty1Material;
 
@@ -149,18 +182,20 @@ public class BossController : MonoBehaviour {
 
 //			shieldSpawner.setStatus (true);
 //			wallGunSpawner.setStatus (false);
-
-			wallGunSpawner.setStatus (true);
-			nextBehaviorStartTime = Time.time + mediumStageDelay;
+//
+//			wallGunSpawner.setStatus (true);
+//			nextBehaviorStartTime = Time.time + mediumStageDelay;
 
 
 		}
 
-		if (difficulty == 1 && healthRatio < 0.4) {
-			difficulty = 2;
+		if (currentStage == Stage.Medium && healthRatio < mediumToHardHealthThreshold) {
+			currentStage = Stage.HardTransition;
+			ToggleMovement ("Stop");
             targetedDamage = 2;
+			transitionEndTime = Time.time + transitionDelay;
             followBehavior.speed = followBehavior.speed + 1.0f;
-            soundtrackController.switchByDifficulty(difficulty);
+            soundtrackController.switchByDifficulty(2);
             bossHealth.SetMaterial(difficulty2Material);
             GetComponentsInChildren<Renderer> () [1].material = difficulty2Material;
 
@@ -172,7 +207,7 @@ public class BossController : MonoBehaviour {
 			expandingCircleSpawner.numRepetitions *= 2;
 			expandingCircleSpawner.delay /= 2;
 
-			ToggleMovement ("Follow");
+			//ToggleMovement ("Follow");
 
 			//trapSpawner.FireTrap ();
 			deactivateBehaviors ();
@@ -184,10 +219,9 @@ public class BossController : MonoBehaviour {
 			playerCircleTrapSpawner.repetitions *= 2;
 
 
-			minionSpawner.SpawnMinions (6,3);
-			wallGunSpawner.setStatus (true);
 
-			nextBehaviorStartTime = Time.time + mediumStageDelay;
+
+			//nextBehaviorStartTime = Time.time + mediumStageDelay;
 
 
 
@@ -208,13 +242,13 @@ public class BossController : MonoBehaviour {
 
 	//TODO: refactor this into an array of materials
 	public Material getCurrentMaterial(){
-		if (difficulty == 0) {
+		if (currentStage == Stage.Easy) {
 			return startingDifficultyMaterial;
 		}
-		if (difficulty == 1) {
+		if (currentStage == Stage.Medium || currentStage == Stage.MediumTransition) {
 			return difficulty1Material;
 		}
-		if (difficulty == 2) {
+		if (currentStage == Stage.Hard || currentStage == Stage.HardTransition) {
 			return difficulty2Material;
 		}
 		return null;
@@ -228,7 +262,7 @@ public class BossController : MonoBehaviour {
 
 
 		int firstBehavior = 1;
-		if (difficulty == 0) {
+		if (currentStage == Stage.Easy) {
 			firstBehavior = Random.Range (0, 3);
 			switch (firstBehavior) {
 			case 0:
@@ -244,7 +278,7 @@ public class BossController : MonoBehaviour {
 			}
 		} 
 
-		else if (difficulty == 1 && mediumStatus != "final") {
+		else if (currentStage == Stage.Medium && mediumStatus != "final") {
 			if (mediumStatus == "initial") {
 				firstBehavior = Random.Range (3, 5);
 				mediumStatus = "playedOnce";
@@ -289,7 +323,7 @@ public class BossController : MonoBehaviour {
 			break;
 
 		}
-		if (difficulty == 2) {
+		if (currentStage == Stage.Hard) {
 //			int secondBehavior = Random.Range (0, 5);
 //			while (secondBehavior == firstBehavior){
 //				secondBehavior = Random.Range (0, 5);
@@ -340,7 +374,7 @@ public class BossController : MonoBehaviour {
 	}
 
 	public void ToggleMovement(string s){
-		if (difficulty != 2) {
+		if (currentStage == Stage.Easy || currentStage == Stage.Medium) {
 			if (s == "Wander") {
 				followBehavior.setStatus (false);
 				wanderBehavior.setStatus (true);
@@ -349,7 +383,14 @@ public class BossController : MonoBehaviour {
 				followBehavior.setStatus (true);
 				wanderBehavior.setStatus (false);
 			}
-		} else {
+		} 
+		else if (currentStage == Stage.MediumTransition || currentStage == Stage.HardTransition || s == "Stop") {
+			wanderBehavior.setStatus (false);
+			followBehavior.setStatus (false);
+			GetComponent<Rigidbody2D> ().velocity = Vector2.zero;
+
+		}
+		else {
 			followBehavior.setStatus (true);
 			wanderBehavior.setStatus (false);
 		}

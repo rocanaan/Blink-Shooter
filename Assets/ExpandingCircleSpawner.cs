@@ -33,6 +33,9 @@ public class ExpandingCircleSpawner : MonoBehaviour {
 			currentInstance = 0;
 			FireCircle ();
 		}
+		if (!active) {
+			currentInstance = numRepetitions;
+		}
 	}
 
 	private void FireCircle(){
