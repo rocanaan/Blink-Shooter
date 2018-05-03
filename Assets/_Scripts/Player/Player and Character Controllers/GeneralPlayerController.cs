@@ -31,7 +31,7 @@ public class GeneralPlayerController : MonoBehaviour {
 	private float timeRecoverStun;
 	public float speedStunned;
 
-	private GameController gameController;
+	private BossBattleGameController gameController;
 
 	// Script for doing the on damage blinking animation
 	private BlinkAnimation blinkAnimation;
@@ -77,7 +77,7 @@ public class GeneralPlayerController : MonoBehaviour {
 		healthTracker = GetComponent<HealthTracker> ();
 		healthTracker.startHealth (maxHealth);
 
-		gameController = GameObject.FindGameObjectWithTag ("GameController").GetComponent<GameController> ();
+		gameController = GameObject.FindGameObjectWithTag ("GameController").GetComponent<BossBattleGameController> ();
 
 		isDead = false;
 		isStunned = false;

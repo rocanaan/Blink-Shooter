@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DirectionalShieldSpawner : MonoBehaviour {
 
-	private GameController gameController;
+	private BossBattleGameController gameController;
 
 	public float offsetAsRadiusRatio;
 	public float angularSpeed;
@@ -30,7 +30,7 @@ public class DirectionalShieldSpawner : MonoBehaviour {
 		statusActive = false;
 
 
-		gameController = GameObject.FindGameObjectWithTag ("GameController").GetComponent<GameController> ();
+		gameController = GameObject.FindGameObjectWithTag ("GameController").GetComponent<BossBattleGameController> ();
 		players = gameController.GetAllPlayers ();
 	
 	}

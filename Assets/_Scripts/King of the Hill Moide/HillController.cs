@@ -21,11 +21,11 @@ public class HillController : MonoBehaviour {
 	private int team1Score;
 	private int team2Score;
 
-	private GameController gameController;
+	private BossBattleGameController gameController;
 
 	// Use this for initialization
 	void Start () {
-		gameController = GameObject.FindGameObjectWithTag ("GameController").GetComponent<GameController> ();
+		gameController = GameObject.FindGameObjectWithTag ("GameController").GetComponent<BossBattleGameController> ();
 	}
 		
 	

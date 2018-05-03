@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class DestroyByShot : MonoBehaviour {
 
-	private GameController gc;
+	private BossBattleGameController gc;
 
 	// Use this for initialization
 	void Start () {
 
-		gc = GameObject.FindGameObjectWithTag ("GameController").GetComponent<GameController> ();
+		gc = GameObject.FindGameObjectWithTag ("GameController").GetComponent<BossBattleGameController> ();
 		
 	}
 	

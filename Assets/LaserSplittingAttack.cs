@@ -5,7 +5,7 @@ using UnityEngine;
 public class LaserSplittingAttack : BossGenericBehavior {
 
 	private GameObject[] players;
-	private GameController gameController;
+	private BossBattleGameController gameController;
 
 	public GameObject laserSpawnerPrefab;
 
@@ -15,7 +15,7 @@ public class LaserSplittingAttack : BossGenericBehavior {
 
 	// Use this for initialization
 	void Start () {
-		gameController = GameObject.FindGameObjectWithTag ("GameController").GetComponent<GameController> ();
+		gameController = GameObject.FindGameObjectWithTag ("GameController").GetComponent<BossBattleGameController> ();
 		players = gameController.GetAllPlayers ();
 //	setActive (true);
 	}

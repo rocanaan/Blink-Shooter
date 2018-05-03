@@ -8,7 +8,7 @@ public class TrapSpawner : MonoBehaviour {
 	public GameObject trapObject;
 
 	private GameObject[] players;
-	private GameController gameController;
+	private BossBattleGameController gameController;
 
 
 	private int nextTarget;
@@ -17,7 +17,7 @@ public class TrapSpawner : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		gameController = GameObject.FindGameObjectWithTag ("GameController").GetComponent<GameController> ();
+		gameController = GameObject.FindGameObjectWithTag ("GameController").GetComponent<BossBattleGameController> ();
 		players = gameController.GetAllPlayers ();
 
 		nextTarget = Random.Range (0, players.Length);

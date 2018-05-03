@@ -5,7 +5,7 @@ using UnityEngine;
 public class LaserSplit : MonoBehaviour {
 
     private GameObject[] players;
-    private GameController gameController;
+    private BattleBattleGameController gameController;
 
     public GameObject laserSpawnerPrefab;
 
@@ -16,7 +16,7 @@ public class LaserSplit : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
-        gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<GameController>();
+        gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<BossBattleGameController>();
         players = gameController.GetAllPlayers();
         //	setActive (true);
     }

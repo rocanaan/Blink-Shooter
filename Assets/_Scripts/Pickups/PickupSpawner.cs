@@ -14,12 +14,12 @@ public class PickupSpawner : MonoBehaviour {
 
 	private float nextSpawn;
 
-	private GameController gc;
+	private BossBattleGameController gc;
 
 	// Use this for initialization
 	void Start () {
 		nextSpawn = firstSpawnTime;
-		gc = GameObject.FindGameObjectWithTag ("GameController").GetComponent<GameController> ();
+		gc = GameObject.FindGameObjectWithTag ("GameController").GetComponent<BossBattleGameController> ();
 	}
 	
 	// Update is called once per frame

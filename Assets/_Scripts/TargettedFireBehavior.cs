@@ -18,7 +18,7 @@ public class TargettedFireBehavior : MonoBehaviour {
 	public bool activateOnStartup;
 
 	private GameObject[] players;
-	private GameController gameController;
+	private BossBattleGameController gameController;
     private int damage;
 
 	private SoundEffectsController sfx;
@@ -29,7 +29,7 @@ public class TargettedFireBehavior : MonoBehaviour {
         damage = 1;
         setStatus(activateOnStartup, damage); //activates the behavior on startup if that flag is set to true
 
-		gameController = GameObject.FindGameObjectWithTag ("GameController").GetComponent<GameController> ();
+		gameController = GameObject.FindGameObjectWithTag ("GameController").GetComponent<BossBattleGameController> ();
 		players = gameController.GetAllPlayers ();
 
 		sfx = GameObject.FindGameObjectWithTag ("GlobalAudioSource").GetComponent<SoundEffectsController> ();

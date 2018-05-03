@@ -5,7 +5,7 @@ using UnityEngine;
 public class FollowBehavior : MonoBehaviour {
 
 	private GameObject[] players;
-	private GameController gameController;
+	private BossBattleGameController gameController;
 	public float speed;
 	public float tolerance;
 
@@ -16,7 +16,7 @@ public class FollowBehavior : MonoBehaviour {
 	void Start () {
 		statusActive = false;
 
-		gameController = GameObject.FindGameObjectWithTag ("GameController").GetComponent<GameController> ();
+		gameController = GameObject.FindGameObjectWithTag ("GameController").GetComponent<BossBattleGameController> ();
 		players = gameController.GetAllPlayers ();
 	}
 	

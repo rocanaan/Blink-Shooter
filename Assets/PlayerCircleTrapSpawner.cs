@@ -7,7 +7,7 @@ public class PlayerCircleTrapSpawner : MonoBehaviour {
 	public GameObject CircleTrapPrefab;
 
 	private GameObject[] players;
-	private GameController gameController;
+	private BossBattleGameController gameController;
 	public int repetitions;
 	private int currentTrapCount;
 	private int lastPlayerID;
@@ -16,7 +16,7 @@ public class PlayerCircleTrapSpawner : MonoBehaviour {
 	private bool isActive;
 
 	void Start(){
-		gameController = GameObject.FindGameObjectWithTag ("GameController").GetComponent<GameController> ();
+		gameController = GameObject.FindGameObjectWithTag ("GameController").GetComponent<BossBattleGameController> ();
 		players = gameController.GetAllPlayers ();
 		lastPlayerID = -1;
 		isActive = false;

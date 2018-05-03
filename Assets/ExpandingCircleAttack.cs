@@ -26,7 +26,7 @@ public class ExpandingCircleAttack : MonoBehaviour {
 	private LineRenderer l_Renderer;
 
 	private GameObject[] players;
-	private GameController gameController;
+	private BossBattleGameController gameController;
 
 	public Material activationMaterial;
 
@@ -38,7 +38,7 @@ public class ExpandingCircleAttack : MonoBehaviour {
 		l_Renderer.SetVertexCount(numberOfVertices+1);
 		currentRadius = startingRadius;
 
-		gameController = GameObject.FindGameObjectWithTag ("GameController").GetComponent<GameController> ();
+		gameController = GameObject.FindGameObjectWithTag ("GameController").GetComponent<BossBattleGameController> ();
 		players = gameController.GetAllPlayers ();
 
 		center = transform.position;
