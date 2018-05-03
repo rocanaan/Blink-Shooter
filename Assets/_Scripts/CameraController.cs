@@ -4,18 +4,39 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour {
 
+    public Material phase1Material;
+    public Material phase2Material;
+    public Material phase3Material;
+    public int repetition;
+    public float timeInterval;
+
+
     private Vector3 velocity;
     private Vector3 originalPosition;
+    private Camera cam;
 
 	// Use this for initialization
 	void Start () {
         originalPosition = transform.position;
         velocity = Vector3.zero;
+        cam = transform.GetComponent<Camera>();
 	}
 
     public void CamShake(float shakeTimer, float shakeIntensity)
     {
         StartCoroutine(Shake(shakeTimer, shakeIntensity));
+    }
+
+    public void ChangeBackGround(int phaseTransition)
+    {
+        if(phaseTransition == 1)
+        {
+            StartCoroutine(BlinkingBackground(phase1Material, phase2Material));
+        }
+        else if(phaseTransition == 2)
+        {
+            StartCoroutine(BlinkingBackground(phase2Material, phase3Material));
+        }
     }
 
     private IEnumerator Shake(float shakeTimer, float shakeIntensity)
@@ -28,5 +49,37 @@ public class CameraController : MonoBehaviour {
             yield return null;
         }
         transform.position = Vector3.SmoothDamp(transform.position, originalPosition, ref velocity, 0.1f);
+    }
+
+    private IEnumerator BlinkingBackground(Material mat1, Material mat2)
+    {
+        float timer = 0f;
+        for (int i=0; i<repetition; i++)
+        {
+            
+            //cam.backgroundColor = Color.Lerp(mat1.color, mat2.color, Mathf.PingPong(Time.time, 1));
+            //yield return null;            
+            cam.backgroundColor = mat1.color;
+            yield return null;
+
+            while (timer < timeInterval)
+            {
+                timer = timer + Time.deltaTime;
+                yield return null;
+            }
+            timer = 0f;
+
+            cam.backgroundColor = mat2.color;
+            yield return null;
+
+            while (timer < timeInterval)
+            {
+                timer = timer + Time.deltaTime;
+                yield return null;
+            }
+            timer = 0f;
+        }
+
+        cam.backgroundColor = mat2.color;
     }
 }
