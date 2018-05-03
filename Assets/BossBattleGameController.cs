@@ -22,6 +22,7 @@ public class BossBattleGameController : MonoBehaviour {
     private int currentKeyboardInput;
     private static bool gameOver;
     private GameMode gameMode = GameMode.Boss;
+    private float lastRespawnTime;
 
 
     // Use this for initialization
@@ -119,13 +120,15 @@ public class BossBattleGameController : MonoBehaviour {
 
     public void NotifyDeath(int playerID, int teamID)
     {
+        
+        
         bool oneAlive = false;
         if (players[0].GetComponent<HealthController>().IsAlive() || players[1].GetComponent<HealthController>().IsAlive())
         {
             oneAlive = true;
         }
 
-        if (respawnLives <= 0 && !oneAlive)
+        if (respawnLives <= 0 && !oneAlive && Time.time > lastRespawnTime)
         {
             SetGameOver(2);
         }
@@ -155,6 +158,7 @@ public class BossBattleGameController : MonoBehaviour {
         {
             respawnLives = respawnLives - 1;
             SetRespawnText();
+            lastRespawnTime = Time.time + respawnTime;
             return respawnTime;
         }
         else

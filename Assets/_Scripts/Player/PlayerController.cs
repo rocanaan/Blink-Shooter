@@ -20,6 +20,7 @@ public class PlayerController : MonoBehaviour {
     public float slowedSpeed;
     public Material healthMaterial;
     public Material lowHealthMaterial;
+    public bool stopWhenPhasing;
 
     private float speed;// Controls the speed of the character
     private SoundEffectsController sfxController;
@@ -40,10 +41,10 @@ public class PlayerController : MonoBehaviour {
 	private float timeLastDamage; // time when last damage was taken
 	private FireShot fs; // script for shooting
 	private Material bodyMaterial;
-    private float lastFireTime; 
+    private float lastFireTime;
+    private bool isPhasing;
 
-	public bool isPhasing;
-	public bool stopWhenPhasing;
+    
 
     // Use this for initialization
     void Start () {
@@ -224,44 +225,48 @@ public class PlayerController : MonoBehaviour {
 
 	//TODO: Implement grace period. Righ now, using OnTriggerEnter, boss can park on top of a cornered player, and using OnTriggerStay, boss insta-kills him
 	void OnTriggerStay2D(Collider2D col){
-		if (!isPhasing || !stopWhenPhasing) {
-			if (col.tag == "Shot") {
-				ShotAttributes shot = col.GetComponent<ShotAttributes> ();
-				if (shot.getTeamID () != teamID) {
-					TakeDamage (shot.damage); // takeDamage handles whether player is on grace period now
-					Destroy (col.gameObject);
-				}
+        if (!isPhasing || !stopWhenPhasing)
+        {
+            if (col.tag == "Shot")
+            {
+                ShotAttributes shot = col.GetComponent<ShotAttributes>();
+                if (shot.getTeamID() != teamID)
+                {
+                    TakeDamage(shot.damage); // takeDamage handles whether player is on grace period now
+                    Destroy(col.gameObject);
+                }
+            }
 
-			}
+            if (col.tag == "Pickup")
+            {
+                HealthPickup healthPickup = col.GetComponent<HealthPickup>();
+                playerHealth.Heal(healthPickup.healthRecovered); // increases health by the given amount, doesn't go over max health
+                Destroy(col.gameObject);
+            }
 
-			if (col.tag == "Pickup") {
-				HealthPickup healthPickup = col.GetComponent<HealthPickup> ();
-				playerHealth.Heal (healthPickup.healthRecovered); // increases health by the given amount, doesn't go over max health
-				Destroy (col.gameObject);
-			}
+            if (col.tag == "Boss")
+            {
+                if (!OnGracePeriod())
+                {
+                    TakeDamage(1);
+                    timeLastDamage = Time.time;
+                }
+                if (!isDead)
+                {
+                    isStunned = true;
+                    timeRecoverStun = Time.time + timeStunned;
 
-			if (col.tag == "Boss") {
-				if (!OnGracePeriod ()) {
-					TakeDamage (1);
-					timeLastDamage = Time.time;
-				}
-				if (!isDead) {
-					isStunned = true;
-					timeRecoverStun = Time.time + timeStunned;
-
-					Vector3 offset = transform.position - col.transform.position;
-					Vector3 direction = offset.normalized;
-					rb.velocity = direction * speedStunned;
-
-
-				}
-			}
-		}
-	}
+                    Vector3 offset = transform.position - col.transform.position;
+                    Vector3 direction = offset.normalized;
+                    rb.velocity = direction * speedStunned;
+                }
+            }
+        }        
+    }
 
     public void TakeDamage (int damage)
     {
-        if (!isDead && !OnGracePeriod())
+        if (!isDead && !OnGracePeriod() && !(isPhasing && stopWhenPhasing))
         {
             bool isAlive = playerHealth.TakeDamage(damage); // returns true if alive (health > 0)
             myCamera.GetComponent<CameraController>().CamShake(0.2f * damage, 0.15f * damage);
@@ -313,5 +318,15 @@ public class PlayerController : MonoBehaviour {
 	bool OnGracePeriod(){
 		return (Time.time <= (timeLastDamage + gracePeriod));
 	}
+
+    public bool IsPhasing()
+    {
+        return isPhasing;
+    }
+
+    public void SetPhasing(bool phasing)
+    {
+        isPhasing = phasing;
+    }
 
 }
