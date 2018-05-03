@@ -20,7 +20,8 @@ public class CameraController : MonoBehaviour {
         originalPosition = transform.position;
         velocity = Vector3.zero;
         cam = transform.GetComponent<Camera>();
-	}
+        cam.backgroundColor = phase1Material.color;
+    }
 
     public void CamShake(float shakeTimer, float shakeIntensity)
     {

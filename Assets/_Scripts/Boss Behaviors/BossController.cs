@@ -63,10 +63,13 @@ public class BossController : MonoBehaviour {
 	public float easyToMediumHealthThreshold;
 	public float mediumToHardHealthThreshold;
 
+    private GameObject myCamera;
+
 	// Use this for initialization
 	void Start () {
 		coreBlinkAnimation = GetComponentInChildren<BlinkAnimation> ();
         bossHealth = transform.GetComponent<HealthController>();
+        myCamera = GameObject.FindGameObjectWithTag("MainCamera");
 		currentHealth = bossHealth.GetHealth();
 		//difficulty = 0;
 		currentStage = Stage.Easy;
@@ -169,6 +172,7 @@ public class BossController : MonoBehaviour {
 
 		if (currentStage == Stage.Easy && healthRatio < easyToMediumHealthThreshold) {
 			currentStage = Stage.MediumTransition;
+            myCamera.GetComponent<CameraController>().ChangeBackGround(1);
 			ToggleMovement ("Stop");
 			transitionEndTime = Time.time + transitionDelay;
             soundtrackController.switchByDifficulty(1);
@@ -191,7 +195,8 @@ public class BossController : MonoBehaviour {
 
 		if (currentStage == Stage.Medium && healthRatio < mediumToHardHealthThreshold) {
 			currentStage = Stage.HardTransition;
-			ToggleMovement ("Stop");
+            myCamera.GetComponent<CameraController>().ChangeBackGround(2);
+            ToggleMovement ("Stop");
             targetedDamage = 2;
 			transitionEndTime = Time.time + transitionDelay;
             followBehavior.speed = followBehavior.speed + 1.0f;

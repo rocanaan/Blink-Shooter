@@ -4443,6 +4443,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd072631cc175428d820a5801acda04d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  phase1Material: {fileID: 2100000, guid: 76809236ed2e9d34f95c2eac2cdf504f, type: 2}
+  phase2Material: {fileID: 2100000, guid: dd072f244c508e2448ca1d8e4cdf528b, type: 2}
+  phase3Material: {fileID: 2100000, guid: 687d11d9db7589e4cbe8441073cd02b4, type: 2}
+  repetition: 8
+  timeInterval: 0.2
 --- !u!1 &437783193
 GameObject:
   m_ObjectHideFlags: 0
@@ -9744,7 +9749,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthBar: {fileID: 1296711202}
   fill: {fileID: 213260056}
-  maxHealth: 30
+  maxHealth: 200
   singleRegenTime: 2
   regenAmount: 0
   highHealthMaterial: {fileID: 0}
