@@ -10040,6 +10040,11 @@ Prefab:
       propertyPath: maxHealth
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 114450220686667060, guid: 9158f12da4bead54284ad68ac4c93bfc,
+        type: 2}
+      propertyPath: stopWhenPhasing
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9158f12da4bead54284ad68ac4c93bfc, type: 2}
   m_IsPrefabParent: 0

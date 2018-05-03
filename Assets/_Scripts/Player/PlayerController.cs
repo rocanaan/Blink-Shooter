@@ -42,6 +42,8 @@ public class PlayerController : MonoBehaviour {
 	private Material bodyMaterial;
     private float lastFireTime; 
 
+	public bool isPhasing;
+	public bool stopWhenPhasing;
 
     // Use this for initialization
     void Start () {
@@ -67,6 +69,8 @@ public class PlayerController : MonoBehaviour {
 		sfxController = GetComponentInParent<SoundEffectsController> ();
         gameController = GameObject.FindGameObjectWithTag("GameController").GetComponent<BossBattleGameController>();
 
+		isPhasing = false;
+
     }
 
 	// Update is called once per frame
@@ -74,31 +78,37 @@ public class PlayerController : MonoBehaviour {
 		if (!GameController.IsGameOver ()) {
 			if (isDead && Time.time >= nextRespawnTime && respawnAllowed) {
 				//transform.parent.gameObject.SetActive (true);
-				if (gameController.GetGameMode() == BossBattleGameController.GameMode.Boss) {
+				if (gameController.GetGameMode () == BossBattleGameController.GameMode.Boss) {
 					print ("attempting to respawn");
 					transform.position = respawn;
 					rb.velocity = Vector3.zero;
 					ghost.resetPosition ();
 				} else {
 					//TODO: Respawn code for other game modes is buggy
-					Vector2 randomVector = gameController.GetRespawnPosition();
+					Vector2 randomVector = gameController.GetRespawnPosition ();
 					transform.parent.transform.position = new Vector3 (randomVector.x, randomVector.y, transform.parent.transform.position.z);
 					transform.position = transform.parent.transform.position;
 				}
 
-                // player has now respawned
-                isDead = false;
-                playerHealth.Respawn();
+				// player has now respawned
+				isDead = false;
+				playerHealth.Respawn ();
 
 
-            }
+			}
+
+			if (isPhasing && stopWhenPhasing) {
+				rb.velocity = Vector3.zero;
+			}
 
 			if (!isDead) {
 				if (controllerName != "Keyboard" || gameController.GetCurrentKeyboardInput () == playerID) {
 					getInputs ();
 				}
-                statUpdates();
-            }
+				statUpdates ();
+			}
+		} else {
+			rb.velocity = Vector3.zero;
 		}
 	}
     void statUpdates()
@@ -152,39 +162,50 @@ public class PlayerController : MonoBehaviour {
 			print ("ERROR: No input found for player " + playerID);
 		} else {
 
-			if (!isStunned) {
-				// Get movement inputs. Prone to moving faster in diagonal direction
-				float horizontalMovement = Input.GetAxis ("Horizontal" + controllerName);
-				float verticallMovement = Input.GetAxis ("Vertical" + controllerName);
-				rb.velocity = new Vector2 (speed * horizontalMovement, speed * verticallMovement);
+			if (!isPhasing || !stopWhenPhasing) {
+				if (!isStunned) {
+					// Get movement inputs. Prone to moving faster in diagonal direction
+					float horizontalMovement = Input.GetAxis ("Horizontal" + controllerName);
+					float verticallMovement = Input.GetAxis ("Vertical" + controllerName);
+					rb.velocity = new Vector2 (speed * horizontalMovement, speed * verticallMovement);
 
-			}
-
-			// Get rotation input
-			float angle;
-			if (controllerName == "Keyboard") {
-				// For keyboard, rotate to face mouse position
-				Vector3 mousePosition = myCamera.ScreenToWorldPoint (new Vector3 (Input.mousePosition.x, Input.mousePosition.y, 0.0f));
-				angle = Mathf.Atan2 ((mousePosition.y - transform.position.y), (mousePosition.x - transform.position.x)) * Mathf.Rad2Deg;
-				transform.rotation = Quaternion.Euler (0.0f, 0.0f, angle);
-			} else {
-				// Controls for aiming with the right directional wheel in the PS4 Controller. 
-				float aimHorizontal = Input.GetAxis ("AimHorizontal" + controllerName);
-				float aimVertical = Input.GetAxis ("AimVertical" + controllerName); // * -1 
-
-				angle = Mathf.Atan2 (aimVertical, aimHorizontal) * Mathf.Rad2Deg;
-
-				if (aimHorizontal != 0 || aimVertical != 0) { // TODO: refactor so that the code does not repeat here and on the button "Fire"
-					if (Time.time >= nextShot) {
-						fs.fireShot();
-						sfxController.PlayClip ("Fire");
-						nextShot = Time.time + shotInterval;
-						lastFireTime = Time.time;
-					}
-					transform.rotation = Quaternion.Euler (0.0f, 0.0f, angle);
 				}
-			}
 
+				// Get rotation input
+				float angle;
+				if (controllerName == "Keyboard") {
+					// For keyboard, rotate to face mouse position
+					Vector3 mousePosition = myCamera.ScreenToWorldPoint (new Vector3 (Input.mousePosition.x, Input.mousePosition.y, 0.0f));
+					angle = Mathf.Atan2 ((mousePosition.y - transform.position.y), (mousePosition.x - transform.position.x)) * Mathf.Rad2Deg;
+					transform.rotation = Quaternion.Euler (0.0f, 0.0f, angle);
+				} else {
+					// Controls for aiming with the right directional wheel in the PS4 Controller. 
+					float aimHorizontal = Input.GetAxis ("AimHorizontal" + controllerName);
+					float aimVertical = Input.GetAxis ("AimVertical" + controllerName); // * -1 
+
+					angle = Mathf.Atan2 (aimVertical, aimHorizontal) * Mathf.Rad2Deg;
+
+					if (aimHorizontal != 0 || aimVertical != 0) { // TODO: refactor so that the code does not repeat here and on the button "Fire"
+						if (Time.time >= nextShot) {
+							fs.fireShot ();
+							sfxController.PlayClip ("Fire");
+							nextShot = Time.time + shotInterval;
+							lastFireTime = Time.time;
+						}
+						transform.rotation = Quaternion.Euler (0.0f, 0.0f, angle);
+					}
+				}
+
+				// Get fire action
+				if (Input.GetButton ("Fire" + controllerName) && Time.time >= nextShot) {
+					//print (" Firing shot for player " + playerID + " using controller " + controllerName);
+					fs.fireShot ();
+					sfxController.PlayClip ("Fire");
+					nextShot = Time.time + shotInterval;
+					lastFireTime = Time.time;
+				}
+
+			}
 
 			// Get ghost action
 			if(Input.GetButtonDown("Ghost" + controllerName)){
@@ -195,14 +216,7 @@ public class PlayerController : MonoBehaviour {
 				ghost.ghostAction ("Up");
 			}
 
-			// Get fire action
-			if(Input.GetButton("Fire" + controllerName) && Time.time >= nextShot){
-				//print (" Firing shot for player " + playerID + " using controller " + controllerName);
-				fs.fireShot();
-				sfxController.PlayClip ("Fire");
-				nextShot = Time.time + shotInterval;
-                lastFireTime = Time.time;
-			}
+
 
 
 		}
@@ -210,35 +224,37 @@ public class PlayerController : MonoBehaviour {
 
 	//TODO: Implement grace period. Righ now, using OnTriggerEnter, boss can park on top of a cornered player, and using OnTriggerStay, boss insta-kills him
 	void OnTriggerStay2D(Collider2D col){
-		if (col.tag == "Shot") {
-			ShotAttributes shot = col.GetComponent<ShotAttributes> ();
-			if (shot.getTeamID() != teamID ) {
-                TakeDamage(shot.damage); // takeDamage handles whether player is on grace period now
-                Destroy (col.gameObject);
+		if (!isPhasing || !stopWhenPhasing) {
+			if (col.tag == "Shot") {
+				ShotAttributes shot = col.GetComponent<ShotAttributes> ();
+				if (shot.getTeamID () != teamID) {
+					TakeDamage (shot.damage); // takeDamage handles whether player is on grace period now
+					Destroy (col.gameObject);
+				}
+
 			}
 
-		}
-
-		if (col.tag == "Pickup") {
-			HealthPickup healthPickup = col.GetComponent<HealthPickup> ();
-            playerHealth.Heal(healthPickup.healthRecovered); // increases health by the given amount, doesn't go over max health
-            Destroy(col.gameObject);
-		}
-
-		if (col.tag == "Boss") {
-			if (!OnGracePeriod ()) {
-				TakeDamage (1);
-				timeLastDamage = Time.time;
+			if (col.tag == "Pickup") {
+				HealthPickup healthPickup = col.GetComponent<HealthPickup> ();
+				playerHealth.Heal (healthPickup.healthRecovered); // increases health by the given amount, doesn't go over max health
+				Destroy (col.gameObject);
 			}
-			if (!isDead) {
-				isStunned = true;
-				timeRecoverStun = Time.time + timeStunned;
 
-				Vector3 offset = transform.position - col.transform.position;
-				Vector3 direction = offset.normalized;
-				rb.velocity = direction * speedStunned;
+			if (col.tag == "Boss") {
+				if (!OnGracePeriod ()) {
+					TakeDamage (1);
+					timeLastDamage = Time.time;
+				}
+				if (!isDead) {
+					isStunned = true;
+					timeRecoverStun = Time.time + timeStunned;
+
+					Vector3 offset = transform.position - col.transform.position;
+					Vector3 direction = offset.normalized;
+					rb.velocity = direction * speedStunned;
 
 
+				}
 			}
 		}
 	}

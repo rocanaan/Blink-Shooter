@@ -68,6 +68,7 @@ public class GhostController : MonoBehaviour {
 				Vector3 direction = pc.getFireDirection ();
 				rb.velocity = direction * moveSpeed;
 				stateTransition (1);
+				pc.isPhasing = true;
 				lastLaunchTime = Time.time;
 			} else if (state == 1 && teleportOnRepeatPress) {
 				StartCoroutine (TryPhasing (Time.time));
@@ -105,6 +106,7 @@ public class GhostController : MonoBehaviour {
 					rb.velocity = Vector3.zero;
 					body.transform.position = new Vector3 (transform.position.x, transform.position.y, body.transform.position.z);
 					stateTransition (2);
+					pc.isPhasing = false;
 					yield return null;
 				} else {
 					rb.velocity = velo;
@@ -120,6 +122,7 @@ public class GhostController : MonoBehaviour {
 		if (state == 1) {
 			rb.velocity = Vector3.zero;
 			stateTransition (2);
+			pc.isPhasing = false;
 		}
 
 
