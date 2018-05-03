@@ -5,9 +5,9 @@ using UnityEngine;
 public class BossGunController : MonoBehaviour {
 
 	public float fireInterval;
-	public float firstShotDelay;
+	public float firstShotFixedDelay;
+	public float firstShotRandomDelay;
 	private float nextFire;
-	public bool randomFirstDelay;
 
 	private SoundEffectsController globalSFXController;
 
@@ -15,11 +15,9 @@ public class BossGunController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		if (randomFirstDelay) {
-			nextFire = Time.time + Random.Range (0, firstShotDelay);
-		} else {
-			nextFire = Time.time + firstShotDelay;
-		}
+
+		nextFire = Time.time + firstShotFixedDelay + Random.Range(0,firstShotRandomDelay);
+
 		fs = GetComponent<FireShot> ();
 
 		globalSFXController = GameObject.FindGameObjectWithTag ("GlobalAudioSource").GetComponent<SoundEffectsController> ();

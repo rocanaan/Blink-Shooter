@@ -9721,12 +9721,12 @@ Prefab:
     - target: {fileID: 114442881963066064, guid: 7e641c9dfd20c41a4a5ad73725e7de64,
         type: 2}
       propertyPath: easyToMediumHealthThreshold
-      value: 0.7
+      value: 0.99
       objectReference: {fileID: 0}
     - target: {fileID: 114442881963066064, guid: 7e641c9dfd20c41a4a5ad73725e7de64,
         type: 2}
       propertyPath: mediumToHardHealthThreshold
-      value: 0.4
+      value: 0.95
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7e641c9dfd20c41a4a5ad73725e7de64, type: 2}

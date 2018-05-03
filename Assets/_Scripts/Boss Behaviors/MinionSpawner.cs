@@ -15,7 +15,6 @@ public class MinionSpawner : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        minionList = new List<GameObject>();
         //SpawnMinions();
 	}
 	
@@ -26,6 +25,7 @@ public class MinionSpawner : MonoBehaviour {
 
     public void SpawnMinions(int numOfMinions, float minimumDistance)
     {
+		minionList = new List<GameObject>();
         for(int i=0; i < numOfMinions; i++)
         {
             float xCoord;

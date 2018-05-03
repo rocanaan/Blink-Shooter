@@ -122,8 +122,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   fireInterval: 1
-  firstShotDelay: 0.75
-  randomFirstDelay: 1
+  firstShotFixedDelay: 3
+  firstShotRandomDelay: 1
 --- !u!114 &114256804630356960
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -136,6 +136,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blinkTime: 0.1
+  waitTime: 0
 --- !u!114 &114281336531897964
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -151,7 +152,6 @@ MonoBehaviour:
   explosionSize: 1.5
   explosionDuration: 0.8
   explosionRadius: 0.7
-  explosionColor: {r: 0, g: 0, b: 0, a: 0}
   explosionMaterial: {fileID: 2100000, guid: 24a87224804124fdfae81e8c3aef8e87, type: 2}
 --- !u!114 &114296145281321846
 MonoBehaviour:

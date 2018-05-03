@@ -138,13 +138,13 @@ public class BossController : MonoBehaviour {
 			//			shieldSpawner.setStatus (true);
 			//			wallGunSpawner.setStatus (false);
 
-			wallGunSpawner.setStatus (true);
-			nextBehaviorStartTime = Time.time + mediumStageDelay;
+
+			nextBehaviorStartTime = Time.time;
 		}
 		if (currentStage == Stage.HardTransition && Time.time > transitionEndTime) {
 			currentStage = Stage.Hard;
 			ToggleMovement ("Follow");
-			nextBehaviorStartTime = Time.time + behaviorDelay;
+			nextBehaviorStartTime = Time.time;
 		}
 	}
 
@@ -180,6 +180,7 @@ public class BossController : MonoBehaviour {
 			GetComponentsInChildren<Renderer> () [1].material = difficulty1Material;
 
 			deactivateBehaviors ();
+			wallGunSpawner.setStatus (true);
 			//minionSpawner.SpawnMinions (6,3);
 
 
@@ -206,9 +207,7 @@ public class BossController : MonoBehaviour {
 
 			shieldSpawner.numberShields *= 2;
 			gunSpawner.numberGuns *= 2;
-			wallGunSpawner.gunsPerWall *= 2;
 			targetFire.fireInterval /= 4;
-
 			expandingCircleSpawner.numRepetitions *= 2;
 			expandingCircleSpawner.delay /= 2;
 
@@ -219,9 +218,16 @@ public class BossController : MonoBehaviour {
 
 //			shieldSpawner.setStatus (false);
 //			gunSpawner.setStatus (true);
-			wallGunSpawner.gunsPerWall = 2;
 //			wallGunSpawner.setStatus (true);
 			playerCircleTrapSpawner.repetitions *= 2;
+
+			//Debug.Break ();
+			wallGunSpawner.setStatus (true);
+			//Debug.Break ();
+			minionSpawner.SpawnMinions (6, 3);
+			//Debug.Break ();
+			//minionSpawner.SpawnMinions (12, 3);
+
 
 
 
