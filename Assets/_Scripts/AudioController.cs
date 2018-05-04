@@ -7,6 +7,7 @@ public class AudioController : MonoBehaviour {
 	public AudioClip soundtrack1;
 	public AudioClip soundtrack2;
 	public AudioClip soundtrack3;
+	public AudioClip transitionSoundtrack;
 
 	private AudioSource source;
 
@@ -23,15 +24,20 @@ public class AudioController : MonoBehaviour {
 		
 	}
 
-	public void switchByDifficulty(int difficulty){
-		if (difficulty == 1) {
-//			source.Stop ();
-//			source.clip = soundtrack2;
-//			source.Play ();
+	public void switchByStage(BossController.Stage stage){
+		if (stage == BossController.Stage.Medium) {
+			source.Stop ();
+			source.clip = soundtrack2;
+			source.Play ();
 		}
-		if (difficulty == 2) {
+		if (stage == BossController.Stage.Hard) {
 			source.Stop ();
 			source.clip = soundtrack3;
+			source.Play ();
+		}
+		if (stage == BossController.Stage.MediumTransition || stage == BossController.Stage.HardTransition) {
+			source.Stop ();
+			source.clip = transitionSoundtrack;
 			source.Play ();
 		}
 	}

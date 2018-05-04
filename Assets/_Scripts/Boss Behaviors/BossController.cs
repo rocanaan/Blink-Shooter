@@ -138,12 +138,14 @@ public class BossController : MonoBehaviour {
 			//			shieldSpawner.setStatus (true);
 			//			wallGunSpawner.setStatus (false);
 
-
+			soundtrackController.switchByStage (Stage.Medium);
 			nextBehaviorStartTime = Time.time;
+
 		}
 		if (currentStage == Stage.HardTransition && Time.time > transitionEndTime) {
 			currentStage = Stage.Hard;
 			ToggleMovement ("Follow");
+			soundtrackController.switchByStage (Stage.Hard);
 			nextBehaviorStartTime = Time.time;
 		}
 	}
@@ -175,7 +177,7 @@ public class BossController : MonoBehaviour {
             myCamera.GetComponent<CameraController>().ChangeBackGround(1);
 			ToggleMovement ("Stop");
 			transitionEndTime = Time.time + transitionDelay;
-            soundtrackController.switchByDifficulty(1);
+			soundtrackController.switchByStage(Stage.MediumTransition);
             bossHealth.SetMaterial(difficulty1Material);
 			GetComponentsInChildren<Renderer> () [1].material = difficulty1Material;
 
@@ -201,7 +203,7 @@ public class BossController : MonoBehaviour {
             targetedDamage = 2;
 			transitionEndTime = Time.time + transitionDelay;
             followBehavior.speed = followBehavior.speed + 1.0f;
-            soundtrackController.switchByDifficulty(2);
+			soundtrackController.switchByStage(Stage.HardTransition);
             bossHealth.SetMaterial(difficulty2Material);
             GetComponentsInChildren<Renderer> () [1].material = difficulty2Material;
 
