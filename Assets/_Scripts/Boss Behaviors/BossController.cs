@@ -64,6 +64,7 @@ public class BossController : MonoBehaviour {
 	public float mediumToHardHealthThreshold;
 
     private GameObject myCamera;
+    private HealerBeaconSpawner healerBeaconSpawner;
 
 	// Use this for initialization
 	void Start () {
@@ -89,12 +90,13 @@ public class BossController : MonoBehaviour {
 		expandingCircleSpawner = GetComponentInChildren<ExpandingCircleSpawner>();
 		laserSplittingAttack = GetComponentInChildren<LaserSplit> ();
 		playerCircleTrapSpawner = GetComponentInChildren<PlayerCircleTrapSpawner> ();
+        healerBeaconSpawner = GetComponentInChildren<HealerBeaconSpawner>();
 
 
 
-		//wallGunSpawner.setStatus (true);
+        //wallGunSpawner.setStatus (true);
 
-		nextBehaviorStartTime = Time.time + behaviorDelay;
+        nextBehaviorStartTime = Time.time + behaviorDelay;
 		nextBehaviorEndTime = nextBehaviorStartTime + defaultBehaviorDuration;
 //		targetFire.setStatus (true);
 //		wallGunSpawner.setStatus (true);
