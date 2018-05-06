@@ -24,6 +24,8 @@ public class GhostController : MonoBehaviour {
 	public float earlyReleaseInterval;
 	private float lastLaunchTime;
 
+	private SoundEffectsController sfx;
+
 
 
 	// TO DO: See if a better implementation is to use an enum or #define
@@ -45,6 +47,8 @@ public class GhostController : MonoBehaviour {
 		col.enabled = false;
 
 		nextActivation = 0.0f;
+
+		sfx = GetComponent<SoundEffectsController> ();
 	}
 
 	// Update is called once per frame
@@ -138,6 +142,7 @@ public class GhostController : MonoBehaviour {
 			state = 1;
 			col.enabled = true;
 			spriteRenderer.enabled = true;
+			sfx.PlayClip ("Travel");
 		}
 		if (nextState == 2) {
 			if (cooldown > 0.0f) {
@@ -148,6 +153,8 @@ public class GhostController : MonoBehaviour {
 			} else {
 				stateTransition (0);
 			}
+			sfx.StopClip ();
+			sfx.PlayClip ("Teleport");
 		}
 	}
 	public void resetPosition(){

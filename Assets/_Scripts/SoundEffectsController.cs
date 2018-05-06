@@ -42,6 +42,10 @@ public class SoundEffectsController : MonoBehaviour {
 		return;
 	}
 
+	public void StopClip(){
+		audioSource.Stop ();
+	}
+
 	public void PlayClipCuttoff(string label, float time){
 		//TODO: instantiate a clip and then keep track of it (using Update) to see when it should be cut-off
 	}
