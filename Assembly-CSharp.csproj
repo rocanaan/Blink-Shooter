@@ -110,6 +110,7 @@
      <Compile Include="Assets\ExpandingCircleSpawner.cs" />
      <Compile Include="Assets\HealerBeaconSpawner.cs" />
      <Compile Include="Assets\HealorBeaconController.cs" />
+     <Compile Include="Assets\HealthPickUpSpawner.cs" />
      <Compile Include="Assets\LaserShooter.cs" />
      <Compile Include="Assets\LaserSplit.cs" />
      <Compile Include="Assets\LaserSplittingAttack.cs" />

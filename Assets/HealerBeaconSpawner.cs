@@ -134,11 +134,12 @@ public class HealerBeaconSpawner : MonoBehaviour {
     {
         foreach (GameObject obs in beaconList)
         {
-            Vector2 beaconPos = new Vector2(obs.transform.position.x, obs.transform.position.y);
-            if (Vector2.Distance(beaconPos, pos) < minDistance)
-            {
-                return false;
-            }
+			if (obs != null) {
+				Vector2 beaconPos = new Vector2 (obs.transform.position.x, obs.transform.position.y);
+				if (Vector2.Distance (beaconPos, pos) < minDistance) {
+					return false;
+				}
+			}
         }
         return true;
     }

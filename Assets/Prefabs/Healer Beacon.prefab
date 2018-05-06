@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 114368098270961584}
   - component: {fileID: 114898890543803818}
   - component: {fileID: 120216076055728166}
+  - component: {fileID: 114482861428906118}
   m_Layer: 0
   m_Name: Healer Beacon
   m_TagString: Beacon
@@ -168,6 +169,19 @@ MonoBehaviour:
   explosionDuration: 0.5
   explosionRadius: 1
   explosionMaterial: {fileID: 2100000, guid: 24a87224804124fdfae81e8c3aef8e87, type: 2}
+--- !u!114 &114482861428906118
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1592624159402314}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83ab8299680134347a1a7585a819b3ec, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthPickUpPrefab: {fileID: 1891630877957174, guid: cda2c65acd26be64bbc8dc7bb30b1ac5,
+    type: 2}
 --- !u!114 &114547454519016044
 MonoBehaviour:
   m_ObjectHideFlags: 1
