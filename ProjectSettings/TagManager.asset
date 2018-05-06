@@ -12,6 +12,9 @@ TagManager:
   - GlobalAudioSource
   - AudioSource
   - Wall
+  - Minion
+  - Laser
+  - Beacon
   layers:
   - Default
   - TransparentFX
