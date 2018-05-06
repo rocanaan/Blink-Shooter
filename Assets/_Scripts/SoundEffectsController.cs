@@ -28,7 +28,7 @@ public class SoundEffectsController : MonoBehaviour {
 	private AudioSource audioSource;
 
 	// Use this for initialization
-	void Start () {
+	void Awake () {
 		audioSource = GetComponentInParent<AudioSource> ();
 	}
 	

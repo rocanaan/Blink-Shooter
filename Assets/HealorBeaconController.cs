@@ -34,6 +34,8 @@ public class HealorBeaconController : MonoBehaviour {
 		lr.enabled = false;
 		nextTransitionTime = Time.time + Random.Range(0,initialDelay);
 
+		GetComponent<SoundEffectsController> ().PlayClip ("BeaconSpawn");
+
         //StartCoroutine(HealBoss());
 	}
 	
