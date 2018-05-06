@@ -12,16 +12,35 @@ public class HealerBeaconSpawner : MonoBehaviour
     public float minimumDistance;
 
     private List<GameObject> beaconList;
+    private int aliveBeaconCount;
+
+    private void Start()
+    {
+        aliveBeaconCount = 0;
+    }
+
+    public void DecrementAliveCount()
+    {
+        if(aliveBeaconCount > 0)
+        {
+            aliveBeaconCount = aliveBeaconCount - 1;
+        }        
+    }
+
+    public int GetAliveBeaconCount()
+    {
+        print("ALIVE BEACON COUNT");
+        print(aliveBeaconCount);
+        return aliveBeaconCount;
+    }
 
 
     private IEnumerator Spawn(float timeInterval)
     {
-        Debug.Log("Spawn called");
         GameObject beacon;
 
         beaconList = new List<GameObject>();
         yield return new WaitForSeconds(timeInterval * 2);
-        Debug.Log("Spawn returned once again");
 
         // 1st quadrant
         beacon = SpawnBeacon(0f, xRange, 0f, yRange);
@@ -46,7 +65,6 @@ public class HealerBeaconSpawner : MonoBehaviour
 
     private GameObject SpawnBeacon(float xMin, float xMax, float yMin, float yMax)
     {
-        Debug.Log("SpawnBeacon CALLED");
         GameObject beacon;
         WanderBehavior wb;
         float randX = 0f;
@@ -68,6 +86,7 @@ public class HealerBeaconSpawner : MonoBehaviour
         wb.setStatus(true);
         wb.getNewTarget();
 
+        aliveBeaconCount = aliveBeaconCount + 1;
         return beacon;
     }
 
@@ -78,7 +97,6 @@ public class HealerBeaconSpawner : MonoBehaviour
 
     private bool FarEnough(Vector2 pos, float minDistance)
     {
-        Debug.Log("FarEnough CALLED");
         foreach (GameObject obs in beaconList)
         {
             if (obs != null)

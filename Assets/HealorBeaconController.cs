@@ -64,4 +64,9 @@ public class HealorBeaconController : MonoBehaviour {
 //        }        
 		bossHealthController.Heal(regenRate);
     }
+
+    private void OnDestroy()
+    {
+        boss.GetComponentInChildren<HealerBeaconSpawner>().DecrementAliveCount(); // decrements the count of alive beacons as it gets destroyed
+    }
 }

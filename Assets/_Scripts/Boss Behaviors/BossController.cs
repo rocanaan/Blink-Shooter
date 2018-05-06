@@ -65,6 +65,7 @@ public class BossController : MonoBehaviour {
 
     private GameObject myCamera;
     private HealerBeaconSpawner healerBeaconSpawner;
+    private bool gunsSpawnedMedium;
 
 	// Use this for initialization
 	void Start () {
@@ -115,6 +116,7 @@ public class BossController : MonoBehaviour {
 
 		mediumStatus = "initial";
 		lastMediumBehavior = -1;
+        gunsSpawnedMedium = false;
     }
 	
 	// Update is called once per frame
@@ -150,6 +152,15 @@ public class BossController : MonoBehaviour {
 			soundtrackController.switchByStage (Stage.Hard);
 			nextBehaviorStartTime = Time.time;
 		}
+        if(currentStage == Stage.Medium && !gunsSpawnedMedium)
+        {
+            if(healerBeaconSpawner.GetAliveBeaconCount() == 0)
+            {
+                print("Count of alive beacons is ZERO");
+                gunsSpawnedMedium = true;
+                wallGunSpawner.setStatus(true);
+            }
+        }
 	}
 
 	void OnTriggerEnter2D(Collider2D col){
@@ -161,6 +172,7 @@ public class BossController : MonoBehaviour {
 			}
 		}
 	}
+
 
 	void TakeDamage (int damage){
 
@@ -185,7 +197,7 @@ public class BossController : MonoBehaviour {
 			GetComponentsInChildren<Renderer> () [1].material = difficulty1Material;
 
 			deactivateBehaviors ();
-			wallGunSpawner.setStatus (true);
+			//wallGunSpawner.setStatus (true);
 			//minionSpawner.SpawnMinions (6,3);
 
 
