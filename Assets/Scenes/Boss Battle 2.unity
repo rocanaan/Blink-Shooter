@@ -4132,10 +4132,10 @@ Prefab:
       propertyPath: m_Name
       value: Destructible Brick (1)
       objectReference: {fileID: 0}
-    - target: {fileID: 212702591325904358, guid: e5d5f33a44804d940bd6b542ae7d7b89,
+    - target: {fileID: 50501229668939570, guid: e5d5f33a44804d940bd6b542ae7d7b89,
         type: 2}
-      propertyPath: m_SortingOrder
-      value: 0
+      propertyPath: m_BodyType
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e5d5f33a44804d940bd6b542ae7d7b89, type: 2}

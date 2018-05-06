@@ -39,7 +39,7 @@ public class WanderBehavior : BossGenericBehavior {
 
 	}
 
-	private void getNewTarget(){
+	public void getNewTarget(){
 		if (dim == Dimension.both) {
 			target = new Vector3 (Random.Range (-x_range, x_range), Random.Range (-y_range, y_range), transform.position.z);
 		} else if (dim == Dimension.x) {
@@ -49,5 +49,7 @@ public class WanderBehavior : BossGenericBehavior {
 		}
 
 	}
+
+
 		
 }

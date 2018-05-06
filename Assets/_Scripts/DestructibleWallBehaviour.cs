@@ -36,5 +36,13 @@ public class DestructibleWallBehaviour : MonoBehaviour {
 				}
 			}
         }
+
+		if (collision.CompareTag ("Boss")) {
+			WanderBehavior wander = collision.GetComponent<WanderBehavior> ();
+			if (wander != null && wander.isActive()) {
+				wander.getNewTarget ();
+			}
+		}
+
     }
 }
