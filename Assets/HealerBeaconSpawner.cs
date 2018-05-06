@@ -23,6 +23,64 @@ public class HealerBeaconSpawner : MonoBehaviour {
 		
 	}
 
+    private IEnumerator Spawn(float timeInterval)
+    {
+        GameObject beacon;
+        beaconList = new List<GameObject>();
+        float randX = 0f;
+        float randY = 0f;
+        Vector2 pos = Vector2.zero;
+        yield return new WaitForSeconds(timeInterval*2);
+        // 1st quadrant
+        do
+        {
+            randX = Random.Range(0, xRange);
+            randY = Random.Range(0, yRange);
+            pos = new Vector2(randX, randY);
+        } while (!IsCoordUnoccupied(pos) || !FarEnough(pos, minimumDistance));
+        beacon = Instantiate(healerBeaconPrefab, new Vector3(pos.x, pos.y, 0f), Quaternion.identity, beaconParent.transform);
+        beaconList.Add(beacon);
+        yield return new WaitForSeconds(timeInterval);
+
+        // 3rd quadrant
+        do
+        {
+            randX = Random.Range(-xRange, 0);
+            randY = Random.Range(-yRange, 0);
+            pos = new Vector2(randX, randY);
+        } while (!IsCoordUnoccupied(pos) || !FarEnough(pos, minimumDistance));
+        beacon = Instantiate(healerBeaconPrefab, new Vector3(pos.x, pos.y, 0f), Quaternion.identity, beaconParent.transform);
+        beaconList.Add(beacon);
+        yield return new WaitForSeconds(timeInterval);
+
+        // 2nd quadrant
+        do
+        {
+            randX = Random.Range(-xRange, 0);
+            randY = Random.Range(0, yRange);
+            pos = new Vector2(randX, randY);
+        } while (!IsCoordUnoccupied(pos) || !FarEnough(pos, minimumDistance));
+        beacon = Instantiate(healerBeaconPrefab, new Vector3(pos.x, pos.y, 0f), Quaternion.identity, beaconParent.transform);
+        beaconList.Add(beacon);
+        yield return new WaitForSeconds(timeInterval);
+
+        // 4th quadrant
+        do
+        {
+            randX = Random.Range(0, xRange);
+            randY = Random.Range(-yRange, 0);
+            pos = new Vector2(randX, randY);
+        } while (!IsCoordUnoccupied(pos) || !FarEnough(pos, minimumDistance));
+        beacon = Instantiate(healerBeaconPrefab, new Vector3(pos.x, pos.y, 0f), Quaternion.identity, beaconParent.transform);
+        beaconList.Add(beacon);
+        yield return new WaitForSeconds(timeInterval);
+    }
+
+    public void SpawnHealers(float timeInterval)
+    {
+        StartCoroutine(Spawn(timeInterval));
+    }
+
     public void SpawnHealer()
     {
         GameObject beacon;

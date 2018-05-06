@@ -177,7 +177,8 @@ public class BossController : MonoBehaviour {
 		if (currentStage == Stage.Easy && healthRatio < easyToMediumHealthThreshold) {
 			currentStage = Stage.MediumTransition;
             myCamera.GetComponent<CameraController>().ChangeBackGround(1);
-			ToggleMovement ("Stop");
+            healerBeaconSpawner.SpawnHealers(myCamera.GetComponent<CameraController>().timeInterval*2); // this will spawn healer beacons in sync with the blinking background
+            ToggleMovement("Stop");
 			transitionEndTime = Time.time + transitionDelay;
 			soundtrackController.switchByStage(Stage.MediumTransition);
             bossHealth.SetMaterial(difficulty1Material);
@@ -201,6 +202,7 @@ public class BossController : MonoBehaviour {
 		if (currentStage == Stage.Medium && healthRatio < mediumToHardHealthThreshold) {
 			currentStage = Stage.HardTransition;
             myCamera.GetComponent<CameraController>().ChangeBackGround(2);
+            healerBeaconSpawner.SpawnHealers(myCamera.GetComponent<CameraController>().timeInterval * 2); // this will spawn healer beacons in sync with the blinking background
             ToggleMovement ("Stop");
             targetedDamage = 2;
 			transitionEndTime = Time.time + transitionDelay;

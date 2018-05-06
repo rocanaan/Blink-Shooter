@@ -54,31 +54,14 @@ public class CameraController : MonoBehaviour {
 
     private IEnumerator BlinkingBackground(Material mat1, Material mat2)
     {
-        float timer = 0f;
+        //float timer = 0f;
         for (int i=0; i<repetition; i++)
-        {
-            
-            //cam.backgroundColor = Color.Lerp(mat1.color, mat2.color, Mathf.PingPong(Time.time, 1));
-            //yield return null;            
-            cam.backgroundColor = mat1.color;
-            yield return null;
-
-            while (timer < timeInterval)
-            {
-                timer = timer + Time.deltaTime;
-                yield return null;
-            }
-            timer = 0f;
-
+        {            
             cam.backgroundColor = mat2.color;
-            yield return null;
+            yield return new WaitForSeconds(timeInterval);
 
-            while (timer < timeInterval)
-            {
-                timer = timer + Time.deltaTime;
-                yield return null;
-            }
-            timer = 0f;
+            cam.backgroundColor = mat1.color;
+            yield return new WaitForSeconds(timeInterval);
         }
 
         cam.backgroundColor = mat2.color;

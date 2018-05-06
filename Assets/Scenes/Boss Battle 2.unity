@@ -4447,7 +4447,7 @@ MonoBehaviour:
   phase2Material: {fileID: 2100000, guid: dd072f244c508e2448ca1d8e4cdf528b, type: 2}
   phase3Material: {fileID: 2100000, guid: 687d11d9db7589e4cbe8441073cd02b4, type: 2}
   repetition: 8
-  timeInterval: 0.2
+  timeInterval: 0.5
 --- !u!1 &437783193
 GameObject:
   m_ObjectHideFlags: 0
@@ -11699,6 +11699,7 @@ MonoBehaviour:
   soundtrack1: {fileID: 8300000, guid: c5f5bdba8e805c14989b3adf58e1ae7c, type: 3}
   soundtrack2: {fileID: 0}
   soundtrack3: {fileID: 8300000, guid: a310a895ca6502243b6b7af73b5df309, type: 3}
+  transitionSoundtrack: {fileID: 0}
 --- !u!82 &2097850402
 AudioSource:
   m_ObjectHideFlags: 0
