@@ -37,7 +37,7 @@ public class DestructibleWallBehaviour : MonoBehaviour {
 			}
         }
 
-		if (collision.CompareTag ("Boss")) {
+		if (collision.CompareTag ("Boss") || collision.CompareTag ("Beacon")) {
 			WanderBehavior wander = collision.GetComponent<WanderBehavior> ();
 			if (wander != null && wander.isActive()) {
 				wander.getNewTarget ();
