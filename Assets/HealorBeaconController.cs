@@ -32,7 +32,7 @@ public class HealorBeaconController : MonoBehaviour {
 		lr = GetComponent<LineRenderer> ();
 		lr.material = linkMaterial;
 		lr.enabled = false;
-		nextTransitionTime = Time.time + initialDelay;
+		nextTransitionTime = Time.time + Random.Range(0,initialDelay);
 
         //StartCoroutine(HealBoss());
 	}
