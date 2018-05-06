@@ -164,8 +164,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ff7b4ab443f954130906ca3c5197b55d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  x_range: 9
-  y_range: 5
+  xMin: -17
+  xMax: 17
+  yMin: -11
+  yMax: 11
   speed: 3
   dim: 2
   offsetTolerance: 0.1

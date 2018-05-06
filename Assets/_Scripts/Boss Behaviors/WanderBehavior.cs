@@ -7,9 +7,11 @@ public class WanderBehavior : BossGenericBehavior {
 	private Vector3 target;
 	private Rigidbody2D rb;
 
-	public float x_range;
-	public float y_range;
-	public float speed;
+	public float xMin;
+    public float xMax;
+    public float yMin;
+    public float yMax;
+    public float speed;
 
 	public enum Dimension{both,x,y};
 	public Dimension dim;
@@ -29,23 +31,32 @@ public class WanderBehavior : BossGenericBehavior {
 	void Update () {
 		if (statusActive) {
 			Vector3 offset = (target - transform.position);
-			while (offset.magnitude < offsetTolerance) {
+			if (offset.magnitude < offsetTolerance) {
 					getNewTarget ();
 					offset = (target - transform.position);
 			}
-			Vector3 direction = offset.normalized;
-			GetComponent<Rigidbody2D> ().velocity = direction * speed;
+
+            if(offset.magnitude > 0)
+            {
+                Vector3 direction = offset.normalized;
+                GetComponent<Rigidbody2D>().velocity = direction * speed;
+            }
+            else
+            {
+                GetComponent<Rigidbody2D>().velocity = Vector3.zero;
+            }
+			
 		}
 
 	}
 
 	public void getNewTarget(){
 		if (dim == Dimension.both) {
-			target = new Vector3 (Random.Range (-x_range, x_range), Random.Range (-y_range, y_range), transform.position.z);
+			target = new Vector3 (Random.Range (xMin, xMax), Random.Range (yMin, yMax), transform.position.z);
 		} else if (dim == Dimension.x) {
-			target = new Vector3 (Random.Range (-x_range, x_range), transform.position.y, transform.position.z);
+			target = new Vector3 (Random.Range (xMin, xMax), transform.position.y, transform.position.z);
 		} else if (dim == Dimension.y) {
-			target = new Vector3 (transform.position.x, Random.Range (-y_range, y_range), transform.position.z);
+			target = new Vector3 (transform.position.x, Random.Range (yMin, yMax), transform.position.z);
 		}
 
 	}

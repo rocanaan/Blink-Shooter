@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HealerBeaconSpawner : MonoBehaviour {
+public class HealerBeaconSpawner : MonoBehaviour
+{
 
     public GameObject beaconParent;
     public GameObject healerBeaconPrefab;
@@ -13,67 +14,61 @@ public class HealerBeaconSpawner : MonoBehaviour {
     private List<GameObject> beaconList;
 
 
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
-
     private IEnumerator Spawn(float timeInterval)
     {
+        Debug.Log("Spawn called");
         GameObject beacon;
+
         beaconList = new List<GameObject>();
-        float randX = 0f;
-        float randY = 0f;
-        Vector2 pos = Vector2.zero;
-        yield return new WaitForSeconds(timeInterval*2);
+        yield return new WaitForSeconds(timeInterval * 2);
+        Debug.Log("Spawn returned once again");
+
         // 1st quadrant
-        do
-        {
-            randX = Random.Range(0, xRange);
-            randY = Random.Range(0, yRange);
-            pos = new Vector2(randX, randY);
-        } while (!IsCoordUnoccupied(pos) || !FarEnough(pos, minimumDistance));
-        beacon = Instantiate(healerBeaconPrefab, new Vector3(pos.x, pos.y, 0f), Quaternion.identity, beaconParent.transform);
+        beacon = SpawnBeacon(0f, xRange, 0f, yRange);
         beaconList.Add(beacon);
         yield return new WaitForSeconds(timeInterval);
 
         // 3rd quadrant
-        do
-        {
-            randX = Random.Range(-xRange, 0);
-            randY = Random.Range(-yRange, 0);
-            pos = new Vector2(randX, randY);
-        } while (!IsCoordUnoccupied(pos) || !FarEnough(pos, minimumDistance));
-        beacon = Instantiate(healerBeaconPrefab, new Vector3(pos.x, pos.y, 0f), Quaternion.identity, beaconParent.transform);
+        SpawnBeacon(-xRange, 0f, -yRange, 0f);
         beaconList.Add(beacon);
         yield return new WaitForSeconds(timeInterval);
 
         // 2nd quadrant
-        do
-        {
-            randX = Random.Range(-xRange, 0);
-            randY = Random.Range(0, yRange);
-            pos = new Vector2(randX, randY);
-        } while (!IsCoordUnoccupied(pos) || !FarEnough(pos, minimumDistance));
-        beacon = Instantiate(healerBeaconPrefab, new Vector3(pos.x, pos.y, 0f), Quaternion.identity, beaconParent.transform);
+        SpawnBeacon(-xRange, 0f, 0f, yRange);
         beaconList.Add(beacon);
         yield return new WaitForSeconds(timeInterval);
 
         // 4th quadrant
+        SpawnBeacon(0f, xRange, -yRange, 0f);
+        beaconList.Add(beacon);
+        yield return null;
+    }
+
+    private GameObject SpawnBeacon(float xMin, float xMax, float yMin, float yMax)
+    {
+        Debug.Log("SpawnBeacon CALLED");
+        GameObject beacon;
+        WanderBehavior wb;
+        float randX = 0f;
+        float randY = 0f;
+        Vector2 pos = Vector2.zero;
         do
         {
-            randX = Random.Range(0, xRange);
-            randY = Random.Range(-yRange, 0);
+            randX = Random.Range(xMin, xMax);
+            randY = Random.Range(yMin, yMax);
             pos = new Vector2(randX, randY);
         } while (!IsCoordUnoccupied(pos) || !FarEnough(pos, minimumDistance));
         beacon = Instantiate(healerBeaconPrefab, new Vector3(pos.x, pos.y, 0f), Quaternion.identity, beaconParent.transform);
-        beaconList.Add(beacon);
-        yield return new WaitForSeconds(timeInterval);
+        wb = beacon.GetComponent<WanderBehavior>();
+        wb.xMin = xMin;
+        wb.yMin = yMin;
+        wb.xMax = xMax;
+        wb.yMax = yMax;
+        wb.offsetTolerance = 0.2f;
+        wb.setStatus(true);
+        wb.getNewTarget();
+
+        return beacon;
     }
 
     public void SpawnHealers(float timeInterval)
@@ -81,72 +76,26 @@ public class HealerBeaconSpawner : MonoBehaviour {
         StartCoroutine(Spawn(timeInterval));
     }
 
-    public void SpawnHealer()
-    {
-        GameObject beacon;
-        beaconList = new List<GameObject>();
-        float randX = 0f;
-        float randY = 0f;
-        Vector2 pos = Vector2.zero;
-
-        // 1st quadrant
-        do
-        {
-            randX = Random.Range(0, xRange);
-            randY = Random.Range(0, yRange);
-            pos = new Vector2(randX, randY);
-        } while (!IsCoordUnoccupied(pos) || !FarEnough(pos, minimumDistance));
-        beacon = Instantiate(healerBeaconPrefab, new Vector3(pos.x, pos.y, 0f), Quaternion.identity, beaconParent.transform);
-        beaconList.Add(beacon);
-
-        // 3rd quadrant
-        do
-        {
-            randX = Random.Range(-xRange, 0);
-            randY = Random.Range(-yRange, 0);
-            pos = new Vector2(randX, randY);
-        } while (!IsCoordUnoccupied(pos) || !FarEnough(pos, minimumDistance));
-        beacon = Instantiate(healerBeaconPrefab, new Vector3(pos.x, pos.y, 0f), Quaternion.identity, beaconParent.transform);
-        beaconList.Add(beacon);
-
-        // 2nd quadrant
-        do
-        {
-            randX = Random.Range(-xRange, 0);
-            randY = Random.Range(0, yRange);
-            pos = new Vector2(randX, randY);
-        } while (!IsCoordUnoccupied(pos) || !FarEnough(pos, minimumDistance));
-        beacon = Instantiate(healerBeaconPrefab, new Vector3(pos.x, pos.y, 0f), Quaternion.identity, beaconParent.transform);
-        beaconList.Add(beacon);
-
-        // 4th quadrant
-        do
-        {
-            randX = Random.Range(0, xRange);
-            randY = Random.Range(-yRange, 0);
-            pos = new Vector2(randX, randY);
-        } while (!IsCoordUnoccupied(pos) || !FarEnough(pos, minimumDistance));
-        beacon = Instantiate(healerBeaconPrefab, new Vector3(pos.x, pos.y, 0f), Quaternion.identity, beaconParent.transform);
-        beaconList.Add(beacon);
-    }
-
     private bool FarEnough(Vector2 pos, float minDistance)
     {
+        Debug.Log("FarEnough CALLED");
         foreach (GameObject obs in beaconList)
         {
-			if (obs != null) {
-				Vector2 beaconPos = new Vector2 (obs.transform.position.x, obs.transform.position.y);
-				if (Vector2.Distance (beaconPos, pos) < minDistance) {
-					return false;
-				}
-			}
+            if (obs != null)
+            {
+                Vector2 beaconPos = new Vector2(obs.transform.position.x, obs.transform.position.y);
+                if (Vector2.Distance(beaconPos, pos) < minDistance)
+                {
+                    return false;
+                }
+            }
         }
         return true;
     }
 
     private bool IsCoordUnoccupied(Vector2 pos)
     {
-        if (Physics2D.OverlapCircle(pos, healerBeaconPrefab.transform.localScale.x/Mathf.Sqrt(2)))
+        if (Physics2D.OverlapCircle(pos, healerBeaconPrefab.transform.localScale.x / Mathf.Sqrt(2)))
         {
             return false;
         }

@@ -42,9 +42,9 @@ GameObject:
   - component: {fileID: 114172798419618128}
   - component: {fileID: 114547454519016044}
   - component: {fileID: 114368098270961584}
-  - component: {fileID: 114898890543803818}
   - component: {fileID: 120216076055728166}
   - component: {fileID: 114482861428906118}
+  - component: {fileID: 114893560098423438}
   m_Layer: 0
   m_Name: Healer Beacon
   m_TagString: Beacon
@@ -195,24 +195,24 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 15
   teamID: 2
---- !u!114 &114898890543803818
+--- !u!114 &114893560098423438
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1592624159402314}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 618c7b6601d69493797dbe3bf1b77e30, type: 3}
+  m_Script: {fileID: 11500000, guid: ff7b4ab443f954130906ca3c5197b55d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  linkMaterial: {fileID: 2100000, guid: fbe4ec896b3d4ee46803fcd0c9e9005b, type: 2}
-  initialDelay: 0.9
-  activeDuration: 0.1
-  inactiveDuration: 0.9
-  nextTransitionTime: 0
-  lr: {fileID: 0}
-  boss: {fileID: 0}
+  xMin: 0
+  xMax: 0
+  yMin: 0
+  yMax: 0
+  speed: 2
+  dim: 0
+  offsetTolerance: 0.2
 --- !u!120 &120216076055728166
 LineRenderer:
   m_ObjectHideFlags: 1
