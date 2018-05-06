@@ -108,6 +108,8 @@
      <Compile Include="Assets\DrawCircle.cs" />
      <Compile Include="Assets\ExpandingCircleAttack.cs" />
      <Compile Include="Assets\ExpandingCircleSpawner.cs" />
+     <Compile Include="Assets\HealerBeaconSpawner.cs" />
+     <Compile Include="Assets\HealorBeaconController.cs" />
      <Compile Include="Assets\LaserShooter.cs" />
      <Compile Include="Assets\LaserSplit.cs" />
      <Compile Include="Assets\LaserSplittingAttack.cs" />

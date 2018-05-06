@@ -11,6 +11,13 @@ public class HealorBeaconController : MonoBehaviour {
     private HealthController bossHealthController;
     private ExplosionSpawner explosionSpawner;
     private GameObject cam;
+	private LineRenderer lr;
+
+	public Material linkMaterial;
+	public float initialDelay;
+	public float activeDuration;
+	public float inactiveDuration;
+	private float nextTransitionTime;
 
     // Use this for initialization
     void Start () {
@@ -22,20 +29,39 @@ public class HealorBeaconController : MonoBehaviour {
         boss = GameObject.FindGameObjectWithTag("Boss");
         bossHealthController = boss.GetComponent<HealthController>();
 
-        StartCoroutine(HealBoss());
+		lr = GetComponent<LineRenderer> ();
+		lr.material = linkMaterial;
+		lr.enabled = false;
+		nextTransitionTime = Time.time + initialDelay;
+
+        //StartCoroutine(HealBoss());
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
+		if (Time.time > nextTransitionTime) {
+			if (lr.enabled == false) {
+				lr.enabled = true;
+				nextTransitionTime = Time.time + activeDuration;
+				HealBoss ();
+			} else {
+				lr.enabled = false;
+				nextTransitionTime = Time.time + inactiveDuration;
+			}
+
+		}
+		lr.SetPosition(0, transform.position);
+		lr.SetPosition(1, boss.transform.position);
+
 	}
 
-    private IEnumerator HealBoss()
+    private void HealBoss()
     {
-        while (true)
-        {
-            yield return new WaitForSeconds(regenTime);
-            bossHealthController.Heal(regenRate);
-        }        
+//        while (true)
+//        {
+//            yield return new WaitForSeconds(regenTime);
+//            bossHealthController.Heal(regenRate);
+//        }        
+		bossHealthController.Heal(regenRate);
     }
 }
