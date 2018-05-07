@@ -21,7 +21,6 @@ GameObject:
   - component: {fileID: 4453816278747160}
   - component: {fileID: 61118245034883982}
   - component: {fileID: 50887387572574492}
-  - component: {fileID: 114201842375621720}
   - component: {fileID: 114923367276179964}
   - component: {fileID: 114587772185994288}
   - component: {fileID: 114372219929313090}
@@ -92,17 +91,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &114201842375621720
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1802127854316094}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e35feb246525c436eabb4b6ee040b596, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114372219929313090
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -130,8 +118,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 520ce158215894ce6ab4b8bc1b40f376, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  blinkTime: 0.1
-  waitTime: 0.1
+  blinkTime: 0.05
+  waitTime: 0.05
 --- !u!114 &114920668096544344
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -156,6 +144,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 20
   teamID: 2
+  blinkOnDamage: 1
 --- !u!212 &212190548247334092
 SpriteRenderer:
   m_ObjectHideFlags: 1

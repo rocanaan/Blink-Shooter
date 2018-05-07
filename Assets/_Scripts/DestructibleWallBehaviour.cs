@@ -5,11 +5,13 @@ using UnityEngine;
 public class DestructibleWallBehaviour : MonoBehaviour {
     
     public int health = 3;
+    public int teamID;
+    public bool blinkOnDamage;
 
     private GameObject cam;
     private BlinkAnimation blinkAnimation;
     private SoundEffectsController globalSFXController;
-	public int teamID;
+	
 
     // Use this for initialization
     void Start () {
@@ -25,8 +27,8 @@ public class DestructibleWallBehaviour : MonoBehaviour {
 			if (collision.GetComponent<ShotAttributes>().getTeamID() != teamID) {
 				health = health - 1;
 				Destroy (collision.gameObject);
-				if (health != 0) {
-					//blinkAnimation.startAnimation();
+				if (health > 0 && blinkOnDamage) {
+					blinkAnimation.startAnimation();
 				}
 
 				if (health == 0) {
