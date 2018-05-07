@@ -38,6 +38,7 @@ public class BossController : MonoBehaviour {
 	private TargettedFireBehavior targetFire;
 	private TrapSpawner trapSpawner;
     private HealthController bossHealth;
+    private ParticleSystem healthIndicatorPS;
 	private MinionSpawner minionSpawner;
 	private ExpandingCircleSpawner expandingCircleSpawner;
 	private LaserSplit laserSplittingAttack; // Note: have to fix nomeclature. For circle, the prefab that just instantiates the attack is attack, and the controller is spawner. Here, attack is the controller and controller is attack
@@ -74,6 +75,7 @@ public class BossController : MonoBehaviour {
 	void Start () {
 		coreBlinkAnimation = GetComponentInChildren<BlinkAnimation> ();
         bossHealth = transform.GetComponent<HealthController>();
+        healthIndicatorPS = bossHealth.healthBar.GetComponentInParent<ParticleSystem>();
         myCamera = GameObject.FindGameObjectWithTag("MainCamera");
 		currentHealth = bossHealth.GetHealth();
 		//difficulty = 0;
@@ -166,6 +168,8 @@ public class BossController : MonoBehaviour {
             if(healerBeaconSpawner.GetAliveBeaconCount() == 0)
             {
                 print("Count of alive beacons is ZERO");
+                healthIndicatorPS.Pause(); // once all the beacons in the scene are destroyed, particle system should stop playing
+                healthIndicatorPS.Clear();
                 gunsSpawnedMedium = true;
                 wallGunSpawner.setStatus(true);
             }
@@ -175,7 +179,9 @@ public class BossController : MonoBehaviour {
 			if(healerBeaconSpawner.GetAliveBeaconCount() == 0)
 			{
 				print("Count of alive beacons is ZERO");
-				gunsSpawnedHard = true;
+                healthIndicatorPS.Pause(); // once all the beacons in the scene are destroyed, particle system should stop playing
+                healthIndicatorPS.Clear();
+                gunsSpawnedHard = true;
 				minionSpawner.SpawnMinions (6, 3);
 				wallGunSpawner.setStatus(true);
 			}
@@ -209,6 +215,7 @@ public class BossController : MonoBehaviour {
 			currentStage = Stage.MediumTransition;
             myCamera.GetComponent<CameraController>().ChangeBackGround(1);
             healerBeaconSpawner.SpawnHealers(myCamera.GetComponent<CameraController>().timeInterval*2); // this will spawn healer beacons in sync with the blinking background
+            healthIndicatorPS.Play(); // we particle system will play as long as there are beacons alive
             ToggleMovement("Stop");
 			transitionEndTime = Time.time + transitionDelay;
 			soundtrackController.switchByStage(Stage.MediumTransition);
@@ -235,6 +242,7 @@ public class BossController : MonoBehaviour {
 			currentStage = Stage.HardTransition;
             myCamera.GetComponent<CameraController>().ChangeBackGround(2);
             healerBeaconSpawner.SpawnHealers(myCamera.GetComponent<CameraController>().timeInterval * 2); // this will spawn healer beacons in sync with the blinking background
+            healthIndicatorPS.Play(); // we particle system will play as long as there are beacons alive
             ToggleMovement ("Stop");
             targetedDamage = 2;
 			transitionEndTime = Time.time + transitionDelay;
