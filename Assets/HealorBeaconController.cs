@@ -55,7 +55,7 @@ public class HealorBeaconController : MonoBehaviour {
 				RaycastHit2D[] allHits = Physics2D.RaycastAll(transform.position, boss.transform.position, 60.0f);
 				foreach (RaycastHit2D hit in allHits)
 				{
-					Vector3 pointOfContact = null;
+					Vector3 pointOfContact = Vector3.zero;
 					Collider2D col = hit.collider;
 					if (col.tag == "Boss" )
 					{
