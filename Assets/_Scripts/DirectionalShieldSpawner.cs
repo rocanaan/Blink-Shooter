@@ -24,6 +24,7 @@ public class DirectionalShieldSpawner : MonoBehaviour {
 	private bool statusActive;
 
 	private float timeNextSpawn;
+	private bool mustRespawn;
 
 	// Use this for initialization
 	void Start () {
@@ -34,7 +35,8 @@ public class DirectionalShieldSpawner : MonoBehaviour {
 		players = gameController.GetAllPlayers ();
 
 
-		timeNextSpawn = Time.time + 9999;
+		timeNextSpawn = Time.time + 99999;
+		mustRespawn = false;
 	
 	}
 
@@ -46,7 +48,7 @@ public class DirectionalShieldSpawner : MonoBehaviour {
 			Vector3 newDirection = Vector3.RotateTowards (transform.right, targetDirection, Mathf.Deg2Rad * angularSpeed, 0.0f);
 			transform.right = newDirection;
 
-		} else if (!statusActive && Time.time > timeNextSpawn) {
+		} else if (!statusActive && mustRespawn && Time.time > timeNextSpawn) {
 			setStatus (true);
 		}
 
@@ -70,6 +72,9 @@ public class DirectionalShieldSpawner : MonoBehaviour {
 //				shieldList.Add (shield);
 			shield.GetComponent<Renderer> ().material = GetComponentInParent<BossController> ().getCurrentMaterial();
 			shield.GetComponent<ExplosionSpawner>().explosionMaterial = GetComponentInParent<BossController> ().getCurrentMaterial();
+			timeNextSpawn = Time.time + 99999;
+			mustRespawn = true;
+
 			//GetComponentInParent<BossController>().ToggleMovement ("Follow");
 
 		}
@@ -77,6 +82,8 @@ public class DirectionalShieldSpawner : MonoBehaviour {
 			print ("Attempting to destroy directional shield");
 			Destroy (shield);
 			transform.rotation = Quaternion.identity;
+			timeNextSpawn = Time.time + 99999;
+			mustRespawn = false;
 			//GetComponentInParent<BossController>().ToggleMovement ("Wander");
 		}
 	}

@@ -62,10 +62,13 @@ public class BossController : MonoBehaviour {
 
 	public float easyToMediumHealthThreshold;
 	public float mediumToHardHealthThreshold;
+	public float lastpushThreshold;
 
     private GameObject myCamera;
     private HealerBeaconSpawner healerBeaconSpawner;
     private bool gunsSpawnedMedium;
+	private bool gunsSpawnedHard;
+	private bool lastPushFired;
 
 	// Use this for initialization
 	void Start () {
@@ -117,6 +120,8 @@ public class BossController : MonoBehaviour {
 		mediumStatus = "initial";
 		lastMediumBehavior = -1;
         gunsSpawnedMedium = false;
+		gunsSpawnedHard = false;
+		lastPushFired = false;
 
 		directionalShieldSpawner.setStatus (true);
     }
@@ -145,14 +150,16 @@ public class BossController : MonoBehaviour {
 			//			wallGunSpawner.setStatus (false);
 
 			soundtrackController.switchByStage (Stage.Medium);
-			nextBehaviorStartTime = Time.time;
+			nextBehaviorStartTime = Time.time + behaviorDelay;
+			directionalShieldSpawner.setStatus (true);
 
 		}
 		if (currentStage == Stage.HardTransition && Time.time > transitionEndTime) {
 			currentStage = Stage.Hard;
 			ToggleMovement ("Follow");
 			soundtrackController.switchByStage (Stage.Hard);
-			nextBehaviorStartTime = Time.time;
+			nextBehaviorStartTime = Time.time + behaviorDelay;
+			directionalShieldSpawner.setStatus (true);
 		}
         if(currentStage == Stage.Medium && !gunsSpawnedMedium)
         {
@@ -163,6 +170,16 @@ public class BossController : MonoBehaviour {
                 wallGunSpawner.setStatus(true);
             }
         }
+		if(currentStage == Stage.Hard && !gunsSpawnedHard)
+		{
+			if(healerBeaconSpawner.GetAliveBeaconCount() == 0)
+			{
+				print("Count of alive beacons is ZERO");
+				gunsSpawnedHard = true;
+				minionSpawner.SpawnMinions (6, 3);
+				wallGunSpawner.setStatus(true);
+			}
+		}
 	}
 
 	void OnTriggerEnter2D(Collider2D col){
@@ -199,6 +216,7 @@ public class BossController : MonoBehaviour {
 			GetComponentsInChildren<Renderer> () [1].material = difficulty1Material;
 
 			deactivateBehaviors ();
+			directionalShieldSpawner.setStatus (false);
 			//wallGunSpawner.setStatus (true);
 			//minionSpawner.SpawnMinions (6,3);
 
@@ -235,6 +253,7 @@ public class BossController : MonoBehaviour {
 
 			//trapSpawner.FireTrap ();
 			deactivateBehaviors ();
+			directionalShieldSpawner.setStatus (false);
 
 //			shieldSpawner.setStatus (false);
 //			gunSpawner.setStatus (true);
@@ -242,9 +261,9 @@ public class BossController : MonoBehaviour {
 			playerCircleTrapSpawner.repetitions *= 2;
 
 			//Debug.Break ();
-			wallGunSpawner.setStatus (true);
+//			wallGunSpawner.setStatus (true);
+//			minionSpawner.SpawnMinions (6, 3);
 			//Debug.Break ();
-			minionSpawner.SpawnMinions (6, 3);
 			//Debug.Break ();
 			//minionSpawner.SpawnMinions (12, 3);
 
@@ -261,6 +280,12 @@ public class BossController : MonoBehaviour {
 //				minionSpawner.SpawnMinions (10,3);
 //				wallGunSpawner.setStatus (true);
 		
+		}
+
+		if (currentStage == Stage.Hard && !lastPushFired && healthRatio < lastpushThreshold) {
+			wallGunSpawner.setStatus (true);
+			minionSpawner.SpawnMinions (6, 3);
+			lastPushFired = true;
 		}
 			
 		if (!isAlive) {

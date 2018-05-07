@@ -743,7 +743,7 @@ MonoBehaviour:
   healthBar: {fileID: 114035592649764454}
   fill: {fileID: 114905211261058006}
   maxHealth: 10
-  singleRegenTime: 3
+  singleRegenTime: 2
   regenAmount: 1
   highHealthMaterial: {fileID: 2100000, guid: c678ea8d15fcdfb4e967169c77bcbbfc, type: 2}
   checkForHealthThreshold: 1
@@ -910,7 +910,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -118144740
+  randomSeed: -555185704
   InitialModule:
     serializedVersion: 3
     enabled: 1

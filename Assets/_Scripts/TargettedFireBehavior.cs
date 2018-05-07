@@ -16,6 +16,7 @@ public class TargettedFireBehavior : MonoBehaviour {
 	private int targetPlayerIndex;
 
 	public bool activateOnStartup;
+	public bool getMaterialFromParent;
 
 	private GameObject[] players;
 	private BossBattleGameController gameController;
@@ -45,8 +46,10 @@ public class TargettedFireBehavior : MonoBehaviour {
 				direction.Normalize ();
 				GameObject newShot = Instantiate (shot, new Vector3 (transform.position.x, transform.position.y, transform.position.z - 1), Quaternion.identity);
 				newShot.GetComponent<Rigidbody2D> ().velocity = direction * shotSpeed;
-				newShot.GetComponent<Renderer> ().material = GetComponentInParent<BossController> ().getCurrentMaterial ();
-                newShot.GetComponent<ExplosionSpawner>().explosionMaterial = GetComponentInParent<BossController>().getCurrentMaterial();
+				if (getMaterialFromParent) {
+					newShot.GetComponent<Renderer> ().material = GetComponentInParent<BossController> ().getCurrentMaterial ();
+					newShot.GetComponent<ExplosionSpawner> ().explosionMaterial = GetComponentInParent<BossController> ().getCurrentMaterial ();
+				}
                 newShot.GetComponent<ShotAttributes> ().setTeamID (2);
 
 				sfx.PlayClip ("TargettedFire");

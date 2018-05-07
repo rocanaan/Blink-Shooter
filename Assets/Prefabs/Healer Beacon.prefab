@@ -48,6 +48,7 @@ GameObject:
   - component: {fileID: 82891741571694630}
   - component: {fileID: 82146342214711934}
   - component: {fileID: 114853844880753340}
+  - component: {fileID: 114116518746836758}
   m_Layer: 0
   m_Name: Healer Beacon
   m_TagString: Beacon
@@ -287,6 +288,23 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 0
+--- !u!114 &114116518746836758
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1592624159402314}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 09439327e9643452f8b6b265e140f49f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shot: {fileID: 1305768670323016, guid: ab7bce6d9365249d4a87cb2505d89571, type: 2}
+  fireInterval: 4
+  firstShotDelay: 6
+  shotSpeed: 20
+  activateOnStartup: 1
+  getMaterialFromParent: 0
 --- !u!114 &114172798419618128
 MonoBehaviour:
   m_ObjectHideFlags: 1

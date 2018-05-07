@@ -136,8 +136,7 @@ MonoBehaviour:
   explosionSize: 0.8
   explosionDuration: 0.5
   explosionRadius: 0.5
-  explosionColor: {r: 0.84214634, g: 0, b: 0.9338235, a: 1}
-  explosionMaterial: {fileID: 0}
+  explosionMaterial: {fileID: 2100000, guid: 8e6d510bf27a842b8b6eac3f631751f9, type: 2}
 --- !u!114 &114123303272252744
 MonoBehaviour:
   m_ObjectHideFlags: 1
