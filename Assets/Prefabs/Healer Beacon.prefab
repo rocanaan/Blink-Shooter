@@ -46,7 +46,6 @@ GameObject:
   - component: {fileID: 114482861428906118}
   - component: {fileID: 114893560098423438}
   - component: {fileID: 82891741571694630}
-  - component: {fileID: 114803459211471450}
   - component: {fileID: 82146342214711934}
   - component: {fileID: 114853844880753340}
   m_Layer: 0
@@ -359,20 +358,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 15
   teamID: 2
---- !u!114 &114803459211471450
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1592624159402314}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c52fd39669464b898de58bb149b08bb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  clips:
-  - clip: {fileID: 0}
-    label: BeaconSpawn
 --- !u!114 &114853844880753340
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -224,12 +224,12 @@ Prefab:
     - target: {fileID: 224788979789411358, guid: 9158f12da4bead54284ad68ac4c93bfc,
         type: 2}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 224788979789411358, guid: 9158f12da4bead54284ad68ac4c93bfc,
         type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 212373779294185246, guid: 9158f12da4bead54284ad68ac4c93bfc,
         type: 2}
@@ -8312,12 +8312,12 @@ Prefab:
     - target: {fileID: 224788979789411358, guid: 9158f12da4bead54284ad68ac4c93bfc,
         type: 2}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 224788979789411358, guid: 9158f12da4bead54284ad68ac4c93bfc,
         type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114683988685659134, guid: 9158f12da4bead54284ad68ac4c93bfc,
         type: 2}
@@ -9005,12 +9005,12 @@ Prefab:
     - target: {fileID: 224788979789411358, guid: 9158f12da4bead54284ad68ac4c93bfc,
         type: 2}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 224788979789411358, guid: 9158f12da4bead54284ad68ac4c93bfc,
         type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 114683988685659134, guid: 9158f12da4bead54284ad68ac4c93bfc,
         type: 2}
@@ -9674,7 +9674,7 @@ Prefab:
     - target: {fileID: 114471483840209860, guid: 7e641c9dfd20c41a4a5ad73725e7de64,
         type: 2}
       propertyPath: resummonDelay
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 114471483840209860, guid: 7e641c9dfd20c41a4a5ad73725e7de64,
         type: 2}
@@ -9695,7 +9695,7 @@ Prefab:
     - target: {fileID: 114442881963066064, guid: 7e641c9dfd20c41a4a5ad73725e7de64,
         type: 2}
       propertyPath: easyToMediumHealthThreshold
-      value: 0.99
+      value: 0.7
       objectReference: {fileID: 0}
     - target: {fileID: 114442881963066064, guid: 7e641c9dfd20c41a4a5ad73725e7de64,
         type: 2}
@@ -9743,7 +9743,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthBar: {fileID: 1296711202}
   fill: {fileID: 213260056}
-  maxHealth: 10
+  maxHealth: 500
   singleRegenTime: 2
   regenAmount: 0
   highHealthMaterial: {fileID: 0}
@@ -10113,12 +10113,12 @@ Prefab:
     - target: {fileID: 224788979789411358, guid: 9158f12da4bead54284ad68ac4c93bfc,
         type: 2}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 224788979789411358, guid: 9158f12da4bead54284ad68ac4c93bfc,
         type: 2}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9158f12da4bead54284ad68ac4c93bfc, type: 2}
@@ -11644,10 +11644,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87507f060bf324129ad5d74529b2e07e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  soundtrack1: {fileID: 8300000, guid: c5f5bdba8e805c14989b3adf58e1ae7c, type: 3}
-  soundtrack2: {fileID: 0}
-  soundtrack3: {fileID: 8300000, guid: a310a895ca6502243b6b7af73b5df309, type: 3}
-  transitionSoundtrack: {fileID: 0}
+  soundtrack1: {fileID: 8300000, guid: 7a4e8cc0da7964d0aa0a49e155311e68, type: 3}
+  soundtrack2: {fileID: 8300000, guid: b021749f9276546f0a94253ff4765c12, type: 3}
+  soundtrack3: {fileID: 8300000, guid: e4351882fbad6485a87eeb832f28c6b0, type: 3}
+  transitionSoundtrack: {fileID: 8300000, guid: c51a5c2a43b614cd3b66d14a8b3883a8,
+    type: 3}
 --- !u!82 &2097850402
 AudioSource:
   m_ObjectHideFlags: 0

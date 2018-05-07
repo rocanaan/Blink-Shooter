@@ -23,7 +23,7 @@ public class DirectionalShieldSpawner : MonoBehaviour {
 
 	private bool statusActive;
 
-	private bool isShieldActive;
+	private float timeNextSpawn;
 
 	// Use this for initialization
 	void Start () {
@@ -32,6 +32,9 @@ public class DirectionalShieldSpawner : MonoBehaviour {
 
 		gameController = GameObject.FindGameObjectWithTag ("GameController").GetComponent<BossBattleGameController> ();
 		players = gameController.GetAllPlayers ();
+
+
+		timeNextSpawn = Time.time + 9999;
 	
 	}
 
@@ -40,10 +43,13 @@ public class DirectionalShieldSpawner : MonoBehaviour {
 		if (statusActive) {
 			getClosestTarget ();
 			Vector3 targetDirection = targetPlayer.transform.position - transform.position;
-			Vector3 newDirection = Vector3.RotateTowards (transform.right,targetDirection, Mathf.Deg2Rad*angularSpeed,0.0f);
+			Vector3 newDirection = Vector3.RotateTowards (transform.right, targetDirection, Mathf.Deg2Rad * angularSpeed, 0.0f);
 			transform.right = newDirection;
 
+		} else if (!statusActive && Time.time > timeNextSpawn) {
+			setStatus (true);
 		}
+
 	}
 
 	public void setStatus(bool status){
@@ -84,5 +90,10 @@ public class DirectionalShieldSpawner : MonoBehaviour {
 		}
 	}
 
+	public void NotifyShieldDestroyed(){
+		statusActive = false;
+		transform.rotation = Quaternion.identity;
+		timeNextSpawn = Time.time + resummonDelay;
+	}
 
 }

@@ -117,6 +117,8 @@ public class BossController : MonoBehaviour {
 		mediumStatus = "initial";
 		lastMediumBehavior = -1;
         gunsSpawnedMedium = false;
+
+		directionalShieldSpawner.setStatus (true);
     }
 	
 	// Update is called once per frame
@@ -285,7 +287,7 @@ public class BossController : MonoBehaviour {
 
 	//TODO this should be refactored to place the potential behaviors in a list and select from them.
 	void selectBehaviors(){
-		directionalShieldSpawner.setStatus (true);
+		//directionalShieldSpawner.setStatus (true);
 		currentBehaviorDuration = defaultBehaviorDuration;
 
 
@@ -388,7 +390,7 @@ public class BossController : MonoBehaviour {
 		gunSpawner.setStatus (false);
 		//wallGunSpawner.setStatus (false);
 		targetFire.setStatus (false, targetedDamage);
-		directionalShieldSpawner.setStatus (false);
+		//directionalShieldSpawner.setStatus (false);
 		expandingCircleSpawner.setStatus (false);
 		playerCircleTrapSpawner.setStatus (false);
 

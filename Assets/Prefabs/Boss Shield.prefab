@@ -26,6 +26,7 @@ GameObject:
   - component: {fileID: 114587772185994288}
   - component: {fileID: 114372219929313090}
   - component: {fileID: 212190548247334092}
+  - component: {fileID: 114920668096544344}
   m_Layer: 0
   m_Name: Boss Shield
   m_TagString: Boss
@@ -131,6 +132,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   blinkTime: 0.1
   waitTime: 0.1
+--- !u!114 &114920668096544344
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1802127854316094}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a92d0bb1ffef44e049eafedc211ebcb0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114923367276179964
 MonoBehaviour:
   m_ObjectHideFlags: 1

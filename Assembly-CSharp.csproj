@@ -114,6 +114,7 @@
      <Compile Include="Assets\LaserShooter.cs" />
      <Compile Include="Assets\LaserSplit.cs" />
      <Compile Include="Assets\LaserSplittingAttack.cs" />
+     <Compile Include="Assets\NotifyBossOnDeath.cs" />
      <Compile Include="Assets\PlayerCircleTrapSpawner.cs" />
      <Compile Include="Assets\PlayerUIHealthBarController.cs" />
  <Reference Include="UnityEngine.UI">
