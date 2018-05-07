@@ -46,12 +46,36 @@ public class HealorBeaconController : MonoBehaviour {
 				lr.enabled = true;
 				nextTransitionTime = Time.time + activeDuration;
 				HealBoss ();
+
+
+				// @ Burak the next few lines determine where the boss is hit by healing beam
+				// As it is now, if you do something with the point of contact here, it will happen only once, at the start of the beam
+				// Because the beam is so short lived, I thin this is okay.
+				// If you do something continuously, you have to move these lines to where I point below
+				RaycastHit2D[] allHits = Physics2D.RaycastAll(transform.position, boss.transform.position, 60.0f);
+				foreach (RaycastHit2D hit in allHits)
+				{
+					Vector3 pointOfContact = null;
+					Collider2D col = hit.collider;
+					if (col.tag == "Boss" )
+					{
+						pointOfContact = hit.point;
+					}
+					// Do something with point of contact, such as spawn particles
+				} // End of point of contact logic
 			} else {
 				lr.enabled = false;
 				nextTransitionTime = Time.time + inactiveDuration;
 			}
 
 		}
+
+		// If you want to make point of contact detection continuous:
+		// if (lr.enabled){
+		// 	detect point of contact
+		//  do something with it
+
+
 		lr.SetPosition(0, transform.position);
 		lr.SetPosition(1, boss.transform.position);
 
