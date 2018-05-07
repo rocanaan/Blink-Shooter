@@ -299,6 +299,7 @@ public class BossController : MonoBehaviour {
 		if (!isAlive) {
 			//playerDeath ();
 			print("Boss died!");
+            healthIndicatorPS.Stop(); // particle system should be stopped when boss is dead in case beacons are still alive
 			gameController.BossDied();
 			Destroy (gameObject);
 		}

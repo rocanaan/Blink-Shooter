@@ -245,6 +245,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d54753a686875394b97fb565663c94a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  glow: {fileID: 1307684661199406, guid: b85a75328aa7b3e43957f1b8c91eb609, type: 2}
   regenRate: 1
   regenTime: 1
   linkMaterial: {fileID: 2100000, guid: fbe4ec896b3d4ee46803fcd0c9e9005b, type: 2}

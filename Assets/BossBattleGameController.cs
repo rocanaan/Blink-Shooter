@@ -61,7 +61,7 @@ public class BossBattleGameController : MonoBehaviour {
         respawnText.text = "Lives: " + respawnLives;
     }
 
-    public static bool IsGameOver()
+    public bool IsGameOver()
     {
         return gameOver;
     }

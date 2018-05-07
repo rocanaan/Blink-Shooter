@@ -244,7 +244,7 @@ public class PlayerController : MonoBehaviour {
                 Destroy(col.gameObject);
             }
 
-			if (col.tag == "Boss" || col.tag == "Beacon")
+			if (col.tag == "Boss" || col.tag == "Beacon" || col.tag == "BossShield")
             {
                 if (!OnGracePeriod())
                 {
