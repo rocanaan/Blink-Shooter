@@ -56,7 +56,7 @@ public class BossBattleGameController : MonoBehaviour {
         //		}
     }
 
-    private void SetRespawnText()
+    public void SetRespawnText()
     {
         respawnText.text = "Lives: " + respawnLives;
     }
@@ -120,8 +120,6 @@ public class BossBattleGameController : MonoBehaviour {
 
     public void NotifyDeath(int playerID, int teamID)
     {
-        
-        
         bool oneAlive = false;
         if (players[0].GetComponent<HealthController>().IsAlive() || players[1].GetComponent<HealthController>().IsAlive())
         {
@@ -159,7 +157,7 @@ public class BossBattleGameController : MonoBehaviour {
         if (respawnLives > 0)
         {
             respawnLives = respawnLives - 1;
-            SetRespawnText();
+            //SetRespawnText();
             lastRespawnTime = Time.time + respawnTime;
             return respawnTime;
         }

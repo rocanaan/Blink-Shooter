@@ -94,6 +94,10 @@ public class PlayerController : MonoBehaviour {
 				// player has now respawned
 				isDead = false;
 				playerHealth.Respawn ();
+                gameController.SetRespawnText(); // the text on the screen will be updated once the player has respawned
+                // still doesn't act perfectly. we should make the player press a button to respawn after some time, then this will also act perfectly accurately
+                // (the reason its behavior is janky is the wait time between death and respawn)
+                //(if player1 is dead and player2 dies before player1 has respawned, it will jump from 2 to 0)
 
 
 			}
