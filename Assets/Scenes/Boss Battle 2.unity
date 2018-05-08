@@ -286,7 +286,9 @@ Prefab:
       propertyPath: cooldown
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114762969050776128, guid: 9158f12da4bead54284ad68ac4c93bfc, type: 2}
+    - {fileID: 82328281978368634, guid: 9158f12da4bead54284ad68ac4c93bfc, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 9158f12da4bead54284ad68ac4c93bfc, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &136850512 stripped
@@ -3899,8 +3901,8 @@ MonoBehaviour:
   m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 0.9724138, b: 0, a: 1}
+  m_Material: {fileID: 2100000, guid: 8e6d510bf27a842b8b6eac3f631751f9, type: 2}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -4469,10 +4471,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fd072631cc175428d820a5801acda04d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  phase1Material: {fileID: 2100000, guid: 76809236ed2e9d34f95c2eac2cdf504f, type: 2}
-  phase2Material: {fileID: 2100000, guid: dd072f244c508e2448ca1d8e4cdf528b, type: 2}
-  phase3Material: {fileID: 2100000, guid: 687d11d9db7589e4cbe8441073cd02b4, type: 2}
-  repetition: 5
+  regularMaterial: {fileID: 2100000, guid: dd072f244c508e2448ca1d8e4cdf528b, type: 2}
+  secondaryMaterial: {fileID: 2100000, guid: 687d11d9db7589e4cbe8441073cd02b4, type: 2}
+  repetition: 6
   timeInterval: 0.5
 --- !u!1 &437783193
 GameObject:
@@ -9239,7 +9240,7 @@ ParticleSystemRenderer:
   m_LightProbeUsage: 0
   m_ReflectionProbeUsage: 0
   m_Materials:
-  - {fileID: 2100000, guid: 57d3875c8dbde4422b703b879aa9d94f, type: 2}
+  - {fileID: 2100000, guid: 0e17d73048ce60a47978e5e59158db15, type: 2}
   - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -9338,7 +9339,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 918981672
+  randomSeed: 312762468
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -9490,7 +9491,7 @@ ParticleSystem:
     startSize:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 0.7
+      scalar: 0.9
       minScalar: 1
       maxCurve:
         serializedVersion: 2
@@ -13190,6 +13191,11 @@ Prefab:
       propertyPath: getMaterialFromParent
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 212810897997456082, guid: 7e641c9dfd20c41a4a5ad73725e7de64,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 8e6d510bf27a842b8b6eac3f631751f9, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7e641c9dfd20c41a4a5ad73725e7de64, type: 2}
   m_IsPrefabParent: 0
@@ -13587,7 +13593,9 @@ Prefab:
       propertyPath: m_AnchorMax.y
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114762969050776128, guid: 9158f12da4bead54284ad68ac4c93bfc, type: 2}
+    - {fileID: 82328281978368634, guid: 9158f12da4bead54284ad68ac4c93bfc, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 9158f12da4bead54284ad68ac4c93bfc, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &1354073319
@@ -13652,7 +13660,6 @@ GameObject:
   - component: {fileID: 1384918559}
   - component: {fileID: 1384918562}
   - component: {fileID: 1384918561}
-  - component: {fileID: 1384918560}
   m_Layer: 0
   m_Name: Color Core
   m_TagString: Untagged
@@ -13674,18 +13681,6 @@ Transform:
   m_Father: {fileID: 1271709991}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1384918560
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1384918558}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6fc53e3f121c64493bf5d2bd8224ec36, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bossObject: {fileID: 1271709989}
 --- !u!114 &1384918561
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13715,7 +13710,7 @@ SpriteRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 57d3875c8dbde4422b703b879aa9d94f, type: 2}
+  - {fileID: 2100000, guid: 8e6d510bf27a842b8b6eac3f631751f9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -14117,23 +14112,6 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1621233400}
---- !u!1 &1659186814 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1504703390389780, guid: 7e641c9dfd20c41a4a5ad73725e7de64,
-    type: 2}
-  m_PrefabInternal: {fileID: 1260808688}
---- !u!114 &1659186818
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1659186814}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6fc53e3f121c64493bf5d2bd8224ec36, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bossObject: {fileID: 1260808689}
 --- !u!1 &1666916199
 GameObject:
   m_ObjectHideFlags: 0

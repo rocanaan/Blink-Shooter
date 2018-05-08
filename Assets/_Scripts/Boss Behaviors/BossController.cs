@@ -12,10 +12,6 @@ public class BossController : MonoBehaviour {
 
 	public int teamID;
 
-	public Material startingDifficultyMaterial;
-	public Material difficulty1Material;
-	public Material difficulty2Material;
-
 	BlinkAnimation coreBlinkAnimation;
 
 	public float defaultBehaviorDuration;
@@ -80,7 +76,6 @@ public class BossController : MonoBehaviour {
 		currentHealth = bossHealth.GetHealth();
 		//difficulty = 0;
 		currentStage = Stage.Easy;
-        bossHealth.SetMaterial(startingDifficultyMaterial);
 
         wanderBehavior = GetComponent<WanderBehavior> ();
 		followBehavior = GetComponent<FollowBehavior> ();
@@ -213,14 +208,12 @@ public class BossController : MonoBehaviour {
 
 		if (currentStage == Stage.Easy && healthRatio < easyToMediumHealthThreshold) {
 			currentStage = Stage.MediumTransition;
-            myCamera.GetComponent<CameraController>().ChangeBackGround(1);
+            myCamera.GetComponent<CameraController>().ChangeBackGround();
             healerBeaconSpawner.SpawnHealers(myCamera.GetComponent<CameraController>().timeInterval*2); // this will spawn healer beacons in sync with the blinking background
             healthIndicatorPS.Play(); // we particle system will play as long as there are beacons alive
             ToggleMovement("Stop");
 			transitionEndTime = Time.time + transitionDelay;
 			soundtrackController.switchByStage(Stage.MediumTransition);
-            bossHealth.SetMaterial(difficulty1Material);
-			GetComponentsInChildren<Renderer> () [1].material = difficulty1Material;
 
 			deactivateBehaviors ();
 			directionalShieldSpawner.setStatus (false);
@@ -240,7 +233,7 @@ public class BossController : MonoBehaviour {
 
 		if (currentStage == Stage.Medium && healthRatio < mediumToHardHealthThreshold) {
 			currentStage = Stage.HardTransition;
-            myCamera.GetComponent<CameraController>().ChangeBackGround(2);
+            myCamera.GetComponent<CameraController>().ChangeBackGround();
             healerBeaconSpawner.SpawnHealers(myCamera.GetComponent<CameraController>().timeInterval * 2); // this will spawn healer beacons in sync with the blinking background
             healthIndicatorPS.Play(); // we particle system will play as long as there are beacons alive
             ToggleMovement ("Stop");
@@ -248,8 +241,6 @@ public class BossController : MonoBehaviour {
 			transitionEndTime = Time.time + transitionDelay;
             followBehavior.speed = followBehavior.speed + 1.0f;
 			soundtrackController.switchByStage(Stage.HardTransition);
-            bossHealth.SetMaterial(difficulty2Material);
-            GetComponentsInChildren<Renderer> () [1].material = difficulty2Material;
 
 			shieldSpawner.numberShields *= 2;
 			gunSpawner.numberGuns *= 2;
@@ -303,20 +294,6 @@ public class BossController : MonoBehaviour {
 			gameController.BossDied();
 			Destroy (gameObject);
 		}
-	}
-
-	//TODO: refactor this into an array of materials
-	public Material getCurrentMaterial(){
-		if (currentStage == Stage.Easy) {
-			return startingDifficultyMaterial;
-		}
-		if (currentStage == Stage.Medium || currentStage == Stage.MediumTransition) {
-			return difficulty1Material;
-		}
-		if (currentStage == Stage.Hard || currentStage == Stage.HardTransition) {
-			return difficulty2Material;
-		}
-		return null;
 	}
 
 	//TODO this should be refactored to place the potential behaviors in a list and select from them.

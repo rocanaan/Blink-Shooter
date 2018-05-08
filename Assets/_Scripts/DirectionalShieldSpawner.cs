@@ -70,8 +70,6 @@ public class DirectionalShieldSpawner : MonoBehaviour {
 			//transform.rotation = Quaternion.LookRotation (Vector3.right, targetPlayer.transform.position - transform.position);
 			transform.right = targetPlayer.transform.position - transform.position;
 //				shieldList.Add (shield);
-			shield.GetComponent<Renderer> ().material = GetComponentInParent<BossController> ().getCurrentMaterial();
-			shield.GetComponent<ExplosionSpawner>().explosionMaterial = GetComponentInParent<BossController> ().getCurrentMaterial();
 			timeNextSpawn = Time.time + 99999;
 			mustRespawn = true;
 

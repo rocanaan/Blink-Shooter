@@ -41,7 +41,6 @@ public class ShieldSpawner : MonoBehaviour {
 				shield.transform.localScale *= 3;//transform.lossyScale.x;
 				shield.transform.parent = transform;
 				shieldList.Add (shield);
-				shield.GetComponent<Renderer> ().material = GetComponentInParent<BossController> ().getCurrentMaterial();
 			}
 		}
 		if (!statusActive) {

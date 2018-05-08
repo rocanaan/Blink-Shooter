@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour {
 
-    public Material phase1Material;
-    public Material phase2Material;
-    public Material phase3Material;
+    public Material regularMaterial;
+    public Material secondaryMaterial;
     public int repetition;
     public float timeInterval;
 
@@ -20,7 +19,7 @@ public class CameraController : MonoBehaviour {
         originalPosition = transform.position;
         velocity = Vector3.zero;
         cam = transform.GetComponent<Camera>();
-        cam.backgroundColor = phase1Material.color;
+        cam.backgroundColor = regularMaterial.color;
     }
 
     public void CamShake(float shakeTimer, float shakeIntensity)
@@ -28,16 +27,9 @@ public class CameraController : MonoBehaviour {
         StartCoroutine(Shake(shakeTimer, shakeIntensity));
     }
 
-    public void ChangeBackGround(int phaseTransition)
+    public void ChangeBackGround()
     {
-        if(phaseTransition == 1)
-        {
-            StartCoroutine(BlinkingBackground(phase1Material, phase2Material));
-        }
-        else if(phaseTransition == 2)
-        {
-            StartCoroutine(BlinkingBackground(phase2Material, phase3Material));
-        }
+        StartCoroutine(BlinkingBackground(regularMaterial, secondaryMaterial));
     }
 
     private IEnumerator Shake(float shakeTimer, float shakeIntensity)
@@ -63,7 +55,5 @@ public class CameraController : MonoBehaviour {
             cam.backgroundColor = mat1.color;
             yield return new WaitForSeconds(timeInterval);
         }
-
-        cam.backgroundColor = mat2.color;
     }
 }
