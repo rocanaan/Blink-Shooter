@@ -36,11 +36,12 @@ public class CameraController : MonoBehaviour {
     {
         while (shakeTimer > 0.0f)
         {
-            transform.localPosition = originalPosition + Random.insideUnitSphere * shakeIntensity;
+			transform.localPosition = originalPosition + Time.timeScale * Random.insideUnitSphere * shakeIntensity;
 
-            shakeTimer -= Time.deltaTime;
-            yield return null;
+	         shakeTimer -= Time.deltaTime;
+	         yield return null;
         }
+
         transform.position = Vector3.SmoothDamp(transform.position, originalPosition, ref velocity, 0.1f);
     }
 

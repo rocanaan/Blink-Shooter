@@ -103,6 +103,7 @@
      <Compile Include="Assets\_Scripts\WallGunSpawner.cs" />
      <Compile Include="Assets\BehaviorController.cs" />
      <Compile Include="Assets\BossBattleGameController.cs" />
+     <Compile Include="Assets\CoreResize.cs" />
      <Compile Include="Assets\DrawCircle.cs" />
      <Compile Include="Assets\ExpandingCircleAttack.cs" />
      <Compile Include="Assets\ExpandingCircleSpawner.cs" />

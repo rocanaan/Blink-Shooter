@@ -13667,6 +13667,7 @@ GameObject:
   - component: {fileID: 1384918559}
   - component: {fileID: 1384918562}
   - component: {fileID: 1384918561}
+  - component: {fileID: 1384918560}
   m_Layer: 0
   m_Name: Color Core
   m_TagString: Untagged
@@ -13688,6 +13689,20 @@ Transform:
   m_Father: {fileID: 1271709991}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1384918560
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1384918558}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4596a88bd5fb34ddeb782ebf123363af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bossObject: {fileID: 1260808689}
+  startingRelativeSize: 0.4
+  finalRelativeSize: 1
 --- !u!114 &1384918561
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13798,6 +13813,25 @@ Transform:
   m_PrefabParentObject: {fileID: 4833804944259394, guid: e5d5f33a44804d940bd6b542ae7d7b89,
     type: 2}
   m_PrefabInternal: {fileID: 1409184700}
+--- !u!1 &1437932497 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1504703390389780, guid: 7e641c9dfd20c41a4a5ad73725e7de64,
+    type: 2}
+  m_PrefabInternal: {fileID: 1260808688}
+--- !u!114 &1437932501
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1437932497}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4596a88bd5fb34ddeb782ebf123363af, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bossObject: {fileID: 1260808689}
+  startingRelativeSize: 0.4
+  finalRelativeSize: 1
 --- !u!1001 &1456981210
 Prefab:
   m_ObjectHideFlags: 0

@@ -193,6 +193,11 @@ public class BossController : MonoBehaviour {
 		}
 	}
 
+	public float GetHealthRatio(){
+		print (bossHealth.GetHealth());
+		print (bossHealth.maxHealth);
+		return (float) bossHealth.GetHealth() / (float)bossHealth.maxHealth;	
+	}
 
 	void TakeDamage (int damage){
 
