@@ -101,7 +101,7 @@ public class GhostController : MonoBehaviour {
 				Collider2D[] colliders = Physics2D.OverlapCircleAll (pos, 0.25f);
 				bool collidesWithObjects = false;
 				foreach (Collider2D col in colliders) {
-					if (!col.gameObject.CompareTag ("Shot") && !col.gameObject.CompareTag ("Ghost") && !col.gameObject.CompareTag ("Laser")) {
+					if (!col.gameObject.CompareTag ("Shot") && !col.gameObject.CompareTag ("Ghost") && !col.gameObject.CompareTag ("Laser") && transform.IsChildOf(col.transform) /*!col.gameObject.CompareTag("Player")*/) {
 						collidesWithObjects = true;
 					}
 				}

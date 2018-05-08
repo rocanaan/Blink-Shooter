@@ -19,8 +19,13 @@ public class CollisionWithWall : MonoBehaviour {
             Destroy(col.gameObject);
         }
 		if (col.tag == "Ghost" && !ghostTrespassable) {
+            Rigidbody2D rb = col.GetComponent<Rigidbody2D>();
+            Vector2 incomingDir = rb.velocity;
+            rb.velocity = Vector2.zero;
+            rb.transform.Translate(incomingDir.normalized * (-0.5f)); // move ghost in the opposite direction slightly so that it doesn't collide with the wall anymore
 			GhostController ghostController = col.GetComponent<GhostController> ();
-			ghostController.collidesWithBoundary ();
+            //ghostController.collidesWithBoundary ();
+            ghostController.ghostAction("Up"); // since the ghost is now clear from the wall, it can finish its job
 		}
 	}
 }
