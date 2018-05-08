@@ -60,7 +60,7 @@ public class PlayerController : MonoBehaviour {
 		myCamera = cameraObject.GetComponent<Camera> ();        
 
 		controllerName = "";
-		getControllerName ();
+		SetControllerName ();
 		nextShot = 0.0f;
 		isDead = false;
 		isStunned = false;
@@ -77,30 +77,30 @@ public class PlayerController : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (!GameController.IsGameOver ()) {
-			if (isDead && Time.time >= nextRespawnTime && respawnAllowed) {
-				//transform.parent.gameObject.SetActive (true);
-				if (gameController.GetGameMode () == BossBattleGameController.GameMode.Boss) {
-					print ("attempting to respawn");
-					transform.position = respawn;
-					rb.velocity = Vector3.zero;
-					ghost.resetPosition ();
-				} else {
-					//TODO: Respawn code for other game modes is buggy
-					Vector2 randomVector = gameController.GetRespawnPosition ();
-					transform.parent.transform.position = new Vector3 (randomVector.x, randomVector.y, transform.parent.transform.position.z);
-					transform.position = transform.parent.transform.position;
-				}
+			//if (isDead && Time.time >= nextRespawnTime && respawnAllowed) {
+			//	//transform.parent.gameObject.SetActive (true);
+			//	if (gameController.GetGameMode () == BossBattleGameController.GameMode.Boss) {
+			//		print ("attempting to respawn");
+			//		transform.position = respawn;
+			//		rb.velocity = Vector3.zero;
+			//		ghost.resetPosition ();
+			//	} else {
+			//		//TODO: Respawn code for other game modes is buggy
+			//		Vector2 randomVector = gameController.GetRespawnPosition ();
+			//		transform.parent.transform.position = new Vector3 (randomVector.x, randomVector.y, transform.parent.transform.position.z);
+			//		transform.position = transform.parent.transform.position;
+			//	}
 
-				// player has now respawned
-				isDead = false;
-				playerHealth.Respawn ();
-                gameController.SetRespawnText(); // the text on the screen will be updated once the player has respawned
-                // still doesn't act perfectly. we should make the player press a button to respawn after some time, then this will also act perfectly accurately
-                // (the reason its behavior is janky is the wait time between death and respawn)
-                //(if player1 is dead and player2 dies before player1 has respawned, it will jump from 2 to 0)
+			//	// player has now respawned
+			//	isDead = false;
+			//	playerHealth.Respawn ();
+   //             gameController.SetRespawnText(); // the text on the screen will be updated once the player has respawned
+   //             // still doesn't act perfectly. we should make the player press a button to respawn after some time, then this will also act perfectly accurately
+   //             // (the reason its behavior is janky is the wait time between death and respawn)
+   //             //(if player1 is dead and player2 dies before player1 has respawned, it will jump from 2 to 0)
 
 
-			}
+			//}
 
 			if (isPhasing && stopWhenPhasing) {
 				rb.velocity = Vector3.zero;
@@ -141,7 +141,7 @@ public class PlayerController : MonoBehaviour {
 		return direction;
 	}
 
-	public void getControllerName (){
+	private void SetControllerName (){
 		int numControllers = Input.GetJoystickNames().Length;
 		print ("Checking controllers for player " + playerID + ". Number of controllers is " + numControllers);
 
@@ -159,8 +159,12 @@ public class PlayerController : MonoBehaviour {
 		}
 
 		print ("Controller name for player " + playerID + " is " + controllerName);
-
 	}
+
+    public string GetControllerName()
+    {
+        return controllerName;
+    }
 
 	public void getInputs(){
 		if (controllerName == "") {
@@ -299,16 +303,26 @@ public class PlayerController : MonoBehaviour {
 	void PlayerDeath (){
 
         Debug.Log("PlayerDeath() called for player " + playerID);
-		transform.position = new Vector3(30,30,0);
-		ghost.resetPosition ();
+        //transform.position = new Vector3(30,30,0);
+        //ghost.resetPosition ();
 		rb.velocity = Vector3.zero;
 		isDead = true;
-		SetRespawn();
+        //SetRespawn();
+
 		sfxController.PlayClip ("Death");
-        gameController.NotifyDeath(playerID, teamID);
+        //gameController.NotifyDeath(playerID, teamID);
+        gameController.NotifyPlayerDeath();
     }
 
-	void SetRespawn(){
+    public void PlayerRespawn()
+    {
+        rb.velocity = Vector3.zero;
+        ghost.resetPosition();
+        isDead = false;
+        playerHealth.Respawn();
+    }
+
+    void SetRespawn(){
 		int respawnDelay = gameController.GetRespawnTime ();
 		if (respawnDelay >= 0) {
 			nextRespawnTime = Time.time + 3.0f;

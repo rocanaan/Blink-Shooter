@@ -132,6 +132,70 @@ public class BossBattleGameController : MonoBehaviour {
         }
     }
 
+    public void NotifyPlayerDeath()
+    {
+        print("NotifyDeath() CALLED");
+        // there are 3 possible cases
+        bool player1Alive = players[0].GetComponent<HealthController>().IsAlive();
+        bool player2Alive = players[1].GetComponent<HealthController>().IsAlive();
+
+        if (player1Alive || player2Alive)
+        {
+            // CASE 1
+            if (player1Alive && !player2Alive)
+            {
+                print("Player2 died");
+                // Player 1 is alive, Player 2 is dead
+                StartCoroutine(CheckPlayerRespawn(1, 0));
+            }
+            // CASE 2
+            else if (!player1Alive && player2Alive)
+            {
+                // Player 2 is alive, Player 1 is dead
+                StartCoroutine(CheckPlayerRespawn(0, 1));
+            }
+        }
+        // CASE 3
+        else if (!players[0].GetComponent<HealthController>().IsAlive() && !players[1].GetComponent<HealthController>().IsAlive())
+        {
+            // Both players are dead
+            SetGameOver(2); // Boss wins
+        }
+    }
+
+    private IEnumerator CheckPlayerRespawn(int deadPlayerIndex, int alivePlayerIndex)
+    {
+        bool waitingToRespawn = true;
+        while (waitingToRespawn)
+        {
+            if (!gameOver)
+            {
+                float playerDistance = Vector3.Distance(players[0].transform.position, players[1].transform.position);
+
+                if (playerDistance <= healthRegenRange)
+                {
+                    // trigger some sort of animation on the dead player here
+
+                    string controllerName = players[alivePlayerIndex].GetComponent<PlayerController>().GetControllerName();
+                    if (Input.GetButton("Respawn" + controllerName))
+                    {
+                        respawnLives = respawnLives - 1;
+                        // call a function to respawn the player here
+                        players[deadPlayerIndex].GetComponent<PlayerController>().PlayerRespawn();
+                        waitingToRespawn = false;
+                        print("Respawning PLAYER " + deadPlayerIndex);
+                    }
+                }
+            }
+            else
+            {
+                waitingToRespawn = false;
+            }
+            yield return null;
+        }
+        
+    }
+
     public void BossDied()
     {
         SetGameOver(1);
