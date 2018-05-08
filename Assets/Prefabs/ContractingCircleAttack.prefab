@@ -55,7 +55,7 @@ MonoBehaviour:
   numberOfVertices: 40
   startingRadius: 5
   finalRadius: 0
-  radiusStep: -0.04
+  radiusStep: -2
   collisionWidth: 0.3
   preparationDuration: 0.5
   followDuringPreparation: 1

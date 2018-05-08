@@ -101,7 +101,7 @@ public class ExpandingCircleAttack : MonoBehaviour {
 		// Expand or contract the circle after preparation
 		if (Time.time >= startOfExpansionTime) {
 			l_Renderer.material = activationMaterial;
-			currentRadius += radiusStep;
+			currentRadius += radiusStep * Time.deltaTime;
 		}
 
 		// If absolute difference between current and starting raduis is bigger

@@ -45,7 +45,7 @@ public class DirectionalShieldSpawner : MonoBehaviour {
 		if (statusActive) {
 			getClosestTarget ();
 			Vector3 targetDirection = targetPlayer.transform.position - transform.position;
-			Vector3 newDirection = Vector3.RotateTowards (transform.right, targetDirection, Mathf.Deg2Rad * angularSpeed, 0.0f);
+			Vector3 newDirection = Vector3.RotateTowards (transform.right, targetDirection, Mathf.Deg2Rad * angularSpeed * Time.deltaTime, 0.0f);
 			transform.right = newDirection;
 
 		} else if (!statusActive && mustRespawn && Time.time > timeNextSpawn) {

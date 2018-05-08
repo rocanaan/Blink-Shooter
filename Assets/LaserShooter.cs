@@ -90,8 +90,8 @@ public class LaserShooter : MonoBehaviour {
                 }
 
 
-                transform.Rotate(0, 0, angularSpeed);
-                arcTraveled += angularSpeed;
+				transform.Rotate(0, 0, angularSpeed * Time.deltaTime);
+				arcTraveled += angularSpeed * Time.deltaTime;
             }
 
         }

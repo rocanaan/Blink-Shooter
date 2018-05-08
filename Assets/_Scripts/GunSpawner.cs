@@ -27,7 +27,7 @@ public class GunSpawner : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		if (statusActive) {
-			transform.Rotate (0, 0, angularSpeed);
+			transform.Rotate (0, 0, angularSpeed * Time.deltaTime);
 		}
 	}
 

@@ -83,7 +83,6 @@
      <Compile Include="Assets\_Scripts\LaserSpawnerController.cs" />
      <Compile Include="Assets\_Scripts\Pickups\HealthPickup.cs" />
      <Compile Include="Assets\_Scripts\Pickups\PickupSpawner.cs" />
-     <Compile Include="Assets\_Scripts\Player\BlinkDamageAnimation.cs" />
      <Compile Include="Assets\_Scripts\Player\CanvasController.cs" />
      <Compile Include="Assets\_Scripts\Player\GhostController.cs" />
      <Compile Include="Assets\_Scripts\Player\HealthTracker.cs" />
@@ -104,7 +103,6 @@
      <Compile Include="Assets\_Scripts\WallGunSpawner.cs" />
      <Compile Include="Assets\BehaviorController.cs" />
      <Compile Include="Assets\BossBattleGameController.cs" />
-     <Compile Include="Assets\ChangesColor.cs" />
      <Compile Include="Assets\DrawCircle.cs" />
      <Compile Include="Assets\ExpandingCircleAttack.cs" />
      <Compile Include="Assets\ExpandingCircleSpawner.cs" />
@@ -115,6 +113,7 @@
      <Compile Include="Assets\LaserSplit.cs" />
      <Compile Include="Assets\LaserSplittingAttack.cs" />
      <Compile Include="Assets\NotifyBossOnDeath.cs" />
+     <Compile Include="Assets\PauseGame.cs" />
      <Compile Include="Assets\PlayerCircleTrapSpawner.cs" />
      <Compile Include="Assets\PlayerUIHealthBarController.cs" />
  <Reference Include="UnityEngine.UI">
