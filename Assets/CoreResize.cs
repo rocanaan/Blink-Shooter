@@ -22,7 +22,7 @@ public class CoreResize : MonoBehaviour {
 
 	void Resize (){
 		float scale = startingRelativeSize + (1-bossController.GetHealthRatio ()) * (finalRelativeSize - startingRelativeSize);
-		print ("Health ratio" + bossController.GetHealthRatio());
+		//print ("Health ratio" + bossController.GetHealthRatio());
 		transform.localScale = new Vector3 (scale, scale, 1);
 	}
 }

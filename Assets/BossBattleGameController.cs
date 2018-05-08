@@ -13,6 +13,7 @@ public class BossBattleGameController : MonoBehaviour {
     public int respawnLives;
     public Text gameOverText;
     public TextMesh respawnText;
+    public GameObject trianglePrefab;
     [Range(1.0f, 10.0f)]
     public float healthRegenRange;
     public float max_x;
@@ -145,13 +146,14 @@ public class BossBattleGameController : MonoBehaviour {
             if (player1Alive && !player2Alive)
             {
                 print("Player2 died");
-                // Player 1 is alive, Player 2 is dead
+                // Player 1 is alive, Player 2 is dead                
                 StartCoroutine(CheckPlayerRespawn(1, 0));
             }
             // CASE 2
             else if (!player1Alive && player2Alive)
             {
                 // Player 2 is alive, Player 1 is dead
+                Vector3 pos = players[0].transform.position;
                 StartCoroutine(CheckPlayerRespawn(0, 1));
             }
         }
@@ -165,26 +167,46 @@ public class BossBattleGameController : MonoBehaviour {
 
     private IEnumerator CheckPlayerRespawn(int deadPlayerIndex, int alivePlayerIndex)
     {
+        float timer = 0f;
+
         bool waitingToRespawn = true;
+        Vector3 pos = players[deadPlayerIndex].transform.position;
+        GameObject triangle = Instantiate(trianglePrefab, pos, Quaternion.identity);
+        triangle.SetActive(false);
         while (waitingToRespawn)
         {
-            if (!gameOver)
+            if (!gameOver && respawnLives > 0)
             {
                 float playerDistance = Vector3.Distance(players[0].transform.position, players[1].transform.position);
 
                 if (playerDistance <= healthRegenRange)
                 {
                     // trigger some sort of animation on the dead player here
+                    if(timer > 0.1f)
+                    {
+                        triangle.SetActive(!triangle.activeSelf);
+                        timer = 0f;
+                    }
+                    else
+                    {
+                        timer = timer + Time.deltaTime;
+                    }
 
                     string controllerName = players[alivePlayerIndex].GetComponent<PlayerController>().GetControllerName();
                     if (Input.GetButton("Respawn" + controllerName))
                     {
+                        Destroy(triangle);
                         respawnLives = respawnLives - 1;
+                        SetRespawnText();
                         // call a function to respawn the player here
                         players[deadPlayerIndex].GetComponent<PlayerController>().PlayerRespawn();
                         waitingToRespawn = false;
                         print("Respawning PLAYER " + deadPlayerIndex);
                     }
+                }
+                else
+                {
+                    triangle.SetActive(false);
                 }
             }
             else

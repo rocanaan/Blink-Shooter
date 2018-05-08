@@ -18,8 +18,11 @@ public class PlayerController : MonoBehaviour {
     public float normalSpeed;
     [Range(1.0f, 10.0f)]
     public float slowedSpeed;
+    public Material playerMaterial;
+    public Material ghostMaterial;
     public Material healthMaterial;
     public Material lowHealthMaterial;
+    public Material deathMaterial;
     public bool stopWhenPhasing;
 
     private float speed;// Controls the speed of the character
@@ -48,6 +51,8 @@ public class PlayerController : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+        SetMaterials(playerMaterial, ghostMaterial);
+
 		rb = GetComponent<Rigidbody2D> ();
 		fs = transform.GetComponent<FireShot> ();
         blinkAnimation = GetComponent<BlinkAnimation>();
@@ -72,6 +77,18 @@ public class PlayerController : MonoBehaviour {
 
 		isPhasing = false;
 
+    }
+
+    private void SetMaterials(Material bodyMat, Material ghostMat)
+    {
+        transform.GetComponent<SpriteRenderer>().material = bodyMat;
+        ghostObject.transform.GetComponent<SpriteRenderer>().material = ghostMat;
+    }
+
+    private void SetColliderStatus(bool stat)
+    {
+        transform.GetComponent<Collider2D>().enabled = stat;
+        ghostObject.transform.GetComponent<Collider2D>().enabled = stat;
     }
 
 	// Update is called once per frame
@@ -300,26 +317,36 @@ public class PlayerController : MonoBehaviour {
 
 	}
 
-	void PlayerDeath (){
-
+	void PlayerDeath ()
+    {
         Debug.Log("PlayerDeath() called for player " + playerID);
-        //transform.position = new Vector3(30,30,0);
-        //ghost.resetPosition ();
+
+        SetColliderStatus(false);
+        SetMaterials(deathMaterial, deathMaterial);
+
+        playerHealth.healthBar.gameObject.SetActive(false); // deactivate the empty health bar
+        transform.GetComponent<SpriteRenderer>().sortingOrder = -2; // put player body in a lower order in layer so that it doesn't block other objects
+
+        ghost.resetPosition ();
 		rb.velocity = Vector3.zero;
 		isDead = true;
-        //SetRespawn();
-
+        isPhasing = false;
+        
 		sfxController.PlayClip ("Death");
-        //gameController.NotifyDeath(playerID, teamID);
         gameController.NotifyPlayerDeath();
     }
 
     public void PlayerRespawn()
     {
+        playerHealth.healthBar.gameObject.SetActive(true); // activate the health bar again
+        transform.GetComponent<SpriteRenderer>().sortingOrder = 1; // put all the sprites its usual order in the layer
+        SetMaterials(playerMaterial, ghostMaterial);
+
         rb.velocity = Vector3.zero;
         ghost.resetPosition();
         isDead = false;
         playerHealth.Respawn();
+        SetColliderStatus(true);
     }
 
     void SetRespawn(){
