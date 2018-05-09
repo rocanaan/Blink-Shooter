@@ -341,6 +341,7 @@ Prefab:
     m_RemovedComponents:
     - {fileID: 0}
     - {fileID: 0}
+    - {fileID: 114044897600919164, guid: 9158f12da4bead54284ad68ac4c93bfc, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 9158f12da4bead54284ad68ac4c93bfc, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &136850512 stripped
@@ -8847,7 +8848,8 @@ Prefab:
       propertyPath: m_TagString
       value: Untagged
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114044897600919164, guid: 9158f12da4bead54284ad68ac4c93bfc, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 9158f12da4bead54284ad68ac4c93bfc, type: 2}
   m_IsPrefabParent: 0
 --- !u!114 &1457479921 stripped

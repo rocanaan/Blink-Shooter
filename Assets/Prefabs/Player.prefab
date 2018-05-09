@@ -116,6 +116,7 @@ GameObject:
   - component: {fileID: 114683988685659134}
   - component: {fileID: 198330783226079906}
   - component: {fileID: 199813728071149786}
+  - component: {fileID: 114044897600919164}
   m_Layer: 0
   m_Name: Player 1 Body
   m_TagString: Player
@@ -507,6 +508,22 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.Slider+SliderEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
+--- !u!114 &114044897600919164
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1760317567391870}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4241590048c67d4385372d51f4c4b2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  explosion: {fileID: 1729472084353830, guid: bfb0996311d3ecb4f9927ba4b1927422, type: 2}
+  explosionSize: 0.7
+  explosionDuration: 0.5
+  explosionRadius: 0.7
+  explosionMaterial: {fileID: 2100000, guid: 513d9d1d83604a8488bd5e89557db6cb, type: 2}
 --- !u!114 &114050677188457966
 MonoBehaviour:
   m_ObjectHideFlags: 1
