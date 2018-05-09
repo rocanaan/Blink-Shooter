@@ -35,7 +35,10 @@ public class PauseGame : MonoBehaviour {
                 lastTimeScale = Time.timeScale;
                 Time.timeScale = 0f;
                 paused = true;
-                soundtrackController.GetComponent<AudioSource>().Pause();
+                if(soundtrackController != null)
+                {
+                    soundtrackController.GetComponent<AudioSource>().Pause();
+                }                
             }
             else
             {
