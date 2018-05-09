@@ -8732,6 +8732,20 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114576063255768844, guid: 1b06ac2aa588626418f9c50a454e3ef2,
+        type: 2}
+      propertyPath: m_Text
+      value: 'Hold / relase trigger to phase
+
+        Fire with right Analog Stick
+
+        KILL THE CANNONS!!!'
+      objectReference: {fileID: 0}
+    - target: {fileID: 224065335428918094, guid: 1b06ac2aa588626418f9c50a454e3ef2,
+        type: 2}
+      propertyPath: m_SizeDelta.y
+      value: 180
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1b06ac2aa588626418f9c50a454e3ef2, type: 2}
   m_IsPrefabParent: 0
