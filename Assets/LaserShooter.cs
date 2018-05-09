@@ -21,7 +21,7 @@ public class LaserShooter : MonoBehaviour {
     private LineRenderer lr;
 
 	public int damage;
-
+    private AudioSource audioSource;
     // Use this for initialization
     void Start()
     {
@@ -30,6 +30,8 @@ public class LaserShooter : MonoBehaviour {
         lr.widthMultiplier = 1.0f;
         lr.material = laserStartMaterial;
         //laserGlow.GetComponent<ParticleSystemRenderer>().material = laserStartMaterial;
+        audioSource = GetComponentInParent<AudioSource>();
+        audioSource.Play();
     }
 
 
@@ -96,7 +98,10 @@ public class LaserShooter : MonoBehaviour {
 
         }
     }
-
+    void OnDestroy()
+    {
+        audioSource.Stop();
+    }
     public void Initialize()
     {
         //currentOrigin = origin;
