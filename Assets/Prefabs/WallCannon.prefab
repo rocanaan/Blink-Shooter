@@ -28,6 +28,7 @@ GameObject:
   - component: {fileID: 114880991858429738}
   - component: {fileID: 114256804630356960}
   - component: {fileID: 114281336531897964}
+  - component: {fileID: 114003110703499046}
   m_Layer: 0
   m_Name: WallCannon
   m_TagString: Untagged
@@ -93,6 +94,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1.2, y: 1.2}
   m_EdgeRadius: 0
+--- !u!114 &114003110703499046
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1808568471600776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6818b545752da2c4bb96d92b5f91dc07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114111914477057010
 MonoBehaviour:
   m_ObjectHideFlags: 1

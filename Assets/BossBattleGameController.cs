@@ -34,6 +34,7 @@ public class BossBattleGameController : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+        Time.timeScale = 1.0f;
         gameOver = false;
 
         //respawns = new Queue<RespawnEvent> ();
@@ -94,7 +95,7 @@ public class BossBattleGameController : MonoBehaviour {
 
     void CheckPlayerRegen()
     {
-        if (players.Length == 2)
+        if (!gameOver && players.Length == 2)
         {
             float playerDistance = Vector3.Distance(players[0].transform.position, players[1].transform.position);
 
@@ -235,7 +236,6 @@ public class BossBattleGameController : MonoBehaviour {
     void SetGameOver(int winner)
     {
         transform.GetComponent<PauseGame>().Pause();
-
         gameOver = true;
         if (winner == 1)
         {

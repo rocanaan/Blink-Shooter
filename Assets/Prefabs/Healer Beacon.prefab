@@ -49,6 +49,7 @@ GameObject:
   - component: {fileID: 114341166588332668}
   - component: {fileID: 114841188253411698}
   - component: {fileID: 114985953935506704}
+  - component: {fileID: 114423050332579886}
   m_Layer: 0
   m_Name: Healer Beacon
   m_TagString: Beacon
@@ -234,6 +235,17 @@ MonoBehaviour:
   clips:
   - clip: {fileID: 8300000, guid: fc084ade2e4ac458ab83ef8616de21c1, type: 3}
     label: BeaconSpawn
+--- !u!114 &114423050332579886
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1927964172261598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6818b545752da2c4bb96d92b5f91dc07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114584022821253780
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -315,7 +327,6 @@ MonoBehaviour:
   firstShotDelay: 6
   shotSpeed: 20
   activateOnStartup: 1
-  getMaterialFromParent: 0
 --- !u!114 &114878272505756260
 MonoBehaviour:
   m_ObjectHideFlags: 1

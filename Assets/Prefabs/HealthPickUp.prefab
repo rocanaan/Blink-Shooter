@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 61851617308454774}
   - component: {fileID: 114596017925501260}
   - component: {fileID: 114877797520724548}
+  - component: {fileID: 114856535994805590}
   m_Layer: 0
   m_Name: HealthPickUp
   m_TagString: Pickup
@@ -80,6 +81,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthRecovered: 3
+--- !u!114 &114856535994805590
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1891630877957174}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6818b545752da2c4bb96d92b5f91dc07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114877797520724548
 MonoBehaviour:
   m_ObjectHideFlags: 1

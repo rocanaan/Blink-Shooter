@@ -503,7 +503,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -1268980714
+  randomSeed: -1195251326
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -3961,7 +3961,7 @@ GameObject:
   - component: {fileID: 173605977}
   m_Layer: 5
   m_Name: Press Text
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4049,7 +4049,7 @@ GameObject:
   - component: {fileID: 213260056}
   m_Layer: 5
   m_Name: Fill
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4091,7 +4091,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -4674,7 +4674,7 @@ GameObject:
   - component: {fileID: 437783194}
   m_Layer: 0
   m_Name: EventSystem
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4910,7 +4910,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 1060479328
+  randomSeed: 858140793
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -8502,7 +8502,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4527239602009784, guid: 9158f12da4bead54284ad68ac4c93bfc, type: 2}
       propertyPath: m_RootOrder
-      value: 11
+      value: 12
       objectReference: {fileID: 0}
     - target: {fileID: 1962082226303496, guid: 9158f12da4bead54284ad68ac4c93bfc, type: 2}
       propertyPath: m_Name
@@ -8687,6 +8687,42 @@ Prefab:
       propertyPath: m_Color.b
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 1962082226303496, guid: 9158f12da4bead54284ad68ac4c93bfc, type: 2}
+      propertyPath: m_TagString
+      value: UI
+      objectReference: {fileID: 0}
+    - target: {fileID: 1760317567391870, guid: 9158f12da4bead54284ad68ac4c93bfc, type: 2}
+      propertyPath: m_TagString
+      value: UI
+      objectReference: {fileID: 0}
+    - target: {fileID: 1935922659501540, guid: 9158f12da4bead54284ad68ac4c93bfc, type: 2}
+      propertyPath: m_TagString
+      value: UI
+      objectReference: {fileID: 0}
+    - target: {fileID: 1442923138287106, guid: 9158f12da4bead54284ad68ac4c93bfc, type: 2}
+      propertyPath: m_TagString
+      value: UI
+      objectReference: {fileID: 0}
+    - target: {fileID: 1447733019262810, guid: 9158f12da4bead54284ad68ac4c93bfc, type: 2}
+      propertyPath: m_TagString
+      value: UI
+      objectReference: {fileID: 0}
+    - target: {fileID: 1381547364117930, guid: 9158f12da4bead54284ad68ac4c93bfc, type: 2}
+      propertyPath: m_TagString
+      value: UI
+      objectReference: {fileID: 0}
+    - target: {fileID: 1889774365003928, guid: 9158f12da4bead54284ad68ac4c93bfc, type: 2}
+      propertyPath: m_TagString
+      value: UI
+      objectReference: {fileID: 0}
+    - target: {fileID: 1685565547102362, guid: 9158f12da4bead54284ad68ac4c93bfc, type: 2}
+      propertyPath: m_TagString
+      value: UI
+      objectReference: {fileID: 0}
+    - target: {fileID: 1011951270338714, guid: 9158f12da4bead54284ad68ac4c93bfc, type: 2}
+      propertyPath: m_TagString
+      value: UI
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 50198888114822708, guid: 9158f12da4bead54284ad68ac4c93bfc, type: 2}
     - {fileID: 58142699264978090, guid: 9158f12da4bead54284ad68ac4c93bfc, type: 2}
@@ -8702,6 +8738,8 @@ Prefab:
     - {fileID: 82904485846162324, guid: 9158f12da4bead54284ad68ac4c93bfc, type: 2}
     - {fileID: 114792758509208520, guid: 9158f12da4bead54284ad68ac4c93bfc, type: 2}
     - {fileID: 114131069671731500, guid: 9158f12da4bead54284ad68ac4c93bfc, type: 2}
+    - {fileID: 82195689917456882, guid: 9158f12da4bead54284ad68ac4c93bfc, type: 2}
+    - {fileID: 114102697864519724, guid: 9158f12da4bead54284ad68ac4c93bfc, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 9158f12da4bead54284ad68ac4c93bfc, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &752301590
@@ -8716,7 +8754,7 @@ GameObject:
   - component: {fileID: 752301592}
   m_Layer: 5
   m_Name: Restart Button Image
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8800,7 +8838,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 15
+  m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &791519044
 Prefab:
@@ -9284,7 +9322,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4527239602009784, guid: 9158f12da4bead54284ad68ac4c93bfc, type: 2}
       propertyPath: m_RootOrder
-      value: 12
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 1962082226303496, guid: 9158f12da4bead54284ad68ac4c93bfc, type: 2}
       propertyPath: m_Name
@@ -9441,6 +9479,42 @@ Prefab:
       propertyPath: m_LocalPosition.x
       value: -2
       objectReference: {fileID: 0}
+    - target: {fileID: 1962082226303496, guid: 9158f12da4bead54284ad68ac4c93bfc, type: 2}
+      propertyPath: m_TagString
+      value: UI
+      objectReference: {fileID: 0}
+    - target: {fileID: 1760317567391870, guid: 9158f12da4bead54284ad68ac4c93bfc, type: 2}
+      propertyPath: m_TagString
+      value: UI
+      objectReference: {fileID: 0}
+    - target: {fileID: 1935922659501540, guid: 9158f12da4bead54284ad68ac4c93bfc, type: 2}
+      propertyPath: m_TagString
+      value: UI
+      objectReference: {fileID: 0}
+    - target: {fileID: 1442923138287106, guid: 9158f12da4bead54284ad68ac4c93bfc, type: 2}
+      propertyPath: m_TagString
+      value: UI
+      objectReference: {fileID: 0}
+    - target: {fileID: 1447733019262810, guid: 9158f12da4bead54284ad68ac4c93bfc, type: 2}
+      propertyPath: m_TagString
+      value: UI
+      objectReference: {fileID: 0}
+    - target: {fileID: 1381547364117930, guid: 9158f12da4bead54284ad68ac4c93bfc, type: 2}
+      propertyPath: m_TagString
+      value: UI
+      objectReference: {fileID: 0}
+    - target: {fileID: 1889774365003928, guid: 9158f12da4bead54284ad68ac4c93bfc, type: 2}
+      propertyPath: m_TagString
+      value: UI
+      objectReference: {fileID: 0}
+    - target: {fileID: 1685565547102362, guid: 9158f12da4bead54284ad68ac4c93bfc, type: 2}
+      propertyPath: m_TagString
+      value: UI
+      objectReference: {fileID: 0}
+    - target: {fileID: 1011951270338714, guid: 9158f12da4bead54284ad68ac4c93bfc, type: 2}
+      propertyPath: m_TagString
+      value: UI
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 50198888114822708, guid: 9158f12da4bead54284ad68ac4c93bfc, type: 2}
     - {fileID: 58142699264978090, guid: 9158f12da4bead54284ad68ac4c93bfc, type: 2}
@@ -9455,6 +9529,9 @@ Prefab:
     - {fileID: 114050677188457966, guid: 9158f12da4bead54284ad68ac4c93bfc, type: 2}
     - {fileID: 82904485846162324, guid: 9158f12da4bead54284ad68ac4c93bfc, type: 2}
     - {fileID: 114792758509208520, guid: 9158f12da4bead54284ad68ac4c93bfc, type: 2}
+    - {fileID: 114131069671731500, guid: 9158f12da4bead54284ad68ac4c93bfc, type: 2}
+    - {fileID: 82195689917456882, guid: 9158f12da4bead54284ad68ac4c93bfc, type: 2}
+    - {fileID: 114102697864519724, guid: 9158f12da4bead54284ad68ac4c93bfc, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 9158f12da4bead54284ad68ac4c93bfc, type: 2}
   m_IsPrefabParent: 0
 --- !u!114 &1014767596 stripped
@@ -9496,7 +9573,7 @@ GameObject:
   - component: {fileID: 1105089708}
   m_Layer: 0
   m_Name: Boss Indicator
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9615,7 +9692,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 989461901
+  randomSeed: -1034999055
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -12929,7 +13006,7 @@ Transform:
   - {fileID: 1271709991}
   - {fileID: 1903726137}
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1153231505
 Prefab:
@@ -13520,7 +13597,7 @@ GameObject:
   - component: {fileID: 1271709990}
   m_Layer: 0
   m_Name: Boss Body
-  m_TagString: Boss
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13633,7 +13710,7 @@ GameObject:
   - component: {fileID: 1296711202}
   m_Layer: 5
   m_Name: Boss Health Bar
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -13894,6 +13971,10 @@ Prefab:
       propertyPath: blinkScaleMultiplier
       value: 1.5
       objectReference: {fileID: 0}
+    - target: {fileID: 1962082226303496, guid: 9158f12da4bead54284ad68ac4c93bfc, type: 2}
+      propertyPath: m_TagString
+      value: Untagged
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9158f12da4bead54284ad68ac4c93bfc, type: 2}
   m_IsPrefabParent: 0
@@ -13962,7 +14043,7 @@ GameObject:
   - component: {fileID: 1384918560}
   m_Layer: 0
   m_Name: Color Core
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14409,7 +14490,7 @@ GameObject:
   - component: {fileID: 1621233402}
   m_Layer: 5
   m_Name: Background
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14451,7 +14532,7 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
-  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
+  m_Sprite: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 3}
   m_Type: 1
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -14479,7 +14560,7 @@ GameObject:
   - component: {fileID: 1666916204}
   m_Layer: 5
   m_Name: Canvas
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14620,7 +14701,7 @@ GameObject:
   - component: {fileID: 1679354337}
   m_Layer: 5
   m_Name: Fill Area
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14759,7 +14840,7 @@ GameObject:
   - component: {fileID: 1726739268}
   m_Layer: 5
   m_Name: Game Over Text
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14898,7 +14979,7 @@ GameObject:
   - component: {fileID: 1760807120}
   m_Layer: 0
   m_Name: Respawn Text
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14971,7 +15052,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1760983567
 GameObject:
@@ -15016,7 +15097,7 @@ GameObject:
   - component: {fileID: 1801040050}
   m_Layer: 5
   m_Name: Image
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -15136,7 +15217,7 @@ GameObject:
   - component: {fileID: 1903726138}
   m_Layer: 5
   m_Name: Boss Health Canvas
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -15405,7 +15486,7 @@ GameObject:
   - component: {fileID: 2036175107}
   m_Layer: 5
   m_Name: To Restart
-  m_TagString: Untagged
+  m_TagString: UI
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

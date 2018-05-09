@@ -22,7 +22,7 @@ public class PauseGame : MonoBehaviour {
 	void Update () {
         if (Input.GetButtonDown("Pause"))
         {
-            Pause()
+            Pause();
         }
 	}
 

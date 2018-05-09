@@ -25,6 +25,7 @@ GameObject:
   - component: {fileID: 114586065470178276}
   - component: {fileID: 114695813036105072}
   - component: {fileID: 114140598088730326}
+  - component: {fileID: 114959684723829146}
   m_Layer: 0
   m_Name: Destructible Brick
   m_TagString: Wall
@@ -133,6 +134,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   blinkTime: 0.1
   waitTime: 0
+--- !u!114 &114959684723829146
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1154606732077658}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6818b545752da2c4bb96d92b5f91dc07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &212702591325904358
 SpriteRenderer:
   m_ObjectHideFlags: 1

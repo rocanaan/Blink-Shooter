@@ -12,11 +12,6 @@ public class ExplosionParticleControl : MonoBehaviour {
         StartCoroutine(AutoDestruct(ps.main.duration));
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
     IEnumerator AutoDestruct(float timer)
     {
         yield return new WaitForSeconds(timer);

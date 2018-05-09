@@ -26,6 +26,7 @@ GameObject:
   - component: {fileID: 114561598570175200}
   - component: {fileID: 114649199350302218}
   - component: {fileID: 114356819754271912}
+  - component: {fileID: 114724618446815554}
   m_Layer: 0
   m_Name: Simple Minion
   m_TagString: Minion
@@ -175,6 +176,17 @@ MonoBehaviour:
   offset: 1.2
   mat: {fileID: 2100000, guid: f6afd75f838ce3349b78e9dd1b6ce98e, type: 2}
   shotSpeed: 15
+--- !u!114 &114724618446815554
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1201294461112566}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6818b545752da2c4bb96d92b5f91dc07, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &212180340162671654
 SpriteRenderer:
   m_ObjectHideFlags: 1
