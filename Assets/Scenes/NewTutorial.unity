@@ -457,7 +457,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -1195251326
+  randomSeed: 572293814
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -8804,6 +8804,11 @@ Prefab:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 180
       objectReference: {fileID: 0}
+    - target: {fileID: 114207538295757624, guid: a35d379be74eb4ac0b125e866ec7e232,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a35d379be74eb4ac0b125e866ec7e232, type: 2}
   m_IsPrefabParent: 0
@@ -9371,6 +9376,11 @@ Prefab:
     - target: {fileID: 4773062417626218, guid: a35d379be74eb4ac0b125e866ec7e232, type: 2}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 114207538295757624, guid: a35d379be74eb4ac0b125e866ec7e232,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a35d379be74eb4ac0b125e866ec7e232, type: 2}
