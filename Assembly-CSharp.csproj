@@ -107,6 +107,7 @@
      <Compile Include="Assets\DrawCircle.cs" />
      <Compile Include="Assets\ExpandingCircleAttack.cs" />
      <Compile Include="Assets\ExpandingCircleSpawner.cs" />
+     <Compile Include="Assets\GhostBlinkOnActivation.cs" />
      <Compile Include="Assets\HealerBeaconSpawner.cs" />
      <Compile Include="Assets\HealorBeaconController.cs" />
      <Compile Include="Assets\HealthPickUpSpawner.cs" />
