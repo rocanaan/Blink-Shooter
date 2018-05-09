@@ -30,11 +30,14 @@ public class BossBattleGameController : MonoBehaviour {
 
 	private GameObject audioSource;
 	private AudioController soundtrackController;
+    private PauseGame pauseGame;
 
 
     // Use this for initialization
     void Start () {
+        pauseGame = transform.GetComponent<PauseGame>();
         Time.timeScale = 1.0f;
+        pauseGame.Pause();
         gameOver = false;
 
         //respawns = new Queue<RespawnEvent> ();
@@ -49,6 +52,14 @@ public class BossBattleGameController : MonoBehaviour {
         if (gameOver && Input.GetButton("Submit"))
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+
+        if(Time.timeScale == 0f && Input.GetButton("Submit"))
+        {
+            print("LET ME START ALREADY");
+            //pauseGame.Pause();
+            Time.timeScale = 1.0f;
+            anim.SetTrigger("Start");
         }
 
         if (Input.GetButton("Cancel"))
@@ -235,7 +246,7 @@ public class BossBattleGameController : MonoBehaviour {
 
     void SetGameOver(int winner)
     {
-        transform.GetComponent<PauseGame>().Pause();
+        pauseGame.Pause();
         gameOver = true;
         if (winner == 1)
         {

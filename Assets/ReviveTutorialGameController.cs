@@ -1,35 +1,58 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class ReviveTutorialGameController : MonoBehaviour {
 
-	public GameObject alivePlayer;
+    public Canvas canvas;
+    public Text gameOverText;
+    public GameObject alivePlayer;
 	public GameObject deadPlayer;
 
 	private HealthController p1Health;
+    private Animator anim;
+    private bool gameOver;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
+        gameOver = false;
+        Time.timeScale = 0f;
+
 		p1Health = alivePlayer.GetComponentInChildren<HealthController> ();
 
 		p1Health.TakeDamage (2);
 		deadPlayer.GetComponentInChildren<HealthController> ().TakeDamage (10);
 		deadPlayer.GetComponentInChildren<PlayerController> ().PlayerDeath ();
-	}
+        anim = canvas.GetComponent<Animator>();
+    }
 	
 	// Update is called once per frame
 	void Update () {
-		int health = p1Health.GetHealth ();
+
+        if (Time.timeScale == 0f && Input.GetButton("Submit"))
+        {
+            print("LET ME START ALREADY");
+            Time.timeScale = 1.0f;
+            anim.SetTrigger("Start");
+        }
+
+        int health = p1Health.GetHealth ();
 		if (health == p1Health.maxHealth) {
 			GameOver ();
 		}
-		
-	}
 
-	void GameOver()
-	{
-		SceneManager.LoadScene (SceneManager.GetActiveScene().buildIndex+1,LoadSceneMode.Single);
-	}
+        if (gameOver && Input.GetButton("Submit"))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex + 1, LoadSceneMode.Single);
+        }
+
+    }
+
+    private void GameOver()
+    {
+        gameOverText.text = "Congratulations! You Cleared The Second Tutorial!";
+        anim.SetTrigger("GameOver");
+    }
 }
