@@ -11,6 +11,7 @@ public class BossBattleGameController : MonoBehaviour {
     public GameObject[] playerIndicators;
     public int respawnTime;
     public int respawnLives;
+    public Canvas canvas;
     public Text gameOverText;
     public TextMesh respawnText;
     public GameObject trianglePrefab;
@@ -24,6 +25,7 @@ public class BossBattleGameController : MonoBehaviour {
     private static bool gameOver;
     private GameMode gameMode = GameMode.Boss;
     private float lastRespawnTime;
+    private Animator anim;
 
 
     // Use this for initialization
@@ -32,6 +34,7 @@ public class BossBattleGameController : MonoBehaviour {
 
         //respawns = new Queue<RespawnEvent> ();
         SetRespawnText();
+        anim = canvas.GetComponent<Animator>();
     }
 	
 	// Update is called once per frame
@@ -228,13 +231,13 @@ public class BossBattleGameController : MonoBehaviour {
         gameOver = true;
         if (winner == 1)
         {
-			gameOverText.text = "Congratulations!!! Your team defeated the boss!!!\r\n" +
-            	"Press SQUARE or ENTER to restart.";
+			gameOverText.text = "Congratulations! You defeated the boss!";
+            anim.SetTrigger("GameOver");
         }
         else if (winner == 2)
         {
-            gameOverText.text = "Too bad!!! You were defeated by the boss!!!\r\n" +
-            	"Press SQUARE or ENTER to restart.";
+            gameOverText.text = "Too bad! You were defeated!";
+            anim.SetTrigger("GameOver");
         }
     }
 
