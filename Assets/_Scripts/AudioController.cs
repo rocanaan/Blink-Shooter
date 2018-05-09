@@ -8,6 +8,9 @@ public class AudioController : MonoBehaviour {
 	public AudioClip soundtrack2;
 	public AudioClip soundtrack3;
 	public AudioClip transitionSoundtrack;
+	public AudioClip victory;
+	public AudioClip defeat;
+
 
 	private AudioSource source;
 
@@ -41,4 +44,19 @@ public class AudioController : MonoBehaviour {
 			source.Play ();
 		}
 	}
+
+	public void PlayVictorySoundtrack()
+	{
+		source.Stop ();
+		source.clip = victory;
+		source.Play ();
+	}
+
+	public void PlayDefeatSoundtrack()
+	{
+		source.Stop ();
+		source.clip = defeat;
+		source.Play ();
+	}
+
 }

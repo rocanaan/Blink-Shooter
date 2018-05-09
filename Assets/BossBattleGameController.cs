@@ -25,6 +25,9 @@ public class BossBattleGameController : MonoBehaviour {
     private GameMode gameMode = GameMode.Boss;
     private float lastRespawnTime;
 
+	private GameObject audioSource;
+	private AudioController soundtrackController;
+
 
     // Use this for initialization
     void Start () {
@@ -32,8 +35,11 @@ public class BossBattleGameController : MonoBehaviour {
 
         //respawns = new Queue<RespawnEvent> ();
         SetRespawnText();
+
+		audioSource = GameObject.FindGameObjectWithTag ("GlobalAudioSource");
+		soundtrackController = audioSource.GetComponent<AudioController>();
     }
-	
+
 	// Update is called once per frame
 	void Update () {
         if (gameOver && Input.GetButton("Submit"))
@@ -230,11 +236,15 @@ public class BossBattleGameController : MonoBehaviour {
         {
 			gameOverText.text = "Congratulations!!! Your team defeated the boss!!!\r\n" +
             	"Press SQUARE or ENTER to restart.";
+			soundtrackController.PlayVictorySoundtrack ();
+
         }
         else if (winner == 2)
         {
             gameOverText.text = "Too bad!!! You were defeated by the boss!!!\r\n" +
             	"Press SQUARE or ENTER to restart.";
+			soundtrackController.PlayDefeatSoundtrack ();
+
         }
     }
 
