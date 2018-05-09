@@ -12,6 +12,9 @@ public class GhostController : MonoBehaviour {
 	public GameObject body;
 
 	public float cooldown;
+	public float earlyActivationDuration;
+	public float blinkOnActivationDuration;
+	public Material blinkMaterial;
 	private float nextActivation;
 
 	private PlayerController pc;
@@ -26,6 +29,8 @@ public class GhostController : MonoBehaviour {
 
 	private SoundEffectsController sfx;
 
+	private Material defaultMaterial;
+
 
 
 	// TO DO: See if a better implementation is to use an enum or #define
@@ -39,6 +44,7 @@ public class GhostController : MonoBehaviour {
 		//rb.angularVelocity = angularSpeed;
 		col = GetComponent<CircleCollider2D>();
 		spriteRenderer = GetComponent<SpriteRenderer> ();
+		defaultMaterial = spriteRenderer.material;
 
 		pc = body.GetComponent<PlayerController> ();
 
@@ -58,6 +64,13 @@ public class GhostController : MonoBehaviour {
 		}
 		if (state == 2 && Time.time >= nextActivation) {
 			stateTransition (0);
+		} else if (state == 2 && !pc.isDead && Time.time >= nextActivation - blinkOnActivationDuration) {
+			spriteRenderer.enabled = true;
+			spriteRenderer.material = blinkMaterial;
+		}
+		else if (state == 2 && !pc.isDead && Time.time >= nextActivation - earlyActivationDuration) {
+			spriteRenderer.enabled = true;
+			spriteRenderer.material = defaultMaterial;
 		}
 	}
 
@@ -137,6 +150,9 @@ public class GhostController : MonoBehaviour {
 			state = 0;
 			col.enabled = false;
 			spriteRenderer.enabled = true;
+			if (!pc.isDead) {
+				spriteRenderer.material = defaultMaterial;
+			}
 		}
 		if (nextState == 1) {
 			state = 1;

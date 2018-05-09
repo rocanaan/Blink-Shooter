@@ -13713,6 +13713,21 @@ Prefab:
       propertyPath: m_AnchorMax.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114050677188457966, guid: 9158f12da4bead54284ad68ac4c93bfc,
+        type: 2}
+      propertyPath: earlyActivationDuration
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114050677188457966, guid: 9158f12da4bead54284ad68ac4c93bfc,
+        type: 2}
+      propertyPath: blinkOnActivationDuration
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 114050677188457966, guid: 9158f12da4bead54284ad68ac4c93bfc,
+        type: 2}
+      propertyPath: blinkMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: bea8a62a7cf9b4ca9b902ad827b37437, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9158f12da4bead54284ad68ac4c93bfc, type: 2}
   m_IsPrefabParent: 0
@@ -14098,6 +14113,26 @@ Transform:
   m_PrefabParentObject: {fileID: 4833804944259394, guid: e5d5f33a44804d940bd6b542ae7d7b89,
     type: 2}
   m_PrefabInternal: {fileID: 1525065031}
+--- !u!1 &1569957680 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1442923138287106, guid: 9158f12da4bead54284ad68ac4c93bfc,
+    type: 2}
+  m_PrefabInternal: {fileID: 28487082}
+--- !u!114 &1569957688
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1569957680}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2516fb0a397ad4cb1802643c83381165, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startDelay: 0.8
+  blinkDelay: 0.9
+  totalDuration: 1
+  blinkMaterial: {fileID: 2100000, guid: bea8a62a7cf9b4ca9b902ad827b37437, type: 2}
 --- !u!1001 &1571108640
 Prefab:
   m_ObjectHideFlags: 0
