@@ -15,21 +15,34 @@ public class ReviveTutorialGameController : MonoBehaviour {
     private Animator anim;
     private bool gameOver;
 
+	bool firstTime;
+
     // Use this for initialization
     void Start () {
         gameOver = false;
         Time.timeScale = 0f;
 
-		p1Health = alivePlayer.GetComponentInChildren<HealthController> ();
+		firstTime = true;
 
-		p1Health.TakeDamage (2);
-		deadPlayer.GetComponentInChildren<HealthController> ().TakeDamage (10);
-		deadPlayer.GetComponentInChildren<PlayerController> ().PlayerDeath ();
+//		p1Health = alivePlayer.GetComponentInChildren<HealthController> ();
+//
+//		p1Health.TakeDamage (2);
+//		deadPlayer.GetComponentInChildren<HealthController> ().TakeDamage (10);
+//		deadPlayer.GetComponentInChildren<PlayerController> ().PlayerDeath ();
         anim = canvas.GetComponent<Animator>();
     }
 	
 	// Update is called once per frame
 	void Update () {
+		if (firstTime) {
+			p1Health = alivePlayer.GetComponentInChildren<HealthController> ();
+	
+			p1Health.TakeDamage (2);
+			deadPlayer.GetComponentInChildren<HealthController> ().TakeDamage (10);
+			deadPlayer.GetComponentInChildren<PlayerController> ().PlayerDeath ();
+
+			firstTime = false;
+		}
 
         if (Time.timeScale == 0f && Input.GetButton("Submit"))
         {
