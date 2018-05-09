@@ -215,7 +215,7 @@ public class BossController : MonoBehaviour {
 			currentStage = Stage.MediumTransition;
             myCamera.GetComponent<CameraController>().ChangeBackGround();
             healerBeaconSpawner.SpawnHealers(myCamera.GetComponent<CameraController>().timeInterval*2); // this will spawn healer beacons in sync with the blinking background
-            healthIndicatorPS.Play(); // we particle system will play as long as there are beacons alive
+            //healthIndicatorPS.Play(); // we particle system will play as long as there are beacons alive
             ToggleMovement("Stop");
 			transitionEndTime = Time.time + transitionDelay;
 			soundtrackController.switchByStage(Stage.MediumTransition);
@@ -240,7 +240,7 @@ public class BossController : MonoBehaviour {
 			currentStage = Stage.HardTransition;
             myCamera.GetComponent<CameraController>().ChangeBackGround();
             healerBeaconSpawner.SpawnHealers(myCamera.GetComponent<CameraController>().timeInterval * 2); // this will spawn healer beacons in sync with the blinking background
-            healthIndicatorPS.Play(); // we particle system will play as long as there are beacons alive
+            //healthIndicatorPS.Play(); // we particle system will play as long as there are beacons alive
             ToggleMovement ("Stop");
             targetedDamage = 2;
 			transitionEndTime = Time.time + transitionDelay;

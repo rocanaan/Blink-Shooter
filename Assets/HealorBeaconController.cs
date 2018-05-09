@@ -8,7 +8,8 @@ public class HealorBeaconController : MonoBehaviour {
     public int regenRate;
     public float regenTime;
 
-    private GameObject boss;
+    private GameObject bossObj;
+	private BossController bossController;
     private HealthController bossHealthController;
     private ExplosionSpawner explosionSpawner;
     private GameObject cam;
@@ -29,8 +30,8 @@ public class HealorBeaconController : MonoBehaviour {
         explosionSpawner.SpawnExplosion();
         cam.GetComponent<CameraController>().CamShake(0.2f, 0.15f);
 
-        boss = GameObject.FindGameObjectWithTag("Boss");
-        bossHealthController = boss.GetComponent<HealthController>();
+        bossObj = GameObject.FindGameObjectWithTag("Boss");
+		bossHealthController = bossObj.GetComponent<HealthController>();
 
 		lr = GetComponent<LineRenderer> ();
 		lr.material = linkMaterial;
@@ -57,7 +58,7 @@ public class HealorBeaconController : MonoBehaviour {
                     HealBoss();
 
 
-                    RaycastHit2D[] allHits = Physics2D.RaycastAll(transform.position, boss.transform.position - transform.position, 60.0f);
+                    RaycastHit2D[] allHits = Physics2D.RaycastAll(transform.position, bossObj.transform.position - transform.position, 60.0f);
                     foreach (RaycastHit2D hit in allHits)
                     {
                         Vector3 pointOfContact = Vector3.zero;
@@ -82,7 +83,7 @@ public class HealorBeaconController : MonoBehaviour {
             }
 
             lr.SetPosition(0, transform.position);
-            lr.SetPosition(1, boss.transform.position);
+            lr.SetPosition(1, bossObj.transform.position);
         }        
 
 	}
@@ -95,6 +96,8 @@ public class HealorBeaconController : MonoBehaviour {
 //            bossHealthController.Heal(regenRate);
 //        }        
 		bossHealthController.Heal(regenRate);
+		//spawn particles on health bar
+		bossHealthController.healthBar.GetComponentInParent<ParticleSystem> ().Play ();
     }
 
     private void OnDestroy()
@@ -102,7 +105,7 @@ public class HealorBeaconController : MonoBehaviour {
         bool gameOver = gameController.IsGameOver();
         if (!gameOver) // we should check if game is over. if it is, boss might have been destroyed.
         {
-            boss.GetComponentInChildren<HealerBeaconSpawner>().DecrementAliveCount(); // decrements the count of alive beacons as it gets destroyed
+            bossObj.GetComponentInChildren<HealerBeaconSpawner>().DecrementAliveCount(); // decrements the count of alive beacons as it gets destroyed
         }        
     }
 }
