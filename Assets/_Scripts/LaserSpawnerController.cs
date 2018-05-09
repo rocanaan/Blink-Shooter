@@ -23,18 +23,20 @@ public class LaserSpawnerController : MonoBehaviour {
 
 	private LineRenderer lr;
 
-	// Use this for initialization
-	void Start () {
+    
+    void Awake()
+    {
+    }
+    void Start () {
 		arcTraveled = 0.0f;
 		lr = GetComponent<LineRenderer> ();
-
-	}
+    }
 		
 	
 	// Update is called once per frame
 	void Update () {
-		// If has already traveled its arc, destroy itself
-		if (Mathf.Abs (arcTraveled) >= angleRotated) {
+        // If has already traveled its arc, destroy itself
+        if (Mathf.Abs (arcTraveled) >= angleRotated) {
 			Destroy (this.gameObject);
 		} else { 
 			// If it is still during prepatation time, keep aiming at original target 
@@ -83,7 +85,7 @@ public class LaserSpawnerController : MonoBehaviour {
 		}
 	}
 
-	public void Initialize(){
+    public void Initialize(){
 		//currentOrigin = origin;
 		activationTime = Time.time + preparationTime;
 		currentTarget = target;
