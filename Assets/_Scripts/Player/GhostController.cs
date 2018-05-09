@@ -31,6 +31,10 @@ public class GhostController : MonoBehaviour {
 
 	private Material defaultMaterial;
 
+	private Vector3 defaultLocalScale;
+
+	public float blinkScaleMultiplier;
+
 
 
 	// TO DO: See if a better implementation is to use an enum or #define
@@ -44,9 +48,11 @@ public class GhostController : MonoBehaviour {
 		//rb.angularVelocity = angularSpeed;
 		col = GetComponent<CircleCollider2D>();
 		spriteRenderer = GetComponent<SpriteRenderer> ();
-		defaultMaterial = spriteRenderer.material;
+		defaultLocalScale = transform.localScale;
 
 		pc = body.GetComponent<PlayerController> ();
+
+
 
 
 		state = 0;
@@ -64,13 +70,13 @@ public class GhostController : MonoBehaviour {
 		}
 		if (state == 2 && Time.time >= nextActivation) {
 			stateTransition (0);
+			transform.localScale = defaultLocalScale;
 		} else if (state == 2 && !pc.isDead && Time.time >= nextActivation - blinkOnActivationDuration) {
 			spriteRenderer.enabled = true;
-			spriteRenderer.material = blinkMaterial;
+			transform.localScale = defaultLocalScale*blinkScaleMultiplier;
 		}
 		else if (state == 2 && !pc.isDead && Time.time >= nextActivation - earlyActivationDuration) {
 			spriteRenderer.enabled = true;
-			spriteRenderer.material = defaultMaterial;
 		}
 	}
 
@@ -150,9 +156,6 @@ public class GhostController : MonoBehaviour {
 			state = 0;
 			col.enabled = false;
 			spriteRenderer.enabled = true;
-			if (!pc.isDead) {
-				spriteRenderer.material = defaultMaterial;
-			}
 		}
 		if (nextState == 1) {
 			state = 1;
