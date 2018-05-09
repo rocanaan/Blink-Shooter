@@ -523,9 +523,13 @@ MonoBehaviour:
   moveSpeed: 25
   body: {fileID: 1760317567391870}
   cooldown: 1
+  earlyActivationDuration: 0.1
+  blinkOnActivationDuration: 0.05
+  blinkMaterial: {fileID: 2100000, guid: bea8a62a7cf9b4ca9b902ad827b37437, type: 2}
   teleportOnRepeatPress: 0
   shortDashOnEarlyRelease: 1
   earlyReleaseInterval: 0.2
+  blinkScaleMultiplier: 1.5
 --- !u!114 &114102697864519724
 MonoBehaviour:
   m_ObjectHideFlags: 1

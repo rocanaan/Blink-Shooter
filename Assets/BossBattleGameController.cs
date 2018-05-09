@@ -27,6 +27,9 @@ public class BossBattleGameController : MonoBehaviour {
     private float lastRespawnTime;
     private Animator anim;
 
+	private GameObject audioSource;
+	private AudioController soundtrackController;
+
 
     // Use this for initialization
     void Start () {
@@ -35,8 +38,10 @@ public class BossBattleGameController : MonoBehaviour {
         //respawns = new Queue<RespawnEvent> ();
         SetRespawnText();
         anim = canvas.GetComponent<Animator>();
+		audioSource = GameObject.FindGameObjectWithTag ("GlobalAudioSource");
+		soundtrackController = audioSource.GetComponent<AudioController>();
     }
-	
+
 	// Update is called once per frame
 	void Update () {
         if (gameOver && Input.GetButton("Submit"))
@@ -233,11 +238,13 @@ public class BossBattleGameController : MonoBehaviour {
         {
 			gameOverText.text = "Congratulations! You defeated the boss!";
             anim.SetTrigger("GameOver");
+            soundtrackController.PlayVictorySoundtrack();
         }
         else if (winner == 2)
         {
             gameOverText.text = "Too bad! You were defeated!";
-            anim.SetTrigger("GameOver");
+            anim.SetTrigger("GameOver");			
+            soundtrackController.PlayDefeatSoundtrack();
         }
     }
 
@@ -246,7 +253,6 @@ public class BossBattleGameController : MonoBehaviour {
         if (respawnLives > 0)
         {
             respawnLives = respawnLives - 1;
-            //SetRespawnText();
             lastRespawnTime = Time.time + respawnTime;
             return respawnTime;
         }

@@ -364,6 +364,21 @@ Prefab:
       propertyPath: m_SortingOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114050677188457966, guid: 9158f12da4bead54284ad68ac4c93bfc,
+        type: 2}
+      propertyPath: earlyActivationDuration
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114050677188457966, guid: 9158f12da4bead54284ad68ac4c93bfc,
+        type: 2}
+      propertyPath: blinkOnActivationDuration
+      value: 0.05
+      objectReference: {fileID: 0}
+    - target: {fileID: 114050677188457966, guid: 9158f12da4bead54284ad68ac4c93bfc,
+        type: 2}
+      propertyPath: blinkMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: bea8a62a7cf9b4ca9b902ad827b37437, type: 2}
     m_RemovedComponents:
     - {fileID: 0}
     - {fileID: 0}
@@ -13877,6 +13892,11 @@ Prefab:
       propertyPath: blinkMaterial
       value: 
       objectReference: {fileID: 2100000, guid: bea8a62a7cf9b4ca9b902ad827b37437, type: 2}
+    - target: {fileID: 114050677188457966, guid: 9158f12da4bead54284ad68ac4c93bfc,
+        type: 2}
+      propertyPath: blinkScaleMultiplier
+      value: 1.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9158f12da4bead54284ad68ac4c93bfc, type: 2}
   m_IsPrefabParent: 0
@@ -15618,6 +15638,8 @@ MonoBehaviour:
   soundtrack3: {fileID: 8300000, guid: e4351882fbad6485a87eeb832f28c6b0, type: 3}
   transitionSoundtrack: {fileID: 8300000, guid: c51a5c2a43b614cd3b66d14a8b3883a8,
     type: 3}
+  victory: {fileID: 0}
+  defeat: {fileID: 0}
 --- !u!82 &2097850402
 AudioSource:
   m_ObjectHideFlags: 0
