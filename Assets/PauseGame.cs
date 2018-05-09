@@ -6,7 +6,7 @@ public class PauseGame : MonoBehaviour {
 
 
 	private bool paused;
-
+    private float lastTimeScale;
 	private GameObject audioSource;
 	private AudioController soundtrackController;
 
@@ -22,18 +22,29 @@ public class PauseGame : MonoBehaviour {
 	void Update () {
         if (Input.GetButtonDown("Pause"))
         {
-            if(!paused)
-            {
-                Time.timeScale = 0.0F;
-				paused = true;
-				soundtrackController.GetComponent<AudioSource> ().Pause ();
-            }else { 
-				Time.timeScale = 1.0F;
-				paused = false;
-				soundtrackController.GetComponent<AudioSource> ().UnPause ();
-			}
+            Pause()
         }
 	}
+
+    public void Pause()
+    {
+        if (!transform.GetComponent<BossBattleGameController>().IsGameOver())
+        {
+            if (!paused)
+            {
+                lastTimeScale = Time.timeScale;
+                Time.timeScale = 0f;
+                paused = true;
+                soundtrackController.GetComponent<AudioSource>().Pause();
+            }
+            else
+            {
+                Time.timeScale = lastTimeScale;
+                paused = false;
+                soundtrackController.GetComponent<AudioSource>().UnPause();
+            }
+        }        
+    }
 
 	public bool IsPaused(){
 		return paused;

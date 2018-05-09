@@ -4178,6 +4178,8 @@ MonoBehaviour:
   playerIndicators:
   - {fileID: 136850512}
   - {fileID: 500004908}
+  bossExplosion: {fileID: 1685826873784232, guid: 8534dbc466951544db6cfbbf57eb5512,
+    type: 2}
   respawnTime: 3
   respawnLives: 2
   canvas: {fileID: 1666916202}
@@ -13506,22 +13508,6 @@ Transform:
   m_PrefabParentObject: {fileID: 4704913194255762, guid: 7e641c9dfd20c41a4a5ad73725e7de64,
     type: 2}
   m_PrefabInternal: {fileID: 1260808688}
---- !u!114 &1260808701
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1260808689}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b4241590048c67d4385372d51f4c4b2a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  explosion: {fileID: 1685826873784232, guid: 8534dbc466951544db6cfbbf57eb5512, type: 2}
-  explosionSize: 0.8
-  explosionDuration: 2
-  explosionRadius: 1
-  explosionMaterial: {fileID: 2100000, guid: 1da942f3dae4342c4b8b360cdcff1e18, type: 2}
 --- !u!1 &1271709989
 GameObject:
   m_ObjectHideFlags: 0
@@ -14587,7 +14573,7 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 30c52cb344d5ac642beef39ff755e22d, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
+  m_UpdateMode: 2
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 

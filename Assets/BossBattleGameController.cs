@@ -9,6 +9,7 @@ public class BossBattleGameController : MonoBehaviour {
     public enum GameMode{Survival, KOTH, Tutorial, Boss};
     public GameObject[] players;
     public GameObject[] playerIndicators;
+    public GameObject bossExplosion;
     public int respawnTime;
     public int respawnLives;
     public Canvas canvas;
@@ -233,9 +234,12 @@ public class BossBattleGameController : MonoBehaviour {
 
     void SetGameOver(int winner)
     {
+        transform.GetComponent<PauseGame>().Pause();
+
         gameOver = true;
         if (winner == 1)
         {
+            GameObject explosion = Instantiate(bossExplosion, Vector3.zero, Quaternion.identity);
 			gameOverText.text = "Congratulations! You defeated the boss!";
             anim.SetTrigger("GameOver");
             soundtrackController.PlayVictorySoundtrack();
