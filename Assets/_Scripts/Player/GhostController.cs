@@ -93,6 +93,9 @@ public class GhostController : MonoBehaviour {
 				stateTransition (1);
 				pc.SetPhasing(true);
 				lastLaunchTime = Time.time;
+				pc.GetComponent<SpriteRenderer> ().enabled = false;
+				GameObject weapon = pc.transform.GetChild(0).gameObject;
+				weapon.GetComponent<SpriteRenderer> ().enabled = false;
 			} else if (state == 1 && teleportOnRepeatPress) {
 				StartCoroutine (TryPhasing (Time.time));
 			}
@@ -174,6 +177,9 @@ public class GhostController : MonoBehaviour {
 			}
 			sfx.StopClip ();
 			sfx.PlayClip ("Teleport");
+			pc.GetComponent<SpriteRenderer> ().enabled = true;
+			GameObject weapon = pc.transform.GetChild(0).gameObject;
+			weapon.GetComponent<SpriteRenderer> ().enabled = true;
 		}
 	}
 	public void resetPosition(){
