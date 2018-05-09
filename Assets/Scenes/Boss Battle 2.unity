@@ -4189,6 +4189,17 @@ MonoBehaviour:
   max_x: 0
   max_y: 0
   respawnDistanceFromCenter: 0
+--- !u!114 &255208389
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 255208386}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c83f5c45bd9ae4a45b8e03f3978ec269, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &283807225
 Prefab:
   m_ObjectHideFlags: 0
@@ -14298,6 +14309,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2516fb0a397ad4cb1802643c83381165, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startDelay: 0
+  blinkDelay: 0
+  totalDuration: 0
+  blinkMaterial: {fileID: 0}
 --- !u!1001 &1571108640
 Prefab:
   m_ObjectHideFlags: 0

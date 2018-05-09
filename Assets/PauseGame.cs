@@ -35,7 +35,7 @@ public class PauseGame : MonoBehaviour {
         }
 	}
 
-	public bool isPaused(){
+	public bool IsPaused(){
 		return paused;
 	}
 
