@@ -8204,7 +8204,7 @@ Prefab:
     - {fileID: 114050677188457966, guid: 9158f12da4bead54284ad68ac4c93bfc, type: 2}
     - {fileID: 82904485846162324, guid: 9158f12da4bead54284ad68ac4c93bfc, type: 2}
     - {fileID: 114792758509208520, guid: 9158f12da4bead54284ad68ac4c93bfc, type: 2}
-    - {fileID: 114131069671731500, guid: 9158f12da4bead54284ad68ac4c93bfc, type: 2}
+    - {fileID: 0}
     - {fileID: 82195689917456882, guid: 9158f12da4bead54284ad68ac4c93bfc, type: 2}
     - {fileID: 114102697864519724, guid: 9158f12da4bead54284ad68ac4c93bfc, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 9158f12da4bead54284ad68ac4c93bfc, type: 2}
@@ -8626,7 +8626,7 @@ Prefab:
     - {fileID: 114050677188457966, guid: 9158f12da4bead54284ad68ac4c93bfc, type: 2}
     - {fileID: 82904485846162324, guid: 9158f12da4bead54284ad68ac4c93bfc, type: 2}
     - {fileID: 114792758509208520, guid: 9158f12da4bead54284ad68ac4c93bfc, type: 2}
-    - {fileID: 114131069671731500, guid: 9158f12da4bead54284ad68ac4c93bfc, type: 2}
+    - {fileID: 0}
     - {fileID: 82195689917456882, guid: 9158f12da4bead54284ad68ac4c93bfc, type: 2}
     - {fileID: 114102697864519724, guid: 9158f12da4bead54284ad68ac4c93bfc, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 9158f12da4bead54284ad68ac4c93bfc, type: 2}
@@ -8943,7 +8943,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 66.20001}
-  m_SizeDelta: {x: 0, y: 90}
+  m_SizeDelta: {x: 0, y: 270}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1396609919
 MonoBehaviour:
@@ -8991,7 +8991,9 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Instructions
+  m_Text: 'Hold / release trigger to phase
+
+    Fire with right analog stick to damage enemies'
 --- !u!222 &1396609921
 CanvasRenderer:
   m_ObjectHideFlags: 0

@@ -333,6 +333,11 @@ Prefab:
       propertyPath: blinkMaterial
       value: 
       objectReference: {fileID: 2100000, guid: bea8a62a7cf9b4ca9b902ad827b37437, type: 2}
+    - target: {fileID: 114792758509208520, guid: 9158f12da4bead54284ad68ac4c93bfc,
+        type: 2}
+      propertyPath: clips.Array.data[1].clip
+      value: 
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 0}
     - {fileID: 0}
