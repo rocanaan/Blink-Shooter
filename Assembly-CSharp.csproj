@@ -104,9 +104,11 @@
      <Compile Include="Assets\BehaviorController.cs" />
      <Compile Include="Assets\BossBattleGameController.cs" />
      <Compile Include="Assets\CoreResize.cs" />
+     <Compile Include="Assets\DestroyOnGameOver.cs" />
      <Compile Include="Assets\DrawCircle.cs" />
      <Compile Include="Assets\ExpandingCircleAttack.cs" />
      <Compile Include="Assets\ExpandingCircleSpawner.cs" />
+     <Compile Include="Assets\FirstTutorialGameController.cs" />
      <Compile Include="Assets\GhostBlinkOnActivation.cs" />
      <Compile Include="Assets\HealerBeaconSpawner.cs" />
      <Compile Include="Assets\HealorBeaconController.cs" />
@@ -118,6 +120,7 @@
      <Compile Include="Assets\PauseGame.cs" />
      <Compile Include="Assets\PlayerCircleTrapSpawner.cs" />
      <Compile Include="Assets\PlayerUIHealthBarController.cs" />
+     <Compile Include="Assets\ReviveTutorialGameController.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>/Applications/Unity/Unity.app/Contents/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

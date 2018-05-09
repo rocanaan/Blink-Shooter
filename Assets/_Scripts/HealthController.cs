@@ -19,7 +19,7 @@ public class HealthController : MonoBehaviour {
     public bool checkForHealthThreshold;
 
 	// Use this for initialization
-	void Start () {
+	void Awake () {
         healthBar.maxValue = maxHealth;
         healthBar.value = maxHealth;
         regenerate = false;
@@ -122,5 +122,7 @@ public class HealthController : MonoBehaviour {
     {
         return isAlive;
     }
+
+
 
 }

@@ -317,7 +317,7 @@ public class PlayerController : MonoBehaviour {
 
 	}
 
-	void PlayerDeath ()
+	public void PlayerDeath ()
     {
         Debug.Log("PlayerDeath() called for player " + playerID);
 
