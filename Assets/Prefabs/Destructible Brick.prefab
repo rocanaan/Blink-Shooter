@@ -117,8 +117,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77e71bda2e2887d409b21b2b8681762d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 3
+  health: 15
   teamID: 0
+  blinkOnDamage: 0
 --- !u!114 &114695813036105072
 MonoBehaviour:
   m_ObjectHideFlags: 1
