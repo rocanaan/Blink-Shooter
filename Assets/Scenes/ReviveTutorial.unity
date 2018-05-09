@@ -204,7 +204,7 @@ Prefab:
         type: 2}
       propertyPath: playerBody
       value: 
-      objectReference: {fileID: 1275504034}
+      objectReference: {fileID: 1569957680}
     - target: {fileID: 114683988685659134, guid: 9158f12da4bead54284ad68ac4c93bfc,
         type: 2}
       propertyPath: singleRegenTime

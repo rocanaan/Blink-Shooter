@@ -245,7 +245,7 @@ Prefab:
         type: 2}
       propertyPath: playerBody
       value: 
-      objectReference: {fileID: 1275504034}
+      objectReference: {fileID: 1569957680}
     - target: {fileID: 114683988685659134, guid: 9158f12da4bead54284ad68ac4c93bfc,
         type: 2}
       propertyPath: singleRegenTime
@@ -8547,6 +8547,11 @@ Transform:
   m_PrefabParentObject: {fileID: 4833804944259394, guid: e5d5f33a44804d940bd6b542ae7d7b89,
     type: 2}
   m_PrefabInternal: {fileID: 811980538}
+--- !u!1 &864928548 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1442923138287106, guid: 9158f12da4bead54284ad68ac4c93bfc,
+    type: 2}
+  m_PrefabInternal: {fileID: 1349107630}
 --- !u!1001 &904387826
 Prefab:
   m_ObjectHideFlags: 0
@@ -13222,12 +13227,12 @@ Prefab:
     - target: {fileID: 224788979789411358, guid: 9158f12da4bead54284ad68ac4c93bfc,
         type: 2}
       propertyPath: m_AnchorMax.x
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 224788979789411358, guid: 9158f12da4bead54284ad68ac4c93bfc,
         type: 2}
       propertyPath: m_AnchorMax.y
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114050677188457966, guid: 9158f12da4bead54284ad68ac4c93bfc,
         type: 2}
@@ -13253,6 +13258,11 @@ Prefab:
       propertyPath: m_TagString
       value: Untagged
       objectReference: {fileID: 0}
+    - target: {fileID: 114840703434038736, guid: 9158f12da4bead54284ad68ac4c93bfc,
+        type: 2}
+      propertyPath: playerBody
+      value: 
+      objectReference: {fileID: 864928548}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9158f12da4bead54284ad68ac4c93bfc, type: 2}
   m_IsPrefabParent: 0
