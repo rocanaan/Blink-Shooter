@@ -67,6 +67,8 @@ public class BossController : MonoBehaviour {
 	private bool gunsSpawnedHard;
 	private bool lastPushFired;
 
+    private bool onFirstFrame;
+
 	// Use this for initialization
 	void Start () {
 		coreBlinkAnimation = GetComponentInChildren<BlinkAnimation> ();
@@ -120,11 +122,20 @@ public class BossController : MonoBehaviour {
 		gunsSpawnedHard = false;
 		lastPushFired = false;
 
-		directionalShieldSpawner.setStatus (true);
+        onFirstFrame = true;
+
+		
     }
 	
 	// Update is called once per frame
 	void Update () {
+
+        if (onFirstFrame)
+        {
+            directionalShieldSpawner.setStatus(true);
+            onFirstFrame = false;
+        }
+
 		if (Time.time >= nextBehaviorStartTime) {
 			if (currentStage != Stage.MediumTransition && currentStage != Stage.HardTransition) {
 				selectBehaviors ();

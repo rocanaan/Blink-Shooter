@@ -503,7 +503,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -1195251326
+  randomSeed: -603245445
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -4821,7 +4821,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 858140793
+  randomSeed: -481391388
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -9538,7 +9538,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -1034999055
+  randomSeed: 1272216575
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -13427,7 +13427,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthBar: {fileID: 1296711202}
   fill: {fileID: 213260056}
-  maxHealth: 20
+  maxHealth: 500
   singleRegenTime: 2
   regenAmount: 0
   highHealthMaterial: {fileID: 0}
@@ -14399,6 +14399,21 @@ Prefab:
       propertyPath: m_Text
       value: Beat The Boss!
       objectReference: {fileID: 0}
+    - target: {fileID: 224007825343733036, guid: 1b06ac2aa588626418f9c50a454e3ef2,
+        type: 2}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 224007825343733036, guid: 1b06ac2aa588626418f9c50a454e3ef2,
+        type: 2}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 224007825343733036, guid: 1b06ac2aa588626418f9c50a454e3ef2,
+        type: 2}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 1b06ac2aa588626418f9c50a454e3ef2, type: 2}
   m_IsPrefabParent: 0
@@ -15331,8 +15346,8 @@ MonoBehaviour:
   soundtrack3: {fileID: 8300000, guid: e4351882fbad6485a87eeb832f28c6b0, type: 3}
   transitionSoundtrack: {fileID: 8300000, guid: c51a5c2a43b614cd3b66d14a8b3883a8,
     type: 3}
-  victory: {fileID: 0}
-  defeat: {fileID: 0}
+  victory: {fileID: 8300000, guid: 08016a1627a41a4438a925f07dca105e, type: 3}
+  defeat: {fileID: 8300000, guid: d99f4e97182d2c04abaad10e0b6d5bee, type: 3}
 --- !u!82 &2097850402
 AudioSource:
   m_ObjectHideFlags: 0
@@ -15345,7 +15360,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
-  m_Volume: 0.5
+  m_Volume: 0.87
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -15431,7 +15446,7 @@ MonoBehaviour:
     label: WallGunFire
   - clip: {fileID: 8300000, guid: 28cfd855e572bb94391114c7c7ad1d85, type: 3}
     label: WallGunExplosion
-  - clip: {fileID: 8300000, guid: 5eae96c13552a5b4faff6155f9c19a43, type: 3}
+  - clip: {fileID: 8300000, guid: c2b80a8f2d9f7804a92280a151330a6f, type: 3}
     label: ExpandingCircle
   - clip: {fileID: 8300000, guid: 9a62cb0201b334c0db3c6a3656779e24, type: 3}
     label: TargettedFire

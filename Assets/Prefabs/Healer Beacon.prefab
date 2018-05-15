@@ -338,7 +338,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 77e71bda2e2887d409b21b2b8681762d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 15
+  health: 22
   teamID: 2
   blinkOnDamage: 1
 --- !u!114 &114985953935506704

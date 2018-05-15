@@ -36,8 +36,8 @@ public class BossBattleGameController : MonoBehaviour {
     // Use this for initialization
     void Start () {
         pauseGame = transform.GetComponent<PauseGame>();
-        Time.timeScale = 1.0f;
-        pauseGame.Pause();
+        Time.timeScale = 0f;
+        //pauseGame.Pause();
         gameOver = false;
 
         //respawns = new Queue<RespawnEvent> ();

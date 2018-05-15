@@ -223,13 +223,13 @@ public class PlayerController : MonoBehaviour {
 				}
 
 				// Get fire action
-				if (Input.GetButton ("Fire" + controllerName) && Time.time >= nextShot) {
-					//print (" Firing shot for player " + playerID + " using controller " + controllerName);
-					fs.fireShot ();
-					sfxController.PlayClip ("Fire");
-					nextShot = Time.time + shotInterval;
-					lastFireTime = Time.time;
-				}
+				//if (Input.GetButton ("Fire" + controllerName) && Time.time >= nextShot) {
+				//	//print (" Firing shot for player " + playerID + " using controller " + controllerName);
+				//	fs.fireShot ();
+				//	sfxController.PlayClip ("Fire");
+				//	nextShot = Time.time + shotInterval;
+				//	lastFireTime = Time.time;
+				//}
 
 			}
 

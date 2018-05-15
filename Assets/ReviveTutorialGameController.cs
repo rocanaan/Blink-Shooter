@@ -65,6 +65,7 @@ public class ReviveTutorialGameController : MonoBehaviour {
 
     private void GameOver()
     {
+        gameOver = true;
         gameOverText.text = "Congratulations! You Cleared The Second Tutorial!";
         anim.SetTrigger("GameOver");
     }
